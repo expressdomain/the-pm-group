@@ -1,6 +1,7 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
+import Logo from "../SVG/Logo"
 
 const Header = ({ siteTitle }) => (
   <header
@@ -17,14 +18,8 @@ const Header = ({ siteTitle }) => (
       }}
     >
       <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
+        <Link to="/">
+          <Logo />
         </Link>
       </h1>
     </div>

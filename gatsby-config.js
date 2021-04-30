@@ -1,10 +1,44 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `The PM Group | San Antonio’s Largest Ad and Marketing Agency`,
+    description: `The PM Group is San Antonio's top advertising & marketing agency, leading in award-winning and results-driven campaigns with over 30 years of expertise.`,
+    author: `@NoisyTrumpet`,
+  },
+  flags: {
+    DEV_SSR: true,
+    FAST_DEV: true,
   },
   plugins: [
+    {
+      /**
+       * First up is the WordPress source plugin that connects Gatsby
+       * to your WordPress site.
+       *
+       * visit the plugin docs to learn more
+       * https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby-source-wordpress/README.md
+       *
+       */
+      resolve: `gatsby-source-wordpress`,
+      options: {
+        // the only required plugin option for WordPress is the GraphQL url.
+        url:
+          process.env.WPGRAPHQL_URL ||
+          `https://thepmgrp.flywheelstaging.com/graphql`,
+        auth: {
+          htaccess: {
+            username: process.env.HTTPBASICAUTH_USERNAME,
+            password: process.env.HTTPBASICAUTH_PASSWORD,
+          },
+        },
+        develop: {
+          hardCacheData: true,
+        },
+      },
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     {
@@ -32,5 +66,7 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    // Chakra UI:
+    `@chakra-ui/gatsby-plugin`,
   ],
 }
