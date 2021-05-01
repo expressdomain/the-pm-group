@@ -11,13 +11,13 @@ const ThemeToggle = props => {
     <Button
       onClick={toggleColorMode}
       size="sm"
-      backgroundColor={useColorModeValue(["secondary", "black"])}
+      backgroundColor={useColorModeValue(["black"])}
       aria-label={
         isLight ? `Activate dark color mode` : `Activate light color mode`
       }
       {...props}
     >
-      {isLight ? <MoonIcon color={sunColor} /> : <SunIcon />}
+      {isLight ? <MoonIcon color={sunColor} /> : <SunIcon color={sunColor} />}
     </Button>
   )
 }

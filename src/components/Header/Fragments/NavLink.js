@@ -16,7 +16,8 @@ const NavLink = props => {
       color={mode("black", "white")}
       aria-current={isActive ? "page" : undefined}
       _hover={{
-        bg: mode("gray.100", "gray.700"),
+        bg: mode("black", "secondary"),
+        color: mode("secondary", "black"),
       }}
       _activeLink={{
         bg: mode("blue.600", "blue.200"),

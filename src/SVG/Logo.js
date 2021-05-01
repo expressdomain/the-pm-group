@@ -1,4 +1,4 @@
-import { chakra, useColorModeValue, useColorMode } from "@chakra-ui/react"
+import { chakra, useColorMode } from "@chakra-ui/react"
 import * as React from "react"
 
 const Logo = props => {

@@ -1,13 +1,30 @@
 import * as React from "react"
 import PropTypes from "prop-types"
-import { Flex, Box, useColorMode, List, ListItem } from "@chakra-ui/react"
+import {
+  Flex,
+  Box,
+  useColorMode,
+  List,
+  ListItem,
+  useMediaQuery,
+  useDisclosure,
+  useColorModeValue,
+  IconButton,
+} from "@chakra-ui/react"
 import Logo from "../../../SVG/Logo"
 import Link from "../../Link/Link"
 import NavLink from "./NavLink"
 import ThemeToggle from "../../ThemeToggle"
+import MobileNavContent from "./MobileNavContent"
+import { HamburgerIcon } from "@chakra-ui/icons"
 
 const NavBar = ({ children, menu, siteTitle, ...props }) => {
   const { colorMode } = useColorMode()
+  // tablet breakpoint
+  const [tabletDown] = useMediaQuery(`(max-width: 960px)`)
+  const mobileNav = useDisclosure()
+  const buttonColor = useColorModeValue(["black"])
+  const yellowButton = useColorModeValue("secondary")
 
   const Branding = () => {
     return (
@@ -25,7 +42,7 @@ const NavBar = ({ children, menu, siteTitle, ...props }) => {
     )
   }
 
-  const MenuLinks = () => {
+  const MenuLinks = ({ isMobile }) => {
     const links = []
     menu.nodes.forEach(node => {
       links.push(
@@ -36,8 +53,14 @@ const NavBar = ({ children, menu, siteTitle, ...props }) => {
         </ListItem>
       )
     })
+
     return (
-      <List display="flex" alignItems={`center`}>
+      <List
+        display={isMobile ? "block" : "flex"}
+        alignItems={`center`}
+        marginTop={isMobile ? 10 : 0}
+        textAlign={`center`}
+      >
         {links}
       </List>
     )
@@ -50,16 +73,38 @@ const NavBar = ({ children, menu, siteTitle, ...props }) => {
       wrap="wrap"
       w="100%"
       px={4}
-      py={4}
+      py={2}
       bg={["primary.500", "primary.500", "transparent", "transparent"]}
       color={["white", "white", "primary.700", "primary.700"]}
       {...props}
     >
       <Branding />
       <Box alignItems="center" display="flex" position="relative">
-        <MenuLinks />
-        <ThemeToggle marginLeft={4} />
+        {tabletDown ? (
+          <IconButton
+            display={{
+              base: "flex",
+            }}
+            backgroundColor={buttonColor}
+            size="sm"
+            aria-label="Open menu"
+            fontSize="20px"
+            variant="black"
+            onClick={mobileNav.onOpen}
+            icon={<HamburgerIcon color={yellowButton} />}
+          />
+        ) : (
+          <MenuLinks />
+        )}
+        <ThemeToggle marginLeft={4} backgroundColor={buttonColor} />
       </Box>
+      <MobileNavContent
+        isOpen={mobileNav.isOpen}
+        onClose={mobileNav.onClose}
+        display={{ md: `none` }}
+      >
+        <MenuLinks isMobile />
+      </MobileNavContent>
     </Flex>
   )
 }

@@ -23,7 +23,7 @@ const Hero = ({
 }) => {
   return (
     <Box bg="gray.800" as="section" minH="140px" position="relative">
-      <Box py="32" position="relative" zIndex={1}>
+      <Box py="32" position="relative" zIndex={5}>
         <Box
           maxW={{
             base: "xl",
@@ -104,12 +104,18 @@ const Hero = ({
         align="center"
       >
         <Box position="relative" w="full" h="full">
+          <Box
+            position="absolute"
+            w="full"
+            h="full"
+            bg="blackAlpha.500"
+            zIndex={4}
+          />
           <GatsbyImage
             image={image}
             style={{ height: "100%", width: "100%" }}
             alt={alt}
           />
-          <Box position="absolute" w="full" h="full" bg="blackAlpha.600" />
         </Box>
       </Flex>
     </Box>
