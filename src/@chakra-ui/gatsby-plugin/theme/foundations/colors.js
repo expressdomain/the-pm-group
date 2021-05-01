@@ -7,7 +7,7 @@ const colors = {
   bg: "#FFFFFF",
   primaryColorScheme: "gray", // Used for all "colorScheme" props on components. Not defined in "dark" as components handle dark mode by themselves.
   primary: "#3FA7B6",
-  secondary: "#c09559",
+  secondary: "#FDBC31",
   gradientTop: "#FFFFFF",
   gradientBottom: "#FFFFFF",
   headingColor: "black",

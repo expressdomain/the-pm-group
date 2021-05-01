@@ -1,40 +1,38 @@
 import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
 import { graphql } from "gatsby"
+import { getImage } from "gatsby-plugin-image"
 
 import Layout from "../components/Layout/Layout"
 import Seo from "gatsby-plugin-wpgraphql-seo"
+import Hero from "../components/Hero/Hero"
 
-const IndexPage = ({ data: { wpPage } }) => (
-  <Layout>
-    <Seo post={wpPage} />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["AUTO", "WEBP", "AVIF"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-    <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </p>
-  </Layout>
-)
+const IndexPage = ({ data: { wpPage } }) => {
+  // Hero Fields
+  const heroImage = wpPage.homeFields.hero.heroImages[0].image
+  const heroAlt = wpPage.homeFields.hero.heroImages[0].label
+  const heroTitle = wpPage.homeFields.headline
+  const heroCaption = wpPage.homeFields.subcaption
+  return (
+    <Layout>
+      <Seo post={wpPage} />
+      <Hero
+        image={getImage(heroImage.localFile.childImageSharp)}
+        alt={heroAlt}
+        title={heroTitle}
+        caption={heroCaption}
+      />
+    </Layout>
+  )
+}
 
 export default IndexPage
 
 export const pageQuery = graphql`
   query GET_PAGE {
     wpPage(title: { eq: "Home" }) {
-      nodeType
       title
       uri
+      nodeType
       seo {
         title
         metaDesc
@@ -62,6 +60,96 @@ export const pageQuery = graphql`
           articleType
           pageType
           raw
+        }
+      }
+      homeFields {
+        hero {
+          heroImages {
+            link
+            title
+            image {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(
+                    quality: 90
+                    formats: WEBP
+                    layout: FULL_WIDTH
+                    placeholder: BLURRED
+                  )
+                }
+              }
+              description
+            }
+          }
+        }
+        howWeGotHere {
+          content
+          image {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  quality: 90
+                  formats: WEBP
+                  layout: CONSTRAINED
+                  placeholder: BLURRED
+                )
+              }
+            }
+          }
+        }
+        primaryCta {
+          ctaLink
+          ctaText
+          primaryCtaFields {
+            title
+            link
+          }
+        }
+        secondaryCta {
+          title
+          link
+          image {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  quality: 90
+                  formats: WEBP
+                  layout: CONSTRAINED
+                  placeholder: BLURRED
+                )
+              }
+            }
+          }
+        }
+        subcaption
+        services {
+          ctaLink
+          ctaText
+        }
+        headline
+        about {
+          title
+          content
+          image {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  quality: 90
+                  formats: WEBP
+                  layout: CONSTRAINED
+                  placeholder: BLURRED
+                )
+              }
+              childrenImageSharp {
+                gatsbyImageData(
+                  quality: 90
+                  formats: WEBP
+                  layout: CONSTRAINED
+                  placeholder: BLURRED
+                )
+              }
+            }
+          }
         }
       }
     }

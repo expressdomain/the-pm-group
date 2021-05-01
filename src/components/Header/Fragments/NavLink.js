@@ -13,7 +13,7 @@ const NavLink = props => {
       transition="all 0.3s"
       fontWeight="medium"
       lineHeight="1.25rem"
-      color={mode("black", "red")}
+      color={mode("black", "white")}
       aria-current={isActive ? "page" : undefined}
       _hover={{
         bg: mode("gray.100", "gray.700"),

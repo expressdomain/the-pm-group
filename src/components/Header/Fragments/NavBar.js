@@ -1,9 +1,10 @@
 import * as React from "react"
 import PropTypes from "prop-types"
-import { Flex, useColorMode, List, ListItem } from "@chakra-ui/react"
+import { Flex, Box, useColorMode, List, ListItem } from "@chakra-ui/react"
 import Logo from "../../../SVG/Logo"
 import Link from "../../Link/Link"
 import NavLink from "./NavLink"
+import ThemeToggle from "../../ThemeToggle"
 
 const NavBar = ({ children, menu, siteTitle, ...props }) => {
   const { colorMode } = useColorMode()
@@ -55,8 +56,10 @@ const NavBar = ({ children, menu, siteTitle, ...props }) => {
       {...props}
     >
       <Branding />
-
-      <MenuLinks />
+      <Box alignItems="center" display="flex" position="relative">
+        <MenuLinks />
+        <ThemeToggle marginLeft={4} />
+      </Box>
     </Flex>
   )
 }
