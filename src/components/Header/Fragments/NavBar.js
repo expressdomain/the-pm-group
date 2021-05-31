@@ -14,7 +14,6 @@ import {
 import Logo from "../../../SVG/Logo"
 import Link from "../../Link/Link"
 import NavLink from "./NavLink"
-import ThemeToggle from "../../ThemeToggle"
 import MobileNavContent from "./MobileNavContent"
 import { HamburgerIcon } from "@chakra-ui/icons"
 
@@ -24,7 +23,6 @@ const NavBar = ({ children, menu, siteTitle, ...props }) => {
   const [tabletDown] = useMediaQuery(`(max-width: 960px)`)
   const mobileNav = useDisclosure()
   const buttonColor = useColorModeValue(["black"])
-  const yellowButton = useColorModeValue("secondary")
 
   const Branding = () => {
     return (
@@ -45,13 +43,15 @@ const NavBar = ({ children, menu, siteTitle, ...props }) => {
   const MenuLinks = ({ isMobile }) => {
     const links = []
     menu.nodes.forEach(node => {
-      links.push(
-        <ListItem key={node.label} my={0}>
-          <NavLink to={node.url} alt={node.label}>
-            {node.label}
-          </NavLink>
-        </ListItem>
-      )
+      if (!node.parentId) {
+        links.push(
+          <ListItem key={node.label} my={0}>
+            <NavLink to={node.url} alt={node.label}>
+              {node.label}
+            </NavLink>
+          </ListItem>
+        )
+      }
     })
 
     return (
@@ -91,12 +91,12 @@ const NavBar = ({ children, menu, siteTitle, ...props }) => {
             fontSize="20px"
             variant="black"
             onClick={mobileNav.onOpen}
-            icon={<HamburgerIcon color={yellowButton} />}
+            icon={<HamburgerIcon color={`secondary`} />}
           />
         ) : (
           <MenuLinks />
         )}
-        <ThemeToggle marginLeft={4} backgroundColor={buttonColor} />
+        {/* <ThemeToggle marginLeft={4} backgroundColor={buttonColor} /> */}
       </Box>
       <MobileNavContent
         isOpen={mobileNav.isOpen}

@@ -26,9 +26,7 @@ module.exports = {
       resolve: `gatsby-source-wordpress`,
       options: {
         // the only required plugin option for WordPress is the GraphQL url.
-        url:
-          process.env.WPGRAPHQL_URL ||
-          `https://thepmgrp.flywheelstaging.com/graphql`,
+        url: process.env.WPGRAPHQL_URL,
         auth: {
           htaccess: {
             username: process.env.HTTPBASICAUTH_USERNAME,
@@ -54,6 +52,7 @@ module.exports = {
         },
       },
     },
+    "@chakra-ui/gatsby-plugin",
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     {
@@ -78,10 +77,11 @@ module.exports = {
       },
     },
     `gatsby-plugin-gatsby-cloud`,
+    `gatsby-plugin-preact`,
+    `gatsby-plugin-sass`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
     // Chakra UI:
-    `@chakra-ui/gatsby-plugin`,
   ],
 }

@@ -1,6 +1,6 @@
 const Container = {
   baseStyle: {
-    maxW: "1200px",
+    maxW: "1300px",
     px: "1.5rem",
   },
 }

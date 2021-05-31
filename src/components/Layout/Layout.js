@@ -9,6 +9,8 @@ import * as React from "react"
 //  import Footer from "../Footer/index"
 import Header from "../../components/Header/header"
 import { ChakraHelpersProvider } from "../../context/chakra-helpers-context"
+import { SkipNavContent, SkipNavLink } from "../SkipNav/index"
+import theme from "../../@chakra-ui/gatsby-plugin/theme"
 import { useStaticQuery, graphql } from "gatsby"
 import { SEOContext } from "gatsby-plugin-wpgraphql-seo"
 
@@ -89,10 +91,11 @@ const Layout = ({ children }) => {
     }
   `)
   return (
-    <ChakraHelpersProvider>
+    <ChakraHelpersProvider theme={theme}>
       <SEOContext.Provider value={{ global: seo }}>
+        <SkipNavLink />
         <Header siteTitle={seo.schema.siteName} />
-        <main>{children}</main>
+        <SkipNavContent>{children}</SkipNavContent>
         {/* <Footer /> */}
       </SEOContext.Provider>
     </ChakraHelpersProvider>

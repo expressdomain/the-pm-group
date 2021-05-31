@@ -37,7 +37,12 @@ const Hero = ({
           color="white"
         >
           <Box maxW="xl">
-            <Heading as="h1" size="3xl" fontWeight="extrabold">
+            <Heading
+              as="h1"
+              size="3xl"
+              fontWeight="extrabold"
+              color="secondary"
+            >
               {title}
             </Heading>
             <Text
@@ -108,7 +113,7 @@ const Hero = ({
             position="absolute"
             w="full"
             h="full"
-            bg="blackAlpha.500"
+            bg="blackAlpha.400"
             zIndex={4}
           />
           <GatsbyImage

@@ -8,7 +8,7 @@ const Header = ({ siteTitle }) => {
   // Menu Query:
   const data = useStaticQuery(graphql`
     {
-      wpMenu(locations: { eq: TOP_NAVIGATION }) {
+      wpMenu(locations: { eq: PRIMARY }) {
         menuItems {
           nodes {
             url
@@ -16,6 +16,7 @@ const Header = ({ siteTitle }) => {
             target
             label
             id
+            parentId
             childItems {
               nodes {
                 url
