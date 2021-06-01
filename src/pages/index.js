@@ -6,6 +6,7 @@ import { getImage } from "gatsby-plugin-image"
 import Seo from "gatsby-plugin-wpgraphql-seo"
 import Hero from "../components/Hero/Hero"
 import PrimaryCTA from "../components/PrimaryCTA"
+import TextImageBlock from "../components/TextImageBlock"
 
 const IndexPage = ({ data: { wpPage } }) => {
   // Hero Fields
@@ -16,6 +17,10 @@ const IndexPage = ({ data: { wpPage } }) => {
   const ctaItems = wpPage.homeFields.primaryCta.primaryCtaFields
   const ctaLink = wpPage.homeFields.primaryCta.ctaLink
   const ctaText = wpPage.homeFields.primaryCta.ctaText
+  // TextImageBlock 1 Fields:
+  const aboutTitle = wpPage.homeFields.about.title
+  const aboutContent = wpPage.homeFields.about.content
+  const aboutImage = wpPage.homeFields.about.image
   return (
     <Layout>
       <Seo post={wpPage} />
@@ -26,6 +31,11 @@ const IndexPage = ({ data: { wpPage } }) => {
         caption={heroCaption}
       />
       <PrimaryCTA items={ctaItems} link={ctaLink} ctaText={ctaText} />
+      <TextImageBlock
+        title={aboutTitle}
+        content={aboutContent}
+        image={aboutImage}
+      />
     </Layout>
   )
 }
