@@ -67,8 +67,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `the-pmg-group`,
+        short_name: `pmg`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
@@ -79,6 +79,7 @@ module.exports = {
     // `gatsby-plugin-gatsby-cloud`,
     `gatsby-plugin-preact`,
     `gatsby-plugin-sass`,
+    `gatsby-plugin-netlify`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
