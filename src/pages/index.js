@@ -1,8 +1,8 @@
 import * as React from "react"
+import Layout from "../components/Layout/Layout"
 import { graphql } from "gatsby"
 import { getImage } from "gatsby-plugin-image"
 
-import Layout from "../components/Layout/Layout"
 import Seo from "gatsby-plugin-wpgraphql-seo"
 import Hero from "../components/Hero/Hero"
 import PrimaryCTA from "../components/PrimaryCTA"

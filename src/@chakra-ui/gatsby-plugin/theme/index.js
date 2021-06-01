@@ -38,6 +38,10 @@ const theme = extendTheme({
     initialColorMode: "light",
     // useSystemColorMode: true,
   },
+  fonts: {
+    heading: "Montserrat",
+    body: "Montserrat",
+  },
 })
 
 export default theme

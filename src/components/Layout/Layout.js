@@ -8,10 +8,11 @@
 import * as React from "react"
 //  import Footer from "../Footer/index"
 import Header from "../../components/Header/header"
-import { ChakraHelpersProvider } from "../../context/chakra-helpers-context"
+import { ChakraProvider } from "@chakra-ui/react"
 import { SkipNavContent, SkipNavLink } from "../SkipNav/index"
 import theme from "../../@chakra-ui/gatsby-plugin/theme"
 import { useStaticQuery, graphql } from "gatsby"
+import "@fontsource/montserrat"
 import { SEOContext } from "gatsby-plugin-wpgraphql-seo"
 
 const Layout = ({ children }) => {
@@ -91,14 +92,14 @@ const Layout = ({ children }) => {
     }
   `)
   return (
-    <ChakraHelpersProvider theme={theme}>
+    <ChakraProvider theme={theme}>
       <SEOContext.Provider value={{ global: seo }}>
         <SkipNavLink />
         <Header siteTitle={seo.schema.siteName} />
         <SkipNavContent>{children}</SkipNavContent>
         {/* <Footer /> */}
       </SEOContext.Provider>
-    </ChakraHelpersProvider>
+    </ChakraProvider>
   )
 }
 

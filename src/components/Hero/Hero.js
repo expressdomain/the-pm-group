@@ -34,15 +34,10 @@ const Hero = ({
             base: "6",
             md: "8",
           }}
-          color="white"
+          color={`white`}
         >
           <Box maxW="xl">
-            <Heading
-              as="h1"
-              size="3xl"
-              fontWeight="extrabold"
-              color="secondary"
-            >
+            <Heading as="h1" size="3xl" fontWeight="extrabold">
               {title}
             </Heading>
             <Text

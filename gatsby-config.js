@@ -14,6 +14,9 @@ module.exports = {
     PRESERVE_WEBPACK_CACHE: true,
   },
   plugins: [
+    "@chakra-ui/gatsby-plugin",
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-image`,
     {
       /**
        * First up is the WordPress source plugin that connects Gatsby
@@ -52,9 +55,6 @@ module.exports = {
         },
       },
     },
-    "@chakra-ui/gatsby-plugin",
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -76,7 +76,7 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    `gatsby-plugin-gatsby-cloud`,
+    // `gatsby-plugin-gatsby-cloud`,
     `gatsby-plugin-preact`,
     `gatsby-plugin-sass`,
     // this (optional) plugin enables Progressive Web App + Offline functionality

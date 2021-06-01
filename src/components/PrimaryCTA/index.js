@@ -21,7 +21,7 @@ const PrimaryCTA = ({ items, link, ctaText }) => {
           ))}
         </Box>
         <Box>
-          <Link to={link} py={3} px={5} color="black" bg={`#FDBC31`}>
+          <Link to={link} py={3} px={5} color="secondary" bg={`#FDBC31`}>
             {ctaText}
           </Link>
         </Box>

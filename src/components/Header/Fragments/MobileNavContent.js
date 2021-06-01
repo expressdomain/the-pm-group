@@ -6,6 +6,7 @@ const MobileNavContent = props => {
   const { isOpen, onClose, children } = props
   const bg = useColorModeValue("white", "gray.800")
   const buttonColor = useColorModeValue("secondary")
+
   const bgColor = useColorModeValue("black")
   return (
     <AnimatePresence>
