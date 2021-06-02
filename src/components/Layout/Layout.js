@@ -8,6 +8,7 @@
 import * as React from "react"
 //  import Footer from "../Footer/index"
 import { useStaticQuery, graphql } from "gatsby"
+import { ChakraProvider } from "@chakra-ui/react"
 import Header from "../../components/Header/header"
 import { SkipNavContent, SkipNavLink } from "../SkipNav/index"
 import theme from "../../@chakra-ui/gatsby-plugin/theme"
