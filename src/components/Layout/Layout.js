@@ -8,11 +8,8 @@
 import * as React from "react"
 //  import Footer from "../Footer/index"
 import Header from "../../components/Header/header"
-import { ChakraProvider } from "@chakra-ui/react"
 import { SkipNavContent, SkipNavLink } from "../SkipNav/index"
 import theme from "../../@chakra-ui/gatsby-plugin/theme"
-import { useStaticQuery, graphql } from "gatsby"
-import { ParallaxProvider } from "react-scroll-parallax"
 import "@fontsource/montserrat/500.css"
 import "@fontsource/montserrat/600.css"
 import "@fontsource/montserrat/700.css"
@@ -99,9 +96,7 @@ const Layout = ({ children }) => {
       <SEOContext.Provider value={{ global: seo }}>
         <SkipNavLink />
         <Header siteTitle={seo.schema.siteName} />
-        <ParallaxProvider>
           <SkipNavContent>{children}</SkipNavContent>
-        </ParallaxProvider>
         {/* <Footer /> */}
       </SEOContext.Provider>
     </ChakraProvider>
