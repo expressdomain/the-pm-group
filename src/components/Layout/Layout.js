@@ -7,6 +7,7 @@
 
 import * as React from "react"
 //  import Footer from "../Footer/index"
+import { useStaticQuery, graphql } from "gatsby"
 import Header from "../../components/Header/header"
 import { SkipNavContent, SkipNavLink } from "../SkipNav/index"
 import theme from "../../@chakra-ui/gatsby-plugin/theme"
@@ -96,7 +97,7 @@ const Layout = ({ children }) => {
       <SEOContext.Provider value={{ global: seo }}>
         <SkipNavLink />
         <Header siteTitle={seo.schema.siteName} />
-          <SkipNavContent>{children}</SkipNavContent>
+        <SkipNavContent>{children}</SkipNavContent>
         {/* <Footer /> */}
       </SEOContext.Provider>
     </ChakraProvider>
