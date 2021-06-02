@@ -7,6 +7,8 @@ import Seo from "gatsby-plugin-wpgraphql-seo"
 import Hero from "../components/Hero/Hero"
 import PrimaryCTA from "../components/PrimaryCTA"
 import TextImageBlock from "../components/TextImageBlock"
+import Features from "../components/Features"
+import ParallaxCTA from "../components/ParallaxCTA"
 
 const IndexPage = ({ data: { wpPage } }) => {
   // Hero Fields
@@ -21,6 +23,16 @@ const IndexPage = ({ data: { wpPage } }) => {
   const aboutTitle = wpPage.homeFields.about.title
   const aboutContent = wpPage.homeFields.about.content
   const aboutImage = wpPage.homeFields.about.image
+  // Features/Services:
+  const services = wpPage.homeFields.services
+  // Parallax CTA:
+  const secondaryCTAText = wpPage.homeFields.secondaryCta.title
+  const secondaryCTAImage = wpPage.homeFields.secondaryCta.image
+  // How we got here:
+  const gotHereTitle = wpPage.homeFields.howWeGotHere.title
+  const gotHereText = wpPage.homeFields.howWeGotHere.content
+  const gotHereImage = wpPage.homeFields.howWeGotHere.image
+
   return (
     <Layout>
       <Seo post={wpPage} />
@@ -35,6 +47,13 @@ const IndexPage = ({ data: { wpPage } }) => {
         title={aboutTitle}
         content={aboutContent}
         image={aboutImage}
+      />
+      <Features features={services} />
+      <ParallaxCTA text={secondaryCTAText} image={secondaryCTAImage} />
+      <TextImageBlock
+        title={gotHereTitle}
+        content={gotHereText}
+        image={gotHereImage}
       />
     </Layout>
   )
@@ -99,6 +118,7 @@ export const pageQuery = graphql`
         }
         howWeGotHere {
           content
+          title
           image {
             localFile {
               childImageSharp {
@@ -140,6 +160,11 @@ export const pageQuery = graphql`
         services {
           ctaLink
           ctaText
+          serviceEntry {
+            content
+            icon
+            title
+          }
         }
         headline
         about {
