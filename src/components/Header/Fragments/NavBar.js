@@ -16,6 +16,7 @@ import Link from "../../Link/Link"
 import NavLink from "./NavLink"
 import MobileNavContent from "./MobileNavContent"
 import { HamburgerIcon } from "@chakra-ui/icons"
+import ThemeToggle from "../../ThemeToggle"
 
 const NavBar = ({ children, menu, siteTitle, ...props }) => {
   const { colorMode } = useColorMode()
@@ -78,6 +79,7 @@ const NavBar = ({ children, menu, siteTitle, ...props }) => {
       color={["white", "white", "primary.700", "primary.700"]}
       {...props}
     >
+      <ThemeToggle />
       <Branding />
       <Box alignItems="center" display="flex" position="relative">
         {tabletDown ? (

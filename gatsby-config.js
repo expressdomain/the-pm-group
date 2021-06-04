@@ -56,6 +56,33 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-source-gravityforms",
+      options: {
+        // Base URL needs to include protocol (http/https)
+        baseUrl: process.env.BASE_URL,
+        // Gravity Forms API
+        api: {
+          key: process.env.CONSUMER_KEY,
+          secret: process.env.CONSUMER_SECRET,
+        },
+        // Set to true to enable selfsigned certs in development mode
+        allowSelfSigned: false,
+        // Basic Auth
+        basicAuth: {
+          username: process.env.HTTPBASICAUTH_USERNAME,
+          password: process.env.HTTPBASICAUTH_PASSWORD,
+        },
+        // ignoreFields: [
+        //     // Top level fields within the Gravity Forms return
+        //     // to ignore.
+        //     // Default ignore is 'notifications'. To keep this
+        //     // as set, remove the ignoreFields setting from here.
+        //     // If adding more fields, you will need to include
+        //     // notifications to ensure it is ignored.
+        // ],
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,

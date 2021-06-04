@@ -36,7 +36,7 @@ const theme = extendTheme({
   breakpoints,
   config: {
     initialColorMode: "light",
-    // useSystemColorMode: true,
+    useSystemColorMode: false,
   },
   fonts: {
     heading: "Montserrat",
