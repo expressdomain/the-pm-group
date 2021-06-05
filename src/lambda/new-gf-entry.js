@@ -17,7 +17,7 @@ const secretData = {
 
 // For those requests
 const headers = {
-  "Access-Control-Allow-Origin": activeEnv === 'development' ? "*" : process.env.BASE_URL,
+  "Access-Control-Allow-Origin": "*", //activeEnv === 'development' ? "*" : process.env.BASE_URL
   "Access-Control-Allow-Headers": "Content-Type",
 }
 
