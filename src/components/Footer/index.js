@@ -5,6 +5,7 @@ import {
   Text,
   ButtonGroup,
   IconButton,
+  Heading,
 } from "@chakra-ui/react"
 import * as React from "react"
 import Logo from "../../SVG/Logo"
@@ -79,6 +80,10 @@ const Footer = () => {
         >
           <Box flex="1">
             <Logo />
+            <Text mt={4}>
+              The PM Group is the largest Advertising & Marketing Agency in San
+              Antonio and South Texas. We look forward to connecting with you.
+            </Text>
           </Box>
           <Stack
             direction={{
@@ -91,12 +96,46 @@ const Footer = () => {
             }}
           >
             <Stack>
+              <Heading
+                as="h4"
+                fontSize="sm"
+                fontWeight="semibold"
+                textTransform="uppercase"
+                letterSpacing="wider"
+              >
+                Address
+              </Heading>
+              <Link
+                to="https://goo.gl/maps/fFzVN2pVuHXoVrEd6"
+                aria-label="Address"
+              >
+                7550 Interstate 10 West, Suite 510
+                <br />
+                San Antonio, TX 78229
+              </Link>
+            </Stack>
+            <Stack>
+              <Heading
+                as="h4"
+                fontSize="sm"
+                fontWeight="semibold"
+                textTransform="uppercase"
+                letterSpacing="wider"
+              >
+                Get In Touch
+              </Heading>
+              <Link to="tel:210.490.2554" aria-label="Phone Number">
+                210.490.2554
+              </Link>
+            </Stack>
+            <Stack>
               {menuItems.map(item => (
                 <Link to={item.path} aria-label={item.label}>
                   {item.label}
                 </Link>
               ))}
             </Stack>
+
             {/* <LinkGrid
                   spacing={{
                     base: '10',

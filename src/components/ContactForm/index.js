@@ -3,6 +3,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import React from "react"
 import GravityFormForm from "gatsby-gravityforms-component"
 import { useStaticQuery, graphql } from "gatsby"
+import "./form.scss"
 
 const ContactForm = ({ contactData, form }) => {
   const { allGfForm } = useStaticQuery(
@@ -55,7 +56,12 @@ const ContactForm = ({ contactData, form }) => {
       ]}
       mx={`auto`}
     >
-      <Box py={[12, 18, 20, 24]} px={[12, 16, 18, 24]}>
+      <Box
+        py={[12, 18, 20, 24]}
+        px={[12, 16, 18, 24]}
+        display="grid"
+        placeItems="center"
+      >
         {/* Placeholder Form */}
         <GravityFormForm
           id={formId}

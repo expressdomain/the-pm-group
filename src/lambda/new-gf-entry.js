@@ -2,7 +2,8 @@ const axios = require("axios")
 const { nanoid } = require("nanoid")
 const oauthSignature = require("oauth-signature")
 
-let activeEnv = process.env.NODE_ENV || "development"
+let activeEnv =
+  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
 
 require("dotenv").config({
   path: `.env.${activeEnv}`,
@@ -65,11 +66,11 @@ exports.handler = async (event, context, callback) => {
     result = await axios({
       method: "post",
       url: apiUrl,
-      responseType: "json",
       auth: {
         username: process.env.HTTPBASICAUTH_USERNAME,
         password: process.env.HTTPBASICAUTH_PASSWORD,
       },
+      responseType: "json",
       params: {
         ...authParams,
         oauth_signature: signature,

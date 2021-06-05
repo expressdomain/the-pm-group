@@ -41,7 +41,12 @@ const Link = ({ children, to, activeClassName, partiallyActive, ...props }) => {
     )
   }
   return (
-    <chakra.a href={to} {...props} target="_blank" rel="noopener noreferrer">
+    <chakra.a
+      href={to}
+      {...props}
+      target={to.includes("tel") ? "" : "_blank"}
+      rel="noopener noreferrer"
+    >
       {children}
     </chakra.a>
   )

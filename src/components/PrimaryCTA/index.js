@@ -1,34 +1,43 @@
-import { Box, Container } from "@chakra-ui/layout"
+import { Box, Container, Text } from "@chakra-ui/layout"
 import React from "react"
 import PropTypes from "prop-types"
 import Link from "../Link/Link"
 
 const PrimaryCTA = ({ items, link, ctaText }) => {
   return (
-    <Box bgColor={`black`}>
+    <Box bgColor={`black`} maxWidth="100%" position="relative">
       <Container
-        display="flex"
+        display={["grid", "grid", "grid", "flex"]}
+        placeItems="center"
         alignItems="center"
         justifyContent="space-between"
         py={10}
         maxW={`1300px`}
       >
-        <Box display="flex">
+        <Box
+          display={["grid", "grid", "flex"]}
+          gridTemplateColumns={[
+            `repeat(3, 1fr)`,
+            `repeat(3, 1fr)`,
+            `repeat(3, 1fr)`,
+            `repeat(6, 1fr)`,
+          ]}
+          gridGap={2}
+          textAlign="center"
+          alignItems="center"
+          minHeight="max-content"
+          width="100%"
+        >
           {items.map(item => (
-            <Box
-              key={item.title}
-              pr={2}
-              ml={2}
-              borderRightColor={`secondary`}
-              borderRightWidth={2}
-            >
-              <Link to={item.link} color="white">
-                {item.title}
-              </Link>
-            </Box>
+            <Link to={item.link} color="white">
+              {item.title}{" "}
+              <Text as="span" color="secondary">
+                |
+              </Text>
+            </Link>
           ))}
         </Box>
-        <Box>
+        <Box mt={[8, 8, 8, 0]}>
           <Link
             to={link}
             py={3}
@@ -36,6 +45,7 @@ const PrimaryCTA = ({ items, link, ctaText }) => {
             color="black"
             bg={`#FDBC31`}
             // fontWeight={`bold`}
+            whiteSpace="nowrap"
             textTransform={`uppercase`}
           >
             {ctaText}

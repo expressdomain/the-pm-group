@@ -1,0 +1,30 @@
+.gform_wrapper {
+    width: 100%;
+}
+
+form#gravityform--id-1 {
+    min-width: 100%;
+
+    li {
+        list-style: none;
+    }
+
+    .gfield_required {
+        color: red;
+        margin-left: 5px;
+    }
+
+    input,
+    textarea {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        width: 100%;
+        border: solid 2px black;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .gform_button#gform_submit_button_1 {
+        background-color: '#FDBC31' !important;
+    }
+}

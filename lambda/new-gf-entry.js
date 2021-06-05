@@ -2293,12 +2293,13 @@
       const i = r(29),
         { nanoid: a } = r(89),
         c = r(60)
-      r(85).config({ path: ".env.production" })
-      const u = {
+      let u = process.env.GATSBY_ACTIVE_ENV || "production"
+      r(85).config({ path: ".env." + u })
+      const h = {
           gfKey: process.env.CONSUMER_KEY,
           gfSecret: process.env.CONSUMER_SECRET,
         },
-        h = {
+        f = {
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Headers": "Content-Type",
         }
@@ -2306,7 +2307,7 @@
         if ("POST" !== e.httpMethod)
           return {
             statusCode: 400,
-            headers: h,
+            headers: f,
             body: JSON.stringify({
               status: "notPost",
               message: "This was not a POST request!",
@@ -2317,31 +2318,31 @@
         if (!s)
           return {
             statusCode: 424,
-            headers: h,
+            headers: f,
             body: JSON.stringify({
               status: "missingApiData",
               message: "Required API data is missing",
             }),
           }
-        const f = {
-          oauth_consumer_key: u.gfKey,
+        const u = {
+          oauth_consumer_key: h.gfKey,
           oauth_timestamp: Math.round(new Date().getTime() / 1e3),
           oauth_signature_method: "HMAC-SHA1",
           oauth_version: "1.0",
           oauth_nonce: a(11),
         }
-        const p = c.generate("POST", s, f, u.gfSecret)
+        const p = c.generate("POST", s, u, h.gfSecret)
         let l
         try {
           l = await i({
             method: "post",
             url: s,
-            responseType: "json",
             auth: {
               username: process.env.HTTPBASICAUTH_USERNAME,
               password: process.env.HTTPBASICAUTH_PASSWORD,
             },
-            params: o(o({}, f), {}, { oauth_signature: p }),
+            responseType: "json",
+            params: o(o({}, u), {}, { oauth_signature: p }),
             data: n.payload,
           })
         } catch (e) {
@@ -2351,7 +2352,7 @@
           return t && !1 === (null == t ? void 0 : t.is_valid)
             ? {
                 statusCode: 422,
-                headers: h,
+                headers: f,
                 body: JSON.stringify({
                   status: "gravityFormErrors",
                   message: "Gravity Forms has flagged issues",
@@ -2360,7 +2361,7 @@
               }
             : {
                 statusCode: 400,
-                headers: h,
+                headers: f,
                 body: JSON.stringify({
                   status: "unknown",
                   message: "Something went wrong",
@@ -2369,7 +2370,7 @@
         }
         return {
           statusCode: 201,
-          headers: h,
+          headers: f,
           body: JSON.stringify({
             status: "success",
             message: "Entry added to Gravity Forms",
