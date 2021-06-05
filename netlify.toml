@@ -3,5 +3,5 @@
   Command = "npm run build:lambda && gatsby build"
 
 [build.environment]
-  GF_CONSUMER_KEY="XXX"
-  GF_CONSUMER_SECRET="XXX"
+  CONSUMER_KEY="XXX"
+  CONSUMER_SECRET="XXX"
