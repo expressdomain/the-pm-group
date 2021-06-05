@@ -16,7 +16,6 @@ import Link from "../../Link/Link"
 import NavLink from "./NavLink"
 import MobileNavContent from "./MobileNavContent"
 import { HamburgerIcon } from "@chakra-ui/icons"
-import ThemeToggle from "../../ThemeToggle"
 
 const NavBar = ({ children, menu, siteTitle, ...props }) => {
   const { colorMode } = useColorMode()

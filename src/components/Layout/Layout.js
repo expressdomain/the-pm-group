@@ -16,6 +16,7 @@ import "@fontsource/montserrat/500.css"
 import "@fontsource/montserrat/600.css"
 import "@fontsource/montserrat/700.css"
 import { SEOContext } from "gatsby-plugin-wpgraphql-seo"
+import Footer from "../Footer"
 
 const Layout = ({ children }) => {
   const {
@@ -99,7 +100,7 @@ const Layout = ({ children }) => {
         <SkipNavLink />
         <Header siteTitle={seo.schema.siteName} />
         <SkipNavContent>{children}</SkipNavContent>
-        {/* <Footer /> */}
+        <Footer />
       </SEOContext.Provider>
     </ChakraProvider>
   )

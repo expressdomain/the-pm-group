@@ -29,7 +29,7 @@ const ContactForm = ({ contactData, form }) => {
     phoneNumber,
   } = contactData
 
-  const { formId, formFields, confirmations, button, title: formTitle } = form
+  const { formId } = form
 
   const handleError = ({ values, error, reset }) => {
     //handle error
@@ -55,7 +55,7 @@ const ContactForm = ({ contactData, form }) => {
       ]}
       mx={`auto`}
     >
-      <Box>
+      <Box py={[12, 18, 20, 24]} px={[12, 16, 18, 24]}>
         {/* Placeholder Form */}
         <GravityFormForm
           id={formId}
@@ -66,7 +66,7 @@ const ContactForm = ({ contactData, form }) => {
           errorCallback={handleError}
         />
       </Box>
-      <Box py={[12, 18, 20, 24]} px={[12, 16, 18, 24]} bg={`#f0f0f0`}>
+      <Box py={[12, 18, 20, 24]} px={[12, 16, 18, 24]}>
         <Heading as="h2" color={`black`} mb={4} letterSpacing="tight">
           {title}
         </Heading>

@@ -10,6 +10,7 @@ import TextImageBlock from "../components/TextImageBlock"
 import Features from "../components/Features"
 import ParallaxCTA from "../components/ParallaxCTA"
 import ContactForm from "../components/ContactForm"
+import CompaniesGrid from "../components/CompaniesGrid"
 
 const IndexPage = ({ data: { wpPage, gfForm } }) => {
   // Hero Fields
@@ -36,6 +37,8 @@ const IndexPage = ({ data: { wpPage, gfForm } }) => {
   // Contact Section
   const contactInfo = wpPage.homeFields.contactSection
   const form = gfForm
+  // Companies Section
+  const companies = wpPage.homeFields.companies
 
   return (
     <Layout>
@@ -60,6 +63,7 @@ const IndexPage = ({ data: { wpPage, gfForm } }) => {
         image={gotHereImage}
       />
       <ContactForm contactData={contactInfo} form={form} />
+      <CompaniesGrid companies={companies} />
     </Layout>
   )
 }
@@ -152,6 +156,35 @@ export const pageQuery = graphql`
                 }
               }
               description
+            }
+          }
+        }
+        companies {
+          backgroundImage {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  formats: WEBP
+                  quality: 90
+                  placeholder: BLURRED
+                  layout: CONSTRAINED
+                )
+              }
+            }
+          }
+          companyItem {
+            companyLink
+            companyImage {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(
+                    quality: 90
+                    placeholder: BLURRED
+                    layout: CONSTRAINED
+                    formats: WEBP
+                  )
+                }
+              }
             }
           }
         }
