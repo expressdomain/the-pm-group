@@ -17,7 +17,7 @@ const secretData = {
 
 // For those requests
 const headers = {
-  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Origin": activeEnv === 'development' ? "*" : 'https://thepmgrp.netlify.app',
   "Access-Control-Allow-Headers": "Content-Type",
 }
 
