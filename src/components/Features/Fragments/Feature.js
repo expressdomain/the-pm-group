@@ -10,7 +10,7 @@ export const Feature = props => {
         md: "6",
       }}
       direction={{
-        base: "column",
+        base: "row",
         md: "row",
       }}
     >

@@ -9,8 +9,9 @@ import PrimaryCTA from "../components/PrimaryCTA"
 import TextImageBlock from "../components/TextImageBlock"
 import Features from "../components/Features"
 import ParallaxCTA from "../components/ParallaxCTA"
+import ContactForm from "../components/ContactForm"
 
-const IndexPage = ({ data: { wpPage } }) => {
+const IndexPage = ({ data: { wpPage, gfForm } }) => {
   // Hero Fields
   const heroImage = wpPage.homeFields.hero.heroImages[0].image
   const heroTitle = wpPage.homeFields.headline
@@ -32,6 +33,9 @@ const IndexPage = ({ data: { wpPage } }) => {
   const gotHereTitle = wpPage.homeFields.howWeGotHere.title
   const gotHereText = wpPage.homeFields.howWeGotHere.content
   const gotHereImage = wpPage.homeFields.howWeGotHere.image
+  // Contact Section
+  const contactInfo = wpPage.homeFields.contactSection
+  const form = gfForm
 
   return (
     <Layout>
@@ -55,6 +59,7 @@ const IndexPage = ({ data: { wpPage } }) => {
         content={gotHereText}
         image={gotHereImage}
       />
+      <ContactForm contactData={contactInfo} form={form} />
     </Layout>
   )
 }
@@ -63,6 +68,39 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query GET_PAGE {
+    gfForm(formId: { eq: 1 }) {
+      ...GravityFormComponent
+      id
+      slug
+      title
+      formId
+      formFields {
+        id
+        label
+        labelPlacement
+        description
+        descriptionPlacement
+        type
+        choices
+        errorMessage
+        inputMaskValue
+        inputName
+        isRequired
+        visibility
+        cssClass
+        defaultValue
+        maxLength
+        conditionalLogic
+        emailConfirmEnabled
+      }
+      button {
+        imageUrl
+        text
+      }
+      confirmations {
+        message
+      }
+    }
     wpPage(title: { eq: "Home" }) {
       title
       uri
@@ -96,6 +134,7 @@ export const pageQuery = graphql`
           raw
         }
       }
+
       homeFields {
         hero {
           heroImages {
@@ -186,6 +225,27 @@ export const pageQuery = graphql`
                   formats: WEBP
                   layout: CONSTRAINED
                   placeholder: BLURRED
+                )
+              }
+            }
+          }
+        }
+        contactSection {
+          body
+          fieldGroupName
+          title
+          name
+          position
+          phoneNumber
+          email
+          blurb
+          franPhoto {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  quality: 90
+                  placeholder: BLURRED
+                  formats: WEBP
                 )
               }
             }

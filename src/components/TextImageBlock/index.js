@@ -12,11 +12,10 @@ const TextImageBlock = ({ title, content, image }) => {
         "repeat(1, 1fr)",
         "repeat(2, 1fr)",
       ]}
-      maxW={`1500px`}
       mx={`auto`}
     >
-      <Box py={6} px={6} bg={`#f0f0f0`}>
-        <Heading as="h1" color={`black`} mb={4} letterSpacing="tight">
+      <Box py={[12, 18, 20, 24]} px={[12, 16, 18, 24]} bg={`#f0f0f0`}>
+        <Heading as="h2" color={`black`} mb={4} letterSpacing="tight">
           {title}
         </Heading>
         <Box dangerouslySetInnerHTML={{ __html: content }} />

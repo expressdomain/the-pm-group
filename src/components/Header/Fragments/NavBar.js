@@ -79,7 +79,7 @@ const NavBar = ({ children, menu, siteTitle, ...props }) => {
       color={["white", "white", "primary.700", "primary.700"]}
       {...props}
     >
-      <ThemeToggle />
+      {/* <ThemeToggle /> */}
       <Branding />
       <Box alignItems="center" display="flex" position="relative">
         {tabletDown ? (

@@ -66,6 +66,10 @@ exports.handler = async (event, context, callback) => {
       method: "post",
       url: apiUrl,
       responseType: "json",
+      auth: {
+        username: process.env.HTTPBASICAUTH_USERNAME,
+        password: process.env.HTTPBASICAUTH_PASSWORD,
+      },
       params: {
         ...authParams,
         oauth_signature: signature,
