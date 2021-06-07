@@ -13,11 +13,12 @@ const ExpertisePage = ({ data: { wpPage } }) => {
     const heroTitle = wpPage.expertiseFields.expertiseHero.title
     //  Capabilties Section :
     const capability = wpPage.expertiseFields.capabilitiesGrid.capabilityCard
+    console.log({capability})
 
     return(
         <Layout>
             <Seo post={wpPage} />
-            <Box className="expertiseHeroWrapper heroWrapper">
+            <Box className="expertiseHeroWrapper heroWrapper" my={20}>
                 <Text style={{ 
                 color: `#2e2e2e`, 
                 textAlign: `center`, 
@@ -27,7 +28,7 @@ const ExpertisePage = ({ data: { wpPage } }) => {
                 fontFamily: `Montserrat` }}>{heroTitle}</Text>
             </Box>
             <CTA />
-            <CapabilitiesGrid capability={capabilities} />
+            <CapabilitiesGrid capabilities={capability} />
         </Layout>
     )
 }
