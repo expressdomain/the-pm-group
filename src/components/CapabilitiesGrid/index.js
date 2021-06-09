@@ -1,8 +1,9 @@
 import React from "react"
 import { Grid, Box, Text } from "@chakra-ui/layout"
+import { GatsbyImage, getImage } from "gatsby-plugin-image" 
 
 const CapabilitiesGrid = ({ capabilities }) => {
-    const { cardImage: image, capabilityCard: items } = capabilities
+    const { capabilitiesGrid: items } = capabilities
     return(
         <Box className="capabilitiesGridWrapper" position={`relative`} display="grid">
             <Box style={{ gridArea: `1/1` }}>
@@ -19,11 +20,11 @@ const CapabilitiesGrid = ({ capabilities }) => {
                     placeItems="center"
                     maxWidth={[180, 200, 250]}
                     >
-                        {/* <GatsbyImage
+                        <GatsbyImage
                         image={getImage(item.cardImage.localFile)}
                         style={{ maxWidth: `100%` }}
                         alt={item.cardTitle}
-                        /> */}
+                        />
                         <Text>{item.cardTitle}</Text>
                         <Text>{item.cardBody}</Text>
                     </Box>
@@ -31,12 +32,6 @@ const CapabilitiesGrid = ({ capabilities }) => {
 
                 </Grid>
             </Box>
-                {/* <GatsbyImage
-                    image={getImage(image.localFile)}
-                    alt={`test`}
-                    style={{ gridArea: "1/1", maxHeight: `400px`, width: `100%` }}
-                    objectPosition={`bottom center`}
-                /> */}
         </Box>
     )
 }
