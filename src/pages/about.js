@@ -2,11 +2,11 @@ import * as React from "react"
 import Layout from "../components/Layout/Layout"
 import { graphql } from "gatsby"
 
-import { Container, Text, Box } from "@chakra-ui/react"
+import { Text, Box } from "@chakra-ui/react"
 
 import Seo from "gatsby-plugin-wpgraphql-seo"
 import AboutIconGrid from "../components/AboutIconGrid"
-// import AboutTeamGrid from "../components/AboutTeamGrid"
+import AboutTeamGrid from "../components/AboutTeamGrid"
 
 const AboutPage = ({ data: { wpPage } }) => {
     // About Hero Fields :
@@ -16,7 +16,7 @@ const AboutPage = ({ data: { wpPage } }) => {
     // About Team Hero
     const aboutTeamTitle = wpPage.aboutFields.aboutTeamHero.aboutTeamHeroTitle
     // About Team Repeater
-    // const teamRepeater = wpPage.aboutFields.aboutTeamHero
+    const teamRepeater = wpPage.aboutFields.aboutTeam.aboutImageRepeater
 
     return(
     <Layout>
@@ -42,7 +42,8 @@ const AboutPage = ({ data: { wpPage } }) => {
                     fontSize: `34px` }}>{aboutTeamTitle}</Text>
             </Box>
         </Box>
-        {/* <AboutTeamGrid team={teamRepeater} /> */}
+        <AboutTeamGrid />
+
     </Layout>
     )
 }
@@ -102,8 +103,8 @@ wpPage(title: {eq: "About"} ) {
       aboutGrid {
         aboutEntry {
           content
-          icon
           title
+          icon 
         }
       }
       aboutTeamHero {
