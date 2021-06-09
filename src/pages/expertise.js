@@ -6,6 +6,7 @@ import { graphql } from "gatsby"
 import Seo from "gatsby-plugin-wpgraphql-seo"
 import CTA from "../components/CTA"
 import CapabilitiesGrid from "../components/CapabilitiesGrid"
+import ClientList from "../components/ClientList"
 
 const ExpertisePage = ({ data: { wpPage } }) => {
     // Hero Fields :
@@ -13,7 +14,10 @@ const ExpertisePage = ({ data: { wpPage } }) => {
     const heroTitle = wpPage.expertiseFields.expertiseHero.title
     //  Capabilties Section :
     const capability = wpPage.expertiseFields.capabilitiesGrid.capabilityCard
-    console.log({capability})
+    // Clients Hero
+    const clientHero = wpPage.expertiseFields.clientList.title
+    // Clients List
+    const clientArray = wpPage.expertiseFields.clientList.client
 
     return(
         <Layout>
@@ -29,6 +33,12 @@ const ExpertisePage = ({ data: { wpPage } }) => {
             </Box>
             <CTA />
             <CapabilitiesGrid capabilities={capability} />
+            <Box className="clientsTitleWrapper" style={{ backgroundColor: `#16171d`, width: `100%`, textAlign: `center` }} my={10}>
+              <Box className="clientsTitleInner">
+                  <Text tag="h2" py={10} style={{ textTransform: `uppercase`, color: `#ffc529`, fontSize: `34px` }}>{clientHero}</Text>
+              </Box>
+            </Box>
+            <ClientList clients={clientArray} />
         </Layout>
     )
 }
