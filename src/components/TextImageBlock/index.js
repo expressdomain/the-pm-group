@@ -3,7 +3,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import React from "react"
 
 const TextImageBlock = ({ title, content, image }) => {
-  const sideImage = getImage(image.localFile.childImageSharp)
+  const sideImage = getImage(image?.localFile?.childImageSharp)
   return (
     <Grid
       templateColumns={[
