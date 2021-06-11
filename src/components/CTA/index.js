@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { Box, Container, Text } from "@chakra-ui/layout"
+import { Box, Container } from "@chakra-ui/layout"
 import Link from "../Link/Link"
 import "./cta.scss"
 
@@ -24,23 +24,28 @@ const CTA = () => {
               color: `white`,
             }}
           >
-            <Link to="/" _hover={{ textDecoration: `none` }}>
+            <Link to="/advertising" _hover={{ textDecoration: `none` }}>
               Advertising<span style={{ color: `#FDBC31` }}> | </span>
             </Link>
-            <Link to="/" _hover={{ textDecoration: `none` }}>
+            <Link to="/digital-marketing" _hover={{ textDecoration: `none` }}>
               Digital Marketing<span style={{ color: `#FDBC31` }}> | </span>
             </Link>
-            <Link to="/" _hover={{ textDecoration: `none` }}>
+            <Link
+              to="/creative-video-production"
+              _hover={{ textDecoration: `none` }}
+            >
               Creative &amp; Video Production
               <span style={{ color: `#FDBC31` }}> | </span>
             </Link>
-            <Link to="/" _hover={{ textDecoration: `none` }}>
+            <Link to="/public-relations" _hover={{ textDecoration: `none` }}>
               Public Relations<span style={{ color: `#FDBC31` }}> | </span>
             </Link>
-            <Link to="/" _hover={{ textDecoration: `none` }}>
+            <Link to="/events" _hover={{ textDecoration: `none` }}>
               Events<span style={{ color: `#FDBC31` }}> | </span>
             </Link>
-            <Link to="/" _hover={{ textDecoration: `none` }}>Media Buying</Link>
+            <Link to="/media-buying" _hover={{ textDecoration: `none` }}>
+              Media Buying
+            </Link>
           </Box>
           <Box className="ctaBtnWrapper">
             <Link

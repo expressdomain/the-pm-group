@@ -31,7 +31,11 @@ const PrimaryCTA = ({ items, link, ctaText }) => {
           my={6}
         >
           {items.map(item => (
-            <Link to={item.link} color="white" style={{ textTransform: `uppercase`, fontSize: `20px` }}>
+            <Link
+              to={item.link}
+              color="white"
+              style={{ textTransform: `uppercase`, fontSize: `20px` }}
+            >
               {item.title}{" "}
               <Text as="span" color="secondary" style={{ fontSize: `20px` }}>
                 |{" "}
@@ -39,7 +43,7 @@ const PrimaryCTA = ({ items, link, ctaText }) => {
             </Link>
           ))}
         </Box>
-        <Box mt={[8, 8, 8, 0]} ml={15} >
+        <Box mt={[8, 8, 8, 0]} ml={15}>
           <Link
             to={link}
             py={3}

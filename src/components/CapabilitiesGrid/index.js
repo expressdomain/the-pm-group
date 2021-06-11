@@ -3,8 +3,6 @@ import { Container, Grid, Box, Text } from "@chakra-ui/layout"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const CapabilitiesGrid = ({ capabilities }) => {
-  const { capabilitiesGrid: items } = capabilities
-
   return (
     <Container
       className="capabilitiesGridWrapper"
@@ -18,16 +16,17 @@ const CapabilitiesGrid = ({ capabilities }) => {
             `repeat(2, 1fr)`,
             `repeat(3, 1fr)`,
           ]}
-          gridAutoRows={`1fr`}
+          gridAutoRows={[`.5fr`, `.75fr`, `1fr`]}
           gap={6}
-          height="100%"
+          height="min-content"
+          mx={0}
         >
           {capabilities.map(item => (
             <Box
               display="grid"
-              placeItems="center"
-              maxWidth={[180, 200, 300]}
-              m={10}
+              maxWidth={[350, 320, 400]}
+              mt={5}
+              mx={0}
               height="min-content"
             >
               <GatsbyImage
@@ -44,23 +43,14 @@ const CapabilitiesGrid = ({ capabilities }) => {
                   fontFamily: `Montserrat`,
                   fontSize: `23px`,
                   fontWeight: `700`,
-                  textAlign: `center`,
+                  textAlign: `left`,
                 }}
                 py={2}
               >
                 {item.cardTitle}
               </Text>
 
-              <Text
-                style={{
-                  fontFamily: `Open Sans, sans-serif`,
-                  lineHeight: `25px`,
-                  fontWeight: `400`,
-                  color: `#767676`,
-                }}
-              >
-                {item.cardBody}
-              </Text>
+              <div dangerouslySetInnerHTML={{ __html: item.cardBody }} />
             </Box>
           ))}
         </Grid>

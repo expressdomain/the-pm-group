@@ -4,13 +4,13 @@ import Layout from "../components/Layout/Layout"
 import { graphql } from "gatsby"
 
 import Seo from "gatsby-plugin-wpgraphql-seo"
-import CTA from "../components/CTA"
+import Cta from "../components/CTA"
 import CapabilitiesGrid from "../components/CapabilitiesGrid"
 import ClientList from "../components/ClientList"
 
 const ExpertisePage = ({ data: { wpPage } }) => {
   // Hero Fields :
-  const heroImage = wpPage.expertiseFields.expertiseHero.expertiseHeroImage
+  // const heroImage = wpPage.expertiseFields.expertiseHero.expertiseHeroImage
   const heroTitle = wpPage.expertiseFields.expertiseHero.title
   //  Capabilties Section :
   const capability = wpPage.expertiseFields.capabilitiesGrid.capabilityCard
@@ -30,13 +30,12 @@ const ExpertisePage = ({ data: { wpPage } }) => {
             textTransform: `uppercase`,
             fontSize: `68px`,
             lineHeight: `1.02941176em`,
-            fontFamily: `Montserrat`,
           }}
         >
           {heroTitle}
         </Text>
       </Box>
-      <CTA />
+      <Cta />
       <CapabilitiesGrid capabilities={capability} />
       <Box
         className="clientsTitleWrapper"
