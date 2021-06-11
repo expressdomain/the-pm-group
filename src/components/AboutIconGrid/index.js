@@ -21,7 +21,7 @@ const AboutIconGrid = ({ iconGrid }) => {
                             mb={15}>
                                 {item.title}
                             </Text>
-                        <Text>{item.content}</Text>
+                        <Text dangerouslySetInnerHTML={{ __html: item.content }} />
                     </Box>
                 </Box>
             ))}        

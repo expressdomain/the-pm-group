@@ -31,10 +31,11 @@ const AboutPage = ({ data: { wpPage } }) => {
                 fontFamily: `Montserrat` }} tag="h1">{aboutTitle}</Text>
         </Box>
         <AboutIconGrid iconGrid={aboutIconArray} />
+
         <Box className="aboutTeamTitleWrapper" style={{ 
             backgroundColor: `#16171d`, 
             width: `100%`, 
-            textAlign: `center` }} my={10}>
+            textAlign: `center` }} mt={10}>
             <Box className="aboutTeamTitleInner">
                 <Text tag="h2" py={10} style={{ 
                     textTransform: `uppercase`, 
@@ -42,7 +43,8 @@ const AboutPage = ({ data: { wpPage } }) => {
                     fontSize: `34px` }}>{aboutTeamTitle}</Text>
             </Box>
         </Box>
-        <AboutTeamGrid />
+
+        <AboutTeamGrid team={teamRepeater} />
 
     </Layout>
     )
