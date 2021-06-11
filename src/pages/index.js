@@ -14,31 +14,31 @@ import CompaniesGrid from "../components/CompaniesGrid"
 
 const IndexPage = ({ data: { wpPage, gfForm } }) => {
   // Hero Fields
-  const heroImage = wpPage.homeFields.hero.heroImages[0].image
-  const heroTitle = wpPage.homeFields.headline
-  const heroCaption = wpPage.homeFields.subcaption
+  const heroImage = wpPage?.homeFields?.hero?.heroImages[0]?.image
+  const heroTitle = wpPage?.homeFields?.headline
+  const heroCaption = wpPage?.homeFields?.subcaption
   //  Primary CTA Fields :
-  const ctaItems = wpPage.homeFields.primaryCta.primaryCtaFields
-  const ctaLink = wpPage.homeFields.primaryCta.ctaLink
-  const ctaText = wpPage.homeFields.primaryCta.ctaText
+  const ctaItems = wpPage?.homeFields?.primaryCta?.primaryCtaFields
+  const ctaLink = wpPage?.homeFields?.primaryCta?.ctaLink
+  const ctaText = wpPage?.homeFields?.primaryCta?.ctaText
   // TextImageBlock 1 Fields:
-  const aboutTitle = wpPage.homeFields.about.title
-  const aboutContent = wpPage.homeFields.about.content
-  const aboutImage = wpPage.homeFields.about.image
+  const aboutTitle = wpPage?.homeFields?.aboutSection?.title
+  const aboutContent = wpPage?.homeFields?.aboutSection?.content
+  const aboutImage = wpPage?.homeFields?.aboutSection?.image
   // Features/Services:
-  const services = wpPage.homeFields.services
+  const services = wpPage?.homeFields?.services
   // Parallax CTA:
-  const secondaryCTAText = wpPage.homeFields.secondaryCta.title
-  const secondaryCTAImage = wpPage.homeFields.secondaryCta.image
+  const secondaryCTAText = wpPage?.homeFields?.secondaryCta?.title
+  const secondaryCTAImage = wpPage?.homeFields?.secondaryCta?.image
   // How we got here:
-  const gotHereTitle = wpPage.homeFields.howWeGotHere.title
-  const gotHereText = wpPage.homeFields.howWeGotHere.content
-  const gotHereImage = wpPage.homeFields.howWeGotHere.image
+  const gotHereTitle = wpPage?.homeFields?.howWeGotHere?.title
+  const gotHereText = wpPage?.homeFields?.howWeGotHere?.content
+  const gotHereImage = wpPage?.homeFields?.howWeGotHere?.image
   // Contact Section
-  const contactInfo = wpPage.homeFields.contactSection
+  const contactInfo = wpPage?.homeFields?.contactSection
   const form = gfForm
   // Companies Section
-  const companies = wpPage.homeFields.companies
+  const companies = wpPage?.homeFields?.companies
 
   return (
     <Layout>
@@ -239,7 +239,7 @@ export const pageQuery = graphql`
           }
         }
         headline
-        about {
+        aboutSection {
           title
           content
           image {

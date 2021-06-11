@@ -40,8 +40,8 @@ module.exports = {
           hardCacheData: true,
         },
         schema: {
-          requestConcurrency: 2,
-          perPage: 2,
+          requestConcurrency: 50,
+          timeout: 100000000,
         },
         type: {
           Post: {
