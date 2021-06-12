@@ -4,13 +4,17 @@ import Layout from "../components/Layout/Layout"
 import { graphql } from "gatsby"
 
 import Seo from "gatsby-plugin-wpgraphql-seo"
-import Cta from "../components/CTA"
+import { ctaItems, ctaLink, ctaText } from "../constants/cta"
 import CapabilitiesGrid from "../components/CapabilitiesGrid"
 import ClientList from "../components/ClientList"
+import GenericHero from "../components/GenericHero"
+import PrimaryCTA from "../components/PrimaryCTA"
 
 const ExpertisePage = ({ data: { wpPage } }) => {
   // Hero Fields :
-  // const heroImage = wpPage.expertiseFields.expertiseHero.expertiseHeroImage
+  const heroImage =
+    wpPage.expertiseFields.expertiseHero.expertiseHeroImage.localFile
+      .childImageSharp
   const heroTitle = wpPage.expertiseFields.expertiseHero.title
   //  Capabilties Section :
   const capability = wpPage.expertiseFields.capabilitiesGrid.capabilityCard
@@ -22,20 +26,8 @@ const ExpertisePage = ({ data: { wpPage } }) => {
   return (
     <Layout>
       <Seo post={wpPage} />
-      <Box className="expertiseHeroWrapper heroWrapper" my={20}>
-        <Text
-          style={{
-            color: `#2e2e2e`,
-            textAlign: `center`,
-            textTransform: `uppercase`,
-            fontSize: `68px`,
-            lineHeight: `1.02941176em`,
-          }}
-        >
-          {heroTitle}
-        </Text>
-      </Box>
-      <Cta />
+      <GenericHero title={heroTitle} image={heroImage} />
+      <PrimaryCTA items={ctaItems} link={ctaLink} ctaText={ctaText} />
       <CapabilitiesGrid capabilities={capability} />
       <Box
         className="clientsTitleWrapper"
@@ -109,7 +101,7 @@ export const expertisePageQuery = graphql`
               childImageSharp {
                 gatsbyImageData(
                   quality: 90
-                  formats: WEBP
+                  formats: [AVIF, WEBP]
                   layout: CONSTRAINED
                   placeholder: BLURRED
                 )
@@ -133,7 +125,7 @@ export const expertisePageQuery = graphql`
                 childImageSharp {
                   gatsbyImageData(
                     quality: 90
-                    formats: WEBP
+                    formats: [AVIF, WEBP]
                     layout: CONSTRAINED
                     placeholder: BLURRED
                   )

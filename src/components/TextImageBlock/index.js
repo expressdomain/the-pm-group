@@ -14,7 +14,7 @@ const TextImageBlock = ({ title, content, image }) => {
       ]}
       mx={`auto`}
     >
-      <Box py={[12, 18, 20, 24]} px={[12, 16, 18, 24]} bg={`#f0f0f0`}>
+      <Box py={[12, 18, 20]} px={[12, 16, 18, 24]} bg={`#f0f0f0`}>
         <Heading as="h2" color={`black`} mb={4} letterSpacing="tight">
           {title}
         </Heading>

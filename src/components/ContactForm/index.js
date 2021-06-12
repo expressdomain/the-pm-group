@@ -47,67 +47,75 @@ const ContactForm = ({ contactData, form }) => {
   }
 
   return (
-    <Grid
-      templateColumns={[
-        "repeat(1, 1fr)",
-        "repeat(1, 1fr)",
-        "repeat(1, 1fr)",
-        "repeat(2, 1fr)",
-      ]}
-      mx={`auto`}
-    >
-      <Box
-        py={[12, 18, 20, 24]}
-        px={[12, 16, 18, 24]}
-        display="grid"
-        placeItems="center"
+    <>
+      <Heading
+        as="h2"
+        color={`black`}
+        my={4}
+        letterSpacing="tight"
+        textAlign="center"
       >
-        {/* Placeholder Form */}
-        <GravityFormForm
-          id={formId}
-          formData={allGfForm}
-          // presetValues={{ input_1: 'special_value' }}
-          lambda={process.env.LAMBDA_ENDPOINT}
-          successCallback={handleSuccess}
-          errorCallback={handleError}
-        />
-      </Box>
-      <Box py={[12, 18, 20, 24]} px={[12, 16, 18, 24]}>
-        <Heading as="h2" color={`black`} mb={4} letterSpacing="tight">
-          {title}
-        </Heading>
-        <Text mb={4}>{body}</Text>
-        <GatsbyImage
-          image={getImage(image.localFile.childImageSharp)}
-          alt={`${name}, ${position}`}
-        />
-        <Text mt={2} fontStyle="italic">
-          {`${name}, ${position}`}
-        </Text>
-        <Text
-          fontSize="xl"
-          color="black"
-          textTransform="uppercase"
-          fontWeight={`bold`}
+        {title}
+      </Heading>
+      <Grid
+        templateColumns={[
+          "repeat(1, 1fr)",
+          "repeat(1, 1fr)",
+          "repeat(1, 1fr)",
+          "repeat(2, 1fr)",
+        ]}
+        mx={`auto`}
+      >
+        <Box
+          py={[6]}
+          px={[12, 16, 18, 24]}
+          display="grid"
+          // placeItems="center"
         >
-          Contact {name}
-        </Text>
-        <Text
-          fontSize="xl"
-          color="black"
-          textTransform="uppercase"
-          fontWeight={`bold`}
-        >
-          {`${blurb}`}
-        </Text>
-        <a style={{ display: `block` }} href={`tel:${phoneNumber}`}>
-          {phoneNumber}
-        </a>
-        <a style={{ display: `block` }} href={`mailto:${email}`}>
-          {email}
-        </a>
-      </Box>
-    </Grid>
+          {/* Placeholder Form */}
+          <GravityFormForm
+            id={formId}
+            formData={allGfForm}
+            // presetValues={{ input_1: 'special_value' }}
+            lambda={process.env.LAMBDA_ENDPOINT}
+            successCallback={handleSuccess}
+            errorCallback={handleError}
+          />
+        </Box>
+        <Box py={[6]} px={[12, 16, 18, 24]}>
+          <Text mb={4}>{body}</Text>
+          <GatsbyImage
+            image={getImage(image.localFile.childImageSharp)}
+            alt={`${name}, ${position}`}
+          />
+          <Text mt={2} fontStyle="italic">
+            {`${name}, ${position}`}
+          </Text>
+          <Text
+            fontSize="xl"
+            color="black"
+            textTransform="uppercase"
+            fontWeight={`bold`}
+          >
+            Contact {name}
+          </Text>
+          <Text
+            fontSize="xl"
+            color="black"
+            textTransform="uppercase"
+            fontWeight={`bold`}
+          >
+            {`${blurb}`}
+          </Text>
+          <a style={{ display: `block` }} href={`tel:${phoneNumber}`}>
+            {phoneNumber}
+          </a>
+          <a style={{ display: `block` }} href={`mailto:${email}`}>
+            {email}
+          </a>
+        </Box>
+      </Grid>
+    </>
   )
 }
 

@@ -10,20 +10,13 @@ const ClientList = ({ clients }) => {
         className="clientListGrid"
         templateColumns={[`repeat(1, 1fr)`, `repeat(2, 1fr)`, `repeat(3, 1fr)`]}
         gap={5}
+        my={8}
       >
         {clients.map(item => (
           <UnorderedList style={{ listStyleType: `none` }}>
             <ListItem style={{ textTransform: `uppercase` }}>
               {item.name && item.link && (
-                <Link
-                  to={item.link}
-                  _hover={{ color: "#ffc529" }}
-                  style={{
-                    color: `#959595`,
-                    lineHeight: `20px`,
-                    fontSize: `17px`,
-                  }}
-                >
+                <Link to={item.link} aria-label={item.name}>
                   {item.name}
                 </Link>
               )}

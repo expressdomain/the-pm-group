@@ -3,7 +3,10 @@ const { nanoid } = require("nanoid")
 const oauthSignature = require("oauth-signature")
 
 let activeEnv =
-  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
+  process.env.GATSBY_ACTIVE_ENV ||
+  process.env.NODE_ENV ||
+  "development" ||
+  "production"
 
 require("dotenv").config({
   path: `.env.${activeEnv}`,

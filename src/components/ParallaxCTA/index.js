@@ -12,6 +12,7 @@ const ParallaxCTA = ({ image, text }) => {
           fontWeight={`bold`}
           fontSize={[`md`, `lg`, `xl`, `2xl`]}
           zIndex={4}
+          textTransform="uppercase"
         >
           {text}
         </Text>
@@ -19,7 +20,7 @@ const ParallaxCTA = ({ image, text }) => {
       <GatsbyImage
         image={getImage(image.localFile.childImageSharp)}
         alt={text}
-        style={{ gridArea: "1/1", maxHeight: 200 }}
+        style={{ gridArea: "1/1", maxHeight: 200, minWidth: `100%` }}
       />
     </Box>
   )

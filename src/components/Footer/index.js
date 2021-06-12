@@ -52,9 +52,9 @@ const Footer = () => {
 
   const menuItems = data.wpMenu.menuItems.nodes
   const companyName = data.wp.seo.schema.companyName
-  const facebookLink = data.wp.social?.facebook.url
-  const linkedInLink = data.wp.social?.linkedIn.url
-  const youTubeUrl = data.wp.sprite?.youtube.url
+  const facebookLink = data.wp.seo.social?.facebook.url
+  const linkedInLink = data.wp.seo.social?.linkedIn.url
+  const youTubeUrl = data.wp.seo.social?.youTube.url
   return (
     <Box
       as="footer"
@@ -80,7 +80,7 @@ const Footer = () => {
         >
           <Box flex="1">
             <Logo />
-            <Text mt={4}>
+            <Text mt={4} color="black">
               The PM Group is the largest Advertising & Marketing Agency in San
               Antonio and South Texas. We look forward to connecting with you.
             </Text>
@@ -99,15 +99,17 @@ const Footer = () => {
               <Heading
                 as="h4"
                 fontSize="sm"
-                fontWeight="semibold"
                 textTransform="uppercase"
                 letterSpacing="wider"
+                fontWeight={900}
+                color="black"
               >
                 Address
               </Heading>
               <Link
                 to="https://goo.gl/maps/fFzVN2pVuHXoVrEd6"
                 aria-label="Address"
+                color="black"
               >
                 7550 Interstate 10 West, Suite 510
                 <br />
@@ -118,19 +120,24 @@ const Footer = () => {
               <Heading
                 as="h4"
                 fontSize="sm"
-                fontWeight="semibold"
+                fontWeight={900}
+                color="black"
                 textTransform="uppercase"
                 letterSpacing="wider"
               >
                 Get In Touch
               </Heading>
-              <Link to="tel:210.490.2554" aria-label="Phone Number">
+              <Link
+                to="tel:210.490.2554"
+                aria-label="Phone Number"
+                color="black"
+              >
                 210.490.2554
               </Link>
             </Stack>
             <Stack>
               {menuItems.map(item => (
-                <Link to={item.path} aria-label={item.label}>
+                <Link to={item.path} aria-label={item.label} color="black">
                   {item.label}
                 </Link>
               ))}
@@ -160,7 +167,7 @@ const Footer = () => {
           justifyContent="space-between"
           alignItems="center"
         >
-          <Text fontSize="sm">
+          <Text fontSize="sm" color="black">
             &copy; {new Date().getFullYear()} {companyName} All rights reserved.
           </Text>
           <ButtonGroup variant="ghost">
@@ -168,18 +175,24 @@ const Footer = () => {
               as="a"
               href={facebookLink}
               aria-label="Facebook"
+              target="_blank"
+              rel="noopener noreferrer"
               icon={<FaFacebook fontSize="20px" />}
             />
             <IconButton
               as="a"
               href={linkedInLink}
               aria-label="LinkedIn"
+              target="_blank"
+              rel="noopener noreferrer"
               icon={<FaLinkedin fontSize="20px" />}
             />
             <IconButton
               as="a"
               href={youTubeUrl}
               aria-label="YouTube"
+              target="_blank"
+              rel="noopener noreferrer"
               icon={<FaYoutube fontSize="20px" />}
             />
           </ButtonGroup>

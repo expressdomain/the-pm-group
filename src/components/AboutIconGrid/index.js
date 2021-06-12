@@ -1,10 +1,7 @@
 import React from "react"
 import { Container, Grid, Box, Text } from "@chakra-ui/layout"
-// import { GatsbyImage } from "gatsby-plugin-image"
 
 const AboutIconGrid = ({ iconGrid }) => {
-  const { aboutEntry: items } = iconGrid
-
   return (
     <Container className="aboutIconWrapper">
       <Grid gridTemplateColumns="repeat(3, 1fr)" gap={10}>
@@ -25,7 +22,7 @@ const AboutIconGrid = ({ iconGrid }) => {
               >
                 {item.title}
               </Text>
-              <Text dangerouslySetInnerHTML={{ __html: item.content }} />
+              <div dangerouslySetInnerHTML={{ __html: item.content }} />
             </Box>
           </Box>
         ))}

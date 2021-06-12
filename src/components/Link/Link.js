@@ -10,6 +10,7 @@ const ChakraLink = chakra(GatsbyLink, {
     outline: `none`,
     _hover: {
       textDecoration: `underline`,
+      color: `secondary`,
     },
     _focus: {
       boxShadow: `outline`,
@@ -43,9 +44,13 @@ const Link = ({ children, to, activeClassName, partiallyActive, ...props }) => {
   return (
     <chakra.a
       href={to}
-      {...props}
       target={to.includes("tel") ? "" : "_blank"}
       rel="noopener noreferrer"
+      _hover={{
+        color: `secondary`,
+      }}
+      transition={`all .3s ease-in-out`}
+      {...props}
     >
       {children}
     </chakra.a>

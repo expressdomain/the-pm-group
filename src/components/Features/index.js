@@ -4,7 +4,7 @@ import { FiMoon } from "react-icons/fi"
 import Link from "../Link/Link"
 import { Feature } from "./Fragments/Feature"
 
-const Features = ({ features }) => {
+const Features = ({ features, isAbout }) => {
   return (
     <Box
       as="section"
@@ -28,35 +28,54 @@ const Features = ({ features }) => {
           md: "14",
         }}
       >
-        {features.serviceEntry.map(feature => (
-          <Feature title={feature.title} icon={<FiMoon color={`black`} />}>
-            <div
-              dangerouslySetInnerHTML={{ __html: feature.content }}
-              style={
-                feature.title === "EVENTS, PROMOTIONS, AND FUNDRAISERS" && {
-                  marginBottom: `30px`,
-                  justifyContent: `center`,
-                  textAlign: "left",
-                }
-              }
-            />
-            {feature.title === "EVENTS, PROMOTIONS, AND FUNDRAISERS" && (
-              <Link
-                to={features.ctaLink}
-                mt={10}
-                bg={`secondary`}
-                px={6}
-                py={4}
-                color={`black`}
-                mx={`auto`}
-                textAlign="center"
-                textTransform={`uppercase`}
-              >
-                {features.ctaText}
-              </Link>
-            )}
-          </Feature>
-        ))}
+        {isAbout
+          ? features.map(feature => (
+              <Feature title={feature.title} icon={<FiMoon color={`black`} />}>
+                <div
+                  dangerouslySetInnerHTML={{ __html: feature.content }}
+                  style={
+                    feature.title === "EVENTS, PROMOTIONS, AND FUNDRAISERS" && {
+                      marginBottom: `30px`,
+                      justifyContent: `center`,
+                      textAlign: "left",
+                    }
+                  }
+                />
+              </Feature>
+            ))
+          : features.serviceEntry.map(feature => (
+              <Feature title={feature.title} icon={<FiMoon color={`black`} />}>
+                <div
+                  dangerouslySetInnerHTML={{ __html: feature.content }}
+                  style={
+                    feature.title === "EVENTS, PROMOTIONS, AND FUNDRAISERS" && {
+                      marginBottom: `30px`,
+                      justifyContent: `center`,
+                      textAlign: "left",
+                    }
+                  }
+                />
+                {feature.title === "EVENTS, PROMOTIONS, AND FUNDRAISERS" && (
+                  <Link
+                    to={features.ctaLink}
+                    mt={10}
+                    bg={`secondary`}
+                    px={6}
+                    py={4}
+                    color={`black`}
+                    mx={`auto`}
+                    textAlign="center"
+                    textTransform={`uppercase`}
+                    _hover={{
+                      background: `black`,
+                      color: `secondary`,
+                    }}
+                  >
+                    {features.ctaText}
+                  </Link>
+                )}
+              </Feature>
+            ))}
       </SimpleGrid>
     </Box>
   )

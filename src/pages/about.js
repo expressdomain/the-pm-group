@@ -5,11 +5,16 @@ import { graphql } from "gatsby"
 import { Text, Box } from "@chakra-ui/react"
 
 import Seo from "gatsby-plugin-wpgraphql-seo"
-import AboutIconGrid from "../components/AboutIconGrid"
 import AboutTeamGrid from "../components/AboutTeamGrid"
+import GenericHero from "../components/GenericHero"
+import PrimaryCTA from "../components/PrimaryCTA"
+import { ctaItems, ctaLink, ctaText } from "../constants/cta"
+import Features from "../components/Features"
 
 const AboutPage = ({ data: { wpPage } }) => {
   // About Hero Fields :
+  const aboutHero =
+    wpPage.aboutFields.aboutHero.aboutBackgroundImage.localFile.childImageSharp
   const aboutTitle = wpPage.aboutFields.aboutHero.aboutTitle
   // About Icon Array Fields :
   const aboutIconArray = wpPage.aboutFields.aboutGrid.aboutEntry
@@ -21,45 +26,23 @@ const AboutPage = ({ data: { wpPage } }) => {
   return (
     <Layout>
       <Seo post={wpPage} />
-      <Box
-        className="aboutHeroWrapper heroWrapper"
-        my={20}
-        style={{ textAlign: `center` }}
-      >
-        <Text
-          style={{
-            color: `#2e2e2e`,
-            textAlign: `center`,
-            textTransform: `uppercase`,
-            fontSize: `68px`,
-            lineHeight: `1.02941176em`,
-            fontFamily: `Montserrat`,
-          }}
-          tag="h1"
-        >
-          {aboutTitle}
-        </Text>
-      </Box>
-      <AboutIconGrid iconGrid={aboutIconArray} />
-
+      <GenericHero title={aboutTitle} image={aboutHero} />
+      <PrimaryCTA items={ctaItems} link={ctaLink} ctaText={ctaText} />
+      <Features features={aboutIconArray} isAbout />
       <Box
         className="aboutTeamTitleWrapper"
-        style={{
-          backgroundColor: `#16171d`,
-          width: `100%`,
-          textAlign: `center`,
-        }}
+        backgroundColor="black"
+        width={`100%`}
+        textAlign="center"
         mt={10}
       >
         <Box className="aboutTeamTitleInner">
           <Text
             tag="h2"
             py={10}
-            style={{
-              textTransform: `uppercase`,
-              color: `#ffc529`,
-              fontSize: `34px`,
-            }}
+            textTransform="uppercase"
+            color="secondary"
+            fontSize="3xl"
           >
             {aboutTeamTitle}
           </Text>
@@ -115,7 +98,7 @@ export const aboutPageQuery = graphql`
               childImageSharp {
                 gatsbyImageData(
                   quality: 90
-                  formats: WEBP
+                  formats: [AVIF, WEBP]
                   layout: CONSTRAINED
                   placeholder: BLURRED
                 )
@@ -137,7 +120,7 @@ export const aboutPageQuery = graphql`
               childImageSharp {
                 gatsbyImageData(
                   quality: 90
-                  formats: WEBP
+                  formats: [AVIF, WEBP]
                   layout: CONSTRAINED
                   placeholder: BLURRED
                 )
@@ -158,7 +141,7 @@ export const aboutPageQuery = graphql`
                 childImageSharp {
                   gatsbyImageData(
                     quality: 90
-                    formats: WEBP
+                    formats: [AVIF, WEBP]
                     layout: CONSTRAINED
                     placeholder: BLURRED
                   )
