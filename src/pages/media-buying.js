@@ -4,21 +4,26 @@ import { graphql } from "gatsby"
 import Seo from "gatsby-plugin-wpgraphql-seo"
 import Cta from "../components/CTA"
 import TextImageBlock from "../components/TextImageBlock"
+import GenericHero from "../components/GenericHero"
 import AccordionGrid from "../components/AccordionGrid"
 const MediaBuying = ({ data }) => {
-    // Hero Title
-    const heroTitle = data.wpPage?.mediaBuyingFields?.aboutSection.aboutTitle
-    const heroDescription = data.wpPage?.mediaBuyingFields?.aboutSection.aboutDescription
-    const heroImage = data.wpPage?.mediaBuyingFields?.aboutSection.aboutImage
+    // About Page Title
+    const aboutPageTitle = data.wpPage?.mediaBuyingFields?.mediaBuyingHero?.title
+    const aboutPageHeroImage = data.wpPage?.mediaBuyingFields?.mediaBuyingHero?.backgroundImage.localFile.childImageSharp
+    // About Hero Section
+    const heroTitle = data.wpPage?.mediaBuyingFields?.aboutSection?.aboutTitle
+    const heroDescription = data.wpPage?.mediaBuyingFields?.aboutSection?.aboutDescription
+    const heroImage = data.wpPage?.mediaBuyingFields?.aboutSection?.aboutImage
     // Accordion Grid
     const accordionArray = data.wpPage?.mediaBuyingFields?.mediaBuyingGrid?.gridContent
     const accordionTitle = data.wpPage?.mediaBuyingFields?.mediaBuyingGrid?.gridContent.mbTitle
     const accordionContent = data.wpPage?.mediaBuyingFields?.mediaBuyingGrid?.gridContent.mbContent
     const accordionImage = data.wpPage?.mediaBuyingFields?.mediaBuyingGrid?.gridContent.mbImage
-    console.log(heroTitle, heroDescription, heroImage)
+    {console.log(heroImage)}
     return(
         <Layout>
             <Seo post={data.wpPage} />
+            <GenericHero title={aboutPageTitle} image={aboutPageHeroImage} />
             <Cta />
             <TextImageBlock title={heroTitle} content={heroDescription} image={heroImage} />
             <AccordionGrid grid={accordionArray} title={accordionTitle} content={accordionContent} image={accordionImage} />
