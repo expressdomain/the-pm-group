@@ -1,28 +1,19 @@
 import * as React from "react"
-import { Box, Text } from "@chakra-ui/layout"
 import Layout from "../components/Layout/Layout"
 import { graphql } from "gatsby"
 
 import Seo from "gatsby-plugin-wpgraphql-seo"
-import CTA from "../components/CTA"
+import GenericHero from "../components/GenericHero"
+import GSAContent from "../components/GSA"
 
 const GSACapabilities = ({ data: { wpPage }}) => {
     const GSATitle = wpPage.gsaFields.gsaTitle
-
+    const GSAInfo = wpPage.gsaFields.gsaRepeaterContent.gsaContents
     return(
         <Layout>
             <Seo post={wpPage} />
-            <Box className="gsaHeroWrapper heroWrapper" my={20}>
-                <Text style={{
-                color: `#2e2e2e`,
-                textAlign: `center`,
-                textTransform: `uppercase`,
-                fontSize: `68px`,
-                lineHeight: `1.02941176em`,
-                fontFamily: `Montserrat`,
-              }}>{GSATitle}</Text>
-            </Box>
-            <CTA />
+            <GenericHero title={GSATitle} />
+            <GSAContent content={GSAInfo} />
         </Layout>
     )
 }
@@ -58,10 +49,10 @@ query GET_GSA_PAGE {
         }
       }
       gsaFields {
-        gsaContent {
-          contents {
-            heading
-            info
+        gsaRepeaterContent {
+          gsaContents {
+            gsaHeading
+            gsaInfo
           }
         }
         gsaTitle
