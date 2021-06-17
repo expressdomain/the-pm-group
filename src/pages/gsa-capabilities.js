@@ -4,16 +4,17 @@ import { graphql } from "gatsby"
 
 import Seo from "gatsby-plugin-wpgraphql-seo"
 import GenericHero from "../components/GenericHero"
-import GSAContent from "../components/GSA"
+import Gsa from "../components/GSA"
 
-const GSACapabilities = ({ data: { wpPage }}) => {
-    const GSATitle = wpPage.gsaFields.gsaTitle
-    const GSAInfo = wpPage.gsaFields.gsaRepeaterContent.gsaContents
+const GSACapabilities = ({ data }) => {
+    const GSATitle = data.wpPage?.gsaFields?.gsaTitle
+    const GSAContent = data.wpPage?.gsaFields?.gsaRepeaterContent
+
     return(
         <Layout>
-            <Seo post={wpPage} />
-            <GenericHero title={GSATitle} />
-            <GSAContent content={GSAInfo} />
+            <Seo post={data.wpPage} />
+            <GenericHero title={GSATitle} my={15} />
+            <Gsa content={GSAContent}  />
         </Layout>
     )
 }

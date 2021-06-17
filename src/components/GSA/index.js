@@ -1,18 +1,19 @@
 import * as React from "react"
 
-import { Container, Box, Text } from "@chakra-ui/layout"
+import { Container, Box, Text, Divider } from "@chakra-ui/layout"
 
-const GSAContent = ({ content }) => {
+const GSA = ({ content }) => {
     return(
-        <Container>
+        <Container my={15}>
             {content.map(item => (
-                <Box>
-                    <Text>{item.gsaHeading}</Text>
-                    <Text />
+                <Box m={5}>
+                    <Text style={{ color: `black` }}>{item.gsaHeading}</Text>
+                    <Text dangerouslySetInnerHTML={{ __html: item.gsaInfo }} />
+                    <Divider />
                 </Box>
             ))}
         </Container>
     )
 }
 
-export default GSAContent
+export default GSA
