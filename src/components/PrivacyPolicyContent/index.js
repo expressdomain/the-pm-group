@@ -7,8 +7,22 @@ const PolicyContent = ({ privacy }) => {
     <Container>
       {privacy.map(item => (
         <Box>
-          <Text my={2} style={{ fontSize: `24px`, lineHeight: `30px`, color: `#2E2E2E`, textTransform: `uppercase` }}>{item.sectionTitle}</Text>
-          <Text pl={5} pb={2} dangerouslySetInnerHTML={{ __html: item.sectionContent }} />
+          <Text
+            my={2}
+            style={{
+              fontSize: `24px`,
+              lineHeight: `30px`,
+              color: `#2E2E2E`,
+              textTransform: `uppercase`,
+            }}
+          >
+            {item.sectionTitle}
+          </Text>
+          <Text
+            pl={5}
+            pb={2}
+            dangerouslySetInnerHTML={{ __html: item.sectionContent }}
+          />
         </Box>
       ))}
     </Container>

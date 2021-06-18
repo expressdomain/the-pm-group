@@ -7,23 +7,23 @@ import GenericHero from "../components/GenericHero"
 import Gsa from "../components/GSA"
 
 const GSACapabilities = ({ data }) => {
-    const GSATitle = data.wpPage?.gsaFields?.gsaTitle
-    const GSAContent = data.wpPage?.gsaFields?.gsaRepeaterContent
+  const GSATitle = data.wpPage?.gsaFields?.gsaTitle
+  const GSAContent = data.wpPage?.gsaFields?.gsaRepeaterContent
 
-    return(
-        <Layout>
-            <Seo post={data.wpPage} />
-            <GenericHero title={GSATitle} my={15} />
-            <Gsa content={GSAContent}  />
-        </Layout>
-    )
+  return (
+    <Layout>
+      <Seo post={data.wpPage} />
+      <GenericHero title={GSATitle} my={15} />
+      <Gsa content={GSAContent} />
+    </Layout>
+  )
 }
 
 export default GSACapabilities
 
 export const gsaCapabilitiesPageQuery = graphql`
-query GET_GSA_PAGE {
-    wpPage(title: {eq: "GSA Capabilities"}) {
+  query GET_GSA_PAGE {
+    wpPage(title: { eq: "GSA Capabilities" }) {
       title
       uri
       nodeType
@@ -71,5 +71,5 @@ query GET_GSA_PAGE {
         }
       }
     }
-  }  
+  }
 `
