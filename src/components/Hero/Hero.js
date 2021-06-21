@@ -10,8 +10,7 @@ import {
 import * as React from "react"
 import { HiChevronRight } from "react-icons/hi"
 import { GatsbyImage } from "gatsby-plugin-image"
-import Fade from 'react-reveal/Fade';
-
+import Fade from "react-reveal/Fade"
 
 const Hero = ({
   image,
@@ -40,10 +39,7 @@ const Hero = ({
         >
           <Box maxW="xl">
             <Heading as="h1" size="xl" fontWeight="extrabold">
-              <Fade bottom>
-              {title}
-              </Fade>
-
+              <Fade bottom>{title}</Fade>
             </Heading>
             <Text
               fontSize={{
@@ -64,42 +60,22 @@ const Hero = ({
             >
               <Button
                 as="a"
-                href="#"
+                href="/our-work"
                 backgroundColor="secondary"
                 _hover={{
                   backgroundColor: `black`,
                   color: `secondary`,
                 }}
                 px="8"
-                rounded="full"
+                textTransform="uppercase"
+                fontWeight="regular"
+                borderRadius={0}
                 size="lg"
                 color="black"
                 fontSize="md"
-                fontWeight="bold"
               >
-                Connect
+                See our Work
               </Button>
-              <HStack
-                as="a"
-                transition="background 0.2s"
-                justify={{
-                  base: "center",
-                  md: "flex-start",
-                }}
-                href="/our-work"
-                color="white"
-                rounded="full"
-                fontWeight="bold"
-                px="6"
-                py="3"
-                _hover={{
-                  backgroundColor: `blackAlpha.400`,
-                  color: `secondary`,
-                }}
-              >
-                <span>See our work</span>
-                <HiChevronRight />
-              </HStack>
             </Stack>
           </Box>
         </Box>

@@ -35,7 +35,7 @@ const Features = ({ features, isAbout }) => {
                 <div
                   dangerouslySetInnerHTML={{ __html: feature.content }}
                   style={
-                    feature.title === "EVENTS, PROMOTIONS, AND FUNDRAISERS" && {
+                    feature.title === "Events, Promos and Fundraisers" && {
                       marginBottom: `30px`,
                       justifyContent: `center`,
                       textAlign: "left",
@@ -52,14 +52,14 @@ const Features = ({ features, isAbout }) => {
                 <div
                   dangerouslySetInnerHTML={{ __html: feature.content }}
                   style={
-                    feature.title === "EVENTS, PROMOTIONS, AND FUNDRAISERS" && {
+                    feature.title === "Events, Promos and Fundraisers" && {
                       marginBottom: `30px`,
                       justifyContent: `center`,
                       textAlign: "left",
                     }
                   }
                 />
-                {feature.title === "EVENTS, PROMOTIONS, AND FUNDRAISERS" && (
+                {feature.title === "Events, Promos and Fundraisers" && (
                   <Link
                     to={features.ctaLink}
                     mt={10}

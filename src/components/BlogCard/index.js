@@ -78,7 +78,7 @@ const BlogCard = props => {
                 <Box as={BsClockFill} display="inline-block" me="2" opacity={0.4} />3 min read
               </Link> */}
             <Link to={`/news${link}`} aria-label={`Read more about: ${title}`}>
-              Read More {" "}
+              Read More{" "}
               <Box
                 as={BsArrowRight}
                 display="inline-block"

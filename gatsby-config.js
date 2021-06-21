@@ -41,7 +41,7 @@ module.exports = {
         },
         schema: {
           requestConcurrency: 50,
-          timeout: 100000000,
+          timeout: 10000000,
         },
         type: {
           Post: {

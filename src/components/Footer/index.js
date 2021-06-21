@@ -77,6 +77,10 @@ const Footer = () => {
             base: "10",
             lg: "28",
           }}
+          borderTopColor={`blackAlpha.200`}
+          borderTopWidth={`1px`}
+          borderTopStyle="solid"
+          pt={10}
         >
           <Box flex="1">
             <Logo />

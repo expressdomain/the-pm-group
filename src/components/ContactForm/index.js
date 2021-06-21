@@ -107,10 +107,26 @@ const ContactForm = ({ contactData, form }) => {
           >
             {`${blurb}`}
           </Text>
-          <a style={{ display: `block` }} href={`tel:${phoneNumber}`}>
+          <a
+            style={{
+              display: `grid`,
+              minHeight: `48px`,
+              alignItems: "center",
+              justifyContent: "left",
+            }}
+            href={`tel:${phoneNumber}`}
+          >
             {phoneNumber}
           </a>
-          <a style={{ display: `block` }} href={`mailto:${email}`}>
+          <a
+            style={{
+              display: `grid`,
+              minHeight: `48px`,
+              alignItems: "center",
+              justifyContent: "left",
+            }}
+            href={`mailto:${email}`}
+          >
             {email}
           </a>
         </Box>
