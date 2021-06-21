@@ -1,5 +1,5 @@
 import React from "react"
-import TraditionalAdvertising from "../../../svg/TraditionalAdvertising"
+import TraditionalAdvertising from "../../../SVG/TraditionalAdvertising"
 import EventsPromo from "../../../SVG/EventsPromo"
 import PublicRelations from "../../../SVG/PublicRelations"
 import DigitalMarketing from "../../../SVG/DigitalMarketing"
