@@ -24,7 +24,15 @@ form#gravityform--id-1 {
         margin-bottom: 10px;
     }
 
-    .gform_button#gform_submit_button_1 {
-        background-color: '#FDBC31' !important;
-    }
+
+}
+
+// Gravity Forms Button:
+#gform_submit_button_1 {
+    padding: 10px 20px;
+    font-weight: normal;
+    text-transform: uppercase;
+    color: #201D1D;
+    background: #FDBC31 !important;
+
 }

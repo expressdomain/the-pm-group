@@ -7,9 +7,9 @@ const GSA = ({ content }) => {
     <Container my={15}>
       {content.map(item => (
         <Box m={5}>
-          <Text style={{ color: `black` }}>{item.gsaHeading}</Text>
-          <Text dangerouslySetInnerHTML={{ __html: item.gsaInfo }} />
-          <Divider />
+          <Text style={{ color: `black` }}>{item.gsaContents.gsaHeading}</Text>
+          <div dangerouslySetInnerHTML={{ __html: item.gsaContents.gsaInfo }} />
+          <Divider py={4} />
         </Box>
       ))}
     </Container>

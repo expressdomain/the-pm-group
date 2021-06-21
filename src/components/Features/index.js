@@ -1,6 +1,7 @@
 import { Box, Heading, SimpleGrid } from "@chakra-ui/react"
 import * as React from "react"
 import { FiMoon } from "react-icons/fi"
+import Icon from "./Fragments/Icon"
 import Link from "../Link/Link"
 import { Feature } from "./Fragments/Feature"
 
@@ -44,7 +45,10 @@ const Features = ({ features, isAbout }) => {
               </Feature>
             ))
           : features.serviceEntry.map(feature => (
-              <Feature title={feature.title} icon={<FiMoon color={`black`} />}>
+              <Feature
+                title={feature.title}
+                icon={<Icon title={feature.title} />}
+              >
                 <div
                   dangerouslySetInnerHTML={{ __html: feature.content }}
                   style={

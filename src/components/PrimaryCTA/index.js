@@ -25,7 +25,8 @@ const PrimaryCTA = ({ items, link, ctaText }) => {
               to={item.link}
               color="white"
               textTransform="uppercase"
-              fontSize="md"
+              fontSize="sm"
+              textDecoration="none!important"
             >
               {item.title}{" "}
               {item.title !== "Media Buying" && (

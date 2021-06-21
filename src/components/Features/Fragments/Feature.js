@@ -16,12 +16,10 @@ export const Feature = props => {
     >
       <Box
         fontSize="4xl"
-        padding={2}
+        padding={3}
         bg={`secondary`}
         borderRadius={`50%`}
         height={`fit-content`}
-        width={`fit-content`}
-        transform={`rotate(5deg) scaleX(-1)`}
       >
         {icon}
       </Box>

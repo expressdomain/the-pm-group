@@ -1,9 +1,9 @@
 export const ctaItems = [
-  { title: "Advertising", link: "/advertising" },
-  { title: "Digital Marketing", link: "/digital-marketing" },
-  { title: "Creative & Video Production", link: "/creative-video-production" },
-  { title: "Public Relations", link: "/public-relations" },
-  { title: "Events", link: "/events" },
+  { title: "Advertising", link: "/our-work" },
+  { title: "Digital Marketing", link: "/our-work" },
+  { title: "Creative & Video Production", link: "/our-work" },
+  { title: "Public Relations", link: "/our-work" },
+  { title: "Events", link: "/our-work" },
   { title: "Media Buying", link: "/media-buying" },
 ]
 
