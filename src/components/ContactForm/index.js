@@ -1,11 +1,11 @@
-import { Box, Grid, Heading, Text } from "@chakra-ui/layout"
+import { Box, Grid, Heading, Text, Container } from "@chakra-ui/layout"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import React from "react"
 import GravityFormForm from "gatsby-gravityforms-component"
 import { useStaticQuery, graphql } from "gatsby"
 import "./form.scss"
 
-const ContactForm = ({ contactData, form }) => {
+const ContactForm = ({ contactData, form, isContactPage }) => {
   const { allGfForm } = useStaticQuery(
     graphql`
       query {
@@ -66,6 +66,7 @@ const ContactForm = ({ contactData, form }) => {
         ]}
         mx={`auto`}
       >
+        {/* { isContactPage ? 'true' : 'false' } */}
         <Box
           py={[6]}
           px={[12, 16, 18, 24]}
@@ -131,6 +132,18 @@ const ContactForm = ({ contactData, form }) => {
           </a>
         </Box>
       </Grid>
+      {isContactPage && (
+      <Container>
+          <Box display="grid" placeItems="center">
+            <iframe
+              style={{ width: `100%`, maxWidth: `700px`, height: `600px` }}
+              loading="lazy"
+              allowFullScreen
+              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCplYGQxK6fmSMGj4x-alx-IeAC_cnnOgI&q=The+PM+Group+7550+I-10+STE+510+San+Antonio+TX+78229"
+            />
+          </Box>
+      </Container>
+      )}
     </>
   )
 }
