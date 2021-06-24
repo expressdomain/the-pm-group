@@ -42,7 +42,6 @@ const MediaBuying = ({ data, context }) => {
         content={heroDescription}
         image={heroImage}
       />
-      {console.log(context)}
       <AccordionGrid
         grid={accordionArray}
         title={accordionTitle}

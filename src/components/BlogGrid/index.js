@@ -3,16 +3,8 @@ import * as React from "react"
 import BlogCard from "../BlogCard"
 
 const BlogGrid = ({ posts }) => {
-  console.log(posts)
   return (
-    <Box
-      as="section"
-      bg={mode("gray.50", "gray.800")}
-      py={{
-        base: "10",
-        sm: "24",
-      }}
-    >
+    <Box as="section" bg={mode("gray.50", "gray.800")} py={[10]}>
       <Box
         maxW={{
           base: "xl",
@@ -36,7 +28,10 @@ const BlogGrid = ({ posts }) => {
             <BlogCard
               title={post.node.title}
               description={post.node.excerpt}
-              image={post.node.featuredImage.node.localFile.childImageSharp}
+              image={
+                post.node.featuredImage &&
+                post.node.featuredImage.node?.localFile.childImageSharp
+              }
               link={post.node.link}
               category={post.node.categories.nodes[0].name}
             />

@@ -1,9 +1,15 @@
+import { Container, Box } from "@chakra-ui/react"
 import React from "react"
 import Layout from "../components/Layout/Layout"
 
 const BlogPage = data => {
-  console.log(data.pageContext.content)
-  return <Layout></Layout>
+  return (
+    <Layout>
+      <Container>
+        <Box dangerouslySetInnerHTML={{ __html: data.pageContext.content }} />
+      </Container>
+    </Layout>
+  )
 }
 
 export default BlogPage

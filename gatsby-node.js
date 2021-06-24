@@ -38,7 +38,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const posts = result.data.allWpPost.edges
 
   posts.forEach(post => {
-    console.log(post)
     createPage({
       path: `/news/${post.node.slug}`,
       component: path.resolve("./src/templates/blog.js"),
@@ -50,7 +49,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
 
   // Creating Individual Blog Pages:
-  console.log(posts)
   const postsPerPage = 6
   const numPages = Math.ceil(posts.length / postsPerPage)
   Array.from({ length: numPages }).forEach((_, i) => {

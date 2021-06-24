@@ -5,8 +5,10 @@ import GenericHero from "../components/GenericHero"
 import { ctaItems, ctaLink, ctaText } from "../constants/cta"
 import PrimaryCTA from "../components/PrimaryCTA"
 import BlogGrid from "../components/BlogGrid"
+import Link from "../components/Link/Link"
+import { Container } from "@chakra-ui/react"
 
-const NewsWire = ({ data }) => {
+const NewsWire = ({ data, pageContext }) => {
   // Hero Fields:
   const heroTitle = data?.wpPage?.newsPageFields?.newsPageHero?.heroTitle
   const heroImage =
@@ -14,11 +16,29 @@ const NewsWire = ({ data }) => {
       .childImageSharp
   const posts = data?.allWpPost.edges
 
+  const { currentPage, numPages } = pageContext
+  const isFirst = currentPage === 1
+  const isLast = currentPage === numPages
+  const prevPage = currentPage - 1 === 1 ? "" : (currentPage - 1).toString()
+  const nextPage = (currentPage + 1).toString()
+
   return (
     <Layout>
       <GenericHero title={heroTitle} image={heroImage} />
       <PrimaryCTA items={ctaItems} link={ctaLink} ctaText={ctaText} />
       <BlogGrid posts={posts} />
+      <Container display="flex" justifyContent="space-between" pt={10}>
+        {!isFirst && (
+          <Link to={`/news/${prevPage}`} rel="prev">
+            ← Previous Page
+          </Link>
+        )}
+        {!isLast && (
+          <Link to={`/news/${nextPage}`} rel="next">
+            Next Page →
+          </Link>
+        )}
+      </Container>
     </Layout>
   )
 }
@@ -115,6 +135,7 @@ export const newsQuery = graphql`
           excerpt
           link
           slug
+          title
           categories {
             nodes {
               name
@@ -128,6 +149,7 @@ export const newsQuery = graphql`
                     layout: CONSTRAINED
                     formats: [AVIF, WEBP]
                     quality: 90
+                    aspectRatio: 1.66
                     placeholder: BLURRED
                   )
                 }

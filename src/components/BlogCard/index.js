@@ -4,6 +4,7 @@ import {
   Heading,
   LinkBox,
   LinkOverlay,
+  Skeleton,
   Text,
   useColorModeValue as mode,
 } from "@chakra-ui/react"
@@ -35,7 +36,11 @@ const BlogCard = props => {
       }}
     >
       <Flex direction="column">
-        <GatsbyImage image={getImage(image)} alt={title} />
+        {image ? (
+          <GatsbyImage image={getImage(image)} alt={title} />
+        ) : (
+          <Skeleton />
+        )}
         <Flex
           direction="column"
           px={{
