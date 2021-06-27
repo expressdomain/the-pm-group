@@ -7,12 +7,93 @@
 // You can delete this file if you're not using it
 const path = require("path")
 const { createFilePath } = require("gatsby-source-filesystem")
+const { pathToFileURL } = require("url")
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
   const result = await graphql(
     `
       {
+        workTemplates: allWpCategory {
+          edges {
+            node {
+              uri
+              nodeType
+              slug
+              description
+              name
+              seo {
+                title
+                metaDesc
+                focuskw
+                metaKeywords
+                metaRobotsNoindex
+                metaRobotsNofollow
+                opengraphTitle
+                opengraphDescription
+                opengraphImage {
+                  altText
+                  sourceUrl
+                  srcSet
+                }
+                twitterTitle
+                twitterDescription
+                twitterImage {
+                  altText
+                  sourceUrl
+                  srcSet
+                }
+                canonical
+                cornerstone
+                schema {
+                  raw
+                }
+              }
+              description
+              name
+              works {
+                nodes {
+                  videoFields {
+                    videoLink
+                    videoDescription
+                    videoCoverImage {
+                      localFile {
+                        childImageSharp {
+                          gatsbyImageData(
+                            quality: 90
+                            placeholder: BLURRED
+                            layout: CONSTRAINED
+                            formats: WEBP
+                          )
+                        }
+                      }
+                    }
+                  }
+                  workAudio {
+                    radioClip {
+                      link
+                    }
+                  }
+                  title
+                  theWorkImage {
+                    photoLink {
+                      localFile {
+                        childImageSharp {
+                          gatsbyImageData(
+                            quality: 90
+                            layout: CONSTRAINED
+                            formats: WEBP
+                            placeholder: BLURRED
+                          )
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
         allWpPost(sort: { fields: date, order: DESC }, limit: 1000) {
           edges {
             node {
@@ -33,6 +114,23 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     reporter.panicOnBuild(`Error while running GraphQL query.`)
     return
   }
+  // Create Work Template Page:
+  const workItems = result.data.workTemplates.edges
+
+  workItems.forEach(cat => {
+    if (cat.node.name !== "Agency News") {
+      createPage({
+        path: `/our-work/${cat.node.slug}`,
+        component: path.resolve("./src/templates/category.js"),
+        context: {
+          items: cat.node.works.nodes,
+          title: cat.node.name,
+          description: cat.node.description,
+          seo: cat.node.seo,
+        },
+      })
+    }
+  })
 
   // Create blog-list pages
   const posts = result.data.allWpPost.edges
