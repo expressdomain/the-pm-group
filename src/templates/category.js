@@ -33,7 +33,6 @@ const Category = data => {
         <Box>
 
         <Grid templateColumns={["repeat(2, 1fr)"]} py={8} gap={3}>
-          {console.log(items)}
           {items.map(item => (
             <Fade bottom>
               <WorkItem
