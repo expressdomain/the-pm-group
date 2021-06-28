@@ -58,100 +58,19 @@ const ContactForm = ({ contactData, form, isContactPage }) => {
         {title}
       </Heading>
       {!isContactPage && (
-      <Grid
-        templateColumns={[
-          "repeat(1, 1fr)",
-          "repeat(1, 1fr)",
-          "repeat(1, 1fr)",
-          "repeat(2, 1fr)",
-        ]}
-        mx={`auto`}
-      >
-        {/* { isContactPage ? 'true' : 'false' } */}
-        <Box
-          py={[6]}
-          px={[12, 16, 18, 24]}
-          display="grid"
-          // placeItems="center"
+        <Grid
+          templateColumns={[
+            "repeat(1, 1fr)",
+            "repeat(1, 1fr)",
+            "repeat(1, 1fr)",
+            "repeat(2, 1fr)",
+          ]}
+          mx={`auto`}
         >
-          {/* Placeholder Form */}
-          <GravityFormForm
-            id={formId}
-            formData={allGfForm}
-            // presetValues={{ input_1: 'special_value' }}
-            lambda={process.env.LAMBDA_ENDPOINT}
-            successCallback={handleSuccess}
-            errorCallback={handleError}
-          />
-        </Box>
-        <Box py={[6]} px={[12, 16, 18, 24]}>
-          <Text mb={4}>{body}</Text>
-          <GatsbyImage
-            image={getImage(image.localFile.childImageSharp)}
-            alt={`${name}, ${position}`}
-          />
-          <Text className="contact-name-position" mt={2} fontStyle="italic">
-            {`${name}, ${position}`}
-          </Text>
-          <Text
-            className="contact-name"
-            fontSize="xl"
-            color="black"
-            textTransform="uppercase"
-            fontWeight={`bold`}
-          >
-            Contact {name}
-          </Text>
-          <Text
-            className="contact-blurb"
-            fontSize="xl"
-            color="black"
-            textTransform="uppercase"
-            fontWeight={`bold`}
-          >
-            {`${blurb}`}
-          </Text>
-          <a
-            className="contact-phone"
-            style={{
-              display: `grid`,
-              minHeight: `48px`,
-              alignItems: "center",
-              justifyContent: "left",
-            }}
-            href={`tel:${phoneNumber}`}
-          >
-            {phoneNumber}
-          </a>
-          <a
-            className="contact-email"
-            style={{
-              display: `grid`,
-              minHeight: `48px`,
-              alignItems: "center",
-              justifyContent: "left",
-            }}
-            href={`mailto:${email}`}
-          >
-            {email}
-          </a>
-        </Box>
-      </Grid>
-            )}
-      {isContactPage && (       
-      <Container className="contact-page-container">
-          <Grid
-            templateColumns={[
-              "repeat(1, 1fr)",
-              "repeat(1, 1fr)",
-              "repeat(1, 1fr)",
-              "repeat(2, 1fr)",
-            ]}
-            mx={`auto`}>
+          {/* { isContactPage ? 'true' : 'false' } */}
           <Box
-            className="contact-page-form"
             py={[6]}
-            px={[12, 16, 18, 10]}
+            px={[12, 16, 18, 24]}
             display="grid"
             // placeItems="center"
           >
@@ -165,37 +84,122 @@ const ContactForm = ({ contactData, form, isContactPage }) => {
               errorCallback={handleError}
             />
           </Box>
-          <Box py={[6]} px={[12, 16, 18, 10]}>
-            <Text mb={10}>{body}</Text>
-            <Grid templateColumns={[
+          <Box py={[6]} px={[12, 16, 18, 24]}>
+            <Text mb={4}>{body}</Text>
+            <GatsbyImage
+              image={getImage(image.localFile.childImageSharp)}
+              alt={`${name}, ${position}`}
+            />
+            <Text className="contact-name-position" mt={2} fontStyle="italic">
+              {`${name}, ${position}`}
+            </Text>
+            <Text
+              className="contact-name"
+              fontSize="xl"
+              color="black"
+              textTransform="uppercase"
+              fontWeight={`bold`}
+            >
+              Contact {name}
+            </Text>
+            <Text
+              className="contact-blurb"
+              fontSize="xl"
+              color="black"
+              textTransform="uppercase"
+              fontWeight={`bold`}
+            >
+              {`${blurb}`}
+            </Text>
+            <a
+              className="contact-phone"
+              style={{
+                display: `grid`,
+                minHeight: `48px`,
+                alignItems: "center",
+                justifyContent: "left",
+              }}
+              href={`tel:${phoneNumber}`}
+            >
+              {phoneNumber}
+            </a>
+            <a
+              className="contact-email"
+              style={{
+                display: `grid`,
+                minHeight: `48px`,
+                alignItems: "center",
+                justifyContent: "left",
+              }}
+              href={`mailto:${email}`}
+            >
+              {email}
+            </a>
+          </Box>
+        </Grid>
+      )}
+      {isContactPage && (
+        <Container className="contact-page-container">
+          <Grid
+            templateColumns={[
+              "repeat(1, 1fr)",
+              "repeat(1, 1fr)",
               "repeat(1, 1fr)",
               "repeat(2, 1fr)",
-              "repeat(2, 1fr)",
-              "repeat(2, 1fr)",
-            ]}>
-              <Box>
+            ]}
+            mx={`auto`}
+          >
+            <Box
+              className="contact-page-form"
+              py={[6]}
+              px={[12, 16, 18, 10]}
+              display="grid"
+              // placeItems="center"
+            >
+              {/* Placeholder Form */}
+              <GravityFormForm
+                id={formId}
+                formData={allGfForm}
+                // presetValues={{ input_1: 'special_value' }}
+                lambda={process.env.LAMBDA_ENDPOINT}
+                successCallback={handleSuccess}
+                errorCallback={handleError}
+              />
+            </Box>
+            <Box py={[6]} px={[12, 16, 18, 10]}>
+              <Text mb={10}>{body}</Text>
+              <Grid
+                templateColumns={[
+                  "repeat(1, 1fr)",
+                  "repeat(2, 1fr)",
+                  "repeat(2, 1fr)",
+                  "repeat(2, 1fr)",
+                ]}
+              >
+                <Box>
                   <GatsbyImage
                     image={getImage(image.localFile.childImageSharp)}
                     alt={`${name}, ${position}`}
                   />
-              </Box>
-              <Box pl={5}>
-                <Text 
-                  className="contact-name-position" 
-                  mt={2} 
-                  fontStyle="italic">
-                  {`${name}, ${position}`}
-                </Text>
-                <Text
-                  className="contact-name"
-                  fontSize="xl"
-                  color="black"
-                  textTransform="uppercase"
-                  fontWeight={`bold`}
-                >
-                  Contact {name}
-                </Text>
-                {/* <Text
+                </Box>
+                <Box pl={5}>
+                  <Text
+                    className="contact-name-position"
+                    mt={2}
+                    fontStyle="italic"
+                  >
+                    {`${name}, ${position}`}
+                  </Text>
+                  <Text
+                    className="contact-name"
+                    fontSize="xl"
+                    color="black"
+                    textTransform="uppercase"
+                    fontWeight={`bold`}
+                  >
+                    Contact {name}
+                  </Text>
+                  {/* <Text
                   className="contact-blurb"
                   fontSize="xl"
                   color="black"
@@ -237,10 +241,11 @@ const ContactForm = ({ contactData, form, isContactPage }) => {
               style={{ width: `100%`, maxWidth: `700px`, height: `600px` }}
               loading="lazy"
               allowFullScreen
+              title="The PM Group Location"
               src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCplYGQxK6fmSMGj4x-alx-IeAC_cnnOgI&q=The+PM+Group+7550+I-10+STE+510+San+Antonio+TX+78229"
             />
           </Box>
-      </Container>
+        </Container>
       )}
     </>
   )

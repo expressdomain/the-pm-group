@@ -45,7 +45,7 @@ const NavBar = ({ children, menu, siteTitle, ...props }) => {
     menu.nodes.forEach(node => {
       if (!node.parentId) {
         links.push(
-          <ListItem key={node.label} my={0}>
+          <ListItem key={node.label} my={[4,4, 0, 0]}>
             <NavLink to={node.url} alt={node.label}>
               {node.label}
             </NavLink>
@@ -57,6 +57,7 @@ const NavBar = ({ children, menu, siteTitle, ...props }) => {
     return (
       <List
         display={isMobile ? "block" : "flex"}
+        fontSize={isMobile ? '2xl' : ''}
         alignItems={`center`}
         marginTop={isMobile ? 10 : 0}
         textAlign={`center`}

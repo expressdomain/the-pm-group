@@ -3,8 +3,7 @@ import Seo from "gatsby-plugin-wpgraphql-seo"
 import React from "react"
 import Layout from "../components/Layout/Layout"
 import WorkItem from "../components/WorkItem"
-import Fade from 'react-reveal/Fade';
-
+import Fade from "react-reveal/Fade"
 
 const Category = data => {
   // SEO Object:
@@ -13,12 +12,12 @@ const Category = data => {
     <Layout>
       <Seo post={{ seo }} />
       <Container>
-        <Box display="grid" placeItems="center">
+        <Box display="grid" placeItems="center" mt={8}>
           {title && (
             <Heading
               as="h1"
               textAlign="center"
-              fontSize={["6xl"]}
+              fontSize={["3xl", "4xl", "6xl"]}
               color="black"
             >
               {title}
@@ -31,26 +30,35 @@ const Category = data => {
           )}
         </Box>
         <Box>
-
-        <Grid templateColumns={["repeat(2, 1fr)"]} py={8} gap={3}>
-          {items.map(item => (
-            <Fade bottom>
-              <WorkItem
-              title={item.title}
-              type={title}
-              image={item.theWorkImage?.photoLink?.localFile?.childImageSharp}
-              media={
-                item.videoFields.videoLink ||
-                item.workAudio.radioClip?.link ||
-                ""
-              }
-            />
-            </Fade>
-
-          ))}
-        </Grid>
+          <Grid
+            gridTemplateColumns={[
+              "repeat(1, 1fr)",
+              "repeat(2, 1fr)",
+              "repeat(2, 1fr)",
+            ]}
+            py={8}
+            gap={3}
+          >
+            {items.map(item => (
+              <Fade bottom key={item.title}>
+                {console.log(item)}
+                <WorkItem
+                  title={item.title}
+                  type={title}
+                  image={
+                    item.theWorkImage?.photoLink?.localFile?.childImageSharp ||
+                    item.videoFields.videoCoverImage?.localFile.childImageSharp
+                  }
+                  media={
+                    item.videoFields.videoLink ||
+                    item.workAudio.radioClip?.link ||
+                    ""
+                  }
+                />
+              </Fade>
+            ))}
+          </Grid>
         </Box>
-
       </Container>
     </Layout>
   )

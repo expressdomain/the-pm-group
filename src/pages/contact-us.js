@@ -1,5 +1,4 @@
 import * as React from "react"
-import { Box, Text } from "@chakra-ui/layout"
 import Layout from "../components/Layout/Layout"
 import { graphql } from "gatsby"
 

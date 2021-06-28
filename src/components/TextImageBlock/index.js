@@ -14,8 +14,14 @@ const TextImageBlock = ({ title, content, image }) => {
       ]}
       mx={`auto`}
     >
-      <Box py={[12, 18, 20]} px={[12, 16, 18]} bg={`#f0f0f0`}>
-        <Heading as="h2" color={`black`} mb={4} letterSpacing="tight">
+      <Box py={[12, 18, 20]} px={[12, 18, 20, 24, 32]} bg={`#f0f0f0`}>
+        <Heading
+          as="h2"
+          color={`black`}
+          mb={4}
+          letterSpacing="tight"
+          fontSize={["xl", "2xl", "3xl"]}
+        >
           {title}
         </Heading>
         <Box dangerouslySetInnerHTML={{ __html: content }} />

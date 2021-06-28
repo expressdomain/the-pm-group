@@ -1,25 +1,25 @@
 import * as React from "react"
 import Layout from "../components/Layout/Layout"
 import { graphql } from "gatsby"
-import { getImage } from "gatsby-plugin-image"
 
 import Seo from "gatsby-plugin-wpgraphql-seo"
-import Hero from "../components/Hero/Hero"
+// import Hero from "../components/Hero/Hero"
 import PrimaryCTA from "../components/PrimaryCTA"
 import TextImageBlock from "../components/TextImageBlock"
 import Features from "../components/Features"
 import ParallaxCTA from "../components/ParallaxCTA"
 import ContactForm from "../components/ContactForm"
 import CompaniesGrid from "../components/CompaniesGrid"
+import { Skeleton } from "@chakra-ui/react"
 
 const IndexPage = ({ data: { wpPage, gfForm } }) => {
   // Hero Fields
-  const heroImage = wpPage?.homeFields?.hero?.heroImages[0]?.image
-  const heroTitle = wpPage?.homeFields?.headline
-  const heroCaption = wpPage?.homeFields?.subcaption
+  // const heroImage = wpPage?.homeFields?.hero?.heroImages[0]?.image
+  // const heroTitle = wpPage?.homeFields?.headline
+  // const heroCaption = wpPage?.homeFields?.subcaption
   //  Primary CTA Fields :
   const ctaItems = wpPage?.homeFields?.primaryCta?.primaryCtaFields
-  const ctaLink = wpPage?.homeFields?.primaryCta?.ctaLink
+  const ctaLink = wpPage?.homeFields?.primaryCta?.ctaLink.url
   const ctaText = wpPage?.homeFields?.primaryCta?.ctaText
   // TextImageBlock 1 Fields:
   const aboutTitle = wpPage?.homeFields?.aboutSection?.title
@@ -44,12 +44,13 @@ const IndexPage = ({ data: { wpPage, gfForm } }) => {
     <Layout>
       {console.log(wpPage)}
       <Seo post={wpPage} />
-      <Hero
+      {/* <Hero
         image={getImage(heroImage.localFile.childImageSharp)}
         alt={heroTitle}
         title={heroTitle}
         caption={heroCaption}
-      />
+      /> */}
+      <Skeleton height={500}></Skeleton>
       <PrimaryCTA items={ctaItems} link={ctaLink} ctaText={ctaText} />
       <TextImageBlock
         title={aboutTitle}
@@ -206,7 +207,9 @@ export const pageQuery = graphql`
           }
         }
         primaryCta {
-          ctaLink
+          ctaLink {
+            url
+          }
           ctaText
           primaryCtaFields {
             title
@@ -231,7 +234,9 @@ export const pageQuery = graphql`
         }
         subcaption
         services {
-          ctaLink
+          ctaLink {
+            url
+          }
           ctaText
           serviceEntry {
             content

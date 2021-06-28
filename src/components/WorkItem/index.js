@@ -5,16 +5,30 @@ import React from "react"
 
 const WorkItem = ({ title, media, type, schema, image }) => {
   if (type === "Television") {
-    return <GridItem>{title}</GridItem>
-  }
-  if (type === "Radio") {
     return (
       <GridItem display="grid" placeItems="center" p={3}>
-        <audio controls style={{marginBottom: '10px'}}>
+        {" "}
+        <GatsbyImage image={getImage(image)} alt={title} />
+        <Box py={4}>
+          <Text color="black" fontWeight="bold">
+            {title}
+          </Text>
+        </Box>
+      </GridItem>
+    )
+  }
+  if (type === "Radio") {
+
+    return (
+      <GridItem display="grid" placeItems="center" p={3}>
+        <audio controls style={{ marginBottom: "10px" }}>
+          {console.log(media)}
           <source src={media} type="audio/mpeg" />
           Your browser does not support the audio element.
         </audio>
-        <Text color="black" fontWeight="bold">{title}</Text>
+        <Text color="black" fontWeight="bold">
+          {title}
+        </Text>
       </GridItem>
     )
   }
@@ -23,7 +37,9 @@ const WorkItem = ({ title, media, type, schema, image }) => {
       <GridItem p={3} textAlign="center">
         <GatsbyImage image={getImage(image)} alt={title} />
         <Box py={4}>
-          <Text color="black" fontWeight="bold">{title}</Text>
+          <Text color="black" fontWeight="bold">
+            {title}
+          </Text>
         </Box>
       </GridItem>
     )

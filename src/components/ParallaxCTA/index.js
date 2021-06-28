@@ -13,6 +13,7 @@ const ParallaxCTA = ({ image, text }) => {
           fontSize={[`md`, `lg`, `xl`, `2xl`]}
           zIndex={4}
           textTransform="uppercase"
+          maxWidth={["250px", "none", "none", "none"]}
         >
           {text}
         </Text>

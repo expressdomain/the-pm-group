@@ -18,9 +18,9 @@ const Features = ({ features, isAbout }) => {
       }}
     >
       {/* @TODO: Make this field come from backend */}
-      <Heading as="h2" color="black" textAlign="center" mb={6}>
+      {!isAbout && <Heading as="h2" color="black" textAlign="center" mb={6}>
         WHAT CAN WE DO FOR YOU?
-      </Heading>
+      </Heading>}
       <SimpleGrid
         columns={[1, 2, 2, 3]}
         spacingX="10"
@@ -61,7 +61,7 @@ const Features = ({ features, isAbout }) => {
                 />
                 {feature.title === "Events, Promos and Fundraisers" && (
                   <Link
-                    to={features.ctaLink}
+                    to={features.ctaLink.url}
                     mt={10}
                     bg={`secondary`}
                     px={6}

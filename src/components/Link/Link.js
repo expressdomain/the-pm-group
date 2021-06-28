@@ -44,7 +44,7 @@ const Link = ({ children, to, activeClassName, partiallyActive, ...props }) => {
   return (
     <chakra.a
       href={to}
-      target={to.includes("tel") ? "" : "_blank"}
+      target={to.includes("tel") === true ? "" : "_blank"}
       rel="noopener noreferrer"
       _hover={{
         color: `secondary`,
