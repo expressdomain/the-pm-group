@@ -4,6 +4,7 @@ import {
   Flex,
   Heading,
   HStack,
+  Skeleton,
   Stack,
   Text,
 } from "@chakra-ui/react"
@@ -77,6 +78,7 @@ const Hero = ({
                 See our Work
               </Button>
             </Stack>
+            <p>(Placeholder Image)</p>
           </Box>
         </Box>
       </Box>
@@ -98,11 +100,13 @@ const Hero = ({
             bg="blackAlpha.400"
             zIndex={4}
           />
-          <GatsbyImage
+
+          {/* <Skeleton height={500} /> */}
+          {/* <GatsbyImage
             image={image}
             style={{ height: "100%", width: "100%" }}
             alt={alt}
-          />
+          /> */}
         </Box>
       </Flex>
     </Box>

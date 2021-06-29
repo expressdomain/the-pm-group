@@ -42,9 +42,10 @@ const AboutTeamGrid = ({ team }) => {
                 <Text
                   textTransform="uppercase"
                   fontWeight={800}
-                  fontSize={["xl", "2xl"]}
+                  fontSize={["lg", "xl", "2xl"]}
                   tag="h2"
                   color="white"
+                  whiteSpace="nowrap"
                 >
                   {item.teamName}
                 </Text>

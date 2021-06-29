@@ -7,6 +7,6 @@ export const ctaItems = [
   { title: "Media Buying", link: "/media-buying" },
 ]
 
-export const ctaLink = "/contact"
+export const ctaLink = "/contact-us"
 
 export const ctaText = "Connect"

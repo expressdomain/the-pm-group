@@ -234,7 +234,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         id: post.node.id,
         content: post.node.content,
         title: post.node.title,
-        seo: post.node.seo
+        seo: post.node.seo,
       },
     })
   })
@@ -281,11 +281,16 @@ exports.createSchemaCustomization = ({ actions }) => {
   createTypes(typeDefs)
 }
 
-let auth = "Basic " + Buffer.from(process.env.HTTPBASICAUTH_USERNAME+":"+process.env.HTTPBASICAUTH_PASSWORD).toString('base64')
+let auth =
+  "Basic " +
+  Buffer.from(
+    process.env.HTTPBASICAUTH_USERNAME +
+      ":" +
+      process.env.HTTPBASICAUTH_PASSWORD
+  ).toString("base64")
 let headers = {
-  "Authorization": auth
+  Authorization: auth,
 }
-
 
 exports.createResolvers = ({ createResolvers, schema }) =>
   createResolvers({
@@ -297,7 +302,7 @@ exports.createResolvers = ({ createResolvers, schema }) =>
           const response = await fetch(
             `${process.env.BASE_URL}/wp-json/yarpp/v1/related/${databaseId}`,
             {
-              headers: headers
+              headers: headers,
             }
           ).then(res => res.json())
 

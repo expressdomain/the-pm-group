@@ -4,13 +4,13 @@ import React from "react"
 import Layout from "../components/Layout/Layout"
 
 const BlogPage = data => {
-  const {title, seo, content} = data.pageContext
+  const { title, seo, content } = data.pageContext
   return (
     <Layout>
-      <Seo post={{seo}} />
+      <Seo post={{ seo }} />
       <Container py={8}>
         <Heading tag="h1" mb={4}>
-        {title}
+          {title}
         </Heading>
         <Box dangerouslySetInnerHTML={{ __html: content }} />
       </Container>

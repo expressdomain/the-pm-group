@@ -101,7 +101,7 @@ const Footer = () => {
           >
             <Stack>
               <Heading
-                as="h4"
+                as="h3"
                 fontSize="sm"
                 textTransform="uppercase"
                 letterSpacing="wider"

@@ -42,6 +42,7 @@ const MediaBuying = ({ data, context }) => {
         content={heroDescription}
         image={heroImage}
         isSmall
+        isLeft
       />
       <AccordionGrid
         grid={accordionArray}

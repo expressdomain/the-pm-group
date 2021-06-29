@@ -29,11 +29,11 @@ const NavBar = ({ children, menu, siteTitle, ...props }) => {
     return (
       <>
         {colorMode === "dark" ? (
-          <Link to="/" alt={`Home | ${siteTitle}`}>
+          <Link to="/" alt={`Home | ${siteTitle}`} name="Home">
             <Logo alt={siteTitle} />
           </Link>
         ) : (
-          <Link to="/" alt={`Home | ${siteTitle}`}>
+          <Link to="/" alt={`Home | ${siteTitle}`} name="Home">
             <Logo alt={siteTitle} />
           </Link>
         )}

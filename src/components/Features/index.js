@@ -30,6 +30,7 @@ const Features = ({ features, isAbout }) => {
           base: "8",
           md: "14",
         }}
+        color="black"
       >
         {isAbout
           ? features.map(feature => (

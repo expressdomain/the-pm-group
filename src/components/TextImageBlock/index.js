@@ -1,13 +1,13 @@
 import { Box, Grid, Heading } from "@chakra-ui/layout"
+import { Skeleton } from "@chakra-ui/react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import React from "react"
 
-const TextImageBlock = ({ title, content, image, isSmall }) => {
+const TextImageBlock = ({ title, content, image, isSmall, isLeft }) => {
   const sideImage = getImage(image?.localFile?.childImageSharp)
   return (
     <Grid
       templateColumns={[
-        "repeat(1, 1fr)",
         "repeat(1, 1fr)",
         "repeat(1, 1fr)",
         "repeat(1, 1fr)",
@@ -29,14 +29,19 @@ const TextImageBlock = ({ title, content, image, isSmall }) => {
         >
           {title}
         </Heading>
-        <Box dangerouslySetInnerHTML={{ __html: content }} />
+        <Box color="black" dangerouslySetInnerHTML={{ __html: content }} />
       </Box>
       <Box display="grid" position="relative">
-        <GatsbyImage
-          image={sideImage}
-          alt={title}
-          style={{ gridArea: "1/1", maxWidth: `100%`, objectFit: "contain" }}
-        />
+        {sideImage ? (
+          <GatsbyImage
+            image={sideImage}
+            alt={title}
+            objectPosition={isLeft && "left"}
+            style={{ gridArea: "1/1", maxWidth: `100%`, objectFit: "contain" }}
+          />
+        ) : (
+          <Skeleton height={"100%"} />
+        )}
       </Box>
     </Grid>
   )

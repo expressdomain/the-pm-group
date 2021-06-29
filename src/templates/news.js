@@ -1,12 +1,13 @@
 import React from "react"
 import Layout from "../components/Layout/Layout"
-import { graphql } from "gatsby"
+import { graphql, navigate } from "gatsby"
 import GenericHero from "../components/GenericHero"
 import { ctaItems, ctaLink, ctaText } from "../constants/cta"
 import PrimaryCTA from "../components/PrimaryCTA"
 import BlogGrid from "../components/BlogGrid"
-import Link from "../components/Link/Link"
-import { Container } from "@chakra-ui/react"
+import { ChevronRightIcon, ChevronLeftIcon } from "@chakra-ui/icons"
+import { Paginated } from "@makotot/paginated"
+import { Container, Grid, Stack, Button, Center } from "@chakra-ui/react"
 
 const NewsWire = ({ data, pageContext }) => {
   // Hero Fields:
@@ -28,7 +29,110 @@ const NewsWire = ({ data, pageContext }) => {
       <PrimaryCTA items={ctaItems} link={ctaLink} ctaText={ctaText} />
       <BlogGrid posts={posts} />
       <Container display="flex" justifyContent="space-between" pt={10}>
-        {!isFirst && (
+        <Paginated
+          currentPage={currentPage}
+          totalPage={numPages}
+          siblingsSize={1}
+          boundarySize={1}
+        >
+          {({
+            pages,
+            currentPage,
+            hasPrev,
+            hasNext,
+            getFirstBoundary,
+            getLastBoundary,
+            isPrevTruncated,
+            isNextTruncated,
+          }) => (
+            <Grid
+              width="100%"
+              justifyContent="center"
+              alignItems="center"
+              gridTemplateColumns="min-content 1fr min-content"
+              gridGap={2}
+            >
+              <Stack direction="row">
+                {hasPrev() && (
+                  <Button
+                    leftIcon={<ChevronLeftIcon />}
+                    bgColor="secondary"
+                    color="black"
+                    onClick={() => navigate(`/news/${prevPage}`)}
+                  >
+                    Prev
+                  </Button>
+                )}
+              </Stack>
+              <Center>
+                <Stack direction="row">
+                  {getFirstBoundary().map(boundary => (
+                    <Button
+                      key={boundary}
+                      bgColor="secondary"
+                      variant="outline"
+                      color="black"
+                      onClick={() => navigate(`/news/`)}
+                    >
+                      {boundary}
+                    </Button>
+                  ))}
+                  {isPrevTruncated && <span>...</span>}
+                  {pages.map(page => {
+                    return page === currentPage ? (
+                      <Button
+                        key={page}
+                        bgColor="secondary"
+                        variant="solid"
+                        color="black"
+                      >
+                        {page}
+                      </Button>
+                    ) : (
+                      <Button
+                        key={page}
+                        bgColor="secondary"
+                        variant="outline"
+                        color="black"
+                        onClick={() => navigate(`/news/${page}`)}
+                      >
+                        {page}
+                      </Button>
+                    )
+                  })}
+
+                  {isNextTruncated && <span>...</span>}
+                  {getLastBoundary().map(boundary => (
+                    <Button
+                      key={boundary}
+                      bgColor="secondary"
+                      variant="outline"
+                      color="black"
+                      onClick={() => navigate(`/news/${boundary}`)}
+                    >
+                      {boundary}
+                    </Button>
+                  ))}
+                </Stack>
+              </Center>
+
+              <Stack direction="row">
+                {!isLast && (
+                  <Button
+                    rightIcon={<ChevronRightIcon />}
+                    bgColor="secondary"
+                    color="black"
+                    onClick={() => navigate(`/news/${nextPage}`)}
+                  >
+                    Next
+                  </Button>
+                )}
+              </Stack>
+            </Grid>
+          )}
+        </Paginated>
+
+        {/* {!isFirst && (
           <Link to={`/news/${prevPage}`} rel="prev">
             ← Previous Page
           </Link>
@@ -45,7 +149,7 @@ const NewsWire = ({ data, pageContext }) => {
           <Link to={`/news/${nextPage}`} rel="next">
             Next Page →
           </Link>
-        )}
+        )} */}
       </Container>
     </Layout>
   )
