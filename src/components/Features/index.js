@@ -18,9 +18,11 @@ const Features = ({ features, isAbout }) => {
       }}
     >
       {/* @TODO: Make this field come from backend */}
-      {!isAbout && <Heading as="h2" color="black" textAlign="center" mb={6}>
-        WHAT CAN WE DO FOR YOU?
-      </Heading>}
+      {!isAbout && (
+        <Heading as="h2" color="black" textAlign="center" mb={6}>
+          WHAT CAN WE DO FOR YOU?
+        </Heading>
+      )}
       <SimpleGrid
         columns={[1, 2, 2, 3]}
         spacingX="10"

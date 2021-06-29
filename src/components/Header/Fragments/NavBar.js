@@ -16,6 +16,7 @@ import Link from "../../Link/Link"
 import NavLink from "./NavLink"
 import MobileNavContent from "./MobileNavContent"
 import { HamburgerIcon } from "@chakra-ui/icons"
+import SubMenu from "../../SubMenu"
 
 const NavBar = ({ children, menu, siteTitle, ...props }) => {
   const { colorMode } = useColorMode()
@@ -42,22 +43,29 @@ const NavBar = ({ children, menu, siteTitle, ...props }) => {
 
   const MenuLinks = ({ isMobile }) => {
     const links = []
+    const subLinks = []
     menu.nodes.forEach(node => {
       if (!node.parentId) {
         links.push(
-          <ListItem key={node.label} my={[4,4, 0, 0]}>
-            <NavLink to={node.url} alt={node.label}>
-              {node.label}
-            </NavLink>
+          <ListItem key={node.label} my={[4, 4, 0, 0]}>
+            {node.label === "Companies" ? (
+              <SubMenu title={node.label} links={subLinks} />
+            ) : (
+              <NavLink to={node.url} alt={node.label}>
+                {node.label}
+              </NavLink>
+            )}
           </ListItem>
         )
+      } else {
+        subLinks.push(node)
       }
     })
 
     return (
       <List
         display={isMobile ? "block" : "flex"}
-        fontSize={isMobile ? '2xl' : ''}
+        fontSize={isMobile ? "2xl" : ""}
         alignItems={`center`}
         marginTop={isMobile ? 10 : 0}
         textAlign={`center`}

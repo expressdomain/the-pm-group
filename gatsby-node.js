@@ -7,7 +7,7 @@
 // You can delete this file if you're not using it
 const path = require("path")
 const { createFilePath } = require("gatsby-source-filesystem")
-const { pathToFileURL } = require("url")
+const fetch = require("node-fetch")
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
@@ -51,6 +51,56 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               }
               description
               name
+              leaders {
+                nodes {
+                  slug
+                  title
+                  seo {
+                    title
+                    metaDesc
+                    focuskw
+                    metaKeywords
+                    metaRobotsNoindex
+                    metaRobotsNofollow
+                    opengraphTitle
+                    opengraphDescription
+                    opengraphImage {
+                      altText
+                      sourceUrl
+                      srcSet
+                    }
+                    twitterTitle
+                    twitterDescription
+                    twitterImage {
+                      altText
+                      sourceUrl
+                      srcSet
+                    }
+                    canonical
+                    cornerstone
+                    schema {
+                      raw
+                    }
+                  }
+                  leaderFields {
+                    bio
+                    name
+                    position
+                    heroPic {
+                      localFile {
+                        childImageSharp {
+                          gatsbyImageData(
+                            quality: 90
+                            layout: CONSTRAINED
+                            formats: WEBP
+                            placeholder: BLURRED
+                          )
+                        }
+                      }
+                    }
+                  }
+                }
+              }
               works {
                 nodes {
                   videoFields {
@@ -101,6 +151,34 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               uri
               slug
               content
+              title
+              seo {
+                title
+                metaDesc
+                focuskw
+                metaKeywords
+                metaRobotsNoindex
+                metaRobotsNofollow
+                opengraphTitle
+                opengraphDescription
+                opengraphImage {
+                  altText
+                  sourceUrl
+                  srcSet
+                }
+                twitterTitle
+                twitterDescription
+                twitterImage {
+                  altText
+                  sourceUrl
+                  srcSet
+                }
+                canonical
+                cornerstone
+                schema {
+                  raw
+                }
+              }
               internal {
                 type
               }
@@ -118,7 +196,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const workItems = result.data.workTemplates.edges
 
   workItems.forEach(cat => {
-    if (cat.node.name !== "Agency News") {
+    if (cat.node.name !== "Agency News" || "Leadership") {
       createPage({
         path: `/our-work/${cat.node.slug}`,
         component: path.resolve("./src/templates/category.js"),
@@ -128,6 +206,19 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           description: cat.node.description,
           seo: cat.node.seo,
         },
+      })
+    }
+    if (cat.node.name === "Leadership") {
+      cat.node.leaders.nodes.forEach(node => {
+        createPage({
+          path: node.slug,
+          component: path.resolve("./src/templates/leader.js"),
+          context: {
+            title: node.title,
+            fields: node.leaderFields,
+            seo: node.seo,
+          },
+        })
       })
     }
   })
@@ -142,12 +233,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       context: {
         id: post.node.id,
         content: post.node.content,
+        title: post.node.title,
+        seo: post.node.seo
       },
     })
   })
 
   // Creating Individual Blog Pages:
-  const postsPerPage = 6
+  const postsPerPage = 12
   const numPages = Math.ceil(posts.length / postsPerPage)
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
@@ -173,3 +266,51 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     })
   }
 }
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  const typeDefs = `
+    type WpPost implements Node {
+      related_posts: WpNodePost!
+    }
+
+    type WpNodePost implements Node {
+      nodes: [WpPost]
+    }
+  `
+  createTypes(typeDefs)
+}
+
+let auth = "Basic " + Buffer.from(process.env.HTTPBASICAUTH_USERNAME+":"+process.env.HTTPBASICAUTH_PASSWORD).toString('base64')
+let headers = {
+  "Authorization": auth
+}
+
+
+exports.createResolvers = ({ createResolvers, schema }) =>
+  createResolvers({
+    WpPost: {
+      related_posts: {
+        resolve: async (source, args, context, info) => {
+          const { databaseId } = source
+
+          const response = await fetch(
+            `${process.env.BASE_URL}/wp-json/yarpp/v1/related/${databaseId}`,
+            {
+              headers: headers
+            }
+          ).then(res => res.json())
+
+          if (response && response.length) {
+            const result = await context.nodeModel.runQuery({
+              query: {
+                filter: { databaseId: { in: response.map(({ id }) => id) } },
+              },
+              type: "WpPost",
+            })
+            return { nodes: result }
+          } else return { nodes: [] }
+        },
+      },
+    },
+  })

@@ -6,9 +6,9 @@ import {
   useColorModeValue as mode,
 } from "@chakra-ui/react"
 import * as React from "react"
-import Link from "../../link"
+import Link from "../../Link/Link"
 const MenuItem = props => {
-  const { title, children, href, isNew, icon } = props
+  const { title, href, isNew, icon } = props
   return (
     <Link
       display="flex"
@@ -18,7 +18,7 @@ const MenuItem = props => {
       rounded="lg"
       transition="0.2s background"
       _hover={{
-        bg: mode("primary", "white"),
+        bg: mode("secondary", "white"),
       }}
       role="group"
     >
@@ -41,9 +41,9 @@ const MenuItem = props => {
           fontWeight="500"
           transition="0.2s all"
           _groupHover={{
-            color: mode(`white`, `primary`),
+            color: mode(`white`, `secondary`),
           }}
-          color={mode(`primary`, `white`)}
+          color={mode(`black`, `white`)}
         >
           {title}
         </Text>
@@ -59,7 +59,7 @@ const MenuItem = props => {
             New
           </Badge>
         )}
-        <Text
+        {/* <Text
           as="dd"
           fontSize="sm"
           color={mode("gray.600", "white")}
@@ -68,7 +68,7 @@ const MenuItem = props => {
           }}
         >
           {children}
-        </Text>
+        </Text> */}
       </Box>
     </Link>
   )

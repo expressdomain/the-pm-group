@@ -35,12 +35,13 @@ const MediaBuying = ({ data, context }) => {
   return (
     <Layout>
       <Seo post={data.wpPage} />
-      <GenericHero title={aboutPageTitle} image={aboutPageHeroImage} />
+      <GenericHero title={aboutPageTitle} image={aboutPageHeroImage} isSmall />
       <PrimaryCTA items={ctaItems} link={ctaLink} ctaText={ctaText} />
       <TextImageBlock
         title={heroTitle}
         content={heroDescription}
         image={heroImage}
+        isSmall
       />
       <AccordionGrid
         grid={accordionArray}
@@ -127,6 +128,7 @@ export const mediaBuyingPageQuery = graphql`
                 childImageSharp {
                   gatsbyImageData(
                     quality: 90
+                    height: 200
                     formats: [AVIF, WEBP]
                     layout: CONSTRAINED
                     placeholder: BLURRED

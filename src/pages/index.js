@@ -42,7 +42,6 @@ const IndexPage = ({ data: { wpPage, gfForm } }) => {
 
   return (
     <Layout>
-      {console.log(wpPage)}
       <Seo post={wpPage} />
       {/* <Hero
         image={getImage(heroImage.localFile.childImageSharp)}

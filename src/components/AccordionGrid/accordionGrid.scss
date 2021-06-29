@@ -2,21 +2,21 @@
 .mediaBuyingImage img {
     margin: 0 auto;
 
-    @media (max-width: 500px) {
-        height: 175px;
-        width: auto;
-    }
+    // @media (max-width: 500px) {
+    //     height: 175px;
+    //     width: auto;
+    // }
 
-    @media (max-width: 800px) {
-        height: 190px;
-        width: auto;
-    }
+    // @media (max-width: 800px) {
+    //     height: 190px;
+    //     width: auto;
+    // }
 
-    @media (min-width: 801px) {
-        max-height: 200px;
-        width: auto;
-        padding: 5px;
-    }
+    // @media (min-width: 801px) {
+    //     max-height: 200px;
+    //     width: auto;
+    //     padding: 5px;
+    // }
 }
 
 .accordionPanelContent {

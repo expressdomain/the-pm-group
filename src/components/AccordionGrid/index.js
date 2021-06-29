@@ -28,23 +28,21 @@ const AccordionGrid = ({ grid }) => {
         gap={6}
       >
         {grid.map(item => (
-          <Accordion allowMultiple>
+          <Accordion allowMultiple justifyContent="center">
             <AccordionItem style={{ borderColor: `transparent` }}>
-              <AccordionButton>
+              <AccordionButton display="grid">
                 <VStack>
-                  <Box>
+                  <Box position={"relative"}>
                     <GatsbyImage
                       className="mediaBuyingImage"
                       image={getImage(item.mbImage.localFile.childImageSharp)}
                       alt={item.mbTitle}
-                      style={{ gridArea: "1/1" }}
                     />
                   </Box>
                   <Box>
                     <Text
                       my={5}
                       style={{
-                        textTransform: `uppercase`,
                         fontFamily: `Montserrat`,
                         color: `#black`,
                         fontSize: `25px`,

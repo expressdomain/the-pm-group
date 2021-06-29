@@ -24,7 +24,7 @@ const CapabilitiesGrid = ({ capabilities }) => {
           {capabilities.map(item => (
             <Box
               display="grid"
-              maxWidth={[350, 320, 400]}
+              maxWidth={["100%", 350, 320, 400]}
               mt={5}
               mx={0}
               height="min-content"

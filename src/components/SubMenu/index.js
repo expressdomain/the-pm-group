@@ -6,27 +6,33 @@ import {
   useBoolean,
   useColorModeValue as mode,
 } from "@chakra-ui/react"
+import { navigate } from "gatsby"
 import * as React from "react"
 import { HiChevronDown } from "react-icons/hi"
-import { links } from "./Fragments/links-data"
 import MenuItem from "./Fragments/MenuItem"
 
-const SubMenu = ({ title }) => {
+const SubMenu = ({ title, links }) => {
   const [show, { toggle }] = useBoolean(false)
   return (
     <Box as="div" pos="relative" height="fit-content" overflow="visible">
       <Box maxW="7xl" py="6">
-        <HStack
-          as="button"
-          color={mode("black", "white")}
-          onClick={() => {
-            toggle()
-          }}
-        >
-          <Text textTransform="uppercase" fontWeight={400}>
+        <HStack as="button" color={mode("black", "white")} mx="auto">
+          <Text
+            fontWeight={400}
+            onClick={() => {
+              navigate("/companies")
+            }}
+          >
             {title}
           </Text>
-          <Box as={HiChevronDown} fontSize="lg" color="gray.500" />
+          <Box
+            as={HiChevronDown}
+            fontSize="lg"
+            color="gray.500"
+            onClick={() => {
+              toggle()
+            }}
+          />
         </HStack>
         <Box
           as={SlideFade}
@@ -46,14 +52,7 @@ const SubMenu = ({ title }) => {
           <Box as="ul" listStyleType="none" px="2" pb="2">
             {links.map((link, idx) => (
               <Box as="li" key={idx}>
-                <MenuItem
-                  href={link.href}
-                  title={link.title}
-                  isNew={link.new}
-                  icon={link.icon}
-                >
-                  {link.description}
-                </MenuItem>
+                <MenuItem href={link.url} title={link.label} />
               </Box>
             ))}
           </Box>

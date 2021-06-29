@@ -31,7 +31,7 @@ const CommunityPage = ({ data }) => {
   return (
     <Layout>
       <Seo post={data.wpPage} />
-      <GenericHero title={heroTitle} image={heroImage} />
+      <GenericHero title={heroTitle} image={heroImage} isSmall />
       <PrimaryCTA items={ctaItems} link={ctaLink} ctaText={ctaText} />
       <TextImageBlock
         title={aboutTitle}

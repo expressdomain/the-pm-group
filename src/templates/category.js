@@ -41,7 +41,6 @@ const Category = data => {
           >
             {items.map(item => (
               <Fade bottom key={item.title}>
-                {console.log(item)}
                 <WorkItem
                   title={item.title}
                   type={title}

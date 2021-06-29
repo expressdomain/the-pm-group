@@ -2,7 +2,7 @@ import { Box, Grid, Heading } from "@chakra-ui/layout"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import React from "react"
 
-const TextImageBlock = ({ title, content, image }) => {
+const TextImageBlock = ({ title, content, image, isSmall }) => {
   const sideImage = getImage(image?.localFile?.childImageSharp)
   return (
     <Grid
@@ -10,11 +10,16 @@ const TextImageBlock = ({ title, content, image }) => {
         "repeat(1, 1fr)",
         "repeat(1, 1fr)",
         "repeat(1, 1fr)",
+        "repeat(1, 1fr)",
         "repeat(2, 1fr)",
       ]}
       mx={`auto`}
     >
-      <Box py={[12, 18, 20]} px={[12, 18, 20, 24, 32]} bg={`#f0f0f0`}>
+      <Box
+        py={[12, 18, 20]}
+        px={[12, 18, isSmall ? 12 : 20, isSmall ? 12 : 32]}
+        bg={`#f0f0f0`}
+      >
         <Heading
           as="h2"
           color={`black`}
@@ -30,7 +35,7 @@ const TextImageBlock = ({ title, content, image }) => {
         <GatsbyImage
           image={sideImage}
           alt={title}
-          style={{ gridArea: "1/1", maxWidth: `100%` }}
+          style={{ gridArea: "1/1", maxWidth: `100%`, objectFit: "contain" }}
         />
       </Box>
     </Grid>

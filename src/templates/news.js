@@ -24,7 +24,7 @@ const NewsWire = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <GenericHero title={heroTitle} image={heroImage} />
+      <GenericHero title={heroTitle} image={heroImage} isSmall />
       <PrimaryCTA items={ctaItems} link={ctaLink} ctaText={ctaText} />
       <BlogGrid posts={posts} />
       <Container display="flex" justifyContent="space-between" pt={10}>
@@ -33,6 +33,14 @@ const NewsWire = ({ data, pageContext }) => {
             ← Previous Page
           </Link>
         )}
+        {Array.from({ length: numPages }, (_, i) => (
+          <Link
+            key={`pagination-number${i + 1}`}
+            to={`/news/${i === 0 ? "" : i + 1}`}
+          >
+            {i + 1}
+          </Link>
+        ))}
         {!isLast && (
           <Link to={`/news/${nextPage}`} rel="next">
             Next Page →

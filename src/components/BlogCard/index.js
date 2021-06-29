@@ -1,5 +1,5 @@
 import {
-  Box,
+  // Box,
   Flex,
   Heading,
   LinkBox,
@@ -10,11 +10,11 @@ import {
 } from "@chakra-ui/react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import * as React from "react"
-import { BsArrowRight } from "react-icons/bs"
-import Link from "../Link/Link"
+// import { BsArrowRight } from "react-icons/bs"
+// import Link from "../Link/Link"
 
 const BlogCard = props => {
-  const { title, description, image, link, category } = props
+  const { title, image, link, category } = props // description
   return (
     <LinkBox
       as="article"
@@ -58,15 +58,15 @@ const BlogCard = props => {
           >
             {category}
           </Text>
-          <Heading as="h3" size="sm" mb="2" lineHeight="base">
+          <Heading as="h3" size="sm" mb="2" lineHeight="base" color="black">
             <LinkOverlay href={`/news${link}`}>{title}</LinkOverlay>
           </Heading>
-          <Box
+          {/* <Box
             noOfLines={2}
             mb="8"
             color={mode("gray.600", "gray.400")}
             dangerouslySetInnerHTML={{ __html: description }}
-          />
+          /> */}
           <Flex
             align="baseline"
             justify="space-between"
@@ -82,7 +82,7 @@ const BlogCard = props => {
             {/* <Link href="#">
                 <Box as={BsClockFill} display="inline-block" me="2" opacity={0.4} />3 min read
               </Link> */}
-            <Link to={`/news${link}`} aria-label={`Read more about: ${title}`}>
+            {/* <Link to={`/news${link}`} aria-label={`Read more about: ${title}`}>
               Read More{" "}
               <Box
                 as={BsArrowRight}
@@ -90,7 +90,7 @@ const BlogCard = props => {
                 me="2"
                 opacity={0.4}
               />
-            </Link>
+            </Link> */}
           </Flex>
         </Flex>
       </Flex>
