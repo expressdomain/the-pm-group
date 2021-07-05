@@ -23,6 +23,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               description
               name
               seo {
+                breadcrumbs {
+                  text
+                  url
+                }
                 title
                 metaDesc
                 focuskw
@@ -56,6 +60,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
                   slug
                   title
                   seo {
+                    breadcrumbs {
+                      text
+                      url
+                    }
                     title
                     metaDesc
                     focuskw
@@ -125,6 +133,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
                     }
                   }
                   title
+                  id
                   theWorkImage {
                     photoLink {
                       localFile {
@@ -153,6 +162,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               content
               title
               seo {
+                breadcrumbs {
+                  text
+                  url
+                }
                 title
                 metaDesc
                 focuskw

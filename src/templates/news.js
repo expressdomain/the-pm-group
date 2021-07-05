@@ -164,6 +164,10 @@ export const newsQuery = graphql`
       uri
       nodeType
       seo {
+        breadcrumbs {
+          text
+          url
+        }
         title
         metaDesc
         focuskw

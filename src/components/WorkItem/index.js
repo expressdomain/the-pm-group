@@ -1,14 +1,29 @@
 import { GridItem } from "@chakra-ui/layout"
-import { Box, Text } from "@chakra-ui/react"
+import { Box, Center, Text } from "@chakra-ui/react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import React from "react"
+import WorkModal from "../WorkModal"
 
-const WorkItem = ({ title, media, type, schema, image }) => {
+const WorkItem = ({ title, media, type, schema, image, id }) => {
   if (type === "Television") {
     return (
       <GridItem display="grid" placeItems="center" p={3}>
         {" "}
-        <GatsbyImage image={getImage(image)} alt={title} />
+        <Box display="grid" placeItems="center" position="relative">
+          <GatsbyImage
+            image={getImage(image)}
+            alt={title}
+            style={{ gridArea: "1/1" }}
+          />
+          <Center
+            style={{
+              gridArea: "1/1",
+              position: "relative",
+            }}
+          >
+            <WorkModal title={title} id={id} isVideo videoLink={media} />
+          </Center>
+        </Box>
         <Box py={4}>
           <Text color="black" fontWeight="bold">
             {title}
@@ -33,7 +48,10 @@ const WorkItem = ({ title, media, type, schema, image }) => {
   if (type === "Graphic Design" || "Outdoor" || "Print") {
     return (
       <GridItem p={3} textAlign="center">
-        <GatsbyImage image={getImage(image)} alt={title} />
+        <WorkModal title={title} id={id} image={image} >
+          <GatsbyImage image={getImage(image)} alt={title} />
+        </WorkModal>
+
         <Box py={4}>
           <Text color="black" fontWeight="bold">
             {title}

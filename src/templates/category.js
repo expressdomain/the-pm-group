@@ -43,7 +43,7 @@ const Category = data => {
               <Fade bottom key={item.title}>
                 <WorkItem
                   title={item.title}
-                  type={title}
+                  type={item.videoFields.videoLink ? "Television" : title}
                   image={
                     item.theWorkImage?.photoLink?.localFile?.childImageSharp ||
                     item.videoFields.videoCoverImage?.localFile.childImageSharp

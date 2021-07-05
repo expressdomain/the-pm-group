@@ -23,6 +23,8 @@ const Hero = ({
   cta2,
   cta2Link,
 }) => {
+  // Set up two different Hero variants
+
   return (
     <Box bg="gray.800" as="section" minH="140px" position="relative">
       <Box py="32" position="relative" zIndex={5}>
@@ -78,7 +80,6 @@ const Hero = ({
                 See our Work
               </Button>
             </Stack>
-            <p>(Placeholder Image)</p>
           </Box>
         </Box>
       </Box>

@@ -28,6 +28,10 @@ export const gsaCapabilitiesPageQuery = graphql`
       uri
       nodeType
       seo {
+        breadcrumbs {
+          text
+          url
+        }
         title
         metaDesc
         focuskw

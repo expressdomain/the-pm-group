@@ -83,6 +83,34 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-breadcrumb`,
+      options: {
+        // defaultCrumb: optional To create a default crumb
+        // see Click Tracking default crumb example below
+        useAutoGen: true,
+        autoGenHomeLabel: `Home`,
+        defaultCrumb: {
+          // location: required and must include the pathname property
+          location: {
+            pathname: "/",
+          },
+          // crumbLabel: required label for the default crumb
+          crumbLabel: "Home",
+          // all other properties optional
+          crumbSeparator: " / ",
+        },
+        // generate breadcrumbs for (see below for details).
+        exclude: [
+          `**/dev-404-page/**`,
+          `**/404/**`,
+          `**/404.html`,
+          `**/offline-plugin-app-shell-fallback/**`
+        ],
+        // usePathPrefix: optional, if you are using pathPrefix above
+        // usePathPrefix: '/blog',
+      }
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
