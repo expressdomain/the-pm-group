@@ -17,20 +17,20 @@ import Fade from "react-reveal/Fade"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/components/effect-coverflow/effect-coverflow.min.css"
 
-import 'swiper/swiper.scss';
-import 'swiper/components/navigation/navigation.scss';
-import 'swiper/components/pagination/pagination.scss';
-import 'swiper/components/scrollbar/scrollbar.scss';
+import "swiper/swiper.scss"
+import "swiper/components/navigation/navigation.scss"
+import "swiper/components/pagination/pagination.scss"
+import "swiper/components/scrollbar/scrollbar.scss"
 
 import SwiperCore, {
   Pagination,
   Navigation,
   Mousewheel,
-  EffectCoverflow
-} from 'swiper/core';
+  EffectCoverflow,
+} from "swiper/core"
 
 // install Swiper modules
-SwiperCore.use([Pagination, Navigation, Mousewheel, EffectCoverflow]);
+SwiperCore.use([Pagination, Navigation, Mousewheel, EffectCoverflow])
 
 const Hero = ({
   image,
@@ -45,7 +45,7 @@ const Hero = ({
   // Set up two different Hero variants
 
   return (
-    <Box  bg="gray.800" as="section" minH="140px" position="relative">
+    <Box bg="gray.800" as="section" minH="140px" position="relative">
       <Grid templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)"]}>
         <GridItem
           maxW={{
@@ -105,24 +105,24 @@ const Hero = ({
             <Swiper
               onSlideChange={() => console.log("slide change")}
               onSwiper={swiper => console.log(swiper)}
-              slidesPerView={'auto'}
+              slidesPerView={"auto"}
               spaceBetween={30}
               pagination={{
-                "clickable": true
+                clickable: true,
               }}
               navigation
               grabCursor
               autoplay={{
-                "delay": 2500,
-                "disableOnInteraction": false
+                delay: 2500,
+                disableOnInteraction: false,
               }}
               mousewheel
               coverflowEffect={{
-                "rotate": 50,
-                "stretch": 0,
-                "depth": 100,
-                "modifier": 1,
-                "slideShadows": true
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
               }}
             >
               <SwiperSlide>
