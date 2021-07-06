@@ -17,6 +17,7 @@ import "@fontsource/montserrat/600.css"
 import "@fontsource/montserrat/700.css"
 import { SEOContext } from "gatsby-plugin-wpgraphql-seo"
 import Footer from "../Footer"
+import "../layout.scss"
 
 const Layout = ({ children }) => {
   const {

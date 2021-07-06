@@ -8,12 +8,12 @@ import {
   ModalCloseButton,
   useDisclosure,
   IconButton,
-  Box
+  Box,
 } from "@chakra-ui/react"
 import { AiFillPlayCircle } from "react-icons/ai"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-const WorkModal = ({ title, id, videoLink, isVideo,image, children }) => {
+const WorkModal = ({ title, id, videoLink, isVideo, image, children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
 
@@ -74,7 +74,13 @@ const WorkModal = ({ title, id, videoLink, isVideo,image, children }) => {
   } else {
     return (
       <>
-        <Box onClick={onOpen} ref={btnRef} id={id} display="grid" cursor="pointer">
+        <Box
+          onClick={onOpen}
+          ref={btnRef}
+          id={id}
+          display="grid"
+          cursor="pointer"
+        >
           {children}
         </Box>
         <Modal
@@ -100,7 +106,7 @@ const WorkModal = ({ title, id, videoLink, isVideo,image, children }) => {
             <ModalHeader>{title}</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-                <GatsbyImage image={getImage(image)} alt={title} />
+              <GatsbyImage image={getImage(image)} alt={title} />
             </ModalBody>
           </ModalContent>
         </Modal>

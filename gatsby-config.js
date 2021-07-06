@@ -104,11 +104,11 @@ module.exports = {
           `**/dev-404-page/**`,
           `**/404/**`,
           `**/404.html`,
-          `**/offline-plugin-app-shell-fallback/**`
+          `**/offline-plugin-app-shell-fallback/**`,
         ],
         // usePathPrefix: optional, if you are using pathPrefix above
         // usePathPrefix: '/blog',
-      }
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,

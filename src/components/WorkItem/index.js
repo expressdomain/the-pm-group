@@ -48,7 +48,7 @@ const WorkItem = ({ title, media, type, schema, image, id }) => {
   if (type === "Graphic Design" || "Outdoor" || "Print") {
     return (
       <GridItem p={3} textAlign="center">
-        <WorkModal title={title} id={id} image={image} >
+        <WorkModal title={title} id={id} image={image}>
           <GatsbyImage image={getImage(image)} alt={title} />
         </WorkModal>
 
