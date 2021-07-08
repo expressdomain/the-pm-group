@@ -1,3 +1,18 @@
 .breadcrumb {
   font-size: 1rem !important;
 }
+
+@media screen and (min-width: 1960px) {
+  .communityGrid {
+    grid-template-columns: repeat(8, 1fr) !important;
+  }
+}
+
+@media screen and (min-width: 3000px) {
+  .text-block-copy-wrapper h2 {
+    font-size: 3rem !important;
+  }
+  .wpb_wrapper p {
+    line-height: 2rem;
+  }
+}

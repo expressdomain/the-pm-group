@@ -46,6 +46,7 @@
     "react-icons": "^4.2.0",
     "react-reveal": "^1.2.2",
     "sass": "^1.34.1",
+    "sharp": "^0.28.3",
     "swiper": "^6.7.5"
   },
   "devDependencies": {
@@ -60,7 +61,7 @@
   "license": "0BSD",
   "scripts": {
     "build": "cross-env GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
-    "develop": "GATSBY_CONCURRENT_DOWNLOAD=15 gatsby develop",
+    "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
