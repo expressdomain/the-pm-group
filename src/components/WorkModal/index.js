@@ -96,7 +96,7 @@ const WorkModal = ({ title, id, videoLink, isVideo, image, children }) => {
         >
           <ModalOverlay background={`blackAlpha.600`} />
           <ModalContent
-            zIndex={99999999999999}
+            zIndex={9999999999999999}
             opacity={1}
             style={{ opacity: `100%!important` }}
             width={`fit-content`}

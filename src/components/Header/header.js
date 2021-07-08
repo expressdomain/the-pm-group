@@ -42,7 +42,7 @@ const Header = ({ siteTitle }) => {
       pb={2}
       position="fixed"
       width="100%"
-      zIndex="100"
+      zIndex="10"
     >
       <header>
         <NavBar menu={data.wpMenu.menuItems} siteTitle={siteTitle} />

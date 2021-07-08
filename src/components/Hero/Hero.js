@@ -1,26 +1,22 @@
 import {
   Box,
   Button,
-  Flex,
   Heading,
-  HStack,
-  Skeleton,
   Stack,
   Text,
   Grid,
   GridItem,
 } from "@chakra-ui/react"
 import * as React from "react"
-import { HiChevronRight } from "react-icons/hi"
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Fade from "react-reveal/Fade"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/components/effect-coverflow/effect-coverflow.min.css"
 
 import "swiper/swiper.scss"
-import "swiper/components/navigation/navigation.scss"
-import "swiper/components/pagination/pagination.scss"
-import "swiper/components/scrollbar/scrollbar.scss"
+
+
+import "./Hero.scss"
 
 import SwiperCore, {
   Pagination,
@@ -28,6 +24,7 @@ import SwiperCore, {
   Mousewheel,
   EffectCoverflow,
 } from "swiper/core"
+import Link from "../Link/Link"
 
 // install Swiper modules
 SwiperCore.use([Pagination, Navigation, Mousewheel, EffectCoverflow])
@@ -37,48 +34,62 @@ const Hero = ({
   alt,
   title,
   caption,
+  slides,
   cta1,
   cta1Link,
   cta2,
   cta2Link,
 }) => {
   // Set up two different Hero variants
+  console.log(slides)
 
   return (
-    <Box bg="gray.800" as="section" minH="140px" position="relative">
-      <Grid templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)"]}>
+    <Box bg="transparent" as="section" minH="140px" position="relative">
+      <Grid
+        templateColumns={[
+          "repeat(1, 100%)",
+          "repeat(1, 100%)",
+          "repeat(1, 100%)",
+          "repeat(2, 50%)",
+        ]}
+      >
         <GridItem
           maxW={{
             base: "xl",
             md: "7xl",
           }}
-          mx="auto"
           px={{
             base: "6",
             md: "8",
           }}
-          py="32"
-          color={`white`}
+          py={[32, 32, 32, 0]}
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          color={`black`}
         >
           <Heading as="h1" size="xl" fontWeight="extrabold">
             <Fade bottom>{title}</Fade>
           </Heading>
-          <Text
-            fontSize={{
-              md: "2xl",
-            }}
-            mt="4"
-            maxW="lg"
-          >
-            {caption}
-          </Text>
+          {caption && (
+            <Text
+              fontSize={{
+                md: "2xl",
+              }}
+              mt="4"
+              maxW="lg"
+            >
+              {caption}
+            </Text>
+          )}
           <Stack
             direction={{
               base: "column",
               md: "row",
             }}
-            mt="10"
             spacing="4"
+            h="fit-content"
+            mt={10}
           >
             <Button
               as="a"
@@ -100,45 +111,60 @@ const Hero = ({
             </Button>
           </Stack>
         </GridItem>
-        <GridItem>
-          <Box>
+        <GridItem maxW="100%">
+          <Box maxW="100%">
             <Swiper
               onSlideChange={() => console.log("slide change")}
               onSwiper={swiper => console.log(swiper)}
-              slidesPerView={"auto"}
-              spaceBetween={30}
+              slidesPerView="auto"
+              spaceBetween={10}
               pagination={{
                 clickable: true,
               }}
+              effect="fade"
               navigation
               grabCursor
-              autoplay={{
-                delay: 2500,
-                disableOnInteraction: false,
-              }}
               mousewheel
-              coverflowEffect={{
-                rotate: 50,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true,
-              }}
+              // coverflowEffect={{
+              //   rotate: 50,
+              //   stretch: 0,
+              //   depth: 100,
+              //   modifier: 1,
+              //   slideShadows: true,
+              // }}
             >
-              <SwiperSlide>
-                <GatsbyImage
-                  image={image}
-                  style={{ height: "100%", width: "100%" }}
-                  alt={alt}
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <GatsbyImage
-                  image={image}
-                  style={{ height: "100%", width: "100%" }}
-                  alt={alt}
-                />
-              </SwiperSlide>
+              {slides &&
+                slides.map(slide => (
+                  <SwiperSlide>
+                    <Link to={slide.link.url} textDecoration="none" aria-label={slide.title}>
+                    <Box py={4} mx={2} display="grid" position="relative">
+                      <GatsbyImage
+                        image={getImage(slide.image.localFile.childImageSharp)}
+                        style={{
+                          maxWidth: "100%",
+                          borderRadius: "10px",
+                          gridArea: "1/1",
+                        }}
+                        alt={slide.title}
+                      />
+                      <Box
+                        gridArea="1/1"
+                        zIndex={2}
+                        bg={"blackAlpha.700"}
+                        height="fit-content"
+                        alignSelf="end"
+                        borderBottomRadius={"10px"}
+                        py={8}
+                        px={4}
+                      >
+                        {slide.title && <Text color="white" fontWeight="bold" textDecoration="none">{slide.title}</Text>}
+
+                        {slide.caption && <Text color="white" textDecoration="none">{slide.caption}</Text>}
+                      </Box>
+                    </Box>
+                    </Link>
+                  </SwiperSlide>
+                ))}
             </Swiper>
           </Box>
         </GridItem>

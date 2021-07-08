@@ -10,7 +10,6 @@ import Features from "../components/Features"
 import ParallaxCTA from "../components/ParallaxCTA"
 import ContactForm from "../components/ContactForm"
 import CompaniesGrid from "../components/CompaniesGrid"
-import { Skeleton } from "@chakra-ui/react"
 import { getImage } from "gatsby-plugin-image"
 
 const IndexPage = ({ data: { wpPage, gfForm } }) => {
@@ -18,6 +17,7 @@ const IndexPage = ({ data: { wpPage, gfForm } }) => {
   const heroImage = wpPage?.homeFields?.hero?.heroImages[0]?.image
   const heroTitle = wpPage?.homeFields?.headline
   const heroCaption = wpPage?.homeFields?.subcaption
+  const slides = wpPage?.homeFields?.hero?.slider
   //  Primary CTA Fields :
   const ctaItems = wpPage?.homeFields?.primaryCta?.primaryCtaFields
   const ctaLink = wpPage?.homeFields?.primaryCta?.ctaLink.url
@@ -49,6 +49,7 @@ const IndexPage = ({ data: { wpPage, gfForm } }) => {
         alt={heroTitle}
         title={heroTitle}
         caption={heroCaption}
+        slides={slides}
       />
       {/* <Skeleton height={500}></Skeleton> */}
       <PrimaryCTA items={ctaItems} link={ctaLink} ctaText={ctaText} />
@@ -160,6 +161,26 @@ export const pageQuery = graphql`
                 }
               }
               description
+            }
+          }
+          slider {
+            caption
+            title
+            image {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(
+                    quality: 90
+                    placeholder: BLURRED
+                    layout: CONSTRAINED
+                    formats: [AVIF, WEBP]
+                  )
+                }
+              }
+            }
+            link {
+              url
+              target
             }
           }
         }
