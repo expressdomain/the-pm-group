@@ -13,7 +13,6 @@
 
 // Styles for ultra-wide screens
 @media screen and (min-width: 3001px) {
-
   .aboutTeamGrid {
     grid-template-columns: repeat(7, 1fr) !important;
   }
@@ -28,5 +27,53 @@
 @media screen and (min-width: 4800px) {
   .aboutTeamGrid {
     grid-template-columns: repeat(10, 1fr) !important;
+  }
+}
+
+
+.breadcrumb {
+  font-size: 1rem !important;
+}
+
+.breadcrumb__list__item {
+  text-transform: capitalize;
+}
+
+.aligncenter {
+  display: block;
+  margin: 20px auto 0px auto !important;
+}
+
+// Styles for ultra-wide screens
+@media screen and (min-width: 3001px) {
+
+  .aboutTeamGrid {
+    grid-template-columns: repeat(7, 1fr) !important;
+  }
+}
+
+@media screen and (min-width: 1960px) {
+  .communityGrid {
+    grid-template-columns: repeat(8, 1fr) !important;
+  }
+}
+
+@media screen and (min-width: 4800px) {
+  .aboutTeamGrid {
+    grid-template-columns: repeat(10, 1fr) !important;
+  }
+}
+
+@media screen and (min-width: 3000px) {
+  .text-block-copy-wrapper {
+    padding: 8rem 11rem;
+  }
+
+  .text-block-copy-wrapper h2 {
+    font-size: 3rem !important;
+  }
+
+  .wpb_wrapper p {
+    line-height: 2rem;
   }
 }

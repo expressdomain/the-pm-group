@@ -5,7 +5,7 @@ import Link from "../Link/Link"
 
 const PrimaryCTA = ({ items, link, ctaText }) => {
   return (
-    <Box bgColor={`#16171d`} maxWidth="100%" position="relative" py={19}>
+    <Box bgColor={`#1A202C`} maxWidth="100%" position="relative" py={19}>
       <Container
         display={["grid", "grid", "grid", "flex"]}
         placeItems="center"

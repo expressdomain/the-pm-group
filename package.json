@@ -46,6 +46,7 @@
     "react-icons": "^4.2.0",
     "react-reveal": "^1.2.2",
     "sass": "^1.34.1",
+    "sharp": "^0.28.3",
     "swiper": "^6.7.5"
   },
   "devDependencies": {
