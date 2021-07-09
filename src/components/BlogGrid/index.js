@@ -43,7 +43,7 @@ const BlogGrid = ({ posts }) => {
                 post.featuredImage &&
                 post.featuredImage.node?.localFile.childImageSharp
               }
-              link={post.link}
+              link={`/${post.slug}`}
               category={post.categories.nodes[0].name}
             />
 
