@@ -4,9 +4,12 @@ import React from "react"
 import { Breadcrumb } from "gatsby-plugin-breadcrumb"
 import Layout from "../components/Layout/Layout"
 import "gatsby-plugin-breadcrumb/gatsby-plugin-breadcrumb.css"
+import BlogGrid from "../components/BlogGrid"
 
 const BlogPage = data => {
-  const { title, seo, content, location, breadcrumb } = data.pageContext
+  const { title, seo, content, location, breadcrumb, related_posts } = data.pageContext
+
+  console.log(related_posts.nodes);
   return (
     <Layout>
       <Seo post={{ seo }} />
@@ -14,7 +17,6 @@ const BlogPage = data => {
         <Heading tag="h1" mb={4}>
           {title}
         </Heading>
-        {/* {console.log()} */}
         <Breadcrumb
           location={location}
           crumbLabel={title}
@@ -22,6 +24,10 @@ const BlogPage = data => {
           crumbs={breadcrumb.crumbs}
         />
         <Box dangerouslySetInnerHTML={{ __html: content }} />
+        <Heading tag="h2" mt={8} >
+          Related Posts
+        </Heading>
+        <BlogGrid posts={related_posts.nodes} />
       </Container>
     </Layout>
   )

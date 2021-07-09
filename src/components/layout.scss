@@ -1,3 +1,12 @@
 .breadcrumb {
   font-size: 1rem !important;
 }
+
+.breadcrumb__list__item {
+  text-transform: capitalize;
+}
+
+.aligncenter {
+  display: block;
+  margin: 20px auto 0px auto !important;
+}

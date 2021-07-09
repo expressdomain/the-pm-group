@@ -18,7 +18,6 @@ const AboutTeamGrid = ({ team }) => {
               item.teamLink && item.teamLink.url && navigate(item.teamLink.url)
             }}
           >
-            {console.log(item)}
             <GatsbyImage
               image={getImage(item.teamImage.localFile.childImageSharp)}
               height={300}

@@ -1,10 +1,10 @@
-import { Box, SimpleGrid, useColorModeValue as mode } from "@chakra-ui/react"
+import { Box, SimpleGrid, Text, useColorModeValue as mode } from "@chakra-ui/react"
 import * as React from "react"
 import BlogCard from "../BlogCard"
 
 const BlogGrid = ({ posts }) => {
   return (
-    <Box as="section" bg={mode("gray.50", "gray.800")} py={[10]}>
+    <Box as="section" bg={posts[0].node ? mode("gray.50", "gray.800") : 'white'} py={[10]}>
       <Box
         maxW={{
           base: "xl",
@@ -25,6 +25,7 @@ const BlogGrid = ({ posts }) => {
           mb="10"
         >
           {posts.map(post => (
+            post.node ?
             <BlogCard
               title={post.node.title}
               description={post.node.excerpt}
@@ -34,7 +35,18 @@ const BlogGrid = ({ posts }) => {
               }
               link={post.node.link}
               category={post.node.categories.nodes[0].name}
+            /> :
+            <BlogCard
+              title={post.title}
+              description={post.excerpt}
+              image={
+                post.featuredImage &&
+                post.featuredImage.node?.localFile.childImageSharp
+              }
+              link={post.link}
+              category={post.categories.nodes[0].name}
             />
+
           ))}
           {/* <Blog
               category="Fashion"

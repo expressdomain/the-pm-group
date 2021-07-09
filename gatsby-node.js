@@ -161,6 +161,33 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               slug
               content
               title
+              related_posts {
+                nodes {
+                  categories {
+                    nodes {
+                      name
+                    }
+                  }
+                  title
+                  slug
+                  excerpt
+                  featuredImage {
+                    node {
+                      localFile {
+                        childImageSharp {
+                          gatsbyImageData(
+                            layout: CONSTRAINED
+                            formats: [AVIF, WEBP]
+                            quality: 90
+                            aspectRatio: 1.66
+                            placeholder: BLURRED
+                          )
+                        }
+                      }
+                    }
+                  }
+                }
+              }
               seo {
                 breadcrumbs {
                   text
@@ -248,6 +275,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         content: post.node.content,
         title: post.node.title,
         seo: post.node.seo,
+        related_posts: post.node.related_posts
       },
     })
   })

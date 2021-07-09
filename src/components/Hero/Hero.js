@@ -15,7 +15,6 @@ import "swiper/components/effect-coverflow/effect-coverflow.min.css"
 
 import "swiper/swiper.scss"
 
-
 import "./Hero.scss"
 
 import SwiperCore, {
@@ -40,8 +39,6 @@ const Hero = ({
   cta2,
   cta2Link,
 }) => {
-  // Set up two different Hero variants
-  console.log(slides)
 
   return (
     <Box bg="transparent" as="section" minH="140px" position="relative">
@@ -50,7 +47,7 @@ const Hero = ({
           "repeat(1, 100%)",
           "repeat(1, 100%)",
           "repeat(1, 100%)",
-          "repeat(2, 50%)",
+          "repeat(1, 100%)",
         ]}
       >
         <GridItem
@@ -62,7 +59,8 @@ const Hero = ({
             base: "6",
             md: "8",
           }}
-          py={[32, 32, 32, 0]}
+          pt={[16]}
+          pb={[4]}
           display="flex"
           flexDirection="column"
           justifyContent="center"
@@ -113,55 +111,83 @@ const Hero = ({
         </GridItem>
         <GridItem maxW="100%">
           <Box maxW="100%">
+
             <Swiper
-              onSlideChange={() => console.log("slide change")}
-              onSwiper={swiper => console.log(swiper)}
               slidesPerView="auto"
               spaceBetween={10}
               pagination={{
                 clickable: true,
               }}
-              effect="fade"
-              navigation
               grabCursor
               mousewheel
-              // coverflowEffect={{
-              //   rotate: 50,
-              //   stretch: 0,
-              //   depth: 100,
-              //   modifier: 1,
-              //   slideShadows: true,
-              // }}
+              cssMode
             >
               {slides &&
                 slides.map(slide => (
                   <SwiperSlide>
-                    <Link to={slide.link.url} textDecoration="none" aria-label={slide.title}>
-                    <Box py={4} mx={2} display="grid" position="relative">
-                      <GatsbyImage
-                        image={getImage(slide.image.localFile.childImageSharp)}
-                        style={{
-                          maxWidth: "100%",
-                          borderRadius: "10px",
-                          gridArea: "1/1",
-                        }}
-                        alt={slide.title}
-                      />
+                    <Link
+                      to={slide.link.url}
+                      textDecoration="none"
+                      aria-label={slide.title}
+                      role="group"
+                      className="hero-link"
+                    >
                       <Box
-                        gridArea="1/1"
-                        zIndex={2}
-                        bg={"blackAlpha.700"}
-                        height="fit-content"
-                        alignSelf="end"
-                        borderBottomRadius={"10px"}
-                        py={8}
-                        px={4}
+                        py={4}
+                        mx={2}
+                        display="grid"
+                        position="relative"
+                        borderRadius="10px"
                       >
-                        {slide.title && <Text color="white" fontWeight="bold" textDecoration="none">{slide.title}</Text>}
+                        <GatsbyImage
+                          image={getImage(
+                            slide.image.localFile.childImageSharp
+                          )}
+                          style={{
+                            maxWidth: "100%",
+                            borderRadius: "10px!important",
+                            gridArea: "1/1",
+                          }}
+                          className="image-slider"
+                          alt={slide.title}
+                        />
+                        <Box
+                          gridArea="1/1"
+                          zIndex={2}
+                          bg={"blackAlpha.700"}
+                          height="fit-content"
+                          alignSelf="end"
+                          borderBottomRadius={"10px"}
+                          py={8}
+                          px={4}
+                          display="none"
+                          transition={`all .3s ease-in-out`}
+                          textDecoration="none"
+                          _groupHover={{
+                            display: 'grid',
+                            transition: `all .3s ease-in-out`
+                          }}
+                        >
+                          <Fade bottom>
+                          {slide.title && (
+                            <Text
+                              color="white"
+                              fontWeight="bolder"
 
-                        {slide.caption && <Text color="white" textDecoration="none">{slide.caption}</Text>}
+                            >
+                              {slide.title}
+                            </Text>
+                          )}
+
+                          {slide.caption && (
+                            <Text color="white" textDecoration="none">
+                              {slide.caption}
+                            </Text>
+                          )}
+                          </Fade>
+
+                        </Box>
                       </Box>
-                    </Box>
                     </Link>
                   </SwiperSlide>
                 ))}

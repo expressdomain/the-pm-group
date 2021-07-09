@@ -91,7 +91,7 @@ const WorkModal = ({ title, id, videoLink, isVideo, image, children }) => {
           initialFocusRef={btnRef}
           finalFocusRef={btnRef}
           key={id}
-          size="4xl"
+          size="xl"
           aria-label={id}
         >
           <ModalOverlay background={`blackAlpha.600`} />
