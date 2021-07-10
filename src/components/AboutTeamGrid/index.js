@@ -8,15 +8,19 @@ const AboutTeamGrid = ({ team }) => {
   // const headshots = getImage(item.teamImage.localFile.childImageSharp)
   return (
     <Box className="aboutTeamWrapper" w="100">
-      <Grid gap={0} gridTemplateColumns={[
-        `repeat(2, 1fr)`, 
-        `repeat(4, 1fr)`, 
-        `repeat(4, 1fr)`, 
-        `repeat(4, 1fr)`, 
-        `repeat(5, 1fr)`, 
-        `repeat(5, 1fr)`, 
-        `repeat(5, 1fr)`]}
-        className="aboutTeamGrid">
+      <Grid
+        gap={0}
+        gridTemplateColumns={[
+          `repeat(2, 1fr)`,
+          `repeat(4, 1fr)`,
+          `repeat(4, 1fr)`,
+          `repeat(4, 1fr)`,
+          `repeat(5, 1fr)`,
+          `repeat(5, 1fr)`,
+          `repeat(5, 1fr)`,
+        ]}
+        className="aboutTeamGrid"
+      >
         {team.map(item => (
           <Box
             p={0}
@@ -44,7 +48,11 @@ const AboutTeamGrid = ({ team }) => {
               py={item.teamJobTitle && 2}
               bgGradient="linear(to-t, blackAlpha.900, blackAlpha.700)"
               w="100%"
-              _hover={{ bgGradient: `linear(to-t, blackAlpha.500, blackAlpha.300)`, transition: `250ms`, padding: `12px` }}
+              _hover={{
+                bgGradient: `linear(to-t, blackAlpha.500, blackAlpha.300)`,
+                transition: `250ms`,
+                padding: `12px`,
+              }}
               _after={{ transition: `250ms` }}
             >
               <Fade bottom>

@@ -2,7 +2,7 @@
   font-size: 1rem !important;
 }
 
-.breadcrumb__list__item {
+.breadcrumb__list__item:nth-of-type(2) {
   text-transform: capitalize;
 }
 
@@ -27,28 +27,6 @@
 @media screen and (min-width: 4800px) {
   .aboutTeamGrid {
     grid-template-columns: repeat(10, 1fr) !important;
-  }
-}
-
-
-.breadcrumb {
-  font-size: 1rem !important;
-}
-
-.breadcrumb__list__item {
-  text-transform: capitalize;
-}
-
-.aligncenter {
-  display: block;
-  margin: 20px auto 0px auto !important;
-}
-
-// Styles for ultra-wide screens
-@media screen and (min-width: 3001px) {
-
-  .aboutTeamGrid {
-    grid-template-columns: repeat(7, 1fr) !important;
   }
 }
 

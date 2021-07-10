@@ -6,7 +6,8 @@ import React from "react"
 const TextImageBlock = ({ title, content, image, isSmall, isLeft }) => {
   const sideImage = getImage(image?.localFile?.childImageSharp)
   return (
-    <Grid className="text-block-component"
+    <Grid
+      className="text-block-component"
       templateColumns={[
         "repeat(1, 1fr)",
         "repeat(1, 1fr)",
@@ -15,7 +16,8 @@ const TextImageBlock = ({ title, content, image, isSmall, isLeft }) => {
       ]}
       mx={`auto`}
     >
-      <Box className="text-block-copy-wrapper"
+      <Box
+        className="text-block-copy-wrapper"
         py={[12, 18, 20]}
         px={[12, 18, isSmall ? 12 : 20, isSmall ? 12 : 32]}
         bg={`#f0f0f0`}

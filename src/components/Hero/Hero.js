@@ -39,9 +39,8 @@ const Hero = ({
   cta2,
   cta2Link,
 }) => {
-
   return (
-    <Box bg="transparent" as="section" minH="140px" position="relative">
+    <Box bg="#1A202C" as="section" minH="140px" position="relative">
       <Grid
         templateColumns={[
           "repeat(1, 100%)",
@@ -64,7 +63,7 @@ const Hero = ({
           display="flex"
           flexDirection="column"
           justifyContent="center"
-          color={`black`}
+          color={`white`}
         >
           <Heading as="h1" size="xl" fontWeight="extrabold">
             <Fade bottom>{title}</Fade>
@@ -75,7 +74,7 @@ const Hero = ({
                 md: "2xl",
               }}
               mt="4"
-              maxW="lg"
+              // maxW="lg"
             >
               {caption}
             </Text>
@@ -111,7 +110,6 @@ const Hero = ({
         </GridItem>
         <GridItem maxW="100%">
           <Box maxW="100%">
-
             <Swiper
               slidesPerView="auto"
               spaceBetween={10}
@@ -164,28 +162,23 @@ const Hero = ({
                           transition={`all .3s ease-in-out`}
                           textDecoration="none"
                           _groupHover={{
-                            display: 'grid',
-                            transition: `all .3s ease-in-out`
+                            display: "grid",
+                            transition: `all .3s ease-in-out`,
                           }}
                         >
                           <Fade bottom>
-                          {slide.title && (
-                            <Text
-                              color="white"
-                              fontWeight="bolder"
+                            {slide.title && (
+                              <Text color="white" fontWeight="bolder">
+                                {slide.title}
+                              </Text>
+                            )}
 
-                            >
-                              {slide.title}
-                            </Text>
-                          )}
-
-                          {slide.caption && (
-                            <Text color="white" textDecoration="none">
-                              {slide.caption}
-                            </Text>
-                          )}
+                            {slide.caption && (
+                              <Text color="white" textDecoration="none">
+                                {slide.caption}
+                              </Text>
+                            )}
                           </Fade>
-
                         </Box>
                       </Box>
                     </Link>

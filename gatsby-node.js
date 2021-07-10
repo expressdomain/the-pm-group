@@ -314,7 +314,6 @@ exports.createSchemaCustomization = ({ actions }) => {
     type WpPost implements Node {
       related_posts: WpNodePost!
     }
-
     type WpNodePost implements Node {
       nodes: [WpPost]
     }

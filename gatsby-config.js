@@ -12,6 +12,8 @@ module.exports = {
     DEV_SSR: true,
     FAST_DEV: true,
     PRESERVE_FILE_DOWNLOAD_CACHE: true,
+    PRESERVE_WEBPACK_CACHE: true,
+    PARALLEL_SOURCING: true,
   },
   plugins: [
     "@chakra-ui/gatsby-plugin",
@@ -38,10 +40,11 @@ module.exports = {
         },
         develop: {
           hardCacheData: true,
+          hardCacheMediaFiles: true,
         },
         schema: {
-          requestConcurrency: 50,
-          timeout: 100000000,
+          requestConcurrency: 100,
+          timeout: 300000,
         },
         type: {
           Post: {

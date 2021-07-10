@@ -5,7 +5,10 @@ import React from "react"
 const CommunityGrid = ({ images }) => {
   return (
     <Box>
-      <Grid className="communityGrid" templateColumns={[`repeat(2, 1fr)`, `repeat(4, 1fr)`]}>
+      <Grid
+        className="communityGrid"
+        templateColumns={[`repeat(2, 1fr)`, `repeat(4, 1fr)`]}
+      >
         {images.map(image => (
           <GridItem>
             <GatsbyImage

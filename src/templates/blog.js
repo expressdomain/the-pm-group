@@ -7,9 +7,14 @@ import "gatsby-plugin-breadcrumb/gatsby-plugin-breadcrumb.css"
 import BlogGrid from "../components/BlogGrid"
 
 const BlogPage = data => {
-  const { title, seo, content, location, breadcrumb, related_posts } = data.pageContext
-
-  console.log(related_posts.nodes);
+  const {
+    title,
+    seo,
+    content,
+    location,
+    breadcrumb,
+    related_posts,
+  } = data.pageContext
   return (
     <Layout>
       <Seo post={{ seo }} />
@@ -24,10 +29,12 @@ const BlogPage = data => {
           crumbs={breadcrumb.crumbs}
         />
         <Box dangerouslySetInnerHTML={{ __html: content }} />
-        <Heading tag="h2" mt={8} >
+        <Heading tag="h2" mt={8}>
           Related Posts
         </Heading>
-        <BlogGrid posts={related_posts.nodes} />
+        {related_posts && related_posts.nodes && (
+          <BlogGrid posts={related_posts.nodes} />
+        )}
       </Container>
     </Layout>
   )
