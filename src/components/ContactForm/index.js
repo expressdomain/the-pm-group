@@ -2,7 +2,7 @@ import { Box, Grid, Heading, Text, Container } from "@chakra-ui/layout"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import React from "react"
 import GravityFormForm from "gatsby-gravityforms-component"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, navigate } from "gatsby"
 import "./form.scss"
 
 const ContactForm = ({ contactData, form, isContactPage }) => {
@@ -41,9 +41,7 @@ const ContactForm = ({ contactData, form, isContactPage }) => {
 
   const handleSuccess = ({ values, reset, confirmations }) => {
     //handle success
-    console.log(values)
-    console.log(reset)
-    console.log(confirmations)
+    navigate(`/thank-you`)
   }
 
   return (

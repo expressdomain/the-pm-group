@@ -2,21 +2,24 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Box, Heading } from "@chakra-ui/layout"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import Fade from "react-reveal/Fade"
 
 const GenericHero = ({ title, image, isSmall }) => {
   return (
     <Box position={`relative`} display="grid" placeItems="center">
       <Box style={{ gridArea: "1/1" }} zIndex={4}>
-        <Heading
-          as="h1"
-          textAlign="center"
-          color={image ? "white" : "black"}
-          fontSize={[`xl`, `xl`, `2xl`, `4xl`]}
-          textTransform="uppercase"
-          px={2}
-        >
-          {title}
-        </Heading>
+        <Fade bottom>
+          <Heading
+            as="h1"
+            textAlign="center"
+            color={image ? "white" : "black"}
+            fontSize={[`xl`, `xl`, `2xl`, `4xl`]}
+            textTransform="uppercase"
+            px={2}
+          >
+            {title}
+          </Heading>
+        </Fade>
       </Box>
       {image && title && (
         <GatsbyImage

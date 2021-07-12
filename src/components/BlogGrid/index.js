@@ -1,6 +1,7 @@
 import { Box, SimpleGrid, useColorModeValue as mode } from "@chakra-ui/react"
 import * as React from "react"
 import BlogCard from "../BlogCard"
+import Fade from "react-reveal/Fade"
 
 const BlogGrid = ({ posts }) => {
   return (
@@ -30,27 +31,31 @@ const BlogGrid = ({ posts }) => {
         >
           {posts.map(post =>
             post.node ? (
-              <BlogCard
-                title={post.node.title}
-                description={post.node.excerpt}
-                image={
-                  post.node.featuredImage &&
-                  post.node.featuredImage.node?.localFile.childImageSharp
-                }
-                link={post.node.link}
-                category={post.node.categories.nodes[0].name}
-              />
+              <Fade bottom>
+                <BlogCard
+                  title={post.node.title}
+                  description={post.node.excerpt}
+                  image={
+                    post.node.featuredImage &&
+                    post.node.featuredImage.node?.localFile.childImageSharp
+                  }
+                  link={post.node.link}
+                  category={post.node.categories.nodes[0].name}
+                />
+              </Fade>
             ) : (
-              <BlogCard
-                title={post.title}
-                description={post.excerpt}
-                image={
-                  post.featuredImage &&
-                  post.featuredImage.node?.localFile.childImageSharp
-                }
-                link={`/${post.slug}`}
-                category={post.categories.nodes[0].name}
-              />
+              <Fade bottom>
+                <BlogCard
+                  title={post.title}
+                  description={post.excerpt}
+                  image={
+                    post.featuredImage &&
+                    post.featuredImage.node?.localFile.childImageSharp
+                  }
+                  link={`/${post.slug}`}
+                  category={post.categories.nodes[0].name}
+                />
+              </Fade>
             )
           )}
           {/* <Blog

@@ -13,7 +13,11 @@ import Fade from "react-reveal/Fade"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/components/effect-coverflow/effect-coverflow.min.css"
 
+// Import Swiper styles
 import "swiper/swiper.scss"
+import "swiper/components/navigation/navigation.scss"
+import "swiper/components/pagination/pagination.scss"
+import "swiper/components/scrollbar/scrollbar.scss"
 
 import "./Hero.scss"
 
@@ -21,12 +25,12 @@ import SwiperCore, {
   Pagination,
   Navigation,
   Mousewheel,
-  EffectCoverflow,
+  A11y,
 } from "swiper/core"
 import Link from "../Link/Link"
 
 // install Swiper modules
-SwiperCore.use([Pagination, Navigation, Mousewheel, EffectCoverflow])
+SwiperCore.use([Mousewheel, Navigation, Pagination, A11y])
 
 const Hero = ({
   image,
@@ -116,9 +120,9 @@ const Hero = ({
               pagination={{
                 clickable: true,
               }}
+              navigation
               grabCursor
               mousewheel
-              cssMode
             >
               {slides &&
                 slides.map(slide => (

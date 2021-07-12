@@ -1,6 +1,7 @@
 import React from "react"
 import { Container, Grid, Box, Text } from "@chakra-ui/layout"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import Fade from "react-reveal/Fade"
 
 const CapabilitiesGrid = ({ capabilities }) => {
   return (
@@ -22,36 +23,38 @@ const CapabilitiesGrid = ({ capabilities }) => {
           mx={0}
         >
           {capabilities.map(item => (
-            <Box
-              display="grid"
-              maxWidth={["100%", 350, 320, 400]}
-              mt={5}
-              mx={0}
-              height="min-content"
-            >
-              <GatsbyImage
-                image={getImage(item.cardImage.localFile)}
-                style={{ maxWidth: `100%` }}
-                alt={item.cardTitle}
-                m={1}
-              />
-              <Text
-                tag="h2"
-                style={{
-                  color: `#2e2e2e`,
-                  textTransform: `uppercase`,
-                  fontFamily: `Montserrat`,
-                  fontSize: `23px`,
-                  fontWeight: `700`,
-                  textAlign: `left`,
-                }}
-                py={2}
+            <Fade bottom>
+              <Box
+                display="grid"
+                maxWidth={["100%", 350, 320, 400]}
+                mt={5}
+                mx={0}
+                height="min-content"
               >
-                {item.cardTitle}
-              </Text>
+                <GatsbyImage
+                  image={getImage(item.cardImage.localFile)}
+                  style={{ maxWidth: `100%` }}
+                  alt={item.cardTitle}
+                  m={1}
+                />
+                <Text
+                  tag="h2"
+                  style={{
+                    color: `#2e2e2e`,
+                    textTransform: `uppercase`,
+                    fontFamily: `Montserrat`,
+                    fontSize: `23px`,
+                    fontWeight: `700`,
+                    textAlign: `left`,
+                  }}
+                  py={2}
+                >
+                  {item.cardTitle}
+                </Text>
 
-              <div dangerouslySetInnerHTML={{ __html: item.cardBody }} />
-            </Box>
+                <div dangerouslySetInnerHTML={{ __html: item.cardBody }} />
+              </Box>
+            </Fade>
           ))}
         </Grid>
       </Box>

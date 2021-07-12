@@ -2,6 +2,7 @@ import { Box, Grid, GridItem, Text, Container } from "@chakra-ui/layout"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import React from "react"
 import Link from "../Link/Link"
+import Fade from "react-reveal/Fade"
 
 const WorkGrid = ({ items }) => {
   return (
@@ -11,41 +12,43 @@ const WorkGrid = ({ items }) => {
         gap={4}
       >
         {items.map(item => (
-          <GridItem key={item.title} _hover={{ color: "secondary" }}>
-            <Link
-              to={item.link.url}
-              display="grid"
-              position="relative"
-              color={`white`}
-              role="group"
-              _hover={{ color: "secondary" }}
-              aria-label={item.title}
-            >
-              <Box
-                display="flex"
-                style={{ gridArea: `1/1` }}
-                h="100%"
-                zIndex={2}
-                p={6}
+          <Fade key={item.id} bottom>
+            <GridItem key={item.title} _hover={{ color: "secondary" }}>
+              <Link
+                to={item.link.url}
+                display="grid"
+                position="relative"
+                color={`white`}
+                role="group"
+                _hover={{ color: "secondary" }}
+                aria-label={item.title}
               >
-                <Text
-                  alignSelf="flex-end"
-                  fontSize={[`sm`, `md`, `xl`]}
-                  fontWeight="bold"
-                  transition={`all .3s ease-in-out`}
-                  textTransform="uppercase"
-                  _groupHover={{ marginBottom: 5 }}
+                <Box
+                  display="flex"
+                  style={{ gridArea: `1/1` }}
+                  h="100%"
+                  zIndex={2}
+                  p={6}
                 >
-                  {item.title}
-                </Text>
-              </Box>
-              <GatsbyImage
-                image={getImage(item.image.localFile.childImageSharp)}
-                alt={item.title}
-                style={{ gridArea: `1/1` }}
-              />
-            </Link>
-          </GridItem>
+                  <Text
+                    alignSelf="flex-end"
+                    fontSize={[`sm`, `md`, `xl`]}
+                    fontWeight="bold"
+                    transition={`all .3s ease-in-out`}
+                    textTransform="uppercase"
+                    _groupHover={{ marginBottom: 5 }}
+                  >
+                    {item.title}
+                  </Text>
+                </Box>
+                <GatsbyImage
+                  image={getImage(item.image.localFile.childImageSharp)}
+                  alt={item.title}
+                  style={{ gridArea: `1/1` }}
+                />
+              </Link>
+            </GridItem>
+          </Fade>
         ))}
       </Grid>
     </Container>

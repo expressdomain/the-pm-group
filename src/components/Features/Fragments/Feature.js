@@ -1,5 +1,7 @@
 import { Box, Stack, Text, useColorModeValue as mode } from "@chakra-ui/react"
 import * as React from "react"
+import Tada from "react-reveal/Tada"
+import Fade from "react-reveal/Fade"
 
 export const Feature = props => {
   const { title, children, icon } = props
@@ -21,12 +23,14 @@ export const Feature = props => {
         borderRadius={`50%`}
         height={`fit-content`}
       >
-        {icon}
+        <Tada>{icon}</Tada>
       </Box>
       <Stack spacing="1">
-        <Text fontWeight="extrabold" fontSize="lg" color={`black`}>
-          {title}
-        </Text>
+        <Fade bottom>
+          <Text fontWeight="extrabold" fontSize="lg" color={`black`}>
+            {title}
+          </Text>
+        </Fade>
         <Box
           color={mode("gray.600", "gray.400")}
           style={

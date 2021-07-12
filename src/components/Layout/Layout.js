@@ -101,7 +101,9 @@ const Layout = ({ children }) => {
         <SkipNavLink />
         <Header siteTitle={seo.schema.siteName} />
         <SkipNavContent>
-          <Box pt={"97.14px"}>{children}</Box>
+          <Box pt={["80.14px", "80.14px", "80.14px", "89.14px", "89.14px"]}>
+            {children}
+          </Box>
         </SkipNavContent>
         <Footer />
       </SEOContext.Provider>

@@ -8,17 +8,9 @@ import BlogGrid from "../components/BlogGrid"
 import { graphql } from "gatsby"
 
 const BlogPage = data => {
-  const {
-    title,
-    seo,
-    content,
-    location,
-    breadcrumb,
-  } = data.pageContext
+  const { title, seo, content, location, breadcrumb } = data.pageContext
 
-  const {
-    related_posts
-  } = data.data.allWpPost.nodes[0]
+  const { related_posts } = data.data.allWpPost.nodes[0]
   return (
     <Layout>
       <Seo post={{ seo }} />

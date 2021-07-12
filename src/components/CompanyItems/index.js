@@ -2,6 +2,7 @@ import React from "react"
 import { Container, Grid, Box, Text } from "@chakra-ui/layout"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Link from "../Link/Link"
+import Fade from "react-reveal/Fade"
 
 const CompanyItems = ({ companies }) => {
   return (
@@ -19,38 +20,40 @@ const CompanyItems = ({ companies }) => {
           mx={0}
         >
           {companies.map(item => (
-            <Box
-              display="grid"
-              maxWidth={[`100%`, 320, 400]}
-              mt={5}
-              mx={0}
-              height="min-content"
-            >
-              <Link to={item.link} aria-label={item.name}>
-                <GatsbyImage
-                  image={getImage(item.image.localFile.childImageSharp)}
-                  style={{ maxWidth: `100%` }}
-                  alt={item.name}
-                  m={1}
-                />
-              </Link>
-              <Text
-                tag="h2"
-                style={{
-                  color: `#2e2e2e`,
-                  textTransform: `uppercase`,
-                  fontFamily: `Montserrat`,
-                  fontSize: `23px`,
-                  fontWeight: `700`,
-                  textAlign: `left`,
-                }}
-                py={2}
+            <Fade bottom>
+              <Box
+                display="grid"
+                maxWidth={[`100%`, 320, 400]}
+                mt={5}
+                mx={0}
+                height="min-content"
               >
-                {item.name}
-              </Text>
+                <Link to={item.link} aria-label={item.name}>
+                  <GatsbyImage
+                    image={getImage(item.image.localFile.childImageSharp)}
+                    style={{ maxWidth: `100%` }}
+                    alt={item.name}
+                    m={1}
+                  />
+                </Link>
+                <Text
+                  tag="h2"
+                  style={{
+                    color: `#2e2e2e`,
+                    textTransform: `uppercase`,
+                    fontFamily: `Montserrat`,
+                    fontSize: `23px`,
+                    fontWeight: `700`,
+                    textAlign: `left`,
+                  }}
+                  py={2}
+                >
+                  {item.name}
+                </Text>
 
-              <div dangerouslySetInnerHTML={{ __html: item.description }} />
-            </Box>
+                <div dangerouslySetInnerHTML={{ __html: item.description }} />
+              </Box>
+            </Fade>
           ))}
         </Grid>
       </Box>

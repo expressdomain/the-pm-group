@@ -40,9 +40,12 @@ const IndexPage = ({ data: { wpPage, gfForm } }) => {
   const form = gfForm
   // Companies Section
   const companies = wpPage?.homeFields?.companies
+  // Custom Schema
+  const schema = wpPage?.customSchema.customSchema
 
   return (
     <Layout>
+      <script type="application/ld+json">{schema}</script>
       <Seo post={wpPage} />
       <Hero
         image={getImage(heroImage.localFile.childImageSharp)}
@@ -114,6 +117,9 @@ export const pageQuery = graphql`
       title
       uri
       nodeType
+      customSchema {
+        customSchema
+      }
       seo {
         title
         metaDesc
@@ -143,7 +149,6 @@ export const pageQuery = graphql`
           raw
         }
       }
-
       homeFields {
         hero {
           heroImages {

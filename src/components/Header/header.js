@@ -39,7 +39,6 @@ const Header = ({ siteTitle }) => {
       bg={mode("white", "gray.700")}
       alignItems="center"
       boxShadow="0 5px 10px rgba(50,50,93,.1), 0 15px 35px rgba(50,50,93,.15), 0 5px 15px rgba(0,0,0,.1)"
-      pb={2}
       position="fixed"
       width="100%"
       zIndex="10"

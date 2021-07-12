@@ -30,10 +30,12 @@ const NavBar = ({ children, menu, siteTitle, ...props }) => {
       <>
         {colorMode === "dark" ? (
           <Link to="/" alt={`Home | ${siteTitle}`} name="Home">
+            <p style={{ display: "none" }}>{siteTitle}</p>
             <Logo alt={siteTitle} />
           </Link>
         ) : (
           <Link to="/" alt={`Home | ${siteTitle}`} name="Home">
+            <p style={{ display: "none" }}>{siteTitle}</p>
             <Logo alt={siteTitle} />
           </Link>
         )}
