@@ -6,7 +6,7 @@ const BlogGrid = ({ posts }) => {
   return (
     <Box
       as="section"
-      bg={posts[0].node ? mode("gray.50", "gray.800") : "white"}
+      bg={posts[0]?.node ? mode("gray.50", "gray.800") : "white"}
       py={[10]}
     >
       <Box

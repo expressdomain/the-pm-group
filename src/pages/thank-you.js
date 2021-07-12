@@ -2,7 +2,7 @@ import React from "react"
 import Layout from "../components/Layout/Layout"
 import { graphql } from "gatsby"
 import Seo from "gatsby-plugin-wpgraphql-seo"
-import { Text, Container, Box } from "@chakra-ui/react"
+import { Container, Box } from "@chakra-ui/react"
 
 const ThankYouPage = ({ data }) => {
   return (

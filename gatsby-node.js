@@ -161,33 +161,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               slug
               content
               title
-              related_posts {
-                nodes {
-                  categories {
-                    nodes {
-                      name
-                    }
-                  }
-                  title
-                  slug
-                  excerpt
-                  featuredImage {
-                    node {
-                      localFile {
-                        childImageSharp {
-                          gatsbyImageData(
-                            layout: CONSTRAINED
-                            formats: [AVIF, WEBP]
-                            quality: 90
-                            aspectRatio: 1.66
-                            placeholder: BLURRED
-                          )
-                        }
-                      }
-                    }
-                  }
-                }
-              }
               seo {
                 breadcrumbs {
                   text
@@ -275,7 +248,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         content: post.node.content,
         title: post.node.title,
         seo: post.node.seo,
-        related_posts: post.node.related_posts
       },
     })
   })
@@ -332,7 +304,7 @@ let headers = {
   Authorization: auth,
 }
 
-exports.createResolvers = ({ createResolvers, schema }) =>
+exports.createResolvers = async ({ createResolvers, schema }) =>
   createResolvers({
     WpPost: {
       related_posts: {
@@ -340,7 +312,7 @@ exports.createResolvers = ({ createResolvers, schema }) =>
           const { databaseId } = source
 
           const response = await fetch(
-            `${process.env.BASE_URL}/wp-json/yarpp/v1/related/${databaseId}`,
+            `${process.env.BASE_URL}/wp-json/yarpp/v1/related/${databaseId}?limit=3`,
             {
               headers: headers,
             }
@@ -359,3 +331,4 @@ exports.createResolvers = ({ createResolvers, schema }) =>
       },
     },
   })
+

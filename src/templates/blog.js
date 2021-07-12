@@ -5,6 +5,7 @@ import { Breadcrumb } from "gatsby-plugin-breadcrumb"
 import Layout from "../components/Layout/Layout"
 import "gatsby-plugin-breadcrumb/gatsby-plugin-breadcrumb.css"
 import BlogGrid from "../components/BlogGrid"
+import { graphql } from "gatsby"
 
 const BlogPage = data => {
   const {
@@ -13,8 +14,11 @@ const BlogPage = data => {
     content,
     location,
     breadcrumb,
-    related_posts,
   } = data.pageContext
+
+  const {
+    related_posts
+  } = data.data.allWpPost.nodes[0]
   return (
     <Layout>
       <Seo post={{ seo }} />
@@ -29,11 +33,13 @@ const BlogPage = data => {
           crumbs={breadcrumb.crumbs}
         />
         <Box dangerouslySetInnerHTML={{ __html: content }} />
-        <Heading tag="h2" mt={8}>
-          Related Posts
-        </Heading>
-        {related_posts && related_posts.nodes && (
-          <BlogGrid posts={related_posts.nodes} />
+        {related_posts.nodes.length > 0 && (
+          <>
+            <Heading tag="h2" mt={8}>
+              Related Posts
+            </Heading>
+            <BlogGrid posts={related_posts.nodes} />
+          </>
         )}
       </Container>
     </Layout>
@@ -41,3 +47,38 @@ const BlogPage = data => {
 }
 
 export default BlogPage
+
+export const relatedPostsQuery = graphql`
+  query BlogPage($id: String!) {
+    allWpPost(filter: { id: { eq: $id } }) {
+      nodes {
+        related_posts {
+          nodes {
+            categories {
+              nodes {
+                name
+              }
+            }
+            title
+            slug
+            featuredImage {
+              node {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData(
+                      layout: CONSTRAINED
+                      formats: [AVIF, WEBP]
+                      quality: 90
+                      aspectRatio: 1.66
+                      placeholder: BLURRED
+                    )
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
