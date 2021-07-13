@@ -62,7 +62,7 @@ const Hero = ({
             base: "6",
             md: "8",
           }}
-          pt={[16]}
+          pt={[8]}
           pb={[4]}
           display="flex"
           flexDirection="column"

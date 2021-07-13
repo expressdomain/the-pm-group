@@ -8,7 +8,12 @@ const CompaniesGrid = ({ companies }) => {
   const { backgroundImage: image, companyItem: items } = companies
   return (
     <Box position={`relative`} display="grid" placeItems="center">
-      <Box style={{ gridArea: `1/1` }} zIndex={4} px={[4, 8, 12]}>
+      <Box
+        style={{ gridArea: `1/1` }}
+        zIndex={4}
+        px={[4, 8, 12]}
+        height={`fit-content`}
+      >
         <Grid
           templateColumns={[
             `repeat(2, 1fr)`,
@@ -24,7 +29,7 @@ const CompaniesGrid = ({ companies }) => {
                 key={item.companyLink}
                 display="grid"
                 placeItems="center"
-                maxWidth={[180, 200, 250]}
+                maxWidth={[100, 180, 200, 250]}
               >
                 <Link to={item.companyLink}>
                   <GatsbyImage

@@ -13,6 +13,7 @@ const PrimaryCTA = ({ items, link, ctaText }) => {
         justifyContent="space-evenly"
         py={[5, 15, 15, 15]}
         pt={[1, 15, 15, 15]}
+        px={[2, 0, 0, 0]}
         maxW={`1300px`}
       >
         <Box
@@ -44,7 +45,7 @@ const PrimaryCTA = ({ items, link, ctaText }) => {
             </>
           ))}
         </Box>
-        <Box mt={[8, 8, 8, 0]} ml={15}>
+        {/* <Box mt={[8, 8, 8, 0]} ml={15}>
           <Link
             to={link}
             py={3}
@@ -60,7 +61,7 @@ const PrimaryCTA = ({ items, link, ctaText }) => {
           >
             {ctaText}
           </Link>
-        </Box>
+        </Box> */}
       </Container>
     </Box>
   )

@@ -4,6 +4,24 @@ import Link from "../../Link/Link"
 
 const NavLink = props => {
   const { isActive, ...rest } = props
+
+  if (props.children === "Connect") {
+    return (
+      <Link
+        {...rest}
+        py={3}
+        px={6}
+        bg="black"
+        color="secondary"
+        fontWeight="bold"
+        _hover={{
+          color: "black",
+          bg: "secondary",
+        }}
+        transition="all 0.3s"
+      />
+    )
+  }
   return (
     <Link
       display="block"

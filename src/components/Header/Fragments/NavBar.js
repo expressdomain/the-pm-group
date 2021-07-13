@@ -29,13 +29,11 @@ const NavBar = ({ children, menu, siteTitle, ...props }) => {
     return (
       <>
         {colorMode === "dark" ? (
-          <Link to="/" alt={`Home | ${siteTitle}`} name="Home">
-            <p style={{ display: "none" }}>{siteTitle}</p>
+          <Link to="/" alt={`Home | ${siteTitle}`} aria-label={siteTitle}>
             <Logo alt={siteTitle} />
           </Link>
         ) : (
-          <Link to="/" alt={`Home | ${siteTitle}`} name="Home">
-            <p style={{ display: "none" }}>{siteTitle}</p>
+          <Link to="/" alt={`Home | ${siteTitle}`} aria-label={siteTitle}>
             <Logo alt={siteTitle} />
           </Link>
         )}
@@ -92,6 +90,24 @@ const NavBar = ({ children, menu, siteTitle, ...props }) => {
       {/* <ThemeToggle /> */}
       <Branding />
       <Box alignItems="center" display="flex" position="relative">
+        {tabletDown && (
+          <Link
+          py={3}
+          px={6}
+          bg="black"
+          color="secondary"
+          fontWeight="bold"
+          _hover={{
+            color: "black",
+            bg: "secondary",
+          }}
+          mr="8"
+          to="/contact-us"
+          transition="all 0.3s"
+        >
+          Connect
+        </Link>
+        )}
         {tabletDown ? (
           <IconButton
             display={{
