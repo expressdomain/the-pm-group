@@ -37,9 +37,9 @@ const BlogCard = props => {
     >
       <Flex direction="column">
         {image ? (
-          <GatsbyImage image={getImage(image)} alt={title} />
+          <GatsbyImage image={getImage(image)} alt={title} objectFit="contain" objectPosition="center" />
         ) : (
-          <Skeleton />
+          <Skeleton height={220}/>
         )}
         <Flex
           direction="column"

@@ -13,7 +13,7 @@ const TextImageBlock = ({ title, content, image, isSmall, isLeft }) => {
         "repeat(1, 1fr)",
         "repeat(1, 1fr)",
         "repeat(1, 1fr)",
-        "repeat(2, 1fr)",
+        "repeat(2, 50%)",
       ]}
       mx={`auto`}
     >

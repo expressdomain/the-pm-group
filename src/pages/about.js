@@ -42,7 +42,7 @@ const AboutPage = ({ data: { wpPage } }) => {
             py={10}
             textTransform="uppercase"
             color="secondary"
-            fontSize="3xl"
+            fontSize={['xl','2xl','3xl']}
           >
             {aboutTeamTitle}
           </Text>
@@ -98,7 +98,7 @@ export const aboutPageQuery = graphql`
               childImageSharp {
                 gatsbyImageData(
                   quality: 90
-                  formats: [AVIF, WEBP]
+                  formats: [AVIF, WEBP, PNG]
                   layout: CONSTRAINED
                   placeholder: BLURRED
                 )
@@ -120,7 +120,7 @@ export const aboutPageQuery = graphql`
               childImageSharp {
                 gatsbyImageData(
                   quality: 90
-                  formats: [AVIF, WEBP]
+                  formats: [AVIF, WEBP, PNG]
                   layout: CONSTRAINED
                   placeholder: BLURRED
                 )
@@ -141,7 +141,7 @@ export const aboutPageQuery = graphql`
                 childImageSharp {
                   gatsbyImageData(
                     quality: 90
-                    formats: [AVIF, WEBP]
+                    formats: [AVIF, WEBP, PNG]
                     layout: CONSTRAINED
                     placeholder: BLURRED
                   )

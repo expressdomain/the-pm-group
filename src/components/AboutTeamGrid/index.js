@@ -11,8 +11,8 @@ const AboutTeamGrid = ({ team }) => {
       <Grid
         gap={0}
         gridTemplateColumns={[
+          `repeat(1, 1fr)`,
           `repeat(2, 1fr)`,
-          `repeat(4, 1fr)`,
           `repeat(4, 1fr)`,
           `repeat(4, 1fr)`,
           `repeat(5, 1fr)`,
@@ -38,6 +38,7 @@ const AboutTeamGrid = ({ team }) => {
               maxWidth={1000}
               objectFit="cover"
               p={0}
+              objectPosition="top"
               alt={item.teamName || `The PM Group`}
             />
 
@@ -45,14 +46,8 @@ const AboutTeamGrid = ({ team }) => {
               px={4}
               position="absolute"
               bottom={0}
-              py={item.teamJobTitle && 2}
               bgGradient="linear(to-t, blackAlpha.900, blackAlpha.700)"
               w="100%"
-              _hover={{
-                bgGradient: `linear(to-t, blackAlpha.500, blackAlpha.300)`,
-                transition: `250ms`,
-                padding: `12px`,
-              }}
               _after={{ transition: `250ms` }}
             >
               <Fade bottom>

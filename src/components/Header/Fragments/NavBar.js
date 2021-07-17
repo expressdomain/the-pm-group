@@ -21,7 +21,7 @@ import SubMenu from "../../SubMenu"
 const NavBar = ({ children, menu, siteTitle, ...props }) => {
   const { colorMode } = useColorMode()
   // tablet breakpoint
-  const [tabletDown] = useMediaQuery(`(max-width: 960px)`)
+  const [tabletDown] = useMediaQuery(`(max-width: 1000px)`)
   const mobileNav = useDisclosure()
   const buttonColor = useColorModeValue(["black"])
 
@@ -47,11 +47,11 @@ const NavBar = ({ children, menu, siteTitle, ...props }) => {
     menu.nodes.forEach(node => {
       if (!node.parentId) {
         links.push(
-          <ListItem key={node.label} my={[4, 4, 0, 0]}>
+          <ListItem key={node.label} my={[4, 4, 0, 0]} mt={isMobile && node.label === "Connect" && 8}>
             {node.label === "Companies" ? (
               <SubMenu title={node.label} links={subLinks} />
             ) : (
-              <NavLink to={node.url} alt={node.label}>
+              <NavLink to={node.url} alt={node.label} >
                 {node.label}
               </NavLink>
             )}
@@ -92,21 +92,21 @@ const NavBar = ({ children, menu, siteTitle, ...props }) => {
       <Box alignItems="center" display="flex" position="relative">
         {tabletDown && (
           <Link
-          py={3}
-          px={6}
-          bg="black"
-          color="secondary"
-          fontWeight="bold"
-          _hover={{
-            color: "black",
-            bg: "secondary",
-          }}
-          mr="8"
-          to="/contact-us"
-          transition="all 0.3s"
-        >
-          Connect
-        </Link>
+            py={3}
+            px={6}
+            bg="black"
+            color="secondary"
+            fontWeight="bold"
+            _hover={{
+              color: "black",
+              bg: "secondary",
+            }}
+            mr="8"
+            to="/contact-us"
+            transition="all 0.3s"
+          >
+            Connect
+          </Link>
         )}
         {tabletDown ? (
           <IconButton

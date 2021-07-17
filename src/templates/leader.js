@@ -12,7 +12,7 @@ const LeadershipTemplate = data => {
   return (
     <Layout>
       <Seo post={{ seo }} />
-      <GenericHero title={title} image={heroPic.localFile.childImageSharp} />
+      <GenericHero title={title} image={heroPic.localFile.childImageSharp}/>
       <PrimaryCTA items={ctaItems} link={ctaLink} ctaText={ctaText} />
       <Container py={4}>
         {name && (

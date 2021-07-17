@@ -19,7 +19,7 @@ const Features = ({ features, isAbout }) => {
     >
       {/* @TODO: Make this field come from backend */}
       {!isAbout && (
-        <Heading as="h2" color="black" textAlign="center" mb={6}>
+        <Heading as="h2" color="black" textAlign="center" mb={6} fontSize={["xl","2xl","3xl"]}>
           WHAT CAN WE DO FOR YOU?
         </Heading>
       )}

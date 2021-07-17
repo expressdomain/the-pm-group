@@ -66,7 +66,7 @@ export const gsaCapabilitiesPageQuery = graphql`
             childImageSharp {
               gatsbyImageData(
                 quality: 90
-                formats: WEBP
+                formats: [AVIF, WEBP, PNG]
                 layout: CONSTRAINED
                 placeholder: BLURRED
               )

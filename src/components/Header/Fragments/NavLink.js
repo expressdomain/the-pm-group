@@ -11,6 +11,7 @@ const NavLink = props => {
         {...rest}
         py={3}
         px={6}
+        mt={10}
         bg="black"
         color="secondary"
         fontWeight="bold"
@@ -22,7 +23,7 @@ const NavLink = props => {
       />
     )
   }
-  return (
+  else return (
     <Link
       display="block"
       py={2}

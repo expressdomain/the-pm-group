@@ -6,43 +6,33 @@ import {
   Text,
   Grid,
   GridItem,
+  useColorModeValue,
+  Flex,
+  keyframes
 } from "@chakra-ui/react"
 import * as React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Fade from "react-reveal/Fade"
-import { Swiper, SwiperSlide } from "swiper/react"
-import "swiper/components/effect-coverflow/effect-coverflow.min.css"
 
-// Import Swiper styles
-import "swiper/swiper.scss"
-import "swiper/components/navigation/navigation.scss"
-import "swiper/components/pagination/pagination.scss"
-import "swiper/components/scrollbar/scrollbar.scss"
+
 
 import "./Hero.scss"
 
-import SwiperCore, {
-  Pagination,
-  Navigation,
-  Mousewheel,
-  A11y,
-} from "swiper/core"
-import Link from "../Link/Link"
-
-// install Swiper modules
-SwiperCore.use([Mousewheel, Navigation, Pagination, A11y])
-
 const Hero = ({
-  image,
-  alt,
   title,
   caption,
   slides,
-  cta1,
-  cta1Link,
-  cta2,
-  cta2Link,
 }) => {
+  const hasMultipleImages = slides.length > 1
+  const bgScrollbar = useColorModeValue(`gray.300`, `gray.800`)
+  const bgScrollThumb = useColorModeValue(`gray.600`, `gray.400`)
+
+  const scaleIn = keyframes`
+    0%   {transform: scale(.9); opacity: 0;}
+    100% {transform: scale(1); opacity: 1;}
+  `
+
+
   return (
     <Box bg="#1A202C" as="section" minH="140px" position="relative">
       <Grid
@@ -69,9 +59,9 @@ const Hero = ({
           justifyContent="center"
           color={`white`}
         >
-          <Heading as="h1" size="xl" fontWeight="extrabold">
-            <Fade bottom>{title}</Fade>
-          </Heading>
+          <Text as="h1" fontSize={['xl','2xl','3xl','4xl']} fontWeight="extrabold">
+            {title}
+          </Text>
           {caption && (
             <Text
               fontSize={{
@@ -107,6 +97,7 @@ const Hero = ({
               size="lg"
               color="black"
               fontSize="md"
+              maxW="fit-content"
             >
               See our Work
             </Button>
@@ -114,81 +105,95 @@ const Hero = ({
         </GridItem>
         <GridItem maxW="100%">
           <Box maxW="100%">
-            <Swiper
-              slidesPerView="auto"
-              spaceBetween={10}
-              pagination={{
-                clickable: true,
+            <Box
+              role="group"
+              aria-label="gallery"
+              aria-describedby="instructions"
+              overflowX={hasMultipleImages ? "scroll" : "auto"}
+              tabIndex="0"
+              bg={'#1A202C'}
+              // mb={2}
+              px={[2, 4]}
+              _focus={{ outline: "none", boxShadow: "outline" }}
+              sx={{
+                WebkitOverflowScrolling: "touch",
+                // "::-webkit-scrollbar": { height: "0.75rem" },
+                "::-webkit-scrollbar-track": {
+                  backgroundColor: bgScrollbar,
+                },
+                "::-webkit-scrollbar-thumb": {
+                  backgroundColor: bgScrollThumb,
+                },
+                "&:hover + #instructions, &:focus + #instructions": {
+                  display: "block",
+                },
               }}
-              navigation
-              grabCursor
-              mousewheel
             >
-              {slides &&
-                slides.map(slide => (
-                  <SwiperSlide>
-                    <Link
-                      to={slide.link.url}
-                      textDecoration="none"
-                      aria-label={slide.title}
-                      role="group"
-                      className="hero-link"
-                    >
-                      <Box
-                        py={4}
-                        mx={2}
-                        display="grid"
-                        position="relative"
-                        borderRadius="10px"
-                      >
-                        <GatsbyImage
-                          image={getImage(
-                            slide.image.localFile.childImageSharp
-                          )}
-                          style={{
-                            maxWidth: "100%",
-                            borderRadius: "10px!important",
-                            gridArea: "1/1",
-                          }}
-                          className="image-slider"
-                          alt={slide.title}
-                        />
-                        <Box
-                          gridArea="1/1"
-                          zIndex={2}
-                          bg={"blackAlpha.700"}
-                          height="fit-content"
-                          alignSelf="end"
-                          borderBottomRadius={"10px"}
-                          py={8}
-                          px={4}
-                          display="none"
-                          transition={`all .3s ease-in-out`}
-                          textDecoration="none"
-                          _groupHover={{
-                            display: "grid",
-                            transition: `all .3s ease-in-out`,
-                          }}
-                        >
-                          <Fade bottom>
-                            {slide.title && (
-                              <Text color="white" fontWeight="bolder">
-                                {slide.title}
-                              </Text>
-                            )}
+              {slides && hasMultipleImages && (
+                <Flex as="section">
+                  {slides.map((slide, i) => (
 
-                            {slide.caption && (
-                              <Text color="white" textDecoration="none">
-                                {slide.caption}
-                              </Text>
-                            )}
-                          </Fade>
-                        </Box>
+                    <Box
+                      py={4}
+                      mx={2}
+                      as="a"
+                      flex={["0 0 75%", "0 0 auto"]}
+                      display="grid"
+                      // whiteSpace="nowrap"
+                      position="relative"
+                      borderRadius="10px"
+                      key={slide.title}
+                      // w="fit-content"
+                      href={slide.link.url}
+                      animation={`${scaleIn} 0.3s ease-in`}
+                    >
+
+                      <GatsbyImage
+                        image={getImage(slide.image.localFile.childImageSharp)}
+                        style={{
+                          maxWidth: "100%",
+                          borderRadius: "10px!important",
+                          gridArea: "1/1",
+                        }}
+                        objectFit="contain"
+                        className="image-slider"
+                        alt={slide.title}
+                      />
+                      <Box
+                        gridArea="1/1"
+                        zIndex={2}
+                        bg={"linear-gradient(0deg, #1d1b1b 20%, rgba(26,32,44,0) 100%)"}
+                        height="fit-content"
+                        alignSelf="end"
+                        borderBottomRadius={"10px"}
+                        py={4}
+                        px={4}
+                        display="grid"
+                        transition={`all .3s ease-in-out`}
+                        textDecoration="none"
+                      >
+
+                          {slide.title && (
+                            <Text color="white" fontWeight="bolder" fontSize={["md","lg"]}>
+                              {slide.title}
+
+                            </Text>
+                          )}
+
+                          {slide.caption && (
+                            <Text color="white" textDecoration="none" fontSize={["md","lg"]}>
+                              {slide.caption}
+                            </Text>
+                          )}
+
                       </Box>
-                    </Link>
-                  </SwiperSlide>
-                ))}
-            </Swiper>
+
+                    </Box>
+
+                  ))}
+                </Flex>
+              )}
+            </Box>
           </Box>
         </GridItem>
       </Grid>

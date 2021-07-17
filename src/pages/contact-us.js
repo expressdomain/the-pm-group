@@ -103,7 +103,7 @@ export const contactPageQuery = graphql`
                   quality: 90
                   placeholder: BLURRED
                   layout: CONSTRAINED
-                  formats: WEBP
+                  formats: [AVIF, WEBP, PNG]
                 )
               }
             }
@@ -124,7 +124,7 @@ export const contactPageQuery = graphql`
                   quality: 90
                   placeholder: BLURRED
                   layout: CONSTRAINED
-                  formats: WEBP
+                  formats: [AVIF, WEBP, PNG]
                 )
               }
             }

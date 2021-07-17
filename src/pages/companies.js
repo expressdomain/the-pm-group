@@ -71,7 +71,7 @@ export const companiesPageQuery = graphql`
                   quality: 90
                   placeholder: BLURRED
                   layout: CONSTRAINED
-                  formats: [AVIF, WEBP]
+                  formats: [AVIF, WEBP, PNG]
                 )
               }
             }
@@ -88,7 +88,7 @@ export const companiesPageQuery = graphql`
                     quality: 90
                     placeholder: BLURRED
                     layout: CONSTRAINED
-                    formats: [AVIF, WEBP]
+                    formats: [AVIF, WEBP, PNG]
                   )
                 }
               }

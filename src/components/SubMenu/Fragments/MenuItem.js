@@ -41,7 +41,7 @@ const MenuItem = props => {
           fontWeight="500"
           transition="0.2s all"
           _groupHover={{
-            color: mode(`white`, `secondary`),
+            color: mode(`black`, `secondary`),
           }}
           color={mode(`black`, `white`)}
         >

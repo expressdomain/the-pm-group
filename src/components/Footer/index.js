@@ -8,7 +8,6 @@ import {
   Heading,
 } from "@chakra-ui/react"
 import * as React from "react"
-import Logo from "../../SVG/Logo"
 import { useStaticQuery, graphql } from "gatsby"
 import { FaFacebook, FaLinkedin, FaYoutube } from "react-icons/fa"
 import Link from "../Link/Link"
@@ -83,9 +82,9 @@ const Footer = () => {
           pt={10}
         >
           <Box flex="1">
-            <Logo />
             <Text mt={4} color="black">
-              The PM Group is the largest Advertising & Marketing Agency in San
+              {/* @TODO: Pull from backend */}
+              <strong>The PM Group</strong> is the largest Advertising & Marketing Agency in San
               Antonio and South Texas. We look forward to connecting with you.
             </Text>
           </Box>

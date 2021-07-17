@@ -4,7 +4,7 @@ import { Box, Heading } from "@chakra-ui/layout"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Fade from "react-reveal/Fade"
 
-const GenericHero = ({ title, image, isSmall }) => {
+const GenericHero = ({ title, image, isSmall, isBlack }) => {
   return (
     <Box position={`relative`} display="grid" placeItems="center">
       <Box style={{ gridArea: "1/1" }} zIndex={4}>
@@ -12,7 +12,7 @@ const GenericHero = ({ title, image, isSmall }) => {
           <Heading
             as="h1"
             textAlign="center"
-            color={image ? "white" : "black"}
+            color={!image || isBlack ? "black" : "white"}
             fontSize={[`xl`, `xl`, `2xl`, `4xl`]}
             textTransform="uppercase"
             px={2}

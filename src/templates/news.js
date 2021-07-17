@@ -203,7 +203,7 @@ export const newsQuery = graphql`
                 gatsbyImageData(
                   quality: 90
                   layout: CONSTRAINED
-                  formats: [AVIF, WEBP]
+                  formats: [AVIF, WEBP, PNG]
                   placeholder: BLURRED
                 )
               }
@@ -262,7 +262,7 @@ export const newsQuery = graphql`
                 childImageSharp {
                   gatsbyImageData(
                     layout: CONSTRAINED
-                    formats: [AVIF, WEBP]
+                    formats: [AVIF, WEBP, PNG]
                     quality: 90
                     aspectRatio: 1.66
                     placeholder: BLURRED
