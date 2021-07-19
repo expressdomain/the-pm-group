@@ -40,7 +40,7 @@ const Category = data => {
             py={8}
             gap={3}
           >
-            {items.map(item => (
+            {items.reverse().map(item => (
               <Fade bottom key={item.title}>
                 <WorkItem
                   title={item.title}

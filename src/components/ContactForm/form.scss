@@ -1,5 +1,6 @@
 .gform_wrapper {
     width: 100%;
+    max-width: 100% !important;
 }
 
 form#gravityform--id-1 {
@@ -32,6 +33,7 @@ form#gravityform--id-1 {
     padding: 10px 20px;
     font-weight: normal;
     text-transform: uppercase;
+    margin-top: 20px;
     color: #201D1D;
     background: #FDBC31 !important;
 

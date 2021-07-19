@@ -69,7 +69,8 @@ const ContactForm = ({ contactData, form, isContactPage }) => {
           {/* { isContactPage ? 'true' : 'false' } */}
           <Box
             py={[6]}
-            px={[12, 16, 18, 24]}
+            px={[12, 16, 18, 10]}
+            maxWidth="100%"
             display="grid"
             // placeItems="center"
             color="black"
@@ -154,6 +155,7 @@ const ContactForm = ({ contactData, form, isContactPage }) => {
               py={[6]}
               px={[12, 16, 18, 10]}
               display="grid"
+              maxWidth="100%"
               // placeItems="center"
             >
               {/* Placeholder Form */}
