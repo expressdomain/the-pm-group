@@ -8,6 +8,7 @@ import BlogGrid from "../components/BlogGrid"
 import { ChevronRightIcon, ChevronLeftIcon } from "@chakra-ui/icons"
 import { Paginated } from "@makotot/paginated"
 import { Container, Grid, Stack, Button, Center } from "@chakra-ui/react"
+import Seo from "gatsby-plugin-wpgraphql-seo"
 
 const NewsWire = ({ data, pageContext }) => {
   // Hero Fields:
@@ -24,6 +25,7 @@ const NewsWire = ({ data, pageContext }) => {
 
   return (
     <Layout>
+      <Seo post={data?.wpPage} />
       <GenericHero title={heroTitle} image={heroImage} isSmall />
       <PrimaryCTA items={ctaItems} link={ctaLink} ctaText={ctaText} />
       <BlogGrid posts={posts} />

@@ -72,3 +72,6 @@ yarn-error.log
 
 # Local Netlify folder
 .netlify
+
+# Packages lock file
+package-lock.json

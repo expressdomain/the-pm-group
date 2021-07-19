@@ -21,7 +21,7 @@ import SubMenu from "../../SubMenu"
 const NavBar = ({ children, menu, siteTitle, ...props }) => {
   const { colorMode } = useColorMode()
   // tablet breakpoint
-  const [tabletDown] = useMediaQuery(`(max-width: 1000px)`)
+  const [tabletDown] = useMediaQuery("(max-width: 1000px)")
   const mobileNav = useDisclosure()
   const buttonColor = useColorModeValue(["black"])
 
@@ -47,7 +47,7 @@ const NavBar = ({ children, menu, siteTitle, ...props }) => {
     menu.nodes.forEach(node => {
       if (!node.parentId) {
         links.push(
-          <ListItem key={node.label} my={[4, 4, 0, 0]} mt={isMobile && node.label === "Connect" && 8}>
+          <ListItem key={node.label} my={[4, 4, 4, 0]} mt={isMobile && node.label === "Connect" && 8}>
             {node.label === "Companies" ? (
               <SubMenu title={node.label} links={subLinks} />
             ) : (

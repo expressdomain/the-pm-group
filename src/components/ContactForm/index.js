@@ -153,10 +153,11 @@ const ContactForm = ({ contactData, form, isContactPage }) => {
             <Box
               className="contact-page-form"
               py={[6]}
-              px={[12, 16, 18, 10]}
-              display="grid"
-              maxWidth="100%"
-              // placeItems="center"
+            px={[12, 16, 18, 10]}
+            maxWidth="100%"
+            display="grid"
+            // placeItems="center"
+            color="black"
             >
               {/* Placeholder Form */}
               <GravityFormForm
