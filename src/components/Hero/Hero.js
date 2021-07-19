@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Heading,
   Stack,
   Text,
   Grid,
@@ -12,7 +11,6 @@ import {
 } from "@chakra-ui/react"
 import * as React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import Fade from "react-reveal/Fade"
 
 
 
