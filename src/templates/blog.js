@@ -59,7 +59,7 @@ export const relatedPostsQuery = graphql`
                   childImageSharp {
                     gatsbyImageData(
                       layout: CONSTRAINED
-                      formats: [AVIF, WEBP, PNG]
+                      formats: [ WEBP, PNG]
                       quality: 90
                       aspectRatio: 1.66
                       placeholder: BLURRED

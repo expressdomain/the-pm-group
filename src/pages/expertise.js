@@ -99,7 +99,7 @@ export const expertisePageQuery = graphql`
               childImageSharp {
                 gatsbyImageData(
                   quality: 90
-                  formats: [AVIF, WEBP, PNG]
+                  formats: [ WEBP, PNG]
                   layout: CONSTRAINED
                   placeholder: BLURRED
                 )
@@ -123,7 +123,7 @@ export const expertisePageQuery = graphql`
                 childImageSharp {
                   gatsbyImageData(
                     quality: 90
-                    formats: [AVIF, WEBP, PNG]
+                    formats: [ WEBP, PNG]
                     layout: CONSTRAINED
                     placeholder: BLURRED
                   )

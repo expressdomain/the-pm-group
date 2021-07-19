@@ -104,7 +104,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
                             gatsbyImageData(
                               quality: 90
                               layout: CONSTRAINED
-                              formats: [AVIF, WEBP, PNG]
+                              formats: [ WEBP, PNG]
                               placeholder: BLURRED
                             )
                           }
@@ -125,7 +125,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
                               quality: 90
                               placeholder: BLURRED
                               layout: CONSTRAINED
-                              formats: [AVIF, WEBP, PNG]
+                              formats: [ WEBP, PNG]
                             )
                           }
                         }
@@ -145,7 +145,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
                             gatsbyImageData(
                               quality: 90
                               layout: CONSTRAINED
-                              formats: [AVIF, WEBP, PNG]
+                              formats: [ WEBP, PNG]
                               placeholder: BLURRED
                             )
                           }

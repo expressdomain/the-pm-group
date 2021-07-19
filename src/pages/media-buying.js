@@ -95,7 +95,7 @@ export const mediaBuyingPageQuery = graphql`
               childImageSharp {
                 gatsbyImageData(
                   quality: 90
-                  formats: [AVIF, WEBP, PNG]
+                  formats: [ WEBP, PNG]
                   layout: CONSTRAINED
                   placeholder: BLURRED
                 )
@@ -111,7 +111,7 @@ export const mediaBuyingPageQuery = graphql`
               childImageSharp {
                 gatsbyImageData(
                   quality: 90
-                  formats: [AVIF, WEBP, PNG]
+                  formats: [ WEBP, PNG]
                   layout: CONSTRAINED
                   placeholder: BLURRED
                 )
@@ -130,7 +130,7 @@ export const mediaBuyingPageQuery = graphql`
                   gatsbyImageData(
                     quality: 90
                     height: 200
-                    formats: [AVIF, WEBP, PNG]
+                    formats: [ WEBP, PNG]
                     layout: CONSTRAINED
                     placeholder: BLURRED
                   )

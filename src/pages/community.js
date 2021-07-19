@@ -108,7 +108,7 @@ export const communityPageQuery = graphql`
                 gatsbyImageData(
                   quality: 90
                   placeholder: BLURRED
-                  formats: [AVIF, WEBP, PNG]
+                  formats: [ WEBP, PNG]
                   layout: CONSTRAINED
                 )
               }
@@ -124,7 +124,7 @@ export const communityPageQuery = graphql`
                 gatsbyImageData(
                   quality: 90
                   placeholder: BLURRED
-                  formats: [AVIF, WEBP, PNG]
+                  formats: [ WEBP, PNG]
                   layout: CONSTRAINED
                 )
               }
@@ -149,7 +149,7 @@ export const communityPageQuery = graphql`
                     quality: 90
                     placeholder: BLURRED
                     layout: CONSTRAINED
-                    formats: [AVIF, WEBP, PNG]
+                    formats: [ WEBP, PNG]
                   )
                 }
               }

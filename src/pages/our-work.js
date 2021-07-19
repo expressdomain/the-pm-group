@@ -76,7 +76,7 @@ export const workPageQuery = graphql`
                   gatsbyImageData(
                     quality: 90
                     placeholder: BLURRED
-                    formats: [AVIF, WEBP, PNG]
+                    formats: [ WEBP, PNG]
                     layout: CONSTRAINED
                   )
                 }
@@ -93,7 +93,7 @@ export const workPageQuery = graphql`
                   layout: CONSTRAINED
                   quality: 90
                   placeholder: BLURRED
-                  formats: [AVIF, WEBP, PNG]
+                  formats: [ WEBP, PNG]
                 )
               }
             }
