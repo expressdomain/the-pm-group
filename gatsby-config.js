@@ -11,7 +11,6 @@ module.exports = {
   flags: {
     DEV_SSR: true,
     FAST_DEV: true,
-    PARALLEL_QUERY_RUNNING: true,
   },
   plugins: [
     "@chakra-ui/gatsby-plugin",
