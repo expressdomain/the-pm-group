@@ -7,7 +7,7 @@ import Fade from "react-reveal/Fade"
 
 const Category = data => {
   // SEO Object:
-  const { seo, title, description, items} = data.pageContext
+  const { seo, title, description, items } = data.pageContext
 
   return (
     <Layout>

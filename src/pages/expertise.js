@@ -44,7 +44,7 @@ const ExpertisePage = ({ data: { wpPage } }) => {
             py={10}
             textTransform="uppercase"
             color="secondary"
-            fontSize={['xl','2xl','3xl']}
+            fontSize={["xl", "2xl", "3xl"]}
           >
             {clientHero}
           </Text>
@@ -99,7 +99,7 @@ export const expertisePageQuery = graphql`
               childImageSharp {
                 gatsbyImageData(
                   quality: 90
-                  formats: [ WEBP, PNG]
+                  formats: [WEBP, PNG]
                   layout: CONSTRAINED
                   placeholder: BLURRED
                 )
@@ -123,7 +123,7 @@ export const expertisePageQuery = graphql`
                 childImageSharp {
                   gatsbyImageData(
                     quality: 90
-                    formats: [ WEBP, PNG]
+                    formats: [WEBP, PNG]
                     layout: CONSTRAINED
                     placeholder: BLURRED
                   )

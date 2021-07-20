@@ -7,20 +7,14 @@ import {
   GridItem,
   useColorModeValue,
   Flex,
-  keyframes
+  keyframes,
 } from "@chakra-ui/react"
 import * as React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-
-
 import "./Hero.scss"
 
-const Hero = ({
-  title,
-  caption,
-  slides,
-}) => {
+const Hero = ({ title, caption, slides }) => {
   const hasMultipleImages = slides.length > 1
   const bgScrollbar = useColorModeValue(`gray.300`, `gray.800`)
   const bgScrollThumb = useColorModeValue(`gray.600`, `gray.400`)
@@ -29,7 +23,6 @@ const Hero = ({
     0%   {transform: scale(.9); opacity: 0;}
     100% {transform: scale(1); opacity: 1;}
   `
-
 
   return (
     <Box bg="#1A202C" as="section" minH="140px" position="relative">
@@ -57,7 +50,11 @@ const Hero = ({
           justifyContent="center"
           color={`white`}
         >
-          <Text as="h1" fontSize={['xl','2xl','3xl','4xl']} fontWeight="extrabold">
+          <Text
+            as="h1"
+            fontSize={["xl", "2xl", "3xl", "4xl"]}
+            fontWeight="extrabold"
+          >
             {title}
           </Text>
           {caption && (
@@ -109,7 +106,7 @@ const Hero = ({
               aria-describedby="instructions"
               overflowX={hasMultipleImages ? "scroll" : "auto"}
               tabIndex="0"
-              bg={'#1A202C'}
+              bg={"#1A202C"}
               // mb={2}
               px={[2, 4]}
               _focus={{ outline: "none", boxShadow: "outline" }}
@@ -130,7 +127,6 @@ const Hero = ({
               {slides && hasMultipleImages && (
                 <Flex as="section">
                   {slides.map((slide, i) => (
-
                     <Box
                       py={4}
                       mx={2}
@@ -145,7 +141,6 @@ const Hero = ({
                       href={slide.link.url}
                       animation={`${scaleIn} 0.3s ease-in`}
                     >
-
                       <GatsbyImage
                         image={getImage(slide.image.localFile.childImageSharp)}
                         style={{
@@ -160,7 +155,9 @@ const Hero = ({
                       <Box
                         gridArea="1/1"
                         zIndex={2}
-                        bg={"linear-gradient(0deg, #1d1b1b 20%, rgba(26,32,44,0) 100%)"}
+                        bg={
+                          "linear-gradient(0deg, #1d1b1b 20%, rgba(26,32,44,0) 100%)"
+                        }
                         height="fit-content"
                         alignSelf="end"
                         borderBottomRadius={"10px"}
@@ -170,24 +167,27 @@ const Hero = ({
                         transition={`all .3s ease-in-out`}
                         textDecoration="none"
                       >
+                        {slide.title && (
+                          <Text
+                            color="white"
+                            fontWeight="bolder"
+                            fontSize={["md", "lg"]}
+                          >
+                            {slide.title}
+                          </Text>
+                        )}
 
-                          {slide.title && (
-                            <Text color="white" fontWeight="bolder" fontSize={["md","lg"]}>
-                              {slide.title}
-
-                            </Text>
-                          )}
-
-                          {slide.caption && (
-                            <Text color="white" textDecoration="none" fontSize={["md","lg"]}>
-                              {slide.caption}
-                            </Text>
-                          )}
-
+                        {slide.caption && (
+                          <Text
+                            color="white"
+                            textDecoration="none"
+                            fontSize={["md", "lg"]}
+                          >
+                            {slide.caption}
+                          </Text>
+                        )}
                       </Box>
-
                     </Box>
-
                   ))}
                 </Flex>
               )}

@@ -15,7 +15,7 @@ const SubMenu = ({ title, links }) => {
   const [show, { toggle }] = useBoolean(false)
   return (
     <Box as="div" pos="relative" height="fit-content" overflow="visible">
-      <Box maxW="7xl" py={["0","0","0","6"]}>
+      <Box maxW="7xl" py={["0", "0", "0", "6"]}>
         <HStack as="button" color={mode("black", "white")} mx="auto">
           <Text
             fontWeight={400}
@@ -24,7 +24,7 @@ const SubMenu = ({ title, links }) => {
             }}
             transition="all 0.3s"
             _hover={{
-              color: `secondary`
+              color: `secondary`,
             }}
           >
             {title}
@@ -53,9 +53,9 @@ const SubMenu = ({ title, links }) => {
           overflow="visible"
           shadow="xl"
         >
-          <Box as="ul" listStyleType="none" px="2" pb="2" >
+          <Box as="ul" listStyleType="none" px="2" pb="2">
             {links.map((link, idx) => (
-              <Box as="li" key={idx} >
+              <Box as="li" key={idx}>
                 <MenuItem href={link.url} title={link.label} />
               </Box>
             ))}

@@ -84,8 +84,9 @@ const Footer = () => {
           <Box flex="1">
             <Text mt={4} color="black">
               {/* @TODO: Pull from backend */}
-              <strong>The PM Group</strong> is the largest Advertising & Marketing Agency in San
-              Antonio and South Texas. We look forward to connecting with you.
+              <strong>The PM Group</strong> is the largest Advertising &
+              Marketing Agency in San Antonio and South Texas. We look forward
+              to connecting with you.
             </Text>
           </Box>
           <Stack

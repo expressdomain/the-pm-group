@@ -104,7 +104,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
                             gatsbyImageData(
                               quality: 90
                               layout: CONSTRAINED
-                              formats: [ WEBP, PNG]
+                              formats: [WEBP, PNG]
                               placeholder: BLURRED
                             )
                           }
@@ -125,7 +125,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
                               quality: 90
                               placeholder: BLURRED
                               layout: CONSTRAINED
-                              formats: [ WEBP, PNG]
+                              formats: [WEBP, PNG]
                             )
                           }
                         }
@@ -145,7 +145,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
                             gatsbyImageData(
                               quality: 90
                               layout: CONSTRAINED
-                              formats: [ WEBP, PNG]
+                              formats: [WEBP, PNG]
                               placeholder: BLURRED
                             )
                           }
@@ -213,7 +213,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         return
       }
       // Work Items
-      const workItems = result.data.workTemplates.edges;
+      const workItems = result.data.workTemplates.edges
       // Posts:
       const posts = result.data.allWpPost.edges
       // Blog Pages:
@@ -246,7 +246,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             })
           })
         }
-        resolve();
+        resolve()
       })
 
       posts.forEach(post => {
@@ -260,7 +260,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             seo: post.node.seo,
           },
         })
-        resolve();
+        resolve()
       })
       Array.from({ length: numPages }).forEach((_, i) => {
         createPage({
@@ -273,7 +273,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             currentPage: i + 1,
           },
         })
-        resolve();
+        resolve()
       })
     })
   })

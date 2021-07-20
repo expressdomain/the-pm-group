@@ -52,7 +52,7 @@ const ContactForm = ({ contactData, form, isContactPage }) => {
         my={4}
         letterSpacing="tight"
         textAlign="center"
-        fontSize={["xl","2xl","3xl"]}
+        fontSize={["xl", "2xl", "3xl"]}
       >
         {title}
       </Heading>
@@ -86,7 +86,9 @@ const ContactForm = ({ contactData, form, isContactPage }) => {
             />
           </Box>
           <Box py={[6]} px={[12, 16, 18, 24]}>
-            <Text mb={4} color="black">{body}</Text>
+            <Text mb={4} color="black">
+              {body}
+            </Text>
             <GatsbyImage
               image={getImage(image.localFile.childImageSharp)}
               alt={`${name}, ${position}`}
@@ -153,11 +155,11 @@ const ContactForm = ({ contactData, form, isContactPage }) => {
             <Box
               className="contact-page-form"
               py={[6]}
-            px={[12, 16, 18, 10]}
-            maxWidth="100%"
-            display="grid"
-            // placeItems="center"
-            color="black"
+              px={[12, 16, 18, 10]}
+              maxWidth="100%"
+              display="grid"
+              // placeItems="center"
+              color="black"
             >
               {/* Placeholder Form */}
               <GravityFormForm

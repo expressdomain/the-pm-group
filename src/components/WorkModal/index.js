@@ -53,7 +53,6 @@ const WorkModal = ({ title, id, videoLink, isVideo, image, children }) => {
             aria-label={id}
             w={800}
             maxWidth="100%"
-
           >
             <ModalHeader>{title}</ModalHeader>
             <ModalCloseButton />

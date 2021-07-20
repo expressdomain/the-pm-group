@@ -22,32 +22,32 @@ const NavLink = props => {
         transition="all 0.3s"
       />
     )
-  }
-  else return (
-    <Link
-      display="block"
-      py={2}
-      px={3}
-      borderRadius="md"
-      transition="all 0.3s"
-      fontWeight="medium"
-      lineHeight="1.25rem"
-      color={mode("black", "white")}
-      aria-current={isActive ? "page" : undefined}
-      _hover={{
-        color: mode("secondary", "black"),
-        textDecoration: mode(
-          "underline solid secondary",
-          "underline solid secondary"
-        ),
-      }}
-      _activeLink={{
-        bg: mode("blue.600", "blue.200"),
-        color: mode("white", "gray.900"),
-      }}
-      {...rest}
-    />
-  )
+  } else
+    return (
+      <Link
+        display="block"
+        py={2}
+        px={3}
+        borderRadius="md"
+        transition="all 0.3s"
+        fontWeight="medium"
+        lineHeight="1.25rem"
+        color={mode("black", "white")}
+        aria-current={isActive ? "page" : undefined}
+        _hover={{
+          color: mode("secondary", "black"),
+          textDecoration: mode(
+            "underline solid secondary",
+            "underline solid secondary"
+          ),
+        }}
+        _activeLink={{
+          bg: mode("blue.600", "blue.200"),
+          color: mode("white", "gray.900"),
+        }}
+        {...rest}
+      />
+    )
 }
 
 export default NavLink
