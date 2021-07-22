@@ -12,6 +12,8 @@ import ContactForm from "../components/ContactForm"
 import CompaniesGrid from "../components/CompaniesGrid"
 import { getImage } from "gatsby-plugin-image"
 
+
+
 const IndexPage = ({ data: { wpPage, gfForm } }) => {
   // Hero Fields
   const heroImage = wpPage?.homeFields?.hero?.heroImages[0]?.image

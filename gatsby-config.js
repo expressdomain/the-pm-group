@@ -35,12 +35,15 @@ module.exports = {
             password: process.env.HTTPBASICAUTH_PASSWORD,
           },
         },
+        production: {
+          hardCacheMediaFiles: true,
+        },
         develop: {
           hardCacheData: true,
           hardCacheMediaFiles: true,
         },
         schema: {
-          requestConcurrency: 10,
+          requestConcurrency: 50,
           timeout: 300000,
         },
         type: {

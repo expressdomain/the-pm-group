@@ -15,19 +15,20 @@ const BlogPage = data => {
     <Layout>
       <Seo post={{ seo }} />
       <Container py={8}>
-        <Heading tag="h1" mb={4}>
-          {title}
-        </Heading>
-        <Breadcrumb
+      <Breadcrumb
           location={location}
           crumbLabel={title}
           crumbSeparator="/"
           crumbs={breadcrumb.crumbs}
         />
+        <Heading as="h1" mb={4} color="black">
+          {title}
+        </Heading>
+
         <Box dangerouslySetInnerHTML={{ __html: content }} />
         {related_posts.nodes.length > 0 && (
           <>
-            <Heading tag="h2" mt={8}>
+            <Heading as="h2" mt={8}>
               Related Posts
             </Heading>
             <BlogGrid posts={related_posts.nodes} />

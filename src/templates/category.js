@@ -9,6 +9,8 @@ const Category = data => {
   // SEO Object:
   const { seo, title, description, items } = data.pageContext
 
+  const things = items.reverse();
+
   return (
     <Layout>
       <Seo post={{ seo }} />
@@ -40,7 +42,7 @@ const Category = data => {
             py={8}
             gap={3}
           >
-            {items.reverse().map(item => (
+            {things.map(item => (
               <Fade bottom key={item.title}>
                 <WorkItem
                   title={item.title}

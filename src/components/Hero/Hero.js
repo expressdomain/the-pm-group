@@ -8,6 +8,7 @@ import {
   useColorModeValue,
   Flex,
   keyframes,
+  useMediaQuery
 } from "@chakra-ui/react"
 import * as React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
@@ -18,6 +19,7 @@ const Hero = ({ title, caption, slides }) => {
   const hasMultipleImages = slides.length > 1
   const bgScrollbar = useColorModeValue(`gray.300`, `gray.800`)
   const bgScrollThumb = useColorModeValue(`gray.600`, `gray.400`)
+  const [isTablet] = useMediaQuery(`(max-width: 1200px)`);
 
   const scaleIn = keyframes`
     0%   {transform: scale(.9); opacity: 0;}
@@ -109,10 +111,10 @@ const Hero = ({ title, caption, slides }) => {
               bg={"#1A202C"}
               // mb={2}
               px={[2, 4]}
-              _focus={{ outline: "none", boxShadow: "outline" }}
+              _focus={{ outline: "none", boxShadow: "none" }}
               sx={{
                 WebkitOverflowScrolling: "touch",
-                // "::-webkit-scrollbar": { height: "0.75rem" },
+                "::-webkit-scrollbar": { height: "0.75rem" },
                 "::-webkit-scrollbar-track": {
                   backgroundColor: bgScrollbar,
                 },
@@ -133,11 +135,11 @@ const Hero = ({ title, caption, slides }) => {
                       as="a"
                       flex={["0 0 75%", "0 0 auto"]}
                       display="grid"
-                      // whiteSpace="nowrap"
+                      whiteSpace="nowrap"
                       position="relative"
                       borderRadius="10px"
                       key={slide.title}
-                      // w="fit-content"
+                      w="fit-content"
                       href={slide.link.url}
                       animation={`${scaleIn} 0.3s ease-in`}
                     >

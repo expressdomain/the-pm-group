@@ -72,7 +72,7 @@ const ContactForm = ({ contactData, form, isContactPage }) => {
             px={[12, 16, 18, 10]}
             maxWidth="100%"
             display="grid"
-            // placeItems="center"
+            placeItems="center"
             color="black"
           >
             {/* Placeholder Form */}
@@ -156,7 +156,7 @@ const ContactForm = ({ contactData, form, isContactPage }) => {
               className="contact-page-form"
               py={[6]}
               px={[12, 16, 18, 10]}
-              maxWidth="100%"
+              maxWidth="100%!important"
               display="grid"
               // placeItems="center"
               color="black"
