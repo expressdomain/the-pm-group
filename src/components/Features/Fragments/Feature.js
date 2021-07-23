@@ -33,11 +33,7 @@ export const Feature = props => {
         </Fade>
         <Box
           color={mode("gray.600", "gray.400")}
-          style={
-            title === "EVENTS, PROMOTIONS, AND FUNDRAISERS" && {
-              textAlign: "center",
-            }
-          }
+          textAlign={title === "EVENTS, PROMOTIONS, AND FUNDRAISERS" && "center"}
         >
           {children}
         </Box>

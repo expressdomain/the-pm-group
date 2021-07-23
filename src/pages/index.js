@@ -12,8 +12,6 @@ import ContactForm from "../components/ContactForm"
 import CompaniesGrid from "../components/CompaniesGrid"
 import { getImage } from "gatsby-plugin-image"
 
-
-
 const IndexPage = ({ data: { wpPage, gfForm } }) => {
   // Hero Fields
   const heroImage = wpPage?.homeFields?.hero?.heroImages[0]?.image
@@ -56,7 +54,6 @@ const IndexPage = ({ data: { wpPage, gfForm } }) => {
         caption={heroCaption}
         slides={slides}
       />
-      {/* <Skeleton height={500}></Skeleton> */}
       <PrimaryCTA items={ctaItems} link={ctaLink} ctaText={ctaText} />
       <TextImageBlock
         title={aboutTitle}

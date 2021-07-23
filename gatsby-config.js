@@ -148,11 +148,11 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    `gatsby-plugin-remove-fingerprints`,
+    // `gatsby-plugin-remove-fingerprints`,
     // `gatsby-plugin-gatsby-cloud`,
-    `gatsby-plugin-preact`,
+    // `gatsby-plugin-preact`,
     `gatsby-plugin-sass`,
-    `gatsby-plugin-netlify`,
+    // `gatsby-plugin-netlify`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

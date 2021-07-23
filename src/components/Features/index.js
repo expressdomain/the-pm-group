@@ -40,16 +40,12 @@ const Features = ({ features, isAbout }) => {
       >
         {isAbout
           ? features.map(feature => (
-              <Feature title={feature.title} icon={<FiMoon color={`black`} />}>
-                <div
+              <Feature title={feature.title} icon={<FiMoon color={`black`} />} key={feature.title}>
+                <Box
                   dangerouslySetInnerHTML={{ __html: feature.content }}
-                  style={
-                    feature.title === "Events, Promos and Fundraisers" && {
-                      marginBottom: `30px`,
-                      justifyContent: `center`,
-                      textAlign: "left",
-                    }
-                  }
+                  mb={feature.title === "Events, Promos and Fundraisers" && '30px'}
+                  justifyContent={feature.title === "Events, Promos and Fundraisers" && 'center'}
+                  textAlign={feature.title === "Events, Promos and Fundraisers" && 'left'}
                 />
               </Feature>
             ))
@@ -57,16 +53,13 @@ const Features = ({ features, isAbout }) => {
               <Feature
                 title={feature.title}
                 icon={<Icon title={feature.title} />}
+                key={feature.title}
               >
-                <div
+                <Box
                   dangerouslySetInnerHTML={{ __html: feature.content }}
-                  style={
-                    feature.title === "Events, Promos and Fundraisers" && {
-                      marginBottom: `30px`,
-                      justifyContent: `center`,
-                      textAlign: "left",
-                    }
-                  }
+                  mb={feature.title === "Events, Promos and Fundraisers" && '30px'}
+                  justifyContent={feature.title === "Events, Promos and Fundraisers" && 'center'}
+                  textAlign={feature.title === "Events, Promos and Fundraisers" && 'left'}
                 />
                 {feature.title === "Events, Promos and Fundraisers" && (
                   <Link

@@ -8,7 +8,7 @@ import {
   useColorModeValue,
   Flex,
   keyframes,
-  useMediaQuery
+  useMediaQuery,
 } from "@chakra-ui/react"
 import * as React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
@@ -19,7 +19,7 @@ const Hero = ({ title, caption, slides }) => {
   const hasMultipleImages = slides.length > 1
   const bgScrollbar = useColorModeValue(`gray.300`, `gray.800`)
   const bgScrollThumb = useColorModeValue(`gray.600`, `gray.400`)
-  const [isTablet] = useMediaQuery(`(max-width: 1200px)`);
+  const [isTablet] = useMediaQuery(`(max-width: 1200px)`)
 
   const scaleIn = keyframes`
     0%   {transform: scale(.9); opacity: 0;}

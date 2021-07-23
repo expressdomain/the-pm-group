@@ -9,7 +9,7 @@ const Category = data => {
   // SEO Object:
   const { seo, title, description, items } = data.pageContext
 
-  const things = items.reverse();
+  const things = items.reverse()
 
   return (
     <Layout>

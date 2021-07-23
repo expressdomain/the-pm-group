@@ -23,26 +23,21 @@ const PrimaryCTA = ({ items, link, ctaText }) => {
           width="100%"
         >
           {items.map(item => (
-            <>
-              <Link
-                to={item.link}
-                color="white"
-                textTransform="uppercase"
-                fontSize="sm"
-                textDecoration="none!important"
-              >
-                {item.title}{" "}
-                {item.title !== "Media Buying" && (
-                  <Text
-                    as="span"
-                    color="secondary"
-                    style={{ fontSize: `20px` }}
-                  >
-                    |{" "}
-                  </Text>
-                )}
-              </Link>
-            </>
+            <Link
+              to={item.link}
+              color="white"
+              textTransform="uppercase"
+              fontSize="sm"
+              textDecoration="none!important"
+              key={item.title}
+            >
+              {item.title}{" "}
+              {item.title !== "Media Buying" && (
+                <Text as="span" color="secondary" style={{ fontSize: `20px` }}>
+                  |{" "}
+                </Text>
+              )}
+            </Link>
           ))}
         </Box>
         {/* <Box mt={[8, 8, 8, 0]} ml={15}>

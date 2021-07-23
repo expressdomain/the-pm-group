@@ -24,7 +24,7 @@ const CompaniesGrid = ({ companies }) => {
           gap={6}
         >
           {items.map(item => (
-            <Fade bottom cascade>
+            <Fade bottom cascade key={item.companyLink}>
               <Box
                 key={item.companyLink}
                 display="grid"

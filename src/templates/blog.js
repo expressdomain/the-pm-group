@@ -15,7 +15,7 @@ const BlogPage = data => {
     <Layout>
       <Seo post={{ seo }} />
       <Container py={8}>
-      <Breadcrumb
+        <Breadcrumb
           location={location}
           crumbLabel={title}
           crumbSeparator="/"
