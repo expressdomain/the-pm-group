@@ -41,7 +41,7 @@ const ContactForm = ({ contactData, form, isContactPage }) => {
 
   const handleSuccess = ({ values, reset, confirmations }) => {
     //handle success
-    navigate(`/thank-you`)
+    navigate(`/thank-you/`)
   }
 
   return (
@@ -69,8 +69,8 @@ const ContactForm = ({ contactData, form, isContactPage }) => {
           {/* { isContactPage ? 'true' : 'false' } */}
           <Box
             py={[6]}
-            px={[12, 16, 18, 10]}
-            maxWidth="100%"
+            px={[4, 16, 18, 10]}
+            maxWidth="100%!important"
             display="grid"
             placeItems="center"
             color="black"
@@ -85,7 +85,7 @@ const ContactForm = ({ contactData, form, isContactPage }) => {
               errorCallback={handleError}
             />
           </Box>
-          <Box py={[6]} px={[12, 16, 18, 24]}>
+          <Box py={[6]} px={[4, 16, 18, 24]}>
             <Text mb={4} color="black">
               {body}
             </Text>
@@ -155,7 +155,7 @@ const ContactForm = ({ contactData, form, isContactPage }) => {
             <Box
               className="contact-page-form"
               py={[6]}
-              px={[12, 16, 18, 10]}
+              // px={[12, 16, 18, 10]}
               maxWidth="100%!important"
               display="grid"
               // placeItems="center"

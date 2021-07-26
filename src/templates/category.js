@@ -7,13 +7,14 @@ import Fade from "react-reveal/Fade"
 
 const Category = data => {
   // SEO Object:
-  const { seo, title, description, items } = data.pageContext
+  const { seo, title, description, items, customSchema: schema } = data.pageContext
 
   const things = items.reverse()
 
   return (
     <Layout>
       <Seo post={{ seo }} />
+      {schema && <script type="application/ld+json">{schema}</script>}
       <Container>
         <Box display="grid" placeItems="center" mt={8}>
           {title && (
@@ -67,7 +68,3 @@ const Category = data => {
 }
 
 export default Category
-
-// export default tvQuery = graphql`
-
-// `

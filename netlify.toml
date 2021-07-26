@@ -1,12 +1,27 @@
 [build]
-  Functions = "lambda"
+  directory = "src/lambda"
+
   Command = "npm run build && npm run build:lambda"
+  [[plugins]]
+    package = "@netlify/plugin-gatsby"
 [[redirects]]
   from = "/agency-news"
   to = "/news"
 [[redirects]]
   from = "/capabilities"
   to = "/expertise"
+[[redirects]]
+  from = "/agency-news/drive-away-for-education-2021/"
+  to = "/news/drive-away-for-education-fundraiser-aims-to-assist-50000-children-this-year"
+[[redirects]]
+  from = "/agency-news/sjrc-texas/"
+  to = "/news/making-a-difference-in-san-antonio-sjrc/"
+[[redirects]]
+  from = "/agency-news/us-inflation-rises/"
+  to = "/news/the-price-of-everything-appears-to-be-rising-as-inflation-grips-america-post-pandemic/"
+[[redirects]]
+  from = "/agency-news/pm-group-supports-100-club/"
+  to = "/news/agency-donates-10000-to-100-club/"
 [[redirects]]
   from = "/agency-news/*"
   to = "/news/:splat"

@@ -31,7 +31,7 @@ const BlogGrid = ({ posts }) => {
         >
           {posts.map(post =>
             post.node ? (
-              <Fade bottom>
+              <Fade bottom key={post.node.title}>
                 <BlogCard
                   title={post.node.title}
                   description={post.node.excerpt}

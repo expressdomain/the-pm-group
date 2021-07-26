@@ -25,7 +25,7 @@ const BlogPage = data => {
           {title}
         </Heading>
 
-        <Box dangerouslySetInnerHTML={{ __html: content }} />
+        <Box className="blog-content" dangerouslySetInnerHTML={{ __html: content }} color="black" sx={{ a: {color: 'blue.500', textDecoration: 'underline'}}} />
         {related_posts.nodes.length > 0 && (
           <>
             <Heading as="h2" mt={8}>

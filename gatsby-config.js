@@ -16,6 +16,15 @@ module.exports = {
     "@chakra-ui/gatsby-plugin",
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
+    `gatsby-plugin-advanced-sitemap`,
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://thepmgrp.com',
+        sitemap: 'https://thepmgrp.com/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/' }]
+      }
+    },
     {
       /**
        * First up is the WordPress source plugin that connects Gatsby

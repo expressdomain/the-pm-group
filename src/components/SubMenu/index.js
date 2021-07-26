@@ -20,7 +20,7 @@ const SubMenu = ({ title, links }) => {
           <Text
             fontWeight={400}
             onClick={() => {
-              navigate("/companies")
+              navigate("/companies/")
             }}
             transition="all 0.3s"
             _hover={{
