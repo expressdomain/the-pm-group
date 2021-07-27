@@ -195,7 +195,7 @@ module.exports = {
       },
     },
     // `gatsby-plugin-remove-fingerprints`,
-    // `gatsby-plugin-gatsby-cloud`,
+    `gatsby-plugin-gatsby-cloud`,
     // `gatsby-plugin-preact`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-netlify`,
