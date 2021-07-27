@@ -7,6 +7,7 @@ module.exports = {
     title: `The PM Group | San Antonio’s Largest Ad and Marketing Agency`,
     description: `The PM Group is San Antonio's top advertising & marketing agency, leading in award-winning and results-driven campaigns with over 30 years of expertise.`,
     author: `@NoisyTrumpet`,
+    siteUrl: `https://pmgroup.com`,
   },
   flags: {
     DEV_SSR: true,
