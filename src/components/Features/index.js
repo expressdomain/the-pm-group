@@ -40,12 +40,23 @@ const Features = ({ features, isAbout }) => {
       >
         {isAbout
           ? features.map(feature => (
-              <Feature title={feature.title} icon={<FiMoon color={`black`} />} key={feature.title}>
+              <Feature
+                title={feature.title}
+                icon={<FiMoon color={`black`} />}
+                key={feature.title}
+              >
                 <Box
                   dangerouslySetInnerHTML={{ __html: feature.content }}
-                  mb={feature.title === "Events, Promos and Fundraisers" && '30px'}
-                  justifyContent={feature.title === "Events, Promos and Fundraisers" && 'center'}
-                  textAlign={feature.title === "Events, Promos and Fundraisers" && 'left'}
+                  mb={
+                    feature.title === "Events, Promos and Fundraisers" && "30px"
+                  }
+                  justifyContent={
+                    feature.title === "Events, Promos and Fundraisers" &&
+                    "center"
+                  }
+                  textAlign={
+                    feature.title === "Events, Promos and Fundraisers" && "left"
+                  }
                 />
               </Feature>
             ))
@@ -57,9 +68,16 @@ const Features = ({ features, isAbout }) => {
               >
                 <Box
                   dangerouslySetInnerHTML={{ __html: feature.content }}
-                  mb={feature.title === "Events, Promos and Fundraisers" && '30px'}
-                  justifyContent={feature.title === "Events, Promos and Fundraisers" && 'center'}
-                  textAlign={feature.title === "Events, Promos and Fundraisers" && 'left'}
+                  mb={
+                    feature.title === "Events, Promos and Fundraisers" && "30px"
+                  }
+                  justifyContent={
+                    feature.title === "Events, Promos and Fundraisers" &&
+                    "center"
+                  }
+                  textAlign={
+                    feature.title === "Events, Promos and Fundraisers" && "left"
+                  }
                 />
                 {feature.title === "Events, Promos and Fundraisers" && (
                   <Link

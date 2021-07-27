@@ -75,3 +75,6 @@ yarn-error.log
 
 # Packages lock file
 package-lock.json
+# @netlify/plugin-gatsby ignores start
+lambda/gatsby
+# @netlify/plugin-gatsby ignores end

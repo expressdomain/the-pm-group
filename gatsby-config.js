@@ -17,14 +17,50 @@ module.exports = {
     "@chakra-ui/gatsby-plugin",
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
-    `gatsby-plugin-advanced-sitemap`,
     {
-      resolve: 'gatsby-plugin-robots-txt',
+      resolve: `gatsby-plugin-advanced-sitemap`,
       options: {
-        host: 'https://thepmgrp.com',
-        sitemap: 'https://thepmgrp.com/sitemap.xml',
-        policy: [{ userAgent: '*', allow: '/' }]
+        additionalSitemaps: [
+          {
+            url: `http://thepmgroup.flywheelsites.com/sitemap_index.xml`,
+          },
+        ]
       }
+    },
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "https://thepmgrp.com",
+        sitemap: "http://thepmgroup.flywheelsites.com/sitemap_index.xml",
+        policy: [
+          {
+            userAgent: "*",
+            allow: "/",
+            disallow: [
+              "/login/",
+              "/cgi-bin/",
+              "/wp-admin/",
+              "/wp-login.php",
+              "/wp-admin/admin-ajax.php",
+              "/wp-",
+              "/?s=",
+              "*&s=",
+              "/search",
+              "/author/",
+              "*?attachment_id=",
+              "*/feed",
+              "*/rss",
+              "*/embed",
+              "/wp-admin/",
+              "/trackback/",
+              "/tag/*",
+              "/category/agency-news/",
+              "/category/uncategorized/",
+              "/product/*",
+            ],
+          },
+        ],
+      },
     },
     {
       /**

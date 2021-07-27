@@ -1,8 +1,9 @@
 [build]
-  directory = "src/lambda"
-
-  Command = "npm run build && npm run build:lambda"
-  [[plugins]]
+  publish= "public"
+  Command = "npm run build"
+[functions]
+  directory = "lambda"
+[[plugins]]
     package = "@netlify/plugin-gatsby"
 [[redirects]]
   from = "/agency-news"

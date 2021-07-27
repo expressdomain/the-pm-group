@@ -29,6 +29,7 @@
     "gatsby-plugin-robots-txt": "^1.6.8",
     "gatsby-plugin-sass": "^4.9.0",
     "gatsby-plugin-sharp": "^3.9.0",
+    "gatsby-plugin-sitemap": "^4.6.0",
     "gatsby-plugin-wpgraphql-seo": "^1.2.0",
     "gatsby-source-filesystem": "^3.9.0",
     "gatsby-source-gravityforms": "^1.0.17",
@@ -47,13 +48,12 @@
     "react-icons": "^4.2.0",
     "react-reveal": "^1.2.2",
     "sass": "^1.34.1",
-    "sharp": "^0.28.3",
-    "swiper": "^6.7.5"
+    "sharp": "^0.28.3"
   },
   "devDependencies": {
     "husky": "^4.3.8",
     "lint-staged": "^10.5.4",
-    "netlify-cli": "^5.2.2",
+    "netlify-cli": "^5.2.8",
     "prettier": "2.2.1"
   },
   "keywords": [

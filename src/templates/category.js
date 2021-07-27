@@ -7,7 +7,13 @@ import Fade from "react-reveal/Fade"
 
 const Category = data => {
   // SEO Object:
-  const { seo, title, description, items, customSchema: schema } = data.pageContext
+  const {
+    seo,
+    title,
+    description,
+    items,
+    customSchema: schema,
+  } = data.pageContext
 
   const things = items.reverse()
 

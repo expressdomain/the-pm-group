@@ -141,7 +141,12 @@ const Footer = () => {
             </Stack>
             <Stack>
               {menuItems.map(item => (
-                <Link to={item.path} aria-label={item.label} color="black" key={item.label}>
+                <Link
+                  to={item.path}
+                  aria-label={item.label}
+                  color="black"
+                  key={item.label}
+                >
                   {item.label}
                 </Link>
               ))}
