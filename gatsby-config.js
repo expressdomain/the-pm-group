@@ -7,7 +7,7 @@ module.exports = {
     title: `The PM Group | San Antonio’s Largest Ad and Marketing Agency`,
     description: `The PM Group is San Antonio's top advertising & marketing agency, leading in award-winning and results-driven campaigns with over 30 years of expertise.`,
     author: `@NoisyTrumpet`,
-    siteUrl: `https://pmgroup.com`,
+    siteUrl: `https://thepmgrp.com`,
   },
   flags: {
     DEV_SSR: true,
@@ -75,12 +75,12 @@ module.exports = {
       options: {
         // the only required plugin option for WordPress is the GraphQL url.
         url: process.env.WPGRAPHQL_URL,
-        auth: {
-          htaccess: {
-            username: process.env.HTTPBASICAUTH_USERNAME,
-            password: process.env.HTTPBASICAUTH_PASSWORD,
-          },
-        },
+        // auth: {
+        //   htaccess: {
+        //     username: process.env.HTTPBASICAUTH_USERNAME,
+        //     password: process.env.HTTPBASICAUTH_PASSWORD,
+        //   },
+        // },
         production: {
           hardCacheMediaFiles: true,
         },
@@ -90,7 +90,8 @@ module.exports = {
         },
         schema: {
           requestConcurrency: 10,
-          timeout: 300000,
+          perPage: 20,
+          timeout: 3000000,
         },
         type: {
           Post: {
@@ -117,10 +118,10 @@ module.exports = {
         // Set to true to enable selfsigned certs in development mode
         allowSelfSigned: false,
         // Basic Auth
-        basicAuth: {
-          username: process.env.HTTPBASICAUTH_USERNAME,
-          password: process.env.HTTPBASICAUTH_PASSWORD,
-        },
+        // basicAuth: {
+        //   username: process.env.HTTPBASICAUTH_USERNAME,
+        //   password: process.env.HTTPBASICAUTH_PASSWORD,
+        // },
         // ignoreFields: [
         //     // Top level fields within the Gravity Forms return
         //     // to ignore.
@@ -155,6 +156,7 @@ module.exports = {
           `**/404.html`,
           `**/offline-plugin-app-shell-fallback/**`,
         ],
+        trailingSlashes: true,
         // usePathPrefix: optional, if you are using pathPrefix above
         // usePathPrefix: '/blog',
       },

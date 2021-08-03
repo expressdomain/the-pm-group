@@ -81,7 +81,7 @@ const Hero = ({ title, caption, slides }) => {
           >
             <Button
               as="a"
-              href="/our-work"
+              href="/our-work/"
               backgroundColor="secondary"
               _hover={{
                 backgroundColor: `black`,

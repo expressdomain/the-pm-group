@@ -69,10 +69,10 @@ exports.handler = async (event, context, callback) => {
     result = await axios({
       method: "post",
       url: apiUrl,
-      auth: {
-        username: process.env.HTTPBASICAUTH_USERNAME,
-        password: process.env.HTTPBASICAUTH_PASSWORD,
-      },
+      // auth: {
+      //   username: process.env.HTTPBASICAUTH_USERNAME,
+      //   password: process.env.HTTPBASICAUTH_PASSWORD,
+      // },
       responseType: "json",
       params: {
         ...authParams,

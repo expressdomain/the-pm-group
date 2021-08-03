@@ -11,6 +11,7 @@ const BlogPage = data => {
   const { title, seo, content, location, breadcrumb } = data.pageContext
 
   const { related_posts } = data.data.allWpPost.nodes[0]
+  // console.log(breadcrumb[0].pathname)
   return (
     <Layout>
       <Seo post={{ seo }} />

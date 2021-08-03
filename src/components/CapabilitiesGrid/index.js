@@ -1,7 +1,6 @@
 import React from "react"
 import { Container, Grid, Box, Text } from "@chakra-ui/layout"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import Fade from "react-reveal/Fade"
 
 const CapabilitiesGrid = ({ capabilities }) => {
   return (
@@ -13,23 +12,23 @@ const CapabilitiesGrid = ({ capabilities }) => {
       <Box style={{ gridArea: `1/1` }}>
         <Grid
           templateColumns={[
-            `repeat(1, 1fr)`,
-            `repeat(2, 1fr)`,
-            `repeat(3, 1fr)`,
+            `repeat(1, 100%)`,
+            `repeat(2, 50%)`,
+            `repeat(3, 33%)`,
           ]}
-          gridAutoRows={[`.5fr`, `.75fr`, `1fr`]}
+          // gridAutoRows={[`.5fr`, `.75fr`, `1fr`]}
           gap={6}
           height="min-content"
           mx={0}
         >
           {capabilities.map(item => (
-            <Fade bottom>
+
               <Box
                 display="grid"
-                maxWidth={["100%", 350, 320, 400]}
                 mt={5}
                 mx={0}
-                height="min-content"
+                h="fit-content"
+                key={item.cardTitle}
               >
                 <GatsbyImage
                   image={getImage(item.cardImage.localFile)}
@@ -54,7 +53,7 @@ const CapabilitiesGrid = ({ capabilities }) => {
 
                 <div dangerouslySetInnerHTML={{ __html: item.cardBody }} />
               </Box>
-            </Fade>
+
           ))}
         </Grid>
       </Box>
