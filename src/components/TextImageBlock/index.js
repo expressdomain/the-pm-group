@@ -10,9 +10,10 @@ const TextImageBlock = ({ title, content, image, isSmall, isLeft }) => {
     <Grid
       className="text-block-component"
       templateColumns={[
-        "repeat(1, 1fr)",
-        "repeat(1, 1fr)",
-        "repeat(1, 1fr)",
+        "repeat(1, 100%)",
+        "repeat(1, 100%)",
+        "repeat(1, 100%)",
+        "repeat(1, 100%)",
         "repeat(2, 50%)",
       ]}
       mx={`auto`}
@@ -44,7 +45,12 @@ const TextImageBlock = ({ title, content, image, isSmall, isLeft }) => {
             alt={title}
             objectFit="cover"
             objectPosition={isLeft && "left"}
-            style={{ gridArea: "1/1", maxWidth: `100%`, objectFit: "contain" }}
+            style={{
+              gridArea: "1/1",
+              width: `100%`,
+              maxWidth: "100%",
+              objectFit: "contain",
+            }}
           />
         ) : (
           <Skeleton height={"100%"} />
