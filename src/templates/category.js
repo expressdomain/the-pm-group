@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Heading, Text } from "@chakra-ui/react"
+import { Box, Container, Grid, Heading } from "@chakra-ui/react"
 import Seo from "gatsby-plugin-wpgraphql-seo"
 import React from "react"
 import Layout from "../components/Layout/Layout"
@@ -34,10 +34,18 @@ const Category = data => {
             </Heading>
           )}
           {description && (
-            <Text textAlign="center" maxWidth={[700]} py={4}>
-              {description}
-            </Text>
+            <Box
+              textAlign="center"
+              maxWidth={[700]}
+              py={4}
+              dangerouslySetInnerHTML={{ __html: description }}
+              sx={{ a: { color: "secondary", fontWeight: "bold" } }}
+            />
+            // <Text textAlign="center" maxWidth={[700]} py={4}>
+            //   {description}
+            // </Text>
           )}
+          {console.log(description)}
         </Box>
         <Box>
           <Grid

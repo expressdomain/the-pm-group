@@ -42,6 +42,7 @@ const TextImageBlock = ({ title, content, image, isSmall, isLeft }) => {
           <GatsbyImage
             image={sideImage}
             alt={title}
+            objectFit="cover"
             objectPosition={isLeft && "left"}
             style={{ gridArea: "1/1", maxWidth: `100%`, objectFit: "contain" }}
           />

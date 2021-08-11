@@ -39,7 +39,7 @@ const BlogGrid = ({ posts }) => {
                     post.node.featuredImage &&
                     post.node.featuredImage.node?.localFile.childImageSharp
                   }
-                  link={post.node.link}
+                  link={`${post.node.link}`}
                   category={post.node.categories.nodes[0].name}
                 />
               </Fade>
@@ -52,7 +52,7 @@ const BlogGrid = ({ posts }) => {
                     post.featuredImage &&
                     post.featuredImage.node?.localFile.childImageSharp
                   }
-                  link={`/${post.slug}`}
+                  link={`/${post.slug}/`}
                   category={post.categories.nodes[0].name}
                 />
               </Fade>

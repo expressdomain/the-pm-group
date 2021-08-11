@@ -2,7 +2,7 @@ import { Grid, Box } from "@chakra-ui/layout"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import React from "react"
 import Link from "../Link/Link"
-import Fade from "react-reveal/Fade"
+import "./styles.scss"
 
 const CompaniesGrid = ({ companies }) => {
   const { backgroundImage: image, companyItem: items } = companies
@@ -24,22 +24,21 @@ const CompaniesGrid = ({ companies }) => {
           gap={6}
         >
           {items.map(item => (
-            <Fade bottom cascade key={item.companyLink}>
-              <Box
-                key={item.companyLink}
-                display="grid"
-                placeItems="center"
-                maxWidth={[100, 180, 200, 250]}
-              >
-                <Link to={item.companyLink}>
-                  <GatsbyImage
-                    image={getImage(item.companyImage.localFile)}
-                    alt={item.companyLink}
-                    style={{ maxWidth: `100%` }}
-                  />
-                </Link>
-              </Box>
-            </Fade>
+            <Box
+              key={item.companyLink}
+              display="grid"
+              placeItems="center"
+              maxWidth={[100, 180, 200, 250]}
+              className="companyItem"
+            >
+              <Link to={item.companyLink}>
+                <GatsbyImage
+                  image={getImage(item.companyImage.localFile)}
+                  alt={item.companyLink}
+                  style={{ maxWidth: `100%` }}
+                />
+              </Link>
+            </Box>
           ))}
         </Grid>
       </Box>

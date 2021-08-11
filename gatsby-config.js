@@ -24,8 +24,8 @@ module.exports = {
           {
             url: `http://thepmgroup.flywheelsites.com/sitemap_index.xml`,
           },
-        ]
-      }
+        ],
+      },
     },
     {
       resolve: "gatsby-plugin-robots-txt",

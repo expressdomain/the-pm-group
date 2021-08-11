@@ -67,11 +67,18 @@
     margin-top: 100px;
   }
 
+  img,
+  figure {
+    max-width: 100% !important;
+  }
+
   iframe {
     max-width: 100% !important;
+    display: block;
+    margin: 0 auto;
 
     @media screen and (max-width: 500px) {
-      max-height: 300px;
+      max-height: 250px;
     }
   }
 }

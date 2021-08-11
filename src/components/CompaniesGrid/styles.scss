@@ -1,0 +1,5 @@
+@media (max-width: 600px) {
+    .companyItem:nth-child(5) {
+        grid-column: 1 / span 2;
+    }
+}

@@ -266,7 +266,7 @@ export const newsQuery = graphql`
                     layout: CONSTRAINED
                     formats: [WEBP, PNG]
                     quality: 90
-                    aspectRatio: 1.66
+                    aspectRatio: 1.90334572
                     placeholder: BLURRED
                   )
                 }
