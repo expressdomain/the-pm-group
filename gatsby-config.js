@@ -142,7 +142,7 @@ module.exports = {
         defaultCrumb: {
           // location: required and must include the pathname property
           location: {
-            pathname: "/",
+            pathname: "https://thepmgrp.com",
           },
           // crumbLabel: required label for the default crumb
           crumbLabel: "Home",
