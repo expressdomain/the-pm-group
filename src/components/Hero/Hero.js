@@ -8,8 +8,10 @@ import {
   useColorModeValue,
   Flex,
   keyframes,
+  IconButton,
 } from "@chakra-ui/react"
 import * as React from "react"
+import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import "./Hero.scss"
@@ -23,6 +25,11 @@ const Hero = ({ title, caption, slides }) => {
     0%   {transform: scale(.9); opacity: 0;}
     100% {transform: scale(1); opacity: 1;}
   `
+
+  const ref = React.useRef()
+  const scroll = scrollOffset => {
+    ref.current.scrollLeft += scrollOffset
+  }
 
   return (
     <Box bg="#1A202C" as="section" minH="140px" position="relative">
@@ -99,17 +106,20 @@ const Hero = ({ title, caption, slides }) => {
           </Stack>
         </GridItem>
         <GridItem maxW="100%">
-          <Box maxW="100%">
+          <Box maxW="100%" position="relative" role="group">
             <Box
               role="group"
               aria-label="gallery"
+              id="hero-gallery"
               aria-describedby="instructions"
               overflowX={hasMultipleImages ? "scroll" : "auto"}
               tabIndex="0"
               bg={"#1A202C"}
               // mb={2}
               px={[2, 4]}
+              ref={ref}
               _focus={{ outline: "none", boxShadow: "none" }}
+              scrollbehavior="smooth"
               sx={{
                 WebkitOverflowScrolling: "touch",
                 "::-webkit-scrollbar": { height: "0.75rem" },
@@ -136,6 +146,11 @@ const Hero = ({ title, caption, slides }) => {
                       whiteSpace="nowrap"
                       position="relative"
                       borderRadius="10px"
+                      sx={{
+                        img: {
+                          borderRadius: "10px",
+                        },
+                      }}
                       key={slide.title}
                       w="fit-content"
                       href={slide.link.url}
@@ -192,6 +207,46 @@ const Hero = ({ title, caption, slides }) => {
                 </Flex>
               )}
             </Box>
+            <Flex
+              _groupHover={{
+                display: "flex",
+                transition: "all .3s ease-in-out",
+              }}
+              opacity={[0, 0, 0, 0, 1]}
+              transition="all .3s ease-in-out"
+              display="none"
+              position="absolute"
+              bottom="47%"
+              w="100%"
+              justifyContent="space-between"
+              zIndex="99"
+              px={8}
+            >
+              <IconButton
+                aria-label="Back"
+                icon={<ArrowBackIcon />}
+                transition="all .3s ease-in-out"
+                id="prev-button"
+                variant="solid"
+                bg="blackAlpha.800"
+                color="secondary"
+                onClick={() =>
+                  scroll(-ref.current.children[0].children[0].clientWidth)
+                }
+              />
+              <IconButton
+                aria-label="Next"
+                icon={<ArrowForwardIcon />}
+                transition="all .3s ease-in-out"
+                id="next-button"
+                variant="solid"
+                bg="blackAlpha.800"
+                color="secondary"
+                onClick={() =>
+                  scroll(ref.current.children[0].children[0].clientWidth)
+                }
+              />
+            </Flex>
           </Box>
         </GridItem>
       </Grid>
