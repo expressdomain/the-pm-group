@@ -89,7 +89,7 @@ module.exports = {
           hardCacheMediaFiles: true,
         },
         schema: {
-          requestConcurrency: 10,
+          requestConcurrency: 5,
           perPage: 20,
           timeout: 3000000,
         },
