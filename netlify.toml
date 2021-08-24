@@ -2,7 +2,7 @@
   publish= "public"
   Command = "npm run build"
 [functions]
-  directory = "src/lambda"
+  directory = "lambda"
 [dev]
   functions = "src/lambda"
   functionsPort = "7000"
