@@ -45,7 +45,6 @@ const Category = data => {
             //   {description}
             // </Text>
           )}
-          {console.log(description)}
         </Box>
         <Box>
           <Grid
