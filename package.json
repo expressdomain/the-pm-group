@@ -14,6 +14,7 @@
     "@makotot/paginated": "^1.0.1",
     "cross-env": "^7.0.3",
     "framer-motion": "^4.1.17",
+    "fs": "^0.0.1-security",
     "gatsby": "^3.12.0",
     "gatsby-plugin-advanced-sitemap": "^2.0.0",
     "gatsby-plugin-breadcrumb": "^12.1.1",
