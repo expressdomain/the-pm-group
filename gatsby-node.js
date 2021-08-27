@@ -315,6 +315,29 @@ exports.createSchemaCustomization = ({ actions }) => {
 //   Authorization: auth,
 // }
 
+// Testing Image Cache fix:
+exports.onPostBuild = async ({ reporter }) => {
+  await fs.ensureDir("node_modules/.cache/gatsby-source-filesystem")
+
+  if (fs.existsSync(".cache/gatsby-source-filesystem")) {
+    console.log("onPostBuild: Copying gatsby-source-filesystem to node_modules")
+    await fs.copy(
+      ".cache/gatsby-source-filesystem",
+      "node_modules/.cache/gatsby-source-filesystem"
+    )
+  }
+}
+
+exports.onPreBootstrap = async ({ reporter }) => {
+  if (fs.existsSync("node_modules/.cache/gatsby-source-filesystem")) {
+    console.log("onPreBootstrap: Copying gatsby-source-filesystem to .cache")
+    await fs.copy(
+      "node_modules/.cache/gatsby-source-filesystem",
+      ".cache/gatsby-source-filesystem"
+    )
+  }
+}
+
 exports.createResolvers = async ({ createResolvers, schema }) =>
   createResolvers({
     WpPost: {

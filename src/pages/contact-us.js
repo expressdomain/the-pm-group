@@ -6,7 +6,7 @@ import Seo from "gatsby-plugin-wpgraphql-seo"
 import GenericHero from "../components/GenericHero"
 import ContactForm from "../components/ContactForm"
 
-const ContactUs = ({ data: { wpPage, gfForm } }) => {
+const ContactUs = ({ data: { wpPage } }) => {
   // Hero component
   const heroTitle = wpPage.contactPageFields.contactHero.contactHeroTitle
   const heroImage =
@@ -14,12 +14,12 @@ const ContactUs = ({ data: { wpPage, gfForm } }) => {
       .childImageSharp
   // Contact form
   // const form = gfForm
-  // const contact = wpPage.contactPageFields.contactSectionPage
+  const contact = wpPage.contactPageFields.contactSectionPage
   return (
     <Layout>
       <Seo post={wpPage} />
       <GenericHero title={heroTitle} image={heroImage} />
-      <ContactForm isContactPage />
+      <ContactForm contactData={contact} isContactPage />
     </Layout>
   )
 }
