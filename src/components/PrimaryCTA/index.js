@@ -31,7 +31,9 @@ const PrimaryCTA = ({ items, link, ctaText }) => {
               textDecoration="none!important"
               key={item.title}
             >
+              <Box display={`inline-block`} width={`fit-content`}>
               {item.title}{" "}
+              </Box>
               {item.title !== "Media Buying" && (
                 <Text as="span" color="secondary" style={{ fontSize: `20px` }}>
                   |{" "}

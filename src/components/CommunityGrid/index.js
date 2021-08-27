@@ -8,6 +8,7 @@ const CommunityGrid = ({ images }) => {
       <Grid
         className="communityGrid"
         templateColumns={[`repeat(2, 1fr)`, `repeat(4, 1fr)`]}
+        bg="black"
       >
         {images.map(image => (
           <GridItem>

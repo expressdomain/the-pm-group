@@ -1,27 +1,27 @@
 // @ts-check
 
-const pathToRegexp = require('path-to-regexp')
-const bodyParser = require('co-body')
-const multer = require('multer')
+const pathToRegexp = require("path-to-regexp")
+const bodyParser = require("co-body")
+const multer = require("multer")
 const parseForm = multer().any()
-const path = require('path')
+const path = require("path")
 
 module.exports = async (req, res, functions) => {
   // Multipart form data middleware. because co-body can't handle it
 
-  await new Promise((next) => parseForm(req, res, next))
+  await new Promise(next => parseForm(req, res, next))
   try {
     // If req.body is populated then it was multipart data
     if (
       !req.files &&
       !req.body &&
-      req.method !== 'GET' &&
-      req.method !== 'HEAD'
+      req.method !== "GET" &&
+      req.method !== "HEAD"
     ) {
       req.body = await bodyParser(req)
     }
   } catch (e) {
-    console.log('Error parsing body', e, req)
+    console.log("Error parsing body", e, req)
   }
 
   //  Strip "/api/" from path
@@ -33,13 +33,13 @@ module.exports = async (req, res, functions) => {
   // Check first for exact matches.
   let functionObj = functions.find(
     ({ apiRoute, functionRoute }) =>
-      (functionRoute || apiRoute) === pathFragment,
+      (functionRoute || apiRoute) === pathFragment
   )
 
   if (!functionObj) {
     // Check if there's any matchPaths that match.
     // We loop until we find the first match.
-    functions.some((f) => {
+    functions.some(f => {
       let exp
       const keys = []
       if (f.matchPath) {
@@ -65,8 +65,8 @@ module.exports = async (req, res, functions) => {
 
     const pathToFunction = path.join(
       __dirname,
-      'functions',
-      functionObj.relativeCompiledFilePath,
+      "functions",
+      functionObj.relativeCompiledFilePath
     )
 
     try {
@@ -83,7 +83,7 @@ module.exports = async (req, res, functions) => {
         res
           .status(500)
           .send(
-            `Error when executing function "${functionObj.originalRelativeFilePath}": "${e.message}"`,
+            `Error when executing function "${functionObj.originalRelativeFilePath}": "${e.message}"`
           )
       }
     }
@@ -92,9 +92,9 @@ module.exports = async (req, res, functions) => {
     console.log(
       `Executed function "/api/${functionObj.functionRoute}" in ${
         end - start
-      }ms`,
+      }ms`
     )
   } else {
-    res.status(404).send('Not found')
+    res.status(404).send("Not found")
   }
 }

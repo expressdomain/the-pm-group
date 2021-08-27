@@ -13,7 +13,7 @@
   to = "/news"
 [[redirects]]
   from = "/capabilities"
-  to = "/expertise"
+  to = "/expertise/"
 [[redirects]]
   from = "/agency-news/drive-away-for-education-2021/"
   to = "/news/drive-away-for-education-fundraiser-aims-to-assist-50000-children-this-year"
