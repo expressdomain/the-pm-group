@@ -23,11 +23,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
                 nodeType
                 slug
                 name
-                leaders {
-                  nodes {
-                    slug
-                  }
-                }
               }
             }
           }
