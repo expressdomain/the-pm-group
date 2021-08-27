@@ -6,7 +6,7 @@
 
 // You can delete this file if you're not using it
 const path = require("path")
-const fs = require('fs');
+// const fs = require('fs');
 const { createFilePath } = require("gatsby-source-filesystem")
 const fetch = require("node-fetch")
 
