@@ -17,7 +17,6 @@
     "cross-env": "^7.0.3",
     "framer-motion": "^4.1.17",
     "gatsby": "^3.12.0",
-    "gatsby-gravityforms-component": "^3.1.0",
     "gatsby-plugin-advanced-sitemap": "^2.0.0",
     "gatsby-plugin-breadcrumb": "^12.1.1",
     "gatsby-plugin-gatsby-cloud": "^3.0.0",
@@ -33,7 +32,6 @@
     "gatsby-plugin-sitemap": "^4.8.0",
     "gatsby-plugin-wpgraphql-seo": "^1.2.2",
     "gatsby-source-filesystem": "^3.12.0",
-    "gatsby-source-gravityforms": "^1.0.17",
     "gatsby-source-wordpress": "^5.12.0",
     "gatsby-transformer-sharp": "^3.12.0",
     "lmdb-store": "^1.6.6",
@@ -70,9 +68,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "start:lambda": "netlify functions:serve --functions src/lambda",
-    "build:lambda": "netlify functions:build --functions src/lambda"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "repository": {
     "type": "git",

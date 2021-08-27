@@ -1,11 +1,11 @@
 [build]
   publish= "public"
   Command = "npm run build"
-[functions]
-  directory = "lambda"
-[dev]
-  functions = "src/lambda"
-  functionsPort = "7000"
+# [functions]
+#   directory = "lambda"
+# [dev]
+#   functions = "src/lambda"
+#   functionsPort = "7000"
 [[plugins]]
     package = "@netlify/plugin-gatsby"
 [[redirects]]

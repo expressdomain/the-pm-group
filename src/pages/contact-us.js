@@ -13,13 +13,13 @@ const ContactUs = ({ data: { wpPage, gfForm } }) => {
     wpPage.contactPageFields.contactHero.contactHeroImage.localFile
       .childImageSharp
   // Contact form
-  const form = gfForm
-  const contact = wpPage.contactPageFields.contactSectionPage
+  // const form = gfForm
+  // const contact = wpPage.contactPageFields.contactSectionPage
   return (
     <Layout>
       <Seo post={wpPage} />
       <GenericHero title={heroTitle} image={heroImage} />
-      <ContactForm contactData={contact} form={form} isContactPage />
+      <ContactForm isContactPage />
     </Layout>
   )
 }
@@ -28,39 +28,6 @@ export default ContactUs
 
 export const contactPageQuery = graphql`
   query GET_CONTACT_PAGE {
-    gfForm(formId: { eq: 1 }) {
-      ...GravityFormComponent
-      id
-      slug
-      title
-      formId
-      formFields {
-        id
-        label
-        labelPlacement
-        description
-        descriptionPlacement
-        type
-        choices
-        errorMessage
-        inputMaskValue
-        inputName
-        isRequired
-        visibility
-        cssClass
-        defaultValue
-        maxLength
-        conditionalLogic
-        emailConfirmEnabled
-      }
-      button {
-        imageUrl
-        text
-      }
-      confirmations {
-        message
-      }
-    }
     wpPage(title: { eq: "Contact Us" }) {
       title
       uri
