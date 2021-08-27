@@ -1,6 +1,6 @@
-const Stream = require('stream')
-const http = require('http')
-const cookie = require('cookie')
+const Stream = require("stream")
+const http = require("http")
+const cookie = require("cookie")
 
 // Mock a HTTP IncomingMessage object from the Netlify Function event parameters
 // Based on API Gateway Lambda Compat
@@ -9,7 +9,7 @@ const cookie = require('cookie')
 const createRequestObject = ({ event, context }) => {
   const {
     requestContext = {},
-    path = '',
+    path = "",
     multiValueQueryStringParameters,
     queryStringParameters,
     httpMethod,
@@ -21,10 +21,10 @@ const createRequestObject = ({ event, context }) => {
   const newStream = new Stream.Readable()
   const req = Object.assign(newStream, http.IncomingMessage.prototype)
   req.url =
-    (requestContext.path || path || '').replace(
-      new RegExp('^/' + requestContext.stage),
-      '',
-    ) || '/'
+    (requestContext.path || path || "").replace(
+      new RegExp("^/" + requestContext.stage),
+      ""
+    ) || "/"
 
   req.query = queryStringParameters
   req.multiValueQuery = multiValueQueryStringParameters
@@ -49,7 +49,7 @@ const createRequestObject = ({ event, context }) => {
     req.headers[key.toLowerCase()] = multiValueHeaders[key].toString()
   }
 
-  req.getHeader = (name) => {
+  req.getHeader = name => {
     return req.headers[name.toLowerCase()]
   }
   req.getHeaders = () => {
@@ -67,7 +67,7 @@ const createRequestObject = ({ event, context }) => {
   req.connection = {}
 
   if (body) {
-    req.push(body, isBase64Encoded ? 'base64' : undefined)
+    req.push(body, isBase64Encoded ? "base64" : undefined)
   }
 
   req.push(null)

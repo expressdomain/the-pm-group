@@ -1,24 +1,10 @@
 import { Box, Grid, Heading, Text, Container } from "@chakra-ui/layout"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import React from "react"
-import GravityFormForm from "gatsby-gravityforms-component"
-import { useStaticQuery, graphql, navigate } from "gatsby"
+import Form from "./Fragments/form"
 import "./form.scss"
 
-const ContactForm = ({ contactData, form, isContactPage }) => {
-  const { allGfForm } = useStaticQuery(
-    graphql`
-      query {
-        allGfForm {
-          edges {
-            node {
-              ...GravityFormComponent
-            }
-          }
-        }
-      }
-    `
-  )
+const ContactForm = ({ contactData, isContactPage }) => {
   const {
     body,
     title,
@@ -29,20 +15,6 @@ const ContactForm = ({ contactData, form, isContactPage }) => {
     name,
     phoneNumber,
   } = contactData
-
-  const { formId } = form
-
-  const handleError = ({ values, error, reset }) => {
-    //handle error
-    console.log(values)
-    console.log(error)
-    console.log(reset)
-  }
-
-  const handleSuccess = ({ values, reset, confirmations }) => {
-    //handle success
-    navigate(`/thank-you/`)
-  }
 
   return (
     <>
@@ -68,22 +40,15 @@ const ContactForm = ({ contactData, form, isContactPage }) => {
         >
           {/* { isContactPage ? 'true' : 'false' } */}
           <Box
-            py={[6]}
-            px={[4, 16, 18, 10]}
+            // py={[6]}
+            // px={[4, 16, 18, 10]}
             maxWidth="100%!important"
             display="grid"
             placeItems="center"
             color="black"
           >
             {/* Placeholder Form */}
-            <GravityFormForm
-              id={formId}
-              formData={allGfForm}
-              // presetValues={{ input_1: 'special_value' }}
-              lambda={process.env.LAMBDA_ENDPOINT}
-              successCallback={handleSuccess}
-              errorCallback={handleError}
-            />
+            <Form />
           </Box>
           <Box py={[6]} px={[4, 16, 18, 24]}>
             <Text mb={4} color="black">
@@ -162,14 +127,15 @@ const ContactForm = ({ contactData, form, isContactPage }) => {
               color="black"
             >
               {/* Placeholder Form */}
-              <GravityFormForm
+              {/* <GravityFormForm
                 id={formId}
                 formData={allGfForm}
                 // presetValues={{ input_1: 'special_value' }}
                 lambda={process.env.LAMBDA_ENDPOINT}
                 successCallback={handleSuccess}
                 errorCallback={handleError}
-              />
+              /> */}
+              <Form />
             </Box>
             <Box py={[6]} px={[12, 16, 18, 10]}>
               <Text mb={10}>{body}</Text>

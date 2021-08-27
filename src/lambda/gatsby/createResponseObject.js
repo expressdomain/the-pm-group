@@ -1,4 +1,4 @@
-const Stream = require('stream')
+const Stream = require("stream")
 
 // Mock a HTTP ServerResponse object that returns a Netlify Function-compatible
 // response via the onResEnd callback when res.end() is called.
@@ -12,7 +12,7 @@ const createResponseObject = ({ onResEnd }) => {
   }
 
   const res = new Stream()
-  Object.defineProperty(res, 'statusCode', {
+  Object.defineProperty(res, "statusCode", {
     get() {
       return response.statusCode
     },
@@ -31,9 +31,9 @@ const createResponseObject = ({ onResEnd }) => {
     return res
   }
 
-  res.write = (chunk) => {
+  res.write = chunk => {
     if (!response.body) {
-      response.body = Buffer.from('')
+      response.body = Buffer.from("")
     }
 
     response.body = Buffer.concat([
@@ -46,26 +46,26 @@ const createResponseObject = ({ onResEnd }) => {
   res.setHeader = (name, value) => {
     res.headers[name.toLowerCase()] = value
   }
-  res.removeHeader = (name) => {
+  res.removeHeader = name => {
     delete res.headers[name.toLowerCase()]
   }
-  res.getHeader = (name) => {
+  res.getHeader = name => {
     return res.headers[name.toLowerCase()]
   }
   res.getHeaders = () => {
     return res.headers
   }
-  res.hasHeader = (name) => {
+  res.hasHeader = name => {
     return !!res.getHeader(name)
   }
-  res.end = (text) => {
+  res.end = text => {
     if (text) res.write(text)
     if (!res.statusCode) {
       res.statusCode = 200
     }
 
     if (response.body) {
-      response.body = Buffer.from(response.body).toString('base64')
+      response.body = Buffer.from(response.body).toString("base64")
     }
     response.multiValueHeaders = res.headers
     res.writeHead(response.statusCode)
@@ -85,7 +85,7 @@ const createResponseObject = ({ onResEnd }) => {
 
   // Gatsby Functions additions
 
-  res.send = (data) => {
+  res.send = data => {
     if (res.finished) {
       return res
     }
@@ -93,16 +93,16 @@ const createResponseObject = ({ onResEnd }) => {
     return res
   }
 
-  res.json = (data) => {
+  res.json = data => {
     if (res.finished) {
       return res
     }
-    res.setHeader('content-type', 'application/json')
+    res.setHeader("content-type", "application/json")
     res.send(JSON.stringify(data))
     return res
   }
 
-  res.status = (code) => {
+  res.status = code => {
     const numericCode = parseInt(code)
     if (!isNaN(code)) {
       response.statusCode = numericCode

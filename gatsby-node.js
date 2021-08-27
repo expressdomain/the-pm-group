@@ -303,17 +303,17 @@ exports.createSchemaCustomization = ({ actions }) => {
   `
   createTypes(typeDefs)
 }
-
-let auth =
-  "Basic " +
-  Buffer.from(
-    process.env.HTTPBASICAUTH_USERNAME +
-      ":" +
-      process.env.HTTPBASICAUTH_PASSWORD
-  ).toString("base64")
-let headers = {
-  Authorization: auth,
-}
+// Flywheel Password Removal
+// let auth =
+//   "Basic " +
+//   Buffer.from(
+//     process.env.HTTPBASICAUTH_USERNAME +
+//       ":" +
+//       process.env.HTTPBASICAUTH_PASSWORD
+//   ).toString("base64")
+// let headers = {
+//   Authorization: auth,
+// }
 
 exports.createResolvers = async ({ createResolvers, schema }) =>
   createResolvers({
@@ -323,10 +323,7 @@ exports.createResolvers = async ({ createResolvers, schema }) =>
           const { databaseId } = source
 
           const response = await fetch(
-            `${process.env.BASE_URL}/wp-json/yarpp/v1/related/${databaseId}?limit=3`,
-            {
-              headers: headers,
-            }
+            `${process.env.BASE_URL}/wp-json/yarpp/v1/related/${databaseId}?limit=3`
           ).then(res => res.json())
 
           if (response && response.length) {
