@@ -30,7 +30,7 @@ module.exports = {
     // Force Trailing Slash: failed and caused errors
     // `gatsby-plugin-force-trailing-slashes`,
     // Peact for speed!
-    // `gatsby-plugin-preact`,
+    `gatsby-plugin-preact`,
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
