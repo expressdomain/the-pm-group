@@ -19,13 +19,13 @@ module.exports = {
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-plugin-advanced-sitemap`,
-      options: {
-        additionalSitemaps: [
-          {
-            url: `https://thepmgrp.sitemap.xml`,
-          },
-        ],
-      },
+      // options: {
+      //   additionalSitemaps: [
+      //     {
+      //       url: `https://thepmgrp.sitemap.xml`,
+      //     },
+      //   ],
+      // },
     },
     // Force Trailing Slash: failed and caused errors
     // `gatsby-plugin-force-trailing-slashes`,
@@ -34,7 +34,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
-        host: "https://thepmgrp.com/",
+        host: "https://thepmgrp.com",
         sitemap: "https://thepmgrp.com/sitemap.xml",
         policy: [
           {
