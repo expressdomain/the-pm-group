@@ -22,16 +22,20 @@ module.exports = {
       options: {
         additionalSitemaps: [
           {
-            url: `http://thepmgroup.flywheelsites.com/sitemap_index.xml`,
+            url: `https://thepmgrp.sitemap.xml`,
           },
         ],
       },
     },
+    // Force Trailing Slash: failed and caused errors
+    // `gatsby-plugin-force-trailing-slashes`,
+    // Peact for speed!
+    // `gatsby-plugin-preact`,
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
-        host: "https://thepmgrp.com",
-        sitemap: "http://thepmgroup.flywheelsites.com/sitemap_index.xml",
+        host: "https://thepmgrp.com/",
+        sitemap: "https://thepmgrp.com/sitemap.xml",
         policy: [
           {
             userAgent: "*",

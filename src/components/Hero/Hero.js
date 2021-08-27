@@ -209,10 +209,10 @@ const Hero = ({ title, caption, slides }) => {
             </Box>
             <Flex
               _groupHover={{
-                display: "flex",
+                display: ["none", "none", "flex", "flex", "flex"],
                 transition: "all .3s ease-in-out",
               }}
-              opacity={[0, 0, 0, 0, 1]}
+              // opacity={[0, 0, 1, 1, 1]}
               transition="all .3s ease-in-out"
               display="none"
               position="absolute"

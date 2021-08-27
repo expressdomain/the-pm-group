@@ -11,10 +11,11 @@ const CommunityGrid = ({ images }) => {
         bg="black"
       >
         {images.map(image => (
-          <GridItem>
+          <GridItem overflow="hidden">
             <GatsbyImage
               image={getImage(image.image.localFile.childImageSharp)}
               alt="test"
+              style={{ margin: "-3px" }}
             />
           </GridItem>
         ))}
