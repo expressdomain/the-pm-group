@@ -8,16 +8,18 @@ import BlogGrid from "../components/BlogGrid"
 import { graphql } from "gatsby"
 
 const BlogPage = data => {
-  const { title, seo, content, location, breadcrumb } = data.pageContext
+  const { title, seo, content, location } = data.data.wpPost
 
-  const { related_posts } = data.data.allWpPost.nodes[0]
-  // console.log(breadcrumb[0].pathname)
+  const { related_posts } = data.data.wpPost
+
+  const { breadcrumb } = data.pageContext
+
   return (
     <Layout>
       <Seo post={{ seo }} />
       <Container py={8}>
         <Breadcrumb
-          location={location}
+          location={breadcrumb.location}
           crumbLabel={title}
           crumbSeparator="/"
           crumbs={breadcrumb.crumbs}
@@ -49,29 +51,60 @@ export default BlogPage
 
 export const relatedPostsQuery = graphql`
   query BlogPage($id: String!) {
-    allWpPost(filter: { id: { eq: $id } }) {
-      nodes {
-        related_posts {
-          nodes {
-            categories {
-              nodes {
-                name
-              }
+    wpPost(id: { eq: $id }) {
+      content
+      title
+      seo {
+        breadcrumbs {
+          text
+          url
+        }
+        title
+        metaDesc
+        focuskw
+        metaKeywords
+        metaRobotsNoindex
+        metaRobotsNofollow
+        opengraphTitle
+        opengraphDescription
+        opengraphImage {
+          altText
+          sourceUrl
+          srcSet
+        }
+        twitterTitle
+        twitterDescription
+        twitterImage {
+          altText
+          sourceUrl
+          srcSet
+        }
+        canonical
+        cornerstone
+        schema {
+          raw
+        }
+      }
+      related_posts {
+        nodes {
+          categories {
+            nodes {
+              name
             }
-            title
-            slug
-            featuredImage {
-              node {
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData(
-                      layout: CONSTRAINED
-                      formats: [WEBP, PNG]
-                      quality: 90
-                      aspectRatio: 1.66
-                      placeholder: BLURRED
-                    )
-                  }
+          }
+          title
+          slug
+          featuredImage {
+            node {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(
+                    layout: CONSTRAINED
+                    formats: [WEBP, PNG]
+                    quality: 90
+                    aspectRatio: 1.66
+                    placeholder: BLURRED
+                  )
                 }
               }
             }
