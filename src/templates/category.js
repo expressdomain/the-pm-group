@@ -2,35 +2,36 @@ import { Box, Container, Grid, Heading } from "@chakra-ui/react"
 import Seo from "gatsby-plugin-wpgraphql-seo"
 import React from "react"
 import Layout from "../components/Layout/Layout"
+import { graphql } from "gatsby"
 import WorkItem from "../components/WorkItem"
 import Fade from "react-reveal/Fade"
 
 const Category = data => {
-  // SEO Object:
+  // SEO & Data Object
   const {
+    works: { nodes: works },
     seo,
-    title,
+    name,
     description,
-    items,
     customSchema: schema,
-  } = data.pageContext
-
-  const things = items.reverse()
+  } = data.data.wpCategory
 
   return (
     <Layout>
       <Seo post={{ seo }} />
-      {schema && <script type="application/ld+json">{schema}</script>}
+      {schema && (
+        <script type="application/ld+json">{schema.toString()}</script>
+      )}
       <Container>
         <Box display="grid" placeItems="center" mt={8}>
-          {title && (
+          {name && (
             <Heading
               as="h1"
               textAlign="center"
               fontSize={["3xl", "4xl", "6xl"]}
               color="black"
             >
-              {title}
+              {name}
             </Heading>
           )}
           {description && (
@@ -56,11 +57,11 @@ const Category = data => {
             py={8}
             gap={3}
           >
-            {things.map(item => (
-              <Fade bottom key={item.title}>
+            {works.map(item => (
+              <Fade bottom key={item.id}>
                 <WorkItem
                   title={item.title}
-                  type={item.videoFields.videoLink ? "Television" : title}
+                  type={item.videoFields.videoLink ? "Television" : name}
                   image={
                     item.theWorkImage?.photoLink?.localFile?.childImageSharp ||
                     item.videoFields.videoCoverImage?.localFile.childImageSharp
@@ -81,3 +82,104 @@ const Category = data => {
 }
 
 export default Category
+
+export const categoryQuery = graphql`
+  query CategoryQuery($slug: String!) {
+    wpCategory(slug: { eq: $slug }) {
+      description
+      name
+      seo {
+        breadcrumbs {
+          text
+          url
+        }
+        title
+        metaDesc
+        focuskw
+        metaKeywords
+        metaRobotsNoindex
+        metaRobotsNofollow
+        opengraphTitle
+        opengraphDescription
+        opengraphImage {
+          altText
+          sourceUrl
+          srcSet
+        }
+        twitterTitle
+        twitterDescription
+        twitterImage {
+          altText
+          sourceUrl
+          srcSet
+        }
+        canonical
+        cornerstone
+        schema {
+          raw
+        }
+      }
+      customSchema {
+        customSchema
+      }
+      works {
+        nodes {
+          id
+          menuOrder
+          featuredImage {
+            node {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(
+                    quality: 90
+                    placeholder: BLURRED
+                    layout: CONSTRAINED
+                    formats: [WEBP, PNG]
+                  )
+                }
+              }
+            }
+          }
+          videoFields {
+            videoLink
+            videoDescription
+            videoCoverImage {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(
+                    quality: 90
+                    placeholder: BLURRED
+                    layout: CONSTRAINED
+                    formats: [WEBP, PNG]
+                  )
+                }
+              }
+            }
+          }
+          workAudio {
+            radioClip {
+              link
+            }
+          }
+          title
+          id
+
+          theWorkImage {
+            photoLink {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(
+                    quality: 90
+                    layout: CONSTRAINED
+                    formats: [WEBP, PNG]
+                    placeholder: BLURRED
+                  )
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`

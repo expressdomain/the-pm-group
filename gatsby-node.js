@@ -22,184 +22,28 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
                 uri
                 nodeType
                 slug
-                description
-                name
-                seo {
-                  breadcrumbs {
-                    text
-                    url
-                  }
-                  title
-                  metaDesc
-                  focuskw
-                  metaKeywords
-                  metaRobotsNoindex
-                  metaRobotsNofollow
-                  opengraphTitle
-                  opengraphDescription
-                  opengraphImage {
-                    altText
-                    sourceUrl
-                    srcSet
-                  }
-                  twitterTitle
-                  twitterDescription
-                  twitterImage {
-                    altText
-                    sourceUrl
-                    srcSet
-                  }
-                  canonical
-                  cornerstone
-                  schema {
-                    raw
-                  }
-                }
-                customSchema {
-                  customSchema
-                }
-                description
                 name
                 leaders {
                   nodes {
                     slug
-                    title
-                    seo {
-                      breadcrumbs {
-                        text
-                        url
-                      }
-                      title
-                      metaDesc
-                      focuskw
-                      metaKeywords
-                      metaRobotsNoindex
-                      metaRobotsNofollow
-                      opengraphTitle
-                      opengraphDescription
-                      opengraphImage {
-                        altText
-                        sourceUrl
-                        srcSet
-                      }
-                      twitterTitle
-                      twitterDescription
-                      twitterImage {
-                        altText
-                        sourceUrl
-                        srcSet
-                      }
-                      canonical
-                      cornerstone
-                      schema {
-                        raw
-                      }
-                    }
-                    leaderFields {
-                      bio
-                      name
-                      position
-                      heroPic {
-                        localFile {
-                          childImageSharp {
-                            gatsbyImageData(
-                              quality: 90
-                              layout: CONSTRAINED
-                              formats: [WEBP, PNG]
-                              placeholder: BLURRED
-                            )
-                          }
-                        }
-                      }
-                    }
                   }
                 }
-                works {
-                  nodes {
-                    videoFields {
-                      videoLink
-                      videoDescription
-                      videoCoverImage {
-                        localFile {
-                          childImageSharp {
-                            gatsbyImageData(
-                              quality: 90
-                              placeholder: BLURRED
-                              layout: CONSTRAINED
-                              formats: [WEBP, PNG]
-                            )
-                          }
-                        }
-                      }
-                    }
-                    workAudio {
-                      radioClip {
-                        link
-                      }
-                    }
-                    title
-                    id
-                    theWorkImage {
-                      photoLink {
-                        localFile {
-                          childImageSharp {
-                            gatsbyImageData(
-                              quality: 90
-                              layout: CONSTRAINED
-                              formats: [WEBP, PNG]
-                              placeholder: BLURRED
-                            )
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
+              }
+            }
+          }
+          leadershipTemplates: allWpLeader {
+            edges {
+              node {
+                slug
               }
             }
           }
           allWpPost(sort: { fields: date, order: DESC }, limit: 1000) {
             edges {
               node {
-                customSchema {
-                  customSchema
-                }
                 id
                 uri
                 slug
-                content
-                title
-                seo {
-                  breadcrumbs {
-                    text
-                    url
-                  }
-                  title
-                  metaDesc
-                  focuskw
-                  metaKeywords
-                  metaRobotsNoindex
-                  metaRobotsNofollow
-                  opengraphTitle
-                  opengraphDescription
-                  opengraphImage {
-                    altText
-                    sourceUrl
-                    srcSet
-                  }
-                  twitterTitle
-                  twitterDescription
-                  twitterImage {
-                    altText
-                    sourceUrl
-                    srcSet
-                  }
-                  canonical
-                  cornerstone
-                  schema {
-                    raw
-                  }
-                }
                 internal {
                   type
                 }
@@ -215,38 +59,34 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
       // Work Items
       const workItems = result.data.workTemplates.edges
+      // Leadership Items
+      const leadershipItems = result.data.leadershipTemplates.edges
       // Posts:
       const posts = result.data.allWpPost.edges
       // Blog Pages:
       const postsPerPage = 12
       const numPages = Math.ceil(posts.length / postsPerPage)
       workItems.forEach(cat => {
-        if (cat.node.name !== "Agency News" || "Leadership") {
+        if (cat.node.name !== "Agency News") {
           createPage({
             path: `/our-work/${cat.node.slug}`,
             component: path.resolve("./src/templates/category.js"),
             context: {
-              items: cat.node.works.nodes,
-              title: cat.node.name,
-              description: cat.node.description,
-              seo: cat.node.seo,
-              customSchema: cat.node.customSchema.customSchema,
+              slug: cat.node.slug,
             },
           })
         }
-        if (cat.node.name === "Leadership") {
-          cat.node.leaders.nodes.forEach(node => {
-            createPage({
-              path: node.slug,
-              component: path.resolve("./src/templates/leader.js"),
-              context: {
-                title: node.title,
-                fields: node.leaderFields,
-                seo: node.seo,
-              },
-            })
-          })
-        }
+        resolve()
+      })
+
+      leadershipItems.forEach(item => {
+        createPage({
+          path: item.node.slug,
+          component: path.resolve("./src/templates/leader.js"),
+          context: {
+            slug: item.node.slug,
+          },
+        })
         resolve()
       })
 
@@ -256,9 +96,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           component: path.resolve("./src/templates/blog.js"),
           context: {
             id: post.node.id,
-            content: post.node.content,
-            title: post.node.title,
-            seo: post.node.seo,
+            // content: post.node.content,
+            // title: post.node.title,
+            // seo: post.node.seo,
           },
         })
         resolve()

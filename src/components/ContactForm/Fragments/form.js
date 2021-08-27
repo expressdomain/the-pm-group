@@ -11,11 +11,10 @@ import {
   Flex,
   Checkbox,
 } from "@chakra-ui/react"
-import { navigate } from "gatsby"
 
 const Form = ({ title, subtitle }) => {
   // Checked State:
-  const [checked, setChecked] = React.useState("No")
+  const [checked, setChecked] = React.useState(false)
 
   const Label = ({ children, id, display }) => {
     return (
