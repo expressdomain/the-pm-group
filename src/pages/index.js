@@ -12,7 +12,7 @@ import ContactForm from "../components/ContactForm"
 import CompaniesGrid from "../components/CompaniesGrid"
 import { getImage } from "gatsby-plugin-image"
 
-const IndexPage = ({ data: { wpPage, gfForm } }) => {
+const IndexPage = ({ data: { wpPage } }) => {
   // Hero Fields
   const heroImage = wpPage?.homeFields?.hero?.heroImages[0]?.image
   const heroTitle = wpPage?.homeFields?.headline
@@ -37,7 +37,7 @@ const IndexPage = ({ data: { wpPage, gfForm } }) => {
   const gotHereImage = wpPage?.homeFields?.howWeGotHere?.image
   // Contact Section
   const contactInfo = wpPage?.homeFields?.contactSection
-  const form = gfForm
+  // const form = gfForm
   // Companies Section
   const companies = wpPage?.homeFields?.companies
   // Custom Schema
@@ -69,7 +69,7 @@ const IndexPage = ({ data: { wpPage, gfForm } }) => {
         image={gotHereImage}
         isSmall
       />
-      <ContactForm contactData={contactInfo} form={form} />
+      <ContactForm contactData={contactInfo} />
       <CompaniesGrid companies={companies} />
     </Layout>
   )
