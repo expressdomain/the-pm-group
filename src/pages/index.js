@@ -79,39 +79,6 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query GET_PAGE {
-    gfForm(formId: { eq: 1 }) {
-      ...GravityFormComponent
-      id
-      slug
-      title
-      formId
-      formFields {
-        id
-        label
-        labelPlacement
-        description
-        descriptionPlacement
-        type
-        choices
-        errorMessage
-        inputMaskValue
-        inputName
-        isRequired
-        visibility
-        cssClass
-        defaultValue
-        maxLength
-        conditionalLogic
-        emailConfirmEnabled
-      }
-      button {
-        imageUrl
-        text
-      }
-      confirmations {
-        message
-      }
-    }
     wpPage(title: { eq: "Home" }) {
       title
       uri
