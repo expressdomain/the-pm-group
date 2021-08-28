@@ -64,7 +64,8 @@ const Category = data => {
                   type={item.videoFields.videoLink ? "Television" : name}
                   image={
                     item.theWorkImage?.photoLink?.localFile?.childImageSharp ||
-                    item.videoFields.videoCoverImage?.localFile.childImageSharp
+                    item.videoFields.videoCoverImage?.localFile.childImageSharp ||
+                    item.featuredImage?.localFile.childImageSharp
                   }
                   media={
                     item.videoFields.videoLink ||
