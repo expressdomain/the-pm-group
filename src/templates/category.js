@@ -65,7 +65,7 @@ const Category = data => {
                   image={
                     item.theWorkImage?.photoLink?.localFile?.childImageSharp ||
                     item.videoFields.videoCoverImage?.localFile.childImageSharp ||
-                    item.featuredImage?.localFile.childImageSharp
+                    item.featuredImage?.localFile?.childImageSharp
                   }
                   media={
                     item.videoFields.videoLink ||
