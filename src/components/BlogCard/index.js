@@ -7,14 +7,15 @@ import {
   Skeleton,
   Text,
   useColorModeValue as mode,
+  Image
 } from "@chakra-ui/react"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import * as React from "react"
 // import { BsArrowRight } from "react-icons/bs"
 // import Link from "../Link/Link"
 
 const BlogCard = props => {
-  const { title, image, link, category } = props // description
+  const { title, link, category, imageSrc, imageSrcSet } = props // description
+
   return (
     <LinkBox
       as="article"
@@ -36,16 +37,18 @@ const BlogCard = props => {
       }}
     >
       <Flex direction="column">
-        {image ? (
-          <GatsbyImage
-            image={getImage(image)}
-            alt={title}
-            objectFit="contain"
-            objectPosition="center"
-          />
+        {imageSrc && imageSrcSet ? (
+          <Image src={imageSrc} srcSet={imageSrcSet} alt={title} fit="cover" maxH={195} htmlWidth={373} htmlHeight="195" />
+          // <GatsbyImage
+          //   image={getImage(image)}
+          //   alt={title}
+          //   objectFit="contain"
+          //   objectPosition="center"
+          // />
         ) : (
           <Skeleton height={220} />
         )}
+
         <Flex
           direction="column"
           px={{

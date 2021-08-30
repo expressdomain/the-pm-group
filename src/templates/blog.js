@@ -7,12 +7,10 @@ import "gatsby-plugin-breadcrumb/gatsby-plugin-breadcrumb.css"
 import BlogGrid from "../components/BlogGrid"
 import { graphql } from "gatsby"
 
-const BlogPage = data => {
-  const { title, seo, content, location } = data.data.wpPost
+const BlogPage = ({data, pageContext}) => {
+  const { title, seo, content, location, related_posts } = data.wpPost
 
-  const { related_posts } = data.data.wpPost
-
-  const { breadcrumb } = data.pageContext
+  const { breadcrumb } = pageContext
 
   return (
     <Layout>
@@ -96,6 +94,9 @@ export const relatedPostsQuery = graphql`
           slug
           featuredImage {
             node {
+              srcSet
+              mediaItemUrl
+              sizes
               localFile {
                 childImageSharp {
                   gatsbyImageData(

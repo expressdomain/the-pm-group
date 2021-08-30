@@ -26,7 +26,7 @@ const ExpertisePage = ({ data: { wpPage } }) => {
   return (
     <Layout>
       <Seo post={wpPage} />
-      <GenericHero title={heroTitle} image={heroImage} isSmall />
+      <GenericHero title={heroTitle} image={heroImage} />
       <PrimaryCTA items={ctaItems} link={ctaLink} ctaText={ctaText} />
       <CapabilitiesGrid capabilities={capability} />
       <Box
