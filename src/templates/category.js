@@ -6,15 +6,18 @@ import { graphql } from "gatsby"
 import WorkItem from "../components/WorkItem"
 import Fade from "react-reveal/Fade"
 
-const Category = data => {
+const Category = ({data}) => {
   // SEO & Data Object
   const {
-    works: { nodes: works },
     seo,
     name,
     description,
     customSchema: schema,
-  } = data.data.wpCategory
+  } = data.wpCategory
+
+  const {
+    nodes: works,
+  } = data.allWpWork
 
   return (
     <Layout>
@@ -86,6 +89,65 @@ export default Category
 
 export const categoryQuery = graphql`
   query CategoryQuery($slug: String!) {
+    allWpWork(
+    filter: {categories: {nodes: {elemMatch: {slug: {eq: $slug}}}}}
+    sort: {fields: menuOrder}
+  ) {
+      nodes {
+        id
+        menuOrder
+        featuredImage {
+          node {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  quality: 90
+                  placeholder: BLURRED
+                  layout: CONSTRAINED
+                  formats: [WEBP, PNG]
+                )
+              }
+            }
+          }
+        }
+        videoFields {
+          videoLink
+          videoDescription
+          videoCoverImage {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  quality: 90
+                  placeholder: BLURRED
+                  layout: CONSTRAINED
+                  formats: [WEBP, PNG]
+                )
+              }
+            }
+          }
+        }
+        workAudio {
+            radioClip {
+              link
+            }
+          }
+          title
+          theWorkImage {
+            photoLink {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(
+                    quality: 90
+                    layout: CONSTRAINED
+                    formats: [WEBP, PNG]
+                    placeholder: BLURRED
+                  )
+                }
+              }
+            }
+          }
+      }
+    }
     wpCategory(slug: { eq: $slug }) {
       description
       name
@@ -122,64 +184,6 @@ export const categoryQuery = graphql`
       }
       customSchema {
         customSchema
-      }
-      works {
-        nodes {
-          id
-          menuOrder
-          featuredImage {
-            node {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData(
-                    quality: 90
-                    placeholder: BLURRED
-                    layout: CONSTRAINED
-                    formats: [WEBP, PNG]
-                  )
-                }
-              }
-            }
-          }
-          videoFields {
-            videoLink
-            videoDescription
-            videoCoverImage {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData(
-                    quality: 90
-                    placeholder: BLURRED
-                    layout: CONSTRAINED
-                    formats: [WEBP, PNG]
-                  )
-                }
-              }
-            }
-          }
-          workAudio {
-            radioClip {
-              link
-            }
-          }
-          title
-          id
-
-          theWorkImage {
-            photoLink {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData(
-                    quality: 90
-                    layout: CONSTRAINED
-                    formats: [WEBP, PNG]
-                    placeholder: BLURRED
-                  )
-                }
-              }
-            }
-          }
-        }
       }
     }
   }
