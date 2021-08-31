@@ -96,18 +96,6 @@ export const relatedPostsQuery = graphql`
             node {
               srcSet
               sourceUrl
-              sizes
-              localFile {
-                childImageSharp {
-                  gatsbyImageData(
-                    layout: CONSTRAINED
-                    formats: [WEBP, PNG]
-                    quality: 90
-                    aspectRatio: 1.66
-                    placeholder: BLURRED
-                  )
-                }
-              }
             }
           }
         }
