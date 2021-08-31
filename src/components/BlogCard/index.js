@@ -37,8 +37,8 @@ const BlogCard = props => {
       }}
     >
       <Flex direction="column">
-        {imageSrc && imageSrcSet ? (
-          <Image src={imageSrc} srcSet={imageSrcSet} alt={title} fit="cover" maxH={195} htmlWidth={373} htmlHeight="195" />
+        {imageSrc ? (
+          <Image src={imageSrc} srcSet={imageSrcSet && imageSrcSet} alt={title} fit="cover" maxH={195} htmlWidth={373} htmlHeight="195" />
           // <GatsbyImage
           //   image={getImage(image)}
           //   alt={title}

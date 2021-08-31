@@ -261,7 +261,7 @@ export const newsQuery = graphql`
           featuredImage {
             node {
               srcSet
-              mediaItemUrl
+              sourceUrl
             }
           }
         }

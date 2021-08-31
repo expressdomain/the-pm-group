@@ -35,7 +35,7 @@ const BlogGrid = ({ posts }) => {
                 <BlogCard
                   title={post.node.title}
                   description={post.node.excerpt}
-                  imageSrc={post.node.featuredImage?.node?.mediaItemUrl}
+                  imageSrc={post.node.featuredImage?.node?.sourceUrl}
                   imageSrcSet={post.node.featuredImage?.node?.srcSet}
                   link={`${post.node.link}`}
                   category={post.node.categories.nodes[0].name}
@@ -46,7 +46,7 @@ const BlogGrid = ({ posts }) => {
                 <BlogCard
                   title={post.title}
                   description={post.excerpt}
-                  imageSrc={post.featuredImage?.node?.mediaItemUrl}
+                  imageSrc={post.featuredImage?.node?.sourceUrl}
                   imageSrcSet={post.featuredImage?.node?.srcSet}
                   link={`/${post.slug}/`}
                   category={post.categories.nodes[0].name}
