@@ -95,7 +95,7 @@ export const relatedPostsQuery = graphql`
           featuredImage {
             node {
               srcSet
-              mediaItemUrl
+              sourceUrl
               sizes
               localFile {
                 childImageSharp {
