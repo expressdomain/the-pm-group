@@ -13,7 +13,7 @@
   to = "/news/"
 [[redirects]]
   from = "/works"
-  to = "/our-works/"
+  to = "/our-work/"
 [[redirects]]
   from = "/capabilities"
   to = "/expertise/"

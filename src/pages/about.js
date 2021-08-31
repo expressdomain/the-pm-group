@@ -26,7 +26,7 @@ const AboutPage = ({ data: { wpPage } }) => {
   return (
     <Layout>
       <Seo post={wpPage} />
-      <GenericHero title={aboutTitle} image={aboutHero} isSmall />
+      <GenericHero title={aboutTitle} image={aboutHero} />
       <PrimaryCTA items={ctaItems} link={ctaLink} ctaText={ctaText} />
       <Features features={aboutIconArray} isAbout />
       <Box

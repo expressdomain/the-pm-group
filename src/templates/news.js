@@ -26,7 +26,7 @@ const NewsWire = ({ data, pageContext }) => {
   return (
     <Layout>
       <Seo post={data?.wpPage} />
-      <GenericHero title={heroTitle} image={heroImage} isSmall />
+      <GenericHero title={heroTitle} image={heroImage} />
       <PrimaryCTA items={ctaItems} link={ctaLink} ctaText={ctaText} />
       <BlogGrid posts={posts} />
       <Container display="flex" justifyContent="space-between" pt={10}>
