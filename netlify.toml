@@ -7,6 +7,17 @@
 #   functions = "src/lambda"
 #   functionsPort = "7000"
 [[plugins]]
+package = "@netlify/plugin-sitemap"
+
+  [plugins.inputs]
+  buildDir = "public"
+  baseUrl = "https://thepmgrp.com"
+  trailingSlash = true
+  exclude = [
+    # By file Path
+    "\\/news\\/\\S+"
+  ]
+[[plugins]]
     package = "@netlify/plugin-gatsby"
 [[redirects]]
   from = "/agency-news"

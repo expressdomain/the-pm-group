@@ -17,18 +17,18 @@ module.exports = {
     "@chakra-ui/gatsby-plugin",
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
-    {
-      resolve: `gatsby-plugin-advanced-sitemap`,
-      // options: {
-      //   additionalSitemaps: [
-      //     {
-      //       url: `https://thepmgrp.sitemap.xml`,
-      //     },
-      //   ],
-      // },
-      // Exclude links:
-      exclude: [`/dev-404-page`, `/404`, `/404.html`],
-    },
+    // {
+    //   resolve: `gatsby-plugin-advanced-sitemap`,
+    //   // options: {
+    //   //   additionalSitemaps: [
+    //   //     {
+    //   //       url: `https://thepmgrp.sitemap.xml`,
+    //   //     },
+    //   //   ],
+    //   // },
+    //   // Exclude links:
+    //   exclude: [`/dev-404-page`, `/404`, `/404.html`],
+    // },
     // Force Trailing Slash: failed and caused errors
     // `gatsby-plugin-force-trailing-slashes`,
     // Peact for speed!
