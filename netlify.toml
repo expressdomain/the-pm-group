@@ -15,7 +15,7 @@ package = "@netlify/plugin-sitemap"
   trailingSlash = true
   exclude = [
     # By file Path
-    "\\/news\\/\\S+"
+    "/news/+([0-9])"
   ]
 [[plugins]]
     package = "@netlify/plugin-gatsby"
@@ -37,6 +37,21 @@ package = "@netlify/plugin-sitemap"
 [[redirects]]
   from = "/agency-news/us-inflation-rises/"
   to = "/news/the-price-of-everything-appears-to-be-rising-as-inflation-grips-america-post-pandemic/"
+[[redirects]]
+  from = "/ihop-aid-veterans-families-throughout-november"
+  to = "/new/ihop-aid-veterans-families-throughout-november/"
+[[redirects]]
+  from = "/thanksgiving-black-friday-2017-become-one-busiest-online-shopping-weeks-history"
+  to = "/news/thanksgiving-black-friday-2017-become-one-busiest-online-shopping-weeks-history/"
+[[redirects]]
+  from = "/four-ways-marketing-provides-value"
+  to = "/news/four-ways-marketing-provides-value/"
+[[redirects]]
+  from = "/thomas-j-henry-continues-turkey-giveaway-tradition/"
+  to = "/news/thomas-j-henry-continues-turkey-giveaway-tradition/"
+[[redirects]]
+  from = "/jersey-advertising-arrives-nba/"
+  to = "/news/jersey-advertising-arrives-nba/"
 [[redirects]]
   from = "/agency-news/pm-group-supports-100-club/"
   to = "/news/agency-donates-10000-to-100-club/"
