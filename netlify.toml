@@ -39,7 +39,7 @@ package = "@netlify/plugin-sitemap"
   to = "/news/the-price-of-everything-appears-to-be-rising-as-inflation-grips-america-post-pandemic/"
 [[redirects]]
   from = "/ihop-aid-veterans-families-throughout-november"
-  to = "/new/ihop-aid-veterans-families-throughout-november/"
+  to = "/news/ihop-aid-veterans-families-throughout-november/"
 [[redirects]]
   from = "/thanksgiving-black-friday-2017-become-one-busiest-online-shopping-weeks-history"
   to = "/news/thanksgiving-black-friday-2017-become-one-busiest-online-shopping-weeks-history/"
