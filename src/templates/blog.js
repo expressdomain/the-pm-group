@@ -7,7 +7,7 @@ import "gatsby-plugin-breadcrumb/gatsby-plugin-breadcrumb.css"
 import BlogGrid from "../components/BlogGrid"
 import { graphql } from "gatsby"
 
-const BlogPage = ({data, pageContext}) => {
+const BlogPage = ({ data, pageContext }) => {
   const { title, seo, content, location, related_posts } = data.wpPost
 
   const { breadcrumb } = pageContext

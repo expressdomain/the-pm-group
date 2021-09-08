@@ -26,6 +26,8 @@ module.exports = {
       //     },
       //   ],
       // },
+      // Exclude links:
+      exclude: [`/dev-404-page`, `/404`, `/404.html`],
     },
     // Force Trailing Slash: failed and caused errors
     // `gatsby-plugin-force-trailing-slashes`,
@@ -87,6 +89,7 @@ module.exports = {
         // },
         production: {
           hardCacheMediaFiles: true,
+          allow404Images: true,
         },
         develop: {
           hardCacheData: true,

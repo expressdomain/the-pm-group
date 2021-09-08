@@ -7,7 +7,7 @@ import {
   Skeleton,
   Text,
   useColorModeValue as mode,
-  Image
+  Image,
 } from "@chakra-ui/react"
 import * as React from "react"
 // import { BsArrowRight } from "react-icons/bs"
@@ -38,14 +38,22 @@ const BlogCard = props => {
     >
       <Flex direction="column">
         {imageSrc ? (
-          <Image src={imageSrc} srcSet={imageSrcSet && imageSrcSet} alt={title} fit="cover" maxH={195} htmlWidth={373} htmlHeight="195" />
+          <Image
+            src={imageSrc}
+            srcSet={imageSrcSet && imageSrcSet}
+            alt={title}
+            fit="cover"
+            maxH={195}
+            htmlWidth={373}
+            htmlHeight="195"
+          />
+        ) : (
           // <GatsbyImage
           //   image={getImage(image)}
           //   alt={title}
           //   objectFit="contain"
           //   objectPosition="center"
           // />
-        ) : (
           <Skeleton height={220} />
         )}
 

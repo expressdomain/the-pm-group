@@ -6,18 +6,11 @@ import { graphql } from "gatsby"
 import WorkItem from "../components/WorkItem"
 import Fade from "react-reveal/Fade"
 
-const Category = ({data}) => {
+const Category = ({ data }) => {
   // SEO & Data Object
-  const {
-    seo,
-    name,
-    description,
-    customSchema: schema,
-  } = data.wpCategory
+  const { seo, name, description, customSchema: schema } = data.wpCategory
 
-  const {
-    nodes: works,
-  } = data.allWpWork
+  const { nodes: works } = data.allWpWork
 
   return (
     <Layout>
@@ -67,7 +60,8 @@ const Category = ({data}) => {
                   type={item.videoFields.videoLink ? "Television" : name}
                   image={
                     item.theWorkImage?.photoLink?.localFile?.childImageSharp ||
-                    item.videoFields.videoCoverImage?.localFile.childImageSharp ||
+                    item.videoFields.videoCoverImage?.localFile
+                      .childImageSharp ||
                     item.featuredImage?.node?.localFile?.childImageSharp
                   }
                   media={
@@ -90,9 +84,9 @@ export default Category
 export const categoryQuery = graphql`
   query CategoryQuery($slug: String!) {
     allWpWork(
-    filter: {categories: {nodes: {elemMatch: {slug: {eq: $slug}}}}}
-    sort: {fields: menuOrder}
-  ) {
+      filter: { categories: { nodes: { elemMatch: { slug: { eq: $slug } } } } }
+      sort: { fields: menuOrder }
+    ) {
       nodes {
         id
         menuOrder
@@ -127,25 +121,25 @@ export const categoryQuery = graphql`
           }
         }
         workAudio {
-            radioClip {
-              link
-            }
+          radioClip {
+            link
           }
-          title
-          theWorkImage {
-            photoLink {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData(
-                    quality: 90
-                    layout: CONSTRAINED
-                    formats: [WEBP, PNG]
-                    placeholder: BLURRED
-                  )
-                }
+        }
+        title
+        theWorkImage {
+          photoLink {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  quality: 90
+                  layout: CONSTRAINED
+                  formats: [WEBP, PNG]
+                  placeholder: BLURRED
+                )
               }
             }
           }
+        }
       }
     }
     wpCategory(slug: { eq: $slug }) {
