@@ -7,7 +7,7 @@
 #   functions = "src/lambda"
 #   functionsPort = "7000"
 [[plugins]]
-package = "@netlify/plugin-sitemap"
+  package = "@netlify/plugin-sitemap"
 
   [plugins.inputs]
   buildDir = "public"
@@ -15,7 +15,34 @@ package = "@netlify/plugin-sitemap"
   trailingSlash = true
   exclude = [
     # By file Path
-    "/news/+([0-9])"
+    "./public/news/2/index.html",
+    "./public/news/3/index.html",
+    "./public/news/4/index.html",
+    "./public/news/5/index.html",
+    "./public/news/6/index.html",
+    "./public/news/7/index.html",
+    "./public/news/8/index.html",
+    "./public/news/9/index.html",
+    "./public/news/10/index.html",
+    "./public/news/11/index.html",
+    "./public/news/12/index.html",
+    "./public/news/13/index.html",
+    "./public/news/14/index.html",
+    "./public/news/15/index.html",
+    "./public/news/16/index.html",
+    "./public/news/17/index.html",
+    "./public/news/18/index.html",
+    "./public/news/19/index.html",
+    "./public/news/20/index.html",
+    "./public/news/21/index.html",
+    "./public/news/22/index.html",
+    "./public/news/23/index.html",
+    "./public/news/24/index.html",
+    "./public/news/25/index.html",
+    "./public/news/26/index.html",
+    "./public/news/27/index.html",
+    "./public/news/28/index.html",
+    "./public/news/29/index.html",
   ]
 [[plugins]]
     package = "@netlify/plugin-gatsby"
