@@ -37,7 +37,6 @@ const WorkItem = ({ title, media, type, schema, image, id }) => {
       <GridItem display="grid" placeItems="center" p={3}>
         <audio controls style={{ marginBottom: "10px" }}>
           {" "}
-          {/* eslint-disable-line */}
           <source src={media} type="audio/mpeg" />
           Your browser does not support the audio element.
         </audio>

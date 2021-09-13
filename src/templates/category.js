@@ -15,9 +15,7 @@ const Category = ({ data }) => {
   return (
     <Layout>
       <Seo post={{ seo }} />
-      {schema && (
-        <script type="application/ld+json">{schema.toString()}</script>
-      )}
+      {schema && <div dangerouslySetInnerHTML={{ __html: schema }} />}
       <Container>
         <Box display="grid" placeItems="center" mt={8}>
           {name && (

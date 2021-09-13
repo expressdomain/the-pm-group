@@ -45,7 +45,7 @@ const IndexPage = ({ data: { wpPage } }) => {
 
   return (
     <Layout>
-      {schema && <script type="application/ld+json">{schema}</script>}
+      {schema && <div dangerouslySetInnerHTML={{ __html: schema }} />}
       <Seo post={wpPage} />
       <Hero
         image={getImage(heroImage.localFile.childImageSharp)}
