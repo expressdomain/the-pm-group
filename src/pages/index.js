@@ -4,17 +4,25 @@ import { graphql } from "gatsby"
 
 import Seo from "gatsby-plugin-wpgraphql-seo"
 import Hero from "../components/Hero/Hero"
+// Loadable Components:
+import loadable from "@loadable/component"
 import PrimaryCTA from "../components/PrimaryCTA"
 import TextImageBlock from "../components/TextImageBlock"
-import Features from "../components/Features"
-import ParallaxCTA from "../components/ParallaxCTA"
-import ContactForm from "../components/ContactForm"
-import CompaniesGrid from "../components/CompaniesGrid"
-import { getImage } from "gatsby-plugin-image"
+// Loadable Components:
+const Features = loadable(() => import("../components/Features"))
+const ParallaxCTA = loadable(() => import("../components/ParallaxCTA"))
+const ContactForm = loadable(() => import("../components/ContactForm"))
+const CompaniesGrid = loadable(() => import("../components/CompaniesGrid"))
+
+
+// import Features from "../components/Features"
+// import ParallaxCTA from "../components/ParallaxCTA"
+// import ContactForm from "../components/ContactForm"
+// import CompaniesGrid from "../components/CompaniesGrid"
+
 
 const IndexPage = ({ data: { wpPage } }) => {
   // Hero Fields
-  const heroImage = wpPage?.homeFields?.hero?.heroImages[0]?.image
   const heroTitle = wpPage?.homeFields?.headline
   const heroCaption = wpPage?.homeFields?.subcaption
   const slides = wpPage?.homeFields?.hero?.slider
@@ -48,7 +56,7 @@ const IndexPage = ({ data: { wpPage } }) => {
       {schema && <div dangerouslySetInnerHTML={{ __html: schema }} />}
       <Seo post={wpPage} />
       <Hero
-        image={getImage(heroImage.localFile.childImageSharp)}
+        // image={getImage(heroImage.localFile.childImageSharp)}
         alt={heroTitle}
         title={heroTitle}
         caption={heroCaption}
@@ -117,23 +125,6 @@ export const pageQuery = graphql`
       }
       homeFields {
         hero {
-          heroImages {
-            link
-            title
-            image {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData(
-                    quality: 90
-                    formats: [WEBP, PNG]
-                    layout: FULL_WIDTH
-                    placeholder: BLURRED
-                  )
-                }
-              }
-              description
-            }
-          }
           slider {
             caption
             title

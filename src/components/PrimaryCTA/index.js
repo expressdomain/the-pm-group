@@ -1,9 +1,9 @@
-import { Box, Container, Text } from "@chakra-ui/layout"
+import { Box, Container, Text, Skeleton } from "@chakra-ui/layout"
 import React from "react"
 import PropTypes from "prop-types"
 import Link from "../Link/Link"
 
-const PrimaryCTA = ({ items, link, ctaText }) => {
+const PrimaryCTA = ({ items, link, ctaText, isLoading }) => {
   return (
     <Box bgColor={`#1A202C`} maxWidth="100%" position="relative" py={19}>
       <Container
@@ -22,25 +22,29 @@ const PrimaryCTA = ({ items, link, ctaText }) => {
           minHeight="max-content"
           width="100%"
         >
-          {items.map(item => (
-            <Link
-              to={item.link}
-              color="white"
-              textTransform="uppercase"
-              fontSize="sm"
-              textDecoration="none!important"
-              key={item.title}
-            >
-              <Box display={`inline-block`} width={`fit-content`} pr={1}>
-                {item.title}{" "}
-              </Box>
-              {item.title !== "Media Buying" && (
-                <Text as="span" color="secondary" style={{ fontSize: `20px` }}>
-                  |{" "}
-                </Text>
-              )}
-            </Link>
-          ))}
+          {isLoading ? (
+            <Skeleton />
+          ) : (
+            items.map(item => (
+              <Link
+                to={item.link}
+                color="white"
+                textTransform="uppercase"
+                fontSize="sm"
+                textDecoration="none!important"
+                key={item.title}
+              >
+                <Box display={`inline-block`} width={`fit-content`} pr={1}>
+                  {item.title}{" "}
+                </Box>
+                {item.title !== "Media Buying" && (
+                  <Text as="span" color="secondary" style={{ fontSize: `20px` }}>
+                    |{" "}
+                  </Text>
+                )}
+              </Link>
+            ))
+          )}
         </Box>
         {/* <Box mt={[8, 8, 8, 0]} ml={15}>
           <Link

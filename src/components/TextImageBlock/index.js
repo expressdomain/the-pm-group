@@ -2,7 +2,6 @@ import { Box, Grid, Heading } from "@chakra-ui/layout"
 import { Skeleton } from "@chakra-ui/react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import React from "react"
-import Fade from "react-reveal/Fade"
 
 const TextImageBlock = ({ title, content, image, isSmall, isLeft }) => {
   const sideImage = getImage(image?.localFile?.childImageSharp)
@@ -24,8 +23,7 @@ const TextImageBlock = ({ title, content, image, isSmall, isLeft }) => {
         px={[12, 18, isSmall ? 12 : 20, isSmall ? 12 : 32]}
         bg={`#f0f0f0`}
       >
-        <Fade bottom>
-          <Heading
+        <Heading
             as="h2"
             color={`black`}
             mb={4}
@@ -34,7 +32,6 @@ const TextImageBlock = ({ title, content, image, isSmall, isLeft }) => {
           >
             {title}
           </Heading>
-        </Fade>
 
         <Box color="black" dangerouslySetInnerHTML={{ __html: content }} />
       </Box>
