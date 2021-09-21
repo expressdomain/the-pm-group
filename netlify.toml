@@ -87,4 +87,4 @@
   to = "/news/agency-donates-10000-to-100-club/"
 [[redirects]]
   from = "/agency-news/*"
-  to = "/news/:splat"
+  to = "/news/:splat/"
