@@ -45,6 +45,7 @@
     "./public/news/29/index.html",
     "./public/our-work/uncategorized/index.html",
     "./public/404/index.html",
+    "./public/404.html",
   ]
 [[plugins]]
     package = "@netlify/plugin-gatsby"
