@@ -12,7 +12,7 @@
   [plugins.inputs]
   buildDir = "public"
   baseUrl = "https://thepmgrp.com"
-  trailingSlash = true
+  # trailingSlash = true
   exclude = [
     # By file Path
     "./public/news/2/index.html",
