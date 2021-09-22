@@ -112,7 +112,7 @@ const NavBar = ({ children, menu, siteTitle, ...props }) => {
             Connect
           </Link>
         )}
-        {tabletDown ? (
+        {tabletDown && (
           <IconButton
             display={{
               base: "flex",
@@ -125,7 +125,8 @@ const NavBar = ({ children, menu, siteTitle, ...props }) => {
             onClick={mobileNav.onOpen}
             icon={<HamburgerIcon color={`secondary`} />}
           />
-        ) : (
+        )}
+        {!tabletDown && (
           <MenuLinks />
         )}
         {/* <ThemeToggle marginLeft={4} backgroundColor={buttonColor} /> */}
