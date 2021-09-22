@@ -11,7 +11,7 @@
 
   [plugins.inputs]
   buildDir = "public"
-  baseUrl = "https://thepmgrp.com"
+  # baseUrl = "https://thepmgrp.com"
   trailingSlash = true
   exclude = [
     # By file Path
@@ -49,10 +49,6 @@
   ]
 [[plugins]]
     package = "@netlify/plugin-gatsby"
-[[redirects]]
-  from = "https://thepmgrp.com/"
-  to = "https://thepmgrp.com"
-  force = true
 [[redirects]]
   from = "/agency-news"
   to = "/news/"
