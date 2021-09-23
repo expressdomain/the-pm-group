@@ -16,8 +16,8 @@ const AboutTeamGrid = ({ team }) => {
           `repeat(3, 1fr)`,
           `repeat(4, 1fr)`,
           `repeat(4, 1fr)`,
-          `repeat(4, 1fr)`,
-          `repeat(4, 1fr)`,
+          `repeat(6, 1fr)`,
+          `repeat(6, 1fr)`,
         ]}
         className="aboutTeamGrid"
       >

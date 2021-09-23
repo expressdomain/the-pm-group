@@ -1,4 +1,5 @@
-import { Box, Container, Text, Skeleton } from "@chakra-ui/layout"
+import { Box, Container, Text } from "@chakra-ui/layout"
+import { Skeleton } from "@chakra-ui/react"
 import React from "react"
 import PropTypes from "prop-types"
 import Link from "../Link/Link"
