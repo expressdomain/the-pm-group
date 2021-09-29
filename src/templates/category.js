@@ -144,10 +144,6 @@ export const categoryQuery = graphql`
       description
       name
       seo {
-        breadcrumbs {
-          text
-          url
-        }
         title
         metaDesc
         focuskw
