@@ -12,6 +12,12 @@ const Category = ({ data }) => {
 
   const { nodes: works } = data.allWpWork
 
+  // Replace all instances of '"/"' in seo.schema.raw with '"https://thepmgrp.com/"'
+  const schemaRaw = seo.schema.raw.replace(/"\/"/g, '"https://thepmgrp.com/"')
+
+  seo.schema.raw = schemaRaw;
+  console.log(seo.schema.raw)
+
   return (
     <Layout>
       <Seo post={{ seo }} />
