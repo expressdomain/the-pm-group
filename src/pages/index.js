@@ -14,12 +14,10 @@ const ParallaxCTA = loadable(() => import("../components/ParallaxCTA"))
 const ContactForm = loadable(() => import("../components/ContactForm"))
 const CompaniesGrid = loadable(() => import("../components/CompaniesGrid"))
 
-
 // import Features from "../components/Features"
 // import ParallaxCTA from "../components/ParallaxCTA"
 // import ContactForm from "../components/ContactForm"
 // import CompaniesGrid from "../components/CompaniesGrid"
-
 
 const IndexPage = ({ data: { wpPage } }) => {
   // Hero Fields

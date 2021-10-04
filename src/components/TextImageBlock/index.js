@@ -24,14 +24,14 @@ const TextImageBlock = ({ title, content, image, isSmall, isLeft }) => {
         bg={`#f0f0f0`}
       >
         <Heading
-            as="h2"
-            color={`black`}
-            mb={4}
-            letterSpacing="tight"
-            fontSize={["xl", "2xl", "3xl"]}
-          >
-            {title}
-          </Heading>
+          as="h2"
+          color={`black`}
+          mb={4}
+          letterSpacing="tight"
+          fontSize={["xl", "2xl", "3xl"]}
+        >
+          {title}
+        </Heading>
 
         <Box color="black" dangerouslySetInnerHTML={{ __html: content }} />
       </Box>

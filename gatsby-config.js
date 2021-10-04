@@ -43,10 +43,10 @@ module.exports = {
         directives: {
           "script-src": "'self' www.google-analytics.com",
           "style-src": "'self' 'unsafe-inline'",
-          "img-src": "'self' data: www.google-analytics.com"
+          "img-src": "'self' data: www.google-analytics.com",
           // you can add your directives or override defaults
-        }
-      }
+        },
+      },
     },
     // Peact for speed!
     `gatsby-plugin-preact`,

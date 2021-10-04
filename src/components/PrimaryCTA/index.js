@@ -39,7 +39,11 @@ const PrimaryCTA = ({ items, link, ctaText, isLoading }) => {
                   {item.title}{" "}
                 </Box>
                 {item.title !== "Media Buying" && (
-                  <Text as="span" color="secondary" style={{ fontSize: `20px` }}>
+                  <Text
+                    as="span"
+                    color="secondary"
+                    style={{ fontSize: `20px` }}
+                  >
                     |{" "}
                   </Text>
                 )}

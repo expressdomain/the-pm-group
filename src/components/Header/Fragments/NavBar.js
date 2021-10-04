@@ -126,9 +126,7 @@ const NavBar = ({ children, menu, siteTitle, ...props }) => {
             icon={<HamburgerIcon color={`secondary`} />}
           />
         )}
-        {!tabletDown && (
-          <MenuLinks />
-        )}
+        {!tabletDown && <MenuLinks />}
         {/* <ThemeToggle marginLeft={4} backgroundColor={buttonColor} /> */}
       </Box>
       <MobileNavContent

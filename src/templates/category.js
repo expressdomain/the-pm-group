@@ -15,13 +15,15 @@ const Category = ({ data }) => {
   // Replace all instances of '"/"' in seo.schema.raw with '"https://thepmgrp.com/"'
   const schemaRaw = seo.schema.raw.replace(/"\/"/g, '"https://thepmgrp.com/"')
 
-  seo.schema.raw = schemaRaw;
+  seo.schema.raw = schemaRaw
   console.log(seo.schema.raw)
 
   return (
     <Layout>
       <Seo post={{ seo }} />
-      {schema.customSchema && <div dangerouslySetInnerHTML={{ __html: schema.customSchema }} />}
+      {schema.customSchema && (
+        <div dangerouslySetInnerHTML={{ __html: schema.customSchema }} />
+      )}
       <Container>
         <Box display="grid" placeItems="center" mt={8}>
           {name && (

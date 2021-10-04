@@ -24,9 +24,9 @@ export const Feature = props => {
         {icon}
       </Box>
       <Stack spacing="1">
-      <Text fontWeight="extrabold" fontSize="lg" color={`black`}>
-            {title}
-          </Text>
+        <Text fontWeight="extrabold" fontSize="lg" color={`black`}>
+          {title}
+        </Text>
         <Box
           color={mode("gray.600", "gray.400")}
           textAlign={
