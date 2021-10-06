@@ -30,7 +30,7 @@ const BlogPage = ({ data, pageContext }) => {
           className="blog-content"
           dangerouslySetInnerHTML={{ __html: content }}
           color="black"
-          sx={{ a: { color: "blue.500", textDecoration: "underline" } }}
+          sx={{ a: { color: "blue.500", textDecoration: "underline" }, li: { marginLeft: "35px" } }}
         />
         {related_posts.nodes.length > 0 && (
           <>
