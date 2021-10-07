@@ -64,7 +64,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       workItems.forEach(cat => {
         if (cat.node.name !== "Agency News") {
           createPage({
-            path: `/our-work/${cat.node.slug}`,
+            path: `/our-work/${cat.node.slug}/`,
             component: path.resolve("./src/templates/category.js"),
             context: {
               slug: cat.node.slug,
@@ -87,7 +87,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
       posts.forEach(post => {
         createPage({
-          path: `/news/${post.node.slug}`,
+          path: `/news/${post.node.slug}/`,
           component: path.resolve("./src/templates/blog.js"),
           context: {
             id: post.node.id,
@@ -100,7 +100,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       })
       Array.from({ length: numPages }).forEach((_, i) => {
         createPage({
-          path: i === 0 ? `/news` : `/news/${i + 1}`,
+          path: i === 0 ? `/news` : `/news/${i + 1}/`,
           component: path.resolve("./src/templates/news.js"),
           context: {
             limit: postsPerPage,
@@ -139,40 +139,6 @@ exports.createSchemaCustomization = ({ actions }) => {
   `
   createTypes(typeDefs)
 }
-// Flywheel Password Removal
-// let auth =
-//   "Basic " +
-//   Buffer.from(
-//     process.env.HTTPBASICAUTH_USERNAME +
-//       ":" +
-//       process.env.HTTPBASICAUTH_PASSWORD
-//   ).toString("base64")
-// let headers = {
-//   Authorization: auth,
-// }
-
-// Testing Image Cache fix: failed
-// exports.onPostBuild = async ({ reporter }) => {
-//   await fs.ensureDir("node_modules/.cache/gatsby-source-filesystem")
-
-//   if (fs.existsSync(".cache/gatsby-source-filesystem")) {
-//     console.log("onPostBuild: Copying gatsby-source-filesystem to node_modules")
-//     await fs.copy(
-//       ".cache/gatsby-source-filesystem",
-//       "node_modules/.cache/gatsby-source-filesystem"
-//     )
-//   }
-// }
-
-// exports.onPreBootstrap = async ({ reporter }) => {
-//   if (fs.existsSync("node_modules/.cache/gatsby-source-filesystem")) {
-//     console.log("onPreBootstrap: Copying gatsby-source-filesystem to .cache")
-//     await fs.copy(
-//       "node_modules/.cache/gatsby-source-filesystem",
-//       ".cache/gatsby-source-filesystem"
-//     )
-//   }
-// }
 
 exports.createResolvers = async ({ createResolvers, schema }) =>
   createResolvers({
