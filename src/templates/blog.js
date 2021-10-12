@@ -13,24 +13,34 @@ const BlogPage = ({ data, pageContext }) => {
   const { breadcrumb } = pageContext
 
   // Replace all instances of '"/"' in seo.schema.raw with '"https://thepmgrp.com/"'
-  const schemaRaw = seo.schema.raw.replace(/"\/"/g, '"https://thepmgrp.com/"');
+  const schemaRaw = seo.schema.raw.replace(/"\/"/g, '"https://thepmgrp.com/"')
 
-  let schemaObj = JSON.parse(schemaRaw);
+  let schemaObj = JSON.parse(schemaRaw)
 
   // Modify breadcrumb list
-  const breadcrumbList = schemaObj['@graph'][4]
+  const breadcrumbList = schemaObj["@graph"][4]
   breadcrumbList["@context"] = "https://schema.org"
   delete breadcrumbList["@id"]
   // Home
-  breadcrumbList["itemListElement"][0].item = { "@id": `${breadcrumbList["itemListElement"][0].item}`, "name": "Home" }
+  breadcrumbList["itemListElement"][0].item = {
+    "@id": `${breadcrumbList["itemListElement"][0].item}`,
+    name: "Home",
+  }
   delete breadcrumbList["itemListElement"][0].name
   // News
-  breadcrumbList["itemListElement"][1].item = { "@id": "https://thepmgrp.com/news/", "name": "News" }
+  breadcrumbList["itemListElement"][1].item = {
+    "@id": "https://thepmgrp.com/news/",
+    name: "News",
+  }
   delete breadcrumbList["itemListElement"][1].name
   // Article
-  breadcrumbList["itemListElement"].push({"@type": "ListItem", position: 3, item: { "@id": `https://thepmgrp.com/news/${slug}/`, "name": title }})
+  breadcrumbList["itemListElement"].push({
+    "@type": "ListItem",
+    position: 3,
+    item: { "@id": `https://thepmgrp.com/news/${slug}/`, name: title },
+  })
 
-  seo.schema.raw = JSON.stringify(schemaObj);
+  seo.schema.raw = JSON.stringify(schemaObj)
 
   return (
     <Layout>
@@ -50,7 +60,10 @@ const BlogPage = ({ data, pageContext }) => {
           className="blog-content"
           dangerouslySetInnerHTML={{ __html: content }}
           color="black"
-          sx={{ a: { color: "blue.500", textDecoration: "underline" }, li: { marginLeft: "35px" } }}
+          sx={{
+            a: { color: "blue.500", textDecoration: "underline" },
+            li: { marginLeft: "35px" },
+          }}
         />
         {related_posts.nodes.length > 0 && (
           <>

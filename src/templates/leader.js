@@ -9,7 +9,35 @@ import { Container, Heading, Box } from "@chakra-ui/react"
 
 const LeadershipTemplate = ({ data }) => {
   const { heroPic, name, position, bio } = data.wpLeader.leaderFields
-  const { title, seo } = data.wpLeader
+  const { title, seo, slug } = data.wpLeader
+
+  // Replace all instances of '"/"' in seo.schema.raw with '"https://thepmgrp.com/"'
+  const schemaRaw = seo.schema.raw.replace(/"\/"/g, '"https://thepmgrp.com/"')
+  // Replace all instances of '/leaders/' with an '/'
+  const schemaRawClean = schemaRaw.replace(/\/leaders\//g, "/")
+  // Initalize schema object
+  const schemaObj = JSON.parse(schemaRawClean)
+  // Modify breadcrumb list
+  const breadcrumbList = schemaObj["@graph"][3]
+  // breadcrumbList["@context"] = "https://schema.org"
+  delete breadcrumbList["@id"]
+  // Home
+  breadcrumbList["itemListElement"][0].item = {
+    "@id": `${breadcrumbList["itemListElement"][0].item}`,
+    name: "Home",
+  }
+  delete breadcrumbList["itemListElement"][0].name
+  // About
+  breadcrumbList["itemListElement"][1].item = {
+    "@id": `https://thepmgrp.com/${slug}/`,
+    name: title,
+  }
+  delete breadcrumbList["itemListElement"][1].name
+  // Delet last item until we refactor leadership templates
+  delete breadcrumbList["itemListElement"][2]
+  seo.schema.raw = JSON.stringify(schemaObj)
+
+
   return (
     <Layout>
       <Seo post={{ seo }} />
@@ -38,6 +66,7 @@ export const leaderQuery = graphql`
   query LeaderQuery($slug: String!) {
     wpLeader(slug: { eq: $slug }) {
       title
+      slug
       seo {
         breadcrumbs {
           text

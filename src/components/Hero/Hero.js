@@ -9,10 +9,11 @@ import {
   Flex,
   keyframes,
   IconButton,
+  Image,
 } from "@chakra-ui/react"
 import * as React from "react"
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { getImage } from "gatsby-plugin-image"
 
 import "./Hero.scss"
 
@@ -153,18 +154,23 @@ const Hero = ({ title, caption, slides }) => {
                       }}
                       key={slide.title}
                       w="fit-content"
+                      maxWidth={['75%', 750]}
                       href={slide.link.url}
                       animation={`${scaleIn} 0.3s ease-in`}
                     >
-                      <GatsbyImage
-                        image={getImage(slide.image.localFile.childImageSharp)}
-                        style={{
-                          maxWidth: "100%",
-                          borderRadius: "10px!important",
-                          gridArea: "1/1",
-                        }}
-                        objectFit="contain"
+                      <Image
+                        srcSet={
+                          getImage(slide.image.localFile.childImageSharp).images
+                            .sources[0].srcSet
+                        }
+                        borderRadius={"10px"}
+                        gridArea="1/1"
                         className="image-slider"
+                        objectFit="contain"
+                        loading={i <= 2 ? "eager" : "lazy"}
+                        d="inline-block"
+                        position="relative"
+                        overflow="hidden"
                         alt={slide.title}
                       />
                       <Box

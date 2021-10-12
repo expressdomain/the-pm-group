@@ -17,17 +17,27 @@ const Category = ({ data }) => {
   // Raplace all instances of 'category' in schemaRaw with 'our-work'
   const schemaRawReplaced = schemaRaw.replace(/category/g, "our-work")
   const schemaObject = JSON.parse(schemaRawReplaced)
-  const breadcrumbList = schemaObject['@graph'][3]
+  const breadcrumbList = schemaObject["@graph"][3]
   breadcrumbList["@context"] = "https://schema.org"
   delete breadcrumbList["@id"]
   // Home
-  breadcrumbList["itemListElement"][0].item = { "@id": `${breadcrumbList["itemListElement"][0].item}`, "name": "Home" }
+  breadcrumbList["itemListElement"][0].item = {
+    "@id": `${breadcrumbList["itemListElement"][0].item}`,
+    name: "Home",
+  }
   delete breadcrumbList["itemListElement"][0].name
   // Our Work
-  breadcrumbList["itemListElement"][1].item = { "@id": "https://thepmgrp.com/our-work/", "name": "Our Work" }
+  breadcrumbList["itemListElement"][1].item = {
+    "@id": "https://thepmgrp.com/our-work/",
+    name: "Our Work",
+  }
   delete breadcrumbList["itemListElement"][1].name
   // Work Category
-  breadcrumbList["itemListElement"].push({"@type": "ListItem", position: 3, item: { "@id": `https://thepmgrp.com/our-work/${slug}/`, "name": name }})
+  breadcrumbList["itemListElement"].push({
+    "@type": "ListItem",
+    position: 3,
+    item: { "@id": `https://thepmgrp.com/our-work/${slug}/`, name: name },
+  })
 
   seo.schema.raw = JSON.stringify(schemaObject)
 
