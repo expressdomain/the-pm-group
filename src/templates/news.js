@@ -46,7 +46,6 @@ const NewsWire = ({ data, pageContext }) => {
   delete breadcrumbList["itemListElement"][1].name
 
   data.wpPage.seo.schema.raw = JSON.stringify(schemaObj)
-  console.log(schemaObj);
 
   return (
     <Layout>
