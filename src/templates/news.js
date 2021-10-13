@@ -24,7 +24,10 @@ const NewsWire = ({ data, pageContext }) => {
   const nextPage = (currentPage + 1).toString()
 
   // Replace all instances of '"/"' in seo.schema.raw with '"https://thepmgrp.com/"'
-  const schemaRaw = data.wpPage.seo.schema.raw.replace(/"\/"/g, '"https://thepmgrp.com/"')
+  const schemaRaw = data.wpPage.seo.schema.raw.replace(
+    /"\/"/g,
+    '"https://thepmgrp.com/"'
+  )
   // Initalize schema object
   const schemaObj = JSON.parse(schemaRaw)
 
@@ -34,14 +37,14 @@ const NewsWire = ({ data, pageContext }) => {
   delete breadcrumbList["@id"]
   // Home
   breadcrumbList["itemListElement"][0].item = {
-  "@id": `${breadcrumbList["itemListElement"][0].item}`,
-  name: "Home",
+    "@id": `${breadcrumbList["itemListElement"][0].item}`,
+    name: "Home",
   }
   delete breadcrumbList["itemListElement"][0].name
   // News
   breadcrumbList["itemListElement"][1].item = {
-  "@id": `https://thepmgrp.com/${data.wpPage.slug}/`,
-  name: data.wpPage.title,
+    "@id": `https://thepmgrp.com/${data.wpPage.slug}/`,
+    name: data.wpPage.title,
   }
   delete breadcrumbList["itemListElement"][1].name
 

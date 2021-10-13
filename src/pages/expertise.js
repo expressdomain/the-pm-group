@@ -24,7 +24,10 @@ const ExpertisePage = ({ data: { wpPage } }) => {
   const clientArray = wpPage.expertiseFields.clientList.client
 
   // Replace all instances of '"/"' in seo.schema.raw with '"https://thepmgrp.com/"'
-  const schemaRaw = wpPage.seo.schema.raw.replace(/"\/"/g, '"https://thepmgrp.com/"')
+  const schemaRaw = wpPage.seo.schema.raw.replace(
+    /"\/"/g,
+    '"https://thepmgrp.com/"'
+  )
   // Initalize schema object
   const schemaObj = JSON.parse(schemaRaw)
   // Modify breadcrumb list

@@ -24,7 +24,10 @@ const AboutPage = ({ data: { wpPage } }) => {
   const teamRepeater = wpPage.aboutFields.aboutTeam.aboutImageRepeater
 
   // Replace all instances of '"/"' in seo.schema.raw with '"https://thepmgrp.com/"'
-  const schemaRaw = wpPage.seo.schema.raw.replace(/"\/"/g, '"https://thepmgrp.com/"')
+  const schemaRaw = wpPage.seo.schema.raw.replace(
+    /"\/"/g,
+    '"https://thepmgrp.com/"'
+  )
   // Initalize schema object
   const schemaObj = JSON.parse(schemaRaw)
   // Modify breadcrumb list
@@ -45,7 +48,6 @@ const AboutPage = ({ data: { wpPage } }) => {
   delete breadcrumbList["itemListElement"][1].name
 
   wpPage.seo.schema.raw = JSON.stringify(schemaObj)
-
 
   return (
     <Layout>

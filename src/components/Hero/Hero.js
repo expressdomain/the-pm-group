@@ -154,7 +154,7 @@ const Hero = ({ title, caption, slides }) => {
                       }}
                       key={slide.title}
                       w="fit-content"
-                      maxWidth={['75%', 750]}
+                      maxWidth={["75%", 750]}
                       href={slide.link.url}
                       animation={`${scaleIn} 0.3s ease-in`}
                     >

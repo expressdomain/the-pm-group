@@ -37,7 +37,6 @@ const LeadershipTemplate = ({ data }) => {
   delete breadcrumbList["itemListElement"][2]
   seo.schema.raw = JSON.stringify(schemaObj)
 
-
   return (
     <Layout>
       <Seo post={{ seo }} />
