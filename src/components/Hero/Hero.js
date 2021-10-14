@@ -165,6 +165,7 @@ const Hero = ({ title, caption, slides }) => {
                         }}
                         objectFit="contain"
                         className="image-slider"
+                        loading="eager"
                         alt={slide.title}
                       />
                       <Box
