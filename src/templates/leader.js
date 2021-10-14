@@ -8,7 +8,12 @@ import { graphql } from "gatsby"
 import { Container, Heading, Box } from "@chakra-ui/react"
 
 const LeadershipTemplate = ({ data }) => {
-  const { heroPic, name, position, bio } = data.wpLeader.leaderFields
+  const {
+    heroPic,
+    name: personName,
+    position,
+    bio,
+  } = data.wpLeader.leaderFields
   const { title, seo, slug } = data.wpLeader
 
   // Replace all instances of '"/"' in seo.schema.raw with '"https://thepmgrp.com/"'
@@ -20,21 +25,29 @@ const LeadershipTemplate = ({ data }) => {
   // Modify breadcrumb list
   const breadcrumbList = schemaObj["@graph"][3]
   // breadcrumbList["@context"] = "https://schema.org"
-  delete breadcrumbList["@id"]
   // Home
   breadcrumbList["itemListElement"][0].item = {
     "@id": `${breadcrumbList["itemListElement"][0].item}`,
     name: "Home",
   }
-  delete breadcrumbList["itemListElement"][0].name
+
+  // breadcrumbList["itemListElement"][0].splice(2, 2)
+
+  const { name, ...breadcrumbListRest } = breadcrumbList["itemListElement"][0]
+  breadcrumbList["itemListElement"][0] = breadcrumbListRest
   // About
   breadcrumbList["itemListElement"][1].item = {
     "@id": `https://thepmgrp.com/${slug}/`,
     name: title,
   }
-  delete breadcrumbList["itemListElement"][1].name
-  // Delet last item until we refactor leadership templates
-  delete breadcrumbList["itemListElement"][2]
+  // Destructure Object Instead of using delete
+  const { name: newName, ...breadcrumbListRest1 } = breadcrumbList[
+    "itemListElement"
+  ][1]
+  // Set Destructured Object as equal to what we're trying to change
+  breadcrumbList["itemListElement"][1] = breadcrumbListRest1
+  // Delete last item in breadCrumbList Until we refactor leadership pages
+  breadcrumbList.itemListElement.pop()
   seo.schema.raw = JSON.stringify(schemaObj)
 
   return (
@@ -43,9 +56,9 @@ const LeadershipTemplate = ({ data }) => {
       <GenericHero title={title} image={heroPic.localFile.childImageSharp} />
       <PrimaryCTA items={ctaItems} link={ctaLink} ctaText={ctaText} />
       <Container py={4}>
-        {name && (
+        {personName && (
           <Heading tag="h2" color="black">
-            {name}
+            {personName}
           </Heading>
         )}
         {position && (
