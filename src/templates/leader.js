@@ -30,7 +30,6 @@ const LeadershipTemplate = ({ data }) => {
     name: "Home",
   }
 
-
   // breadcrumbList["itemListElement"][0].splice(2, 2)
 
   const { name, ...breadcrumbListRest } = breadcrumbList["itemListElement"][0]

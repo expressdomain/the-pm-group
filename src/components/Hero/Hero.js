@@ -9,11 +9,10 @@ import {
   Flex,
   keyframes,
   IconButton,
-  Image,
 } from "@chakra-ui/react"
 import * as React from "react"
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons"
-import { getImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import "./Hero.scss"
 
@@ -154,23 +153,18 @@ const Hero = ({ title, caption, slides }) => {
                       }}
                       key={slide.title}
                       w="fit-content"
-                      maxWidth={["75%", 750]}
                       href={slide.link.url}
                       animation={`${scaleIn} 0.3s ease-in`}
                     >
-                      <Image
-                        srcSet={
-                          getImage(slide.image.localFile.childImageSharp).images
-                            .sources[0].srcSet
-                        }
-                        borderRadius={"10px"}
-                        gridArea="1/1"
-                        className="image-slider"
+                      <GatsbyImage
+                        image={getImage(slide.image.localFile.childImageSharp)}
+                        style={{
+                          maxWidth: "100%",
+                          borderRadius: "10px!important",
+                          gridArea: "1/1",
+                        }}
                         objectFit="contain"
-                        loading={i <= 2 ? "eager" : "lazy"}
-                        d="inline-block"
-                        position="relative"
-                        overflow="hidden"
+                        className="image-slider"
                         alt={slide.title}
                       />
                       <Box
@@ -257,91 +251,6 @@ const Hero = ({ title, caption, slides }) => {
         </GridItem>
       </Grid>
     </Box>
-    // <Box bg="gray.800" as="section" minH="140px" position="relative">
-    //   <Box py="32" position="relative" zIndex={5}>
-    //     <Box
-    //       maxW={{
-    //         base: "xl",
-    //         md: "7xl",
-    //       }}
-    //       mx="auto"
-    //       px={{
-    //         base: "6",
-    //         md: "8",
-    //       }}
-    //       color={`white`}
-    //     >
-    //       <Box maxW="xl">
-    //         <Heading as="h1" size="xl" fontWeight="extrabold">
-    //           <Fade bottom>{title}</Fade>
-    //         </Heading>
-    //         <Text
-    //           fontSize={{
-    //             md: "2xl",
-    //           }}
-    //           mt="4"
-    //           maxW="lg"
-    //         >
-    //           {caption}
-    //         </Text>
-    //         <Stack
-    //           direction={{
-    //             base: "column",
-    //             md: "row",
-    //           }}
-    //           mt="10"
-    //           spacing="4"
-    //         >
-    //           <Button
-    //             as="a"
-    //             href="/our-work"
-    //             backgroundColor="secondary"
-    //             _hover={{
-    //               backgroundColor: `black`,
-    //               color: `secondary`,
-    //             }}
-    //             px="8"
-    //             textTransform="uppercase"
-    //             fontWeight="regular"
-    //             borderRadius={0}
-    //             size="lg"
-    //             color="black"
-    //             fontSize="md"
-    //           >
-    //             See our Work
-    //           </Button>
-    //         </Stack>
-    //       </Box>
-    //     </Box>
-    //   </Box>
-    //   <Flex
-    //     id="image-wrapper"
-    //     position="absolute"
-    //     insetX="0"
-    //     insetY="0"
-    //     w="full"
-    //     h="full"
-    //     overflow="hidden"
-    //     align="center"
-    //   >
-    //     <Box position="relative" w="full" h="full">
-    //       <Box
-    //         position="absolute"
-    //         w="full"
-    //         h="full"
-    //         bg="blackAlpha.400"
-    //         zIndex={4}
-    //       />
-
-    //       {/* <Skeleton height={500} /> */}
-    //       {/* <GatsbyImage
-    //         image={image}
-    //         style={{ height: "100%", width: "100%" }}
-    //         alt={alt}
-    //       /> */}
-    //     </Box>
-    //   </Flex>
-    // </Box>
   )
 }
 
