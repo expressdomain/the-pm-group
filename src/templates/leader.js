@@ -21,15 +21,15 @@ const LeadershipTemplate = ({ data }) => {
   // Replace all instances of '/leaders/' with an '/'
   const schemaRawClean = schemaRaw.replace(/\/leaders\//g, "/")
   // Initalize schema object
-  const schemaObj = JSON.parse(schemaRawClean)
+  let schemaObj = JSON.parse(schemaRawClean)
   // Modify breadcrumb list
   const breadcrumbList = schemaObj["@graph"][3]
-  // breadcrumbList["@context"] = "https://schema.org"
   // Home
   breadcrumbList["itemListElement"][0].item = {
     "@id": `${breadcrumbList["itemListElement"][0].item}`,
     name: "Home",
   }
+
 
   // breadcrumbList["itemListElement"][0].splice(2, 2)
 
