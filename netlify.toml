@@ -17,7 +17,7 @@
     X-Content-Type-Options = "nosniff"
     Content-Security-Policy = "default-src 'self'; script-src 'self' 'strict-dynamic' fastly.net *.fastly.net lr-ingest.io *.lr-ingest.io cloudfront.net *.cloudfront.net googletagmanager.com *.googletagmanager.com *.google-analytics.com; worker-src 'self' blob: data: lr-ingest.io *.lr-ingest.io; prefetch-src 'self'; connect-src 'self' r.lr-in.com lr-ingest.io *.lr-ingest.io google-analytics.com *.google-analytics.com stats.g.doubleclick.net; img-src 'self' thepmgroup.flywheelsites.com *.fastly.net fastly.net data: cloudfront.net *.cloudfront.net cloudinary.com *.cloudinary.com google.com www.google.com google-analytics.com *.google-analytics.com; font-src 'self' gstatic.com *.gstatic.com cloudfront.net *.cloudfront.net data:; manifest-src 'self'; style-src 'unsafe-inline' googleapis.com *.googleapis.com cloudfront.net *.cloudfront.net; frame-ancestors 'self'; form-action 'self'; script-src-elem 'self' netlify-cdp-loader.netlify.app 'unsafe-inline' cdn.lr-in.com lr-ingest.io r.lr-in.com *.lr-ingest.io cloudfront.net *.cloudfront.net googletagmanager.com *.googletagmanager.com google-analytics.com *.google-analytics.com; object-src 'none'; report-uri github.com/NoisyTrumpet/the-pm-group/issues; frame-src google.com www.google.com youtube.com www.youtube.com; media-src thepmgroup.flywheelsites.com"
 [[plugins]]
-  package = "@netlify/plugin-sitemap"
+  package = "/plugins/nt-plugin-sitemap"
 
   [plugins.inputs]
   buildDir = "public"
@@ -57,6 +57,8 @@
     "./public/404/index.html",
     "./public/404.html",
   ]
+[[plugins]]
+  package = "@netlify/plugin-local-install-core"
 [[plugins]]
     package = "@netlify/plugin-gatsby"
 [[redirects]]

@@ -5,6 +5,7 @@ export const ctaItems = [
   { title: "Public Relations", link: "/our-work/" },
   { title: "Events", link: "/our-work/" },
   { title: "Media Buying", link: "/media-buying/" },
+  { title: "Audio Video Services", link: "https://conventionavservices.com/" },
 ]
 
 export const ctaLink = "/contact-us"

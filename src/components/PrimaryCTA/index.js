@@ -38,7 +38,7 @@ const PrimaryCTA = ({ items, link, ctaText, isLoading }) => {
                 <Box display={`inline-block`} width={`fit-content`} pr={1}>
                   {item.title}{" "}
                 </Box>
-                {item.title !== "Media Buying" && (
+                {item.title !== "Audio Video Services" && (
                   <Text
                     as="span"
                     color="secondary"
