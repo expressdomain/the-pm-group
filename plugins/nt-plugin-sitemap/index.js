@@ -1,7 +1,7 @@
 /* Generates a sitemap */
 const { env } = require("process")
 
-const makeSitemap = require("./make_sitemap")
+const makeSitemap = require("./make_sitemap.js")
 
 const getInputsDir = ({ inputs }) => inputs.dir || inputs.distPath || inputs.buildDir
 
