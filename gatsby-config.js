@@ -87,6 +87,9 @@ module.exports = {
         //     password: process.env.HTTPBASICAUTH_PASSWORD,
         //   },
         // },
+        html: {
+          useGatsbyImage: false
+        },
         production: {
           hardCacheMediaFiles: true,
           allow404Images: true,
