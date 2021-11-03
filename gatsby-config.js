@@ -81,12 +81,12 @@ module.exports = {
       options: {
         // the only required plugin option for WordPress is the GraphQL url.
         url: process.env.WPGRAPHQL_URL,
-        auth: {
-          htaccess: {
-            username: process.env.HTTPBASICAUTH_USERNAME,
-            password: process.env.HTTPBASICAUTH_PASSWORD,
-          },
-        },
+        // auth: {
+        //   htaccess: {
+        //     username: process.env.HTTPBASICAUTH_USERNAME,
+        //     password: process.env.HTTPBASICAUTH_PASSWORD,
+        //   },
+        // },
         production: {
           hardCacheMediaFiles: true,
           allow404Images: true,
