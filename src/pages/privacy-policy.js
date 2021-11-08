@@ -67,6 +67,7 @@ export const privacyPolicyQuery = graphql`
       uri
       nodeType
       slug
+      title
       seo {
         title
         metaDesc
