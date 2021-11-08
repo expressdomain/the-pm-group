@@ -40,6 +40,8 @@ const Category = ({ data }) => {
   })
 
   seo.schema.raw = JSON.stringify(schemaObject)
+  seo.metaRobotsNoindex = "index"
+  seo.metaRobotsNofollow = "follow"
 
   return (
     <Layout>

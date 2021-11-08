@@ -41,6 +41,8 @@ const BlogPage = ({ data, pageContext }) => {
   })
 
   seo.schema.raw = JSON.stringify(schemaObj)
+  seo.metaRobotsNoindex = "index"
+  seo.metaRobotsNofollow = "follow"
 
   return (
     <Layout>

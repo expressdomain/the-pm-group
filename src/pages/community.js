@@ -52,6 +52,8 @@ const CommunityPage = ({ data }) => {
   delete breadcrumbList["itemListElement"][1].name
 
   data.wpPage.seo.schema.raw = JSON.stringify(schemaObj)
+  data.wpPage.seo.metaRobotsNoindex = "index"
+  data.wpPage.seo.metaRobotsNofollow = "follow"
 
   return (
     <Layout>

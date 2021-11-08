@@ -48,6 +48,8 @@ const ExpertisePage = ({ data: { wpPage } }) => {
   delete breadcrumbList["itemListElement"][1].name
 
   wpPage.seo.schema.raw = JSON.stringify(schemaObj)
+  wpPage.seo.metaRobotsNoindex = "index"
+  wpPage.seo.metaRobotsNofollow = "follow"
 
   return (
     <Layout>

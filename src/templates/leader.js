@@ -48,6 +48,8 @@ const LeadershipTemplate = ({ data }) => {
   // Delete last item in breadCrumbList Until we refactor leadership pages
   breadcrumbList.itemListElement.pop()
   seo.schema.raw = JSON.stringify(schemaObj)
+  seo.metaRobotsNoindex = "index"
+  seo.metaRobotsNofollow = "follow"
 
   return (
     <Layout>
