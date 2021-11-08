@@ -15,6 +15,33 @@ const ContactUs = ({ data: { wpPage } }) => {
   // Contact form
   // const form = gfForm
   const contact = wpPage.contactPageFields.contactSectionPage
+
+  // Replace all instances of '"/"' in seo.schema.raw with '"https://thepmgrp.com/"'
+  const schemaRaw = wpPage.seo.schema.raw.replace(
+    /"\/"/g,
+    '"https://thepmgrp.com/"'
+  )
+  // Initalize schema object
+  const schemaObj = JSON.parse(schemaRaw)
+
+  // Modify breadcrumb list
+  const breadcrumbList = schemaObj["@graph"][3]
+  // breadcrumbList["@context"] = "https://schema.org"
+  delete breadcrumbList["@id"]
+  // Home
+  breadcrumbList["itemListElement"][0].item = {
+    "@id": `${breadcrumbList["itemListElement"][0].item}`,
+    name: "Home",
+  }
+  delete breadcrumbList["itemListElement"][0].name
+  // Companies
+  breadcrumbList["itemListElement"][1].item = {
+    "@id": `https://thepmgrp.com/${wpPage.slug}/`,
+    name: wpPage.title,
+  }
+  delete breadcrumbList["itemListElement"][1].name
+
+  wpPage.seo.schema.raw = JSON.stringify(schemaObj)
   return (
     <Layout>
       <Seo post={wpPage} />
