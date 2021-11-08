@@ -10,8 +10,9 @@ const ThankYouPage = ({ data }) => {
   const thankYouPageTitle = data.wpPage?.title
   const thankYouHeroImage =
     data.wpPage?.featuredImage?.node?.localFile.childImageSharp
+  console.log(data.wpPage.seo)
 
-    // Replace all instances of '"/"' in seo.schema.raw with '"https://thepmgrp.com/"'
+  // Replace all instances of '"/"' in seo.schema.raw with '"https://thepmgrp.com/"'
   const schemaRaw = data.wpPage.seo.schema.raw.replace(
     /"\/"/g,
     '"https://thepmgrp.com/"'
@@ -20,7 +21,7 @@ const ThankYouPage = ({ data }) => {
   const schemaObj = JSON.parse(schemaRaw)
 
   // Modify breadcrumb list
-  const breadcrumbList = schemaObj["@graph"][3]
+  const breadcrumbList = schemaObj["@graph"][4]
   // breadcrumbList["@context"] = "https://schema.org"
   delete breadcrumbList["@id"]
   // Home
