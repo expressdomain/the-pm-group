@@ -63,11 +63,21 @@ module.exports = {
               "/category/agency-news/",
               "/category/uncategorized/",
               "/product/*",
+              "/our-work/case-studies/*",
+              "/the-pm-group-supports-art-vinyl/*",
+              "/agency-news/page*",
+              "/tag/*",
+              "/category/agency-news/",
+              "/category/uncategorized/",
+              "/product/*",
+              "/our-work/leadership/",
+              "/our-work/case-study/",
             ],
           },
         ],
       },
     },
+
     {
       /**
        * First up is the WordPress source plugin that connects Gatsby
