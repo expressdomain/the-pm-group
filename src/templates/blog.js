@@ -65,6 +65,26 @@ const BlogPage = ({ data, pageContext }) => {
           sx={{
             a: { color: "blue.500", textDecoration: "underline" },
             li: { marginLeft: "35px" },
+            ".blocks-gallery-grid": { 
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr 1fr",
+              gap: "20px",
+              listStyle: "none",
+              li: { margin: "0px"}
+            },
+            "@media screen and (max-width: 1023px)": {
+              ".blocks-gallery-grid": { 
+                gridTemplateColumns: "1fr 1fr",
+              },
+            },
+            "@media screen and (max-width: 767px)": {
+              ".blocks-gallery-grid": { 
+                display: "block",
+                li: {
+                  margin: "0 0 20px"
+                }
+              },
+            }
           }}
         />
         {related_posts.nodes.length > 0 && (
