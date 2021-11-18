@@ -16,7 +16,7 @@ const NotFoundPage = ({ data }) => {
       <Seo title="404: Not found" />
       <Box position={`relative`} display="grid" placeItems="center">
         <Box style={{ gridArea: "1/1" }} zIndex={4} pt={4} pb={8}>
-          <Box maxW="100%" m="auto">
+          <Box maxW="1400px" m="auto">
             {errorNumImage && (
               <GatsbyImage
                 image={getImage(errorNumImage)}
