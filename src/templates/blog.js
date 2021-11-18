@@ -12,37 +12,39 @@ const BlogPage = ({ data, pageContext }) => {
 
   const { breadcrumb } = pageContext
 
-  // Replace all instances of '"/"' in seo.schema.raw with '"https://thepmgrp.com/"'
-  const schemaRaw = seo.schema.raw.replace(/"\/"/g, '"https://thepmgrp.com/"')
+  if (seo) {
+    // Replace all instances of '"/"' in seo.schema.raw with '"https://thepmgrp.com/"'
+    const schemaRaw = seo.schema.raw.replace(/"\/"/g, '"https://thepmgrp.com/"')
 
-  let schemaObj = JSON.parse(schemaRaw)
+    let schemaObj = JSON.parse(schemaRaw)
 
-  // Modify breadcrumb list
-  const breadcrumbList = schemaObj["@graph"][4]
-  breadcrumbList["@context"] = "https://schema.org"
-  delete breadcrumbList["@id"]
-  // Home
-  breadcrumbList["itemListElement"][0].item = {
-    "@id": `${breadcrumbList["itemListElement"][0].item}`,
-    name: "Home",
+    // Modify breadcrumb list
+    const breadcrumbList = schemaObj["@graph"][4]
+    breadcrumbList["@context"] = "https://schema.org"
+    delete breadcrumbList["@id"]
+    // Home
+    breadcrumbList["itemListElement"][0].item = {
+      "@id": `${breadcrumbList["itemListElement"][0].item}`,
+      name: "Home",
+    }
+    delete breadcrumbList["itemListElement"][0].name
+    // News
+    breadcrumbList["itemListElement"][1].item = {
+      "@id": "https://thepmgrp.com/news/",
+      name: "News",
+    }
+    delete breadcrumbList["itemListElement"][1].name
+    // Article
+    breadcrumbList["itemListElement"].push({
+      "@type": "ListItem",
+      position: 3,
+      item: { "@id": `https://thepmgrp.com/news/${slug}/`, name: title },
+    })
+
+    seo.schema.raw = JSON.stringify(schemaObj)
+    seo.metaRobotsNoindex = "index"
+    seo.metaRobotsNofollow = "follow"
   }
-  delete breadcrumbList["itemListElement"][0].name
-  // News
-  breadcrumbList["itemListElement"][1].item = {
-    "@id": "https://thepmgrp.com/news/",
-    name: "News",
-  }
-  delete breadcrumbList["itemListElement"][1].name
-  // Article
-  breadcrumbList["itemListElement"].push({
-    "@type": "ListItem",
-    position: 3,
-    item: { "@id": `https://thepmgrp.com/news/${slug}/`, name: title },
-  })
-
-  seo.schema.raw = JSON.stringify(schemaObj)
-  seo.metaRobotsNoindex = "index"
-  seo.metaRobotsNofollow = "follow"
 
   return (
     <Layout>
@@ -65,26 +67,26 @@ const BlogPage = ({ data, pageContext }) => {
           sx={{
             a: { color: "blue.500", textDecoration: "underline" },
             li: { marginLeft: "35px" },
-            ".blocks-gallery-grid": { 
+            ".blocks-gallery-grid": {
               display: "grid",
               gridTemplateColumns: "1fr 1fr 1fr",
               gap: "20px",
               listStyle: "none",
-              li: { margin: "0px"}
+              li: { margin: "0px" },
             },
             "@media screen and (max-width: 1023px)": {
-              ".blocks-gallery-grid": { 
+              ".blocks-gallery-grid": {
                 gridTemplateColumns: "1fr 1fr",
               },
             },
             "@media screen and (max-width: 767px)": {
-              ".blocks-gallery-grid": { 
+              ".blocks-gallery-grid": {
                 display: "block",
                 li: {
-                  margin: "0 0 20px"
-                }
+                  margin: "0 0 20px",
+                },
               },
-            }
+            },
           }}
         />
         {related_posts.nodes.length > 0 && (
