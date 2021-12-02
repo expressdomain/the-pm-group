@@ -48,7 +48,7 @@ const BlogPage = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <Seo post={{ seo }} />
+      {seo && <Seo post={{ seo }} />}
       <Container py={8}>
         <Breadcrumb
           location={breadcrumb.location}

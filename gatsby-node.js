@@ -19,6 +19,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           workTemplates: allWpCategory {
             edges {
               node {
+                id
                 uri
                 nodeType
                 slug
@@ -29,6 +30,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           leadershipTemplates: allWpLeader {
             edges {
               node {
+                id
                 slug
               }
             }
@@ -69,6 +71,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             context: {
               slug: cat.node.slug,
             },
+            ownerNodeId: cat.node.id,
           })
         }
         resolve()
@@ -81,6 +84,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           context: {
             slug: item.node.slug,
           },
+          ownerNodeId: item.node.id,
         })
         resolve()
       })
@@ -95,6 +99,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             // title: post.node.title,
             // seo: post.node.seo,
           },
+          ownerNodeId: post.node.id,
         })
         resolve()
       })

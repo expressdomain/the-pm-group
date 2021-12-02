@@ -2,7 +2,7 @@ import * as React from "react"
 import Layout from "../components/Layout/Layout"
 import { graphql } from "gatsby"
 
-import { Text, Box } from "@chakra-ui/react"
+import { Text, Box } from "@chakra-ui/layout"
 
 import Seo from "gatsby-plugin-wpgraphql-seo"
 import AboutTeamGrid from "../components/AboutTeamGrid"
