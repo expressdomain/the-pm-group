@@ -45,7 +45,7 @@ const Category = ({ data }) => {
 
   return (
     <Layout>
-      <Seo post={{ seo }} />
+      {seo && <Seo post={{ seo }} />}
       {schema.customSchema && (
         <div dangerouslySetInnerHTML={{ __html: schema.customSchema }} />
       )}

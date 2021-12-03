@@ -43,7 +43,7 @@ const ThankYouPage = ({ data }) => {
 
   return (
     <Layout>
-      <Seo post={data?.wpPage} />
+      {data.wpPage.seo && <Seo post={data?.wpPage} />}
       <Box position={`relative`} display="grid" placeItems="center">
         <Box style={{ gridArea: "1/1" }} zIndex={4}>
           <Fade bottom>

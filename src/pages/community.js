@@ -57,7 +57,7 @@ const CommunityPage = ({ data }) => {
 
   return (
     <Layout>
-      <Seo post={data.wpPage} />
+      {data.wpPage.seo && <Seo post={data.wpPage} />}
       <GenericHero title={heroTitle} image={heroImage} />
       <PrimaryCTA items={ctaItems} link={ctaLink} ctaText={ctaText} />
       <TextImageBlock

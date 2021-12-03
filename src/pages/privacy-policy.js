@@ -48,7 +48,7 @@ const PrivacyPolicy = ({ data: { wpPage } }) => {
 
   return (
     <Layout>
-      <Seo post={wpPage} />
+      {wpPage.seo && <Seo post={wpPage} />}
       <GenericHero title={privacyTitle} />
       <Container>
         <Center my={5}>{date}</Center>

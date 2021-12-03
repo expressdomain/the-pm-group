@@ -63,7 +63,7 @@ const MediaBuying = ({ data, context }) => {
 
   return (
     <Layout>
-      <Seo post={data.wpPage} />
+      {data.wpPage.seo && <Seo post={data.wpPage} />}
       <GenericHero title={aboutPageTitle} image={aboutPageHeroImage} />
       <PrimaryCTA items={ctaItems} link={ctaLink} ctaText={ctaText} />
       <TextImageBlock

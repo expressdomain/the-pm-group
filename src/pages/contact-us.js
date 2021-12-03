@@ -46,7 +46,7 @@ const ContactUs = ({ data: { wpPage } }) => {
   wpPage.seo.metaRobotsNofollow = "follow"
   return (
     <Layout>
-      <Seo post={wpPage} />
+      {wpPage.seo && <Seo post={wpPage} />}
       <GenericHero title={heroTitle} image={heroImage} />
       <ContactForm contactData={contact} isContactPage />
     </Layout>
