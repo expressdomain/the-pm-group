@@ -15,34 +15,36 @@ const OurWorkPage = ({ data }) => {
   // Work Grid
   const workItems = data.wpPage.ourWorkFields.workGrid.gridItems
 
-  // Replace all instances of '"/"' in seo.schema.raw with '"https://thepmgrp.com/"'
-  const schemaRaw = data.wpPage.seo.schema.raw.replace(
-    /"\/"/g,
-    '"https://thepmgrp.com/"'
-  )
-  // Initalize schema object
-  const schemaObj = JSON.parse(schemaRaw)
+  if (data.wpPage.seo) {
+    // Replace all instances of '"/"' in seo.schema.raw with '"https://thepmgrp.com/"'
+    const schemaRaw = data.wpPage.seo.schema.raw.replace(
+      /"\/"/g,
+      '"https://thepmgrp.com/"'
+    )
+    // Initalize schema object
+    const schemaObj = JSON.parse(schemaRaw)
 
-  // Modify breadcrumb list
-  const breadcrumbList = schemaObj["@graph"][3]
-  // breadcrumbList["@context"] = "https://schema.org"
-  delete breadcrumbList["@id"]
-  // Home
-  breadcrumbList["itemListElement"][0].item = {
-    "@id": `${breadcrumbList["itemListElement"][0].item}`,
-    name: "Home",
-  }
-  delete breadcrumbList["itemListElement"][0].name
-  // Our Work
-  breadcrumbList["itemListElement"][1].item = {
-    "@id": `https://thepmgrp.com/${data.wpPage.slug}/`,
-    name: data.wpPage.title,
-  }
-  delete breadcrumbList["itemListElement"][1].name
+    // Modify breadcrumb list
+    const breadcrumbList = schemaObj["@graph"][3]
+    // breadcrumbList["@context"] = "https://schema.org"
+    delete breadcrumbList["@id"]
+    // Home
+    breadcrumbList["itemListElement"][0].item = {
+      "@id": `${breadcrumbList["itemListElement"][0].item}`,
+      name: "Home",
+    }
+    delete breadcrumbList["itemListElement"][0].name
+    // Our Work
+    breadcrumbList["itemListElement"][1].item = {
+      "@id": `https://thepmgrp.com/${data.wpPage.slug}/`,
+      name: data.wpPage.title,
+    }
+    delete breadcrumbList["itemListElement"][1].name
 
-  data.wpPage.seo.schema.raw = JSON.stringify(schemaObj)
-  data.wpPage.seo.metaRobotsNoindex = "index"
-  data.wpPage.seo.metaRobotsNofollow = "follow"
+    data.wpPage.seo.schema.raw = JSON.stringify(schemaObj)
+    data.wpPage.seo.metaRobotsNoindex = "index"
+    data.wpPage.seo.metaRobotsNofollow = "follow"
+  }
 
   return (
     <Layout>

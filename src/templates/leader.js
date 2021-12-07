@@ -15,41 +15,42 @@ const LeadershipTemplate = ({ data }) => {
     bio,
   } = data.wpLeader.leaderFields
   const { title, seo, slug } = data.wpLeader
+  if (seo) {
+    // Replace all instances of '"/"' in seo.schema.raw with '"https://thepmgrp.com/"'
+    const schemaRaw = seo.schema.raw.replace(/"\/"/g, '"https://thepmgrp.com/"')
+    // Replace all instances of '/leaders/' with an '/'
+    const schemaRawClean = schemaRaw.replace(/\/leaders\//g, "/")
+    // Initalize schema object
+    let schemaObj = JSON.parse(schemaRawClean)
+    // Modify breadcrumb list
+    const breadcrumbList = schemaObj["@graph"][3]
+    // Home
+    breadcrumbList["itemListElement"][0].item = {
+      "@id": `${breadcrumbList["itemListElement"][0].item}`,
+      name: "Home",
+    }
 
-  // Replace all instances of '"/"' in seo.schema.raw with '"https://thepmgrp.com/"'
-  const schemaRaw = seo.schema.raw.replace(/"\/"/g, '"https://thepmgrp.com/"')
-  // Replace all instances of '/leaders/' with an '/'
-  const schemaRawClean = schemaRaw.replace(/\/leaders\//g, "/")
-  // Initalize schema object
-  let schemaObj = JSON.parse(schemaRawClean)
-  // Modify breadcrumb list
-  const breadcrumbList = schemaObj["@graph"][3]
-  // Home
-  breadcrumbList["itemListElement"][0].item = {
-    "@id": `${breadcrumbList["itemListElement"][0].item}`,
-    name: "Home",
+    // breadcrumbList["itemListElement"][0].splice(2, 2)
+
+    const { name, ...breadcrumbListRest } = breadcrumbList["itemListElement"][0]
+    breadcrumbList["itemListElement"][0] = breadcrumbListRest
+    // About
+    breadcrumbList["itemListElement"][1].item = {
+      "@id": `https://thepmgrp.com/${slug}/`,
+      name: title,
+    }
+    // Destructure Object Instead of using delete
+    const { name: newName, ...breadcrumbListRest1 } = breadcrumbList[
+      "itemListElement"
+    ][1]
+    // Set Destructured Object as equal to what we're trying to change
+    breadcrumbList["itemListElement"][1] = breadcrumbListRest1
+    // Delete last item in breadCrumbList Until we refactor leadership pages
+    breadcrumbList.itemListElement.pop()
+    seo.schema.raw = JSON.stringify(schemaObj)
+    seo.metaRobotsNoindex = "index"
+    seo.metaRobotsNofollow = "follow"
   }
-
-  // breadcrumbList["itemListElement"][0].splice(2, 2)
-
-  const { name, ...breadcrumbListRest } = breadcrumbList["itemListElement"][0]
-  breadcrumbList["itemListElement"][0] = breadcrumbListRest
-  // About
-  breadcrumbList["itemListElement"][1].item = {
-    "@id": `https://thepmgrp.com/${slug}/`,
-    name: title,
-  }
-  // Destructure Object Instead of using delete
-  const { name: newName, ...breadcrumbListRest1 } = breadcrumbList[
-    "itemListElement"
-  ][1]
-  // Set Destructured Object as equal to what we're trying to change
-  breadcrumbList["itemListElement"][1] = breadcrumbListRest1
-  // Delete last item in breadCrumbList Until we refactor leadership pages
-  breadcrumbList.itemListElement.pop()
-  seo.schema.raw = JSON.stringify(schemaObj)
-  seo.metaRobotsNoindex = "index"
-  seo.metaRobotsNofollow = "follow"
 
   return (
     <Layout>

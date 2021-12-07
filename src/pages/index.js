@@ -48,9 +48,11 @@ const IndexPage = ({ data: { wpPage } }) => {
   const companies = wpPage?.homeFields?.companies
   // Custom Schema
   const schema = wpPage?.customSchema.customSchema
-  // Modify wpPage.seo.metaRobotsNoindex, wpPage.seo.metaRobotsNofollow to be index, follow respectively
-  wpPage.seo.metaRobotsNoindex = "index"
-  wpPage.seo.metaRobotsNofollow = "follow"
+
+  if (wpPage.seo) {
+    wpPage.seo.metaRobotsNoindex = "index"
+    wpPage.seo.metaRobotsNofollow = "follow"
+  }
 
   return (
     <Layout>

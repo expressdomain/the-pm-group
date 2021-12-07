@@ -11,37 +11,38 @@ const Category = ({ data }) => {
   const { seo, name, description, customSchema: schema, slug } = data.wpCategory
 
   const { nodes: works } = data.allWpWork
+  if (seo) {
+    // Replace all instances of '"/"' in seo.schema.raw with '"https://thepmgrp.com/"'
+    const schemaRaw = seo.schema.raw.replace(/"\/"/g, '"https://thepmgrp.com/"')
+    // Raplace all instances of 'category' in schemaRaw with 'our-work'
+    const schemaRawReplaced = schemaRaw.replace(/category/g, "our-work")
+    const schemaObject = JSON.parse(schemaRawReplaced)
+    const breadcrumbList = schemaObject["@graph"][3]
+    breadcrumbList["@context"] = "https://schema.org"
+    delete breadcrumbList["@id"]
+    // Home
+    breadcrumbList["itemListElement"][0].item = {
+      "@id": `${breadcrumbList["itemListElement"][0].item}`,
+      name: "Home",
+    }
+    delete breadcrumbList["itemListElement"][0].name
+    // Our Work
+    breadcrumbList["itemListElement"][1].item = {
+      "@id": "https://thepmgrp.com/our-work/",
+      name: "Our Work",
+    }
+    delete breadcrumbList["itemListElement"][1].name
+    // Work Category
+    breadcrumbList["itemListElement"].push({
+      "@type": "ListItem",
+      position: 3,
+      item: { "@id": `https://thepmgrp.com/our-work/${slug}/`, name: name },
+    })
 
-  // Replace all instances of '"/"' in seo.schema.raw with '"https://thepmgrp.com/"'
-  const schemaRaw = seo.schema.raw.replace(/"\/"/g, '"https://thepmgrp.com/"')
-  // Raplace all instances of 'category' in schemaRaw with 'our-work'
-  const schemaRawReplaced = schemaRaw.replace(/category/g, "our-work")
-  const schemaObject = JSON.parse(schemaRawReplaced)
-  const breadcrumbList = schemaObject["@graph"][3]
-  breadcrumbList["@context"] = "https://schema.org"
-  delete breadcrumbList["@id"]
-  // Home
-  breadcrumbList["itemListElement"][0].item = {
-    "@id": `${breadcrumbList["itemListElement"][0].item}`,
-    name: "Home",
+    seo.schema.raw = JSON.stringify(schemaObject)
+    seo.metaRobotsNoindex = "index"
+    seo.metaRobotsNofollow = "follow"
   }
-  delete breadcrumbList["itemListElement"][0].name
-  // Our Work
-  breadcrumbList["itemListElement"][1].item = {
-    "@id": "https://thepmgrp.com/our-work/",
-    name: "Our Work",
-  }
-  delete breadcrumbList["itemListElement"][1].name
-  // Work Category
-  breadcrumbList["itemListElement"].push({
-    "@type": "ListItem",
-    position: 3,
-    item: { "@id": `https://thepmgrp.com/our-work/${slug}/`, name: name },
-  })
-
-  seo.schema.raw = JSON.stringify(schemaObject)
-  seo.metaRobotsNoindex = "index"
-  seo.metaRobotsNofollow = "follow"
 
   return (
     <Layout>
