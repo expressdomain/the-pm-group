@@ -123,7 +123,7 @@ export const leaderQuery = graphql`
                 quality: 90
                 layout: CONSTRAINED
                 formats: [WEBP, PNG]
-                placeholder: BLURRED
+                placeholder: TRACED_SVG
               )
             }
           }

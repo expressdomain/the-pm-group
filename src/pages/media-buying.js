@@ -130,7 +130,7 @@ export const mediaBuyingPageQuery = graphql`
                   quality: 90
                   formats: [WEBP, PNG]
                   layout: CONSTRAINED
-                  placeholder: BLURRED
+                  placeholder: TRACED_SVG
                 )
               }
             }
@@ -146,7 +146,7 @@ export const mediaBuyingPageQuery = graphql`
                   quality: 90
                   formats: [WEBP, PNG]
                   layout: CONSTRAINED
-                  placeholder: BLURRED
+                  placeholder: TRACED_SVG
                 )
               }
             }
@@ -165,7 +165,7 @@ export const mediaBuyingPageQuery = graphql`
                     height: 200
                     formats: [WEBP, PNG]
                     layout: CONSTRAINED
-                    placeholder: BLURRED
+                    placeholder: TRACED_SVG
                   )
                 }
               }

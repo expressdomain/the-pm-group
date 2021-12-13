@@ -138,7 +138,7 @@ export const communityPageQuery = graphql`
               childImageSharp {
                 gatsbyImageData(
                   quality: 90
-                  placeholder: BLURRED
+                  placeholder: TRACED_SVG
                   formats: [WEBP, PNG]
                   layout: CONSTRAINED
                 )
@@ -154,7 +154,7 @@ export const communityPageQuery = graphql`
               childImageSharp {
                 gatsbyImageData(
                   quality: 90
-                  placeholder: BLURRED
+                  placeholder: TRACED_SVG
                   formats: [WEBP, PNG]
                   layout: CONSTRAINED
                 )
@@ -178,7 +178,7 @@ export const communityPageQuery = graphql`
                 childImageSharp {
                   gatsbyImageData(
                     quality: 90
-                    placeholder: BLURRED
+                    placeholder: TRACED_SVG
                     layout: CONSTRAINED
                     formats: [WEBP, PNG]
                   )

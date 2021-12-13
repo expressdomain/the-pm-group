@@ -101,7 +101,7 @@ export const companiesPageQuery = graphql`
               childImageSharp {
                 gatsbyImageData(
                   quality: 90
-                  placeholder: BLURRED
+                  placeholder: TRACED_SVG
                   layout: CONSTRAINED
                   formats: [WEBP, PNG]
                 )
@@ -118,7 +118,7 @@ export const companiesPageQuery = graphql`
                 childImageSharp {
                   gatsbyImageData(
                     quality: 90
-                    placeholder: BLURRED
+                    placeholder: TRACED_SVG
                     layout: CONSTRAINED
                     formats: [WEBP, PNG]
                   )
