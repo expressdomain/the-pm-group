@@ -128,7 +128,7 @@ export const categoryQuery = graphql`
               childImageSharp {
                 gatsbyImageData(
                   quality: 90
-                  placeholder: TRACED_SVG
+                  placeholder: NONE
                   layout: CONSTRAINED
                   formats: [WEBP, PNG]
                 )
@@ -144,7 +144,7 @@ export const categoryQuery = graphql`
               childImageSharp {
                 gatsbyImageData(
                   quality: 90
-                  placeholder: TRACED_SVG
+                  placeholder: NONE
                   layout: CONSTRAINED
                   formats: [WEBP, PNG]
                 )
@@ -166,7 +166,7 @@ export const categoryQuery = graphql`
                   quality: 90
                   layout: CONSTRAINED
                   formats: [WEBP, PNG]
-                  placeholder: TRACED_SVG
+                  placeholder: NONE
                 )
               }
             }

@@ -238,7 +238,7 @@ export const newsQuery = graphql`
                   quality: 90
                   layout: CONSTRAINED
                   formats: [WEBP, PNG]
-                  placeholder: TRACED_SVG
+                  placeholder: NONE
                 )
               }
             }

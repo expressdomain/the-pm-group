@@ -133,7 +133,7 @@ export const aboutPageQuery = graphql`
                   quality: 90
                   formats: [WEBP, PNG]
                   layout: CONSTRAINED
-                  placeholder: TRACED_SVG
+                  placeholder: NONE
                 )
               }
             }
@@ -155,7 +155,7 @@ export const aboutPageQuery = graphql`
                   quality: 90
                   formats: [WEBP, PNG]
                   layout: CONSTRAINED
-                  placeholder: TRACED_SVG
+                  placeholder: NONE
                 )
               }
             }
@@ -176,7 +176,7 @@ export const aboutPageQuery = graphql`
                     quality: 90
                     formats: [WEBP, PNG]
                     layout: CONSTRAINED
-                    placeholder: TRACED_SVG
+                    placeholder: NONE
                   )
                 }
               }

@@ -156,7 +156,7 @@ export const notFoundPageQuery = graphql`
         gatsbyImageData(
           formats: WEBP
           layout: CONSTRAINED
-          placeholder: TRACED_SVG
+          placeholder: NONE
           quality: 90
         )
       }
@@ -166,7 +166,7 @@ export const notFoundPageQuery = graphql`
         gatsbyImageData(
           formats: WEBP
           layout: CONSTRAINED
-          placeholder: TRACED_SVG
+          placeholder: NONE
           quality: 90
         )
       }
@@ -176,7 +176,7 @@ export const notFoundPageQuery = graphql`
         gatsbyImageData(
           formats: WEBP
           layout: CONSTRAINED
-          placeholder: TRACED_SVG
+          placeholder: NONE
           quality: 90
         )
       }

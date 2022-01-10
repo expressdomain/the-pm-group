@@ -129,7 +129,7 @@ export const thankYouPageQuery = graphql`
             childImageSharp {
               gatsbyImageData(
                 quality: 90
-                placeholder: TRACED_SVG
+                placeholder: NONE
                 layout: CONSTRAINED
                 formats: [WEBP, PNG]
               )

@@ -131,7 +131,7 @@ export const expertisePageQuery = graphql`
                   quality: 90
                   formats: [WEBP, PNG]
                   layout: CONSTRAINED
-                  placeholder: TRACED_SVG
+                  placeholder: NONE
                 )
               }
             }
@@ -155,7 +155,7 @@ export const expertisePageQuery = graphql`
                     quality: 90
                     formats: [WEBP, PNG]
                     layout: CONSTRAINED
-                    placeholder: TRACED_SVG
+                    placeholder: NONE
                   )
                 }
               }

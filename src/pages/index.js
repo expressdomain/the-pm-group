@@ -136,7 +136,7 @@ export const pageQuery = graphql`
                 childImageSharp {
                   gatsbyImageData(
                     quality: 90
-                    placeholder: TRACED_SVG
+                    placeholder: NONE
                     layout: CONSTRAINED
                     formats: [WEBP, PNG]
                   )
@@ -156,7 +156,7 @@ export const pageQuery = graphql`
                 gatsbyImageData(
                   formats: [WEBP, PNG]
                   quality: 90
-                  placeholder: TRACED_SVG
+                  placeholder: NONE
                   layout: CONSTRAINED
                 )
               }
@@ -169,7 +169,7 @@ export const pageQuery = graphql`
                 childImageSharp {
                   gatsbyImageData(
                     quality: 90
-                    placeholder: TRACED_SVG
+                    placeholder: NONE
                     layout: CONSTRAINED
                     formats: [WEBP, PNG]
                   )
@@ -188,7 +188,7 @@ export const pageQuery = graphql`
                   quality: 90
                   formats: [WEBP, PNG]
                   layout: CONSTRAINED
-                  placeholder: TRACED_SVG
+                  placeholder: NONE
                 )
               }
             }
@@ -214,7 +214,7 @@ export const pageQuery = graphql`
                   quality: 90
                   formats: [WEBP, PNG]
                   layout: CONSTRAINED
-                  placeholder: TRACED_SVG
+                  placeholder: NONE
                 )
               }
             }
@@ -243,7 +243,7 @@ export const pageQuery = graphql`
                   quality: 90
                   formats: [WEBP, PNG]
                   layout: CONSTRAINED
-                  placeholder: TRACED_SVG
+                  placeholder: NONE
                 )
               }
               childrenImageSharp {
@@ -251,7 +251,7 @@ export const pageQuery = graphql`
                   quality: 90
                   formats: [WEBP, PNG]
                   layout: CONSTRAINED
-                  placeholder: TRACED_SVG
+                  placeholder: NONE
                 )
               }
             }
@@ -271,7 +271,7 @@ export const pageQuery = graphql`
               childImageSharp {
                 gatsbyImageData(
                   quality: 90
-                  placeholder: TRACED_SVG
+                  placeholder: NONE
                   formats: [WEBP, PNG]
                 )
               }
