@@ -1,42 +1,39 @@
 #gform_wrapper_1 {
-    width: 100%;
-    max-width: 100% !important;
-    // padding: 0 10px !important;
+  width: 100%;
+  max-width: 100% !important;
+  // padding: 0 10px !important;
 }
 
 form#gravityform--id-1 {
-    min-width: 100%;
-    max-width: 100%;
+  min-width: 100%;
+  max-width: 100%;
 
-    li {
-        list-style: none;
-    }
+  li {
+    list-style: none;
+  }
 
-    .gfield_required {
-        color: red;
-        margin-left: 5px;
-    }
+  .gfield_required {
+    color: red;
+    margin-left: 5px;
+  }
 
-    input,
-    textarea {
-        padding-top: 5px;
-        padding-bottom: 5px;
-        width: 100%;
-        border: solid 2px black;
-        border-radius: 5px;
-        margin-bottom: 10px;
-    }
-
-
+  input,
+  textarea {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+    border: solid 2px black;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
 }
 
 // Gravity Forms Button:
 #gform_submit_button_1 {
-    padding: 10px 20px;
-    font-weight: normal;
-    text-transform: uppercase;
-    margin-top: 20px;
-    color: #201D1D;
-    background: #FDBC31 !important;
-
+  padding: 10px 20px;
+  font-weight: normal;
+  text-transform: uppercase;
+  margin-top: 20px;
+  color: #201d1d;
+  background: #fdbc31 !important;
 }

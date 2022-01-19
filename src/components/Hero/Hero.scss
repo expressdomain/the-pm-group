@@ -1,20 +1,20 @@
 .swiper-slide {
-    width: auto;
-    max-width: 100%;
+  width: auto;
+  max-width: 100%;
 
-    @media (max-width: 768px) {
-        width: 75%;
-    }
+  @media (max-width: 768px) {
+    width: 75%;
+  }
 }
 
 .image-slider {
-    border-radius: 10px !important;
+  border-radius: 10px !important;
 }
 
 .hero-link {
-    text-decoration: none !important;
+  text-decoration: none !important;
 }
 
 .swiper-pagination-bullet-active {
-    background-color: #fff;
+  background-color: #fff;
 }

@@ -7,7 +7,6 @@ import {
   GridItem,
   useColorModeValue,
   Flex,
-  keyframes,
   IconButton,
 } from "@chakra-ui/react"
 import * as React from "react"
@@ -20,11 +19,6 @@ const Hero = ({ title, caption, slides }) => {
   const hasMultipleImages = slides.length > 1
   const bgScrollbar = useColorModeValue(`gray.300`, `gray.800`)
   const bgScrollThumb = useColorModeValue(`gray.600`, `gray.400`)
-
-  const scaleIn = keyframes`
-    0%   {transform: scale(.9); opacity: 0;}
-    100% {transform: scale(1); opacity: 1;}
-  `
 
   const ref = React.useRef()
   const scroll = scrollOffset => {
@@ -154,7 +148,7 @@ const Hero = ({ title, caption, slides }) => {
                       key={slide.title}
                       w="fit-content"
                       href={slide.link.url}
-                      animation={`${scaleIn} 0.3s ease-in`}
+                      minH="242px"
                     >
                       <GatsbyImage
                         image={getImage(slide.image.localFile.childImageSharp)}
@@ -165,7 +159,7 @@ const Hero = ({ title, caption, slides }) => {
                         }}
                         objectFit="contain"
                         className="image-slider"
-                        loading="eager"
+                        loading={i <= 2 ? "eager" : "lazy"}
                         alt={slide.title}
                       />
                       <Box

@@ -157,13 +157,18 @@ exports.createResolvers = async ({ createResolvers, schema }) =>
           ).then(res => res.json())
 
           if (response && response.length) {
-            const result = await context.nodeModel.runQuery({
+            const { entries, totalCount } = await context.nodeModel.findAll({
               query: {
-                filter: { databaseId: { in: response.map(({ id }) => id) } },
+                filter: {
+                  databaseId: {
+                    in: response.map(({ id }) => id),
+                  },
+                },
+                limit: 3,
               },
               type: "WpPost",
             })
-            return { nodes: result }
+            return { nodes: Array.from(entries) }
           } else return { nodes: [] }
         },
       },

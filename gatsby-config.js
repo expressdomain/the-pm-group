@@ -9,10 +9,6 @@ module.exports = {
     author: `@NoisyTrumpet`,
     siteUrl: `https://thepmgrp.com`,
   },
-  flags: {
-    DEV_SSR: true,
-    FAST_DEV: true,
-  },
   plugins: [
     "@chakra-ui/gatsby-plugin",
     `gatsby-plugin-react-helmet`,

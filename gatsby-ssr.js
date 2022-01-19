@@ -23,5 +23,21 @@ export const onRenderBody = ({ setHeadComponents }) => {
       as="script"
       crossorigin
     />,
+    <link
+      rel="preload"
+      key="preload-montserrat-latin-500"
+      href="/static/montserrat-latin-500-normal-730131c0fbe55c1ba2828ac133d40a44.woff2"
+      as="font"
+      type="font/woff2"
+      crossOrigin="anonymous"
+    />,
+    <link
+      rel="preload"
+      key="preload-montserrat-latin-700"
+      href="/static/montserrat-latin-700-normal-6077783c63fa414406e1ddbc1e62388b.woff2"
+      as="font"
+      type="font/woff2"
+      crossOrigin="anonymous"
+    />,
   ])
 }
