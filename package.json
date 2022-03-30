@@ -17,6 +17,7 @@
     "cross-env": "^7.0.3",
     "framer-motion": "^6.0.0",
     "gatsby": "^4.5.4",
+    "gatsby-build-newrelic": "^1.1.17",
     "gatsby-plugin-breadcrumb": "^12.3.0",
     "gatsby-plugin-gatsby-cloud": "^4.5.2",
     "gatsby-plugin-image": "^2.5.2",
@@ -62,7 +63,7 @@
   ],
   "license": "0BSD",
   "scripts": {
-    "build": "cross-env GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
+    "build": "cross-env GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages --open-tracing-config-file ./node_modules/gatsby-build-newrelic/zipkin-local.js --graphql-tracing",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,scss}\"",
     "start": "npm run develop",
