@@ -17,6 +17,7 @@ export const onRenderBody = ({ setHeadComponents, setPreBodyComponents }) => {
   if (process.env.NODE_ENV !== "production" && process.env.NODE_ENV !== "test")
     return null
   setHeadComponents([
+    <Partytown key="partytown" debug={false} forward={['dataLayer.push']} resolveUrl={resolveUrl}/>,
     // <link
     //   rel="preconnect"
     //   key="dns-prefetch-google-tag-manager"
