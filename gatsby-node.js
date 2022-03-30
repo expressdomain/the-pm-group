@@ -8,6 +8,7 @@
 const path = require("path")
 // const fs = require('fs');
 const { createFilePath } = require("gatsby-source-filesystem")
+const { copyLibFiles } = require('@builder.io/partytown/utils')
 const fetch = require("node-fetch")
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
@@ -174,3 +175,8 @@ exports.createResolvers = async ({ createResolvers, schema }) =>
       },
     },
   })
+
+  // Partytown Prebuild
+exports.onPreBuild = async () => {
+  await copyLibFiles(path.join(__dirname, 'static', '~partytown'))
+}
