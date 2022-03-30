@@ -18,6 +18,7 @@
     "cross-env": "^7.0.3",
     "framer-motion": "^6.2.8",
     "gatsby": "^4.11.0",
+    "gatsby-build-newrelic": "^1.1.17",
     "gatsby-plugin-breadcrumb": "^12.3.1",
     "gatsby-plugin-gatsby-cloud": "^4.11.0",
     "gatsby-plugin-image": "^2.11.0",
