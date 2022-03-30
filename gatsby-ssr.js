@@ -1,21 +1,36 @@
 import React from "react"
+import { Partytown } from "@builder.io/partytown/react"
+
+const resolveUrl = url => {
+  if (
+    url.hostname === "www.google-analytics.com" ||
+    url.hostname === "connect.facebook.net"
+  ) {
+    var proxyUrl = new URL(`https://coop-atm.mygenfcu.workers.dev/?${url.href}`)
+    // proxyUrl.searchParams.append('', )
+    return proxyUrl
+  }
+  return url
+}
 
 export const onRenderBody = ({ setHeadComponents, setPreBodyComponents }) => {
+  if (process.env.NODE_ENV !== "production" && process.env.NODE_ENV !== "test")
+    return null
   setHeadComponents([
-    <link
-      rel="preconnect"
-      key="dns-prefetch-google-tag-manager"
-      href="https://www.googletagmanager.com"
-      as="script"
-      crossorigin
-    />,
-    <link
-      rel="preconnect"
-      key="dns-prefetch-connect-facebook"
-      href="https://connect.facebook.net"
-      as="script"
-      crossorigin
-    />,
+    // <link
+    //   rel="preconnect"
+    //   key="dns-prefetch-google-tag-manager"
+    //   href="https://www.googletagmanager.com"
+    //   as="script"
+    //   crossorigin
+    // />,
+    // <link
+    //   rel="preconnect"
+    //   key="dns-prefetch-connect-facebook"
+    //   href="https://connect.facebook.net"
+    //   as="script"
+    //   crossorigin
+    // />,
     <link
       rel="preload"
       key="preload-montserrat-latin-500"
@@ -35,6 +50,7 @@ export const onRenderBody = ({ setHeadComponents, setPreBodyComponents }) => {
 
     <script
       key="google-tag-manager-head"
+      type="text/partytown"
       dangerouslySetInnerHTML={{
         __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -47,6 +63,7 @@ export const onRenderBody = ({ setHeadComponents, setPreBodyComponents }) => {
     setPreBodyComponents([
       <noscript
         key="google-tagmanager-body"
+        type="text/partytown"
         dangerouslySetInnerHTML={{
           __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=${process.env.GATSBY_GOOGLE_TAG_MANAGER_ID}" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
         }}
