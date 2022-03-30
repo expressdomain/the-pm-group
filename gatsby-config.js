@@ -222,5 +222,14 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
     // Chakra UI:
+    // New Relic Monitoring:
+    {
+      resolve: "gatsby-build-newrelic",
+      options: {
+        NR_LICENSE_KEY: process.env.NEWRELIC_KEY,
+        NR_ACCOUNT_ID: process.env.NEWRELIC_ACCOUNT_ID,
+        SITE_NAME: "the-pmg-group",
+      },
+    },
   ],
 }
