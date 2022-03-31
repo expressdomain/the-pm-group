@@ -126,7 +126,9 @@ const NewsWire = ({ data, pageContext }) => {
                         bgColor="secondary"
                         variant="outline"
                         color="black"
-                        onClick={() => navigate(page === 1 ? "/news/" : `/news/${page}`)}
+                        onClick={() =>
+                          navigate(page === 1 ? "/news/" : `/news/${page}`)
+                        }
                       >
                         {page}
                       </Button>

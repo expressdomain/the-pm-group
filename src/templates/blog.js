@@ -75,8 +75,8 @@ const BlogPage = ({ data, pageContext }) => {
               li: { margin: "0px" },
             },
             figcaption: {
-              textAlign: 'center',
-              fontStyle: 'italic',
+              textAlign: "center",
+              fontStyle: "italic",
             },
             "@media screen and (max-width: 1023px)": {
               ".blocks-gallery-grid": {
