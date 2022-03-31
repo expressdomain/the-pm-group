@@ -78,4 +78,4 @@ package-lock.json
 # @netlify/plugin-gatsby ignores start
 src/lambda/gatsby
 # @netlify/plugin-gatsby ignores end
-
+static/~partytown/
