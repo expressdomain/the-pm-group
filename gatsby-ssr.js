@@ -14,8 +14,6 @@ const resolveUrl = url => {
 }
 
 export const onRenderBody = ({ setHeadComponents, setPreBodyComponents }) => {
-  if (process.env.NODE_ENV !== "production" && process.env.NODE_ENV !== "test")
-    return null
   setHeadComponents([
     <Partytown
       key="partytown"
